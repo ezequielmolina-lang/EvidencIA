@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EvidencIA — Red Latinoamericana de IA y Aprendizaje</title>
+<meta name="description" content="Red latinoamericana de IA y ciencia del aprendizaje. Newsletter semanal, seminarios mensuales y comunidad de práctica para universidades, ministerios e investigadores." />
+<meta property="og:title" content="EvidencIA" />
+<meta property="og:description" content="La red latinoamericana de IA y ciencia del aprendizaje." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAF7F0;
+    --bg-soft: #F2EDE2;
+    --ink: #0F0E0C;
+    --ink-soft: #3A352E;
+    --ink-mute: #6B6359;
+    --rule: #DDD4C0;
+    --gold: #B8842B;
+    --gold-deep: #8E6420;
+    --works: #2D5F3E;
+    --works-bg: #E7EFE5;
+    --fails: #B14629;
+    --fails-bg: #F3E3DC;
+    --cobalt: #1E3A8A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 17px;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .wide { max-width: 1280px; }
+  .narrow { max-width: 820px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 240, 0.86);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 0;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600; font-size: 24px;
+    letter-spacing: -0.01em;
+    text-decoration: none; color: var(--ink);
+    display: inline-flex; align-items: baseline; gap: 1px;
+  }
+  .brand b { color: var(--gold); font-weight: 800; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .lang {
+    display: flex; gap: 2px; align-items: center;
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 4px; background: var(--bg);
+  }
+  .lang button {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    color: var(--ink-mute); padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.04em;
+    transition: all 0.18s;
+  }
+  .lang button.active { background: var(--ink); color: var(--bg); }
+  .lang button:hover:not(.active) { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: 100px 0 80px; position: relative; }
+  .hero .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold-deep);
+    padding-bottom: 6px;
+  }
+  .hero .eyebrow::before {
+    content: ""; width: 26px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(44px, 7.2vw, 96px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 22px 0 28px;
+    max-width: 14ch;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .hero .lede {
+    font-size: clamp(18px, 1.6vw, 21px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin-bottom: 36px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px; border-radius: 999px;
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--gold-deep); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--bg); }
+  .btn-arrow::after {
+    content: "→"; transition: transform 0.2s;
+  }
+  .btn-arrow:hover::after { transform: translateX(3px); }
+
+  .hero-meta {
+    margin-top: 88px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px;
+    padding-top: 32px; border-top: 1px solid var(--rule);
+  }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px; font-weight: 500;
+    letter-spacing: -0.02em; line-height: 1;
+    color: var(--ink);
+  }
+  .stat .lbl {
+    margin-top: 10px;
+    font-size: 13px; color: var(--ink-mute);
+    line-height: 1.45;
+  }
+
+  /* Section heading */
+  section { padding: 100px 0; border-top: 1px solid var(--rule); }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4.8vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    margin-bottom: 24px;
+  }
+  .section-lede {
+    font-size: 19px; line-height: 1.55;
+    color: var(--ink-soft); max-width: 64ch;
+  }
+
+  /* Split evidence */
+  .split {
+    margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .split-card {
+    border-radius: 18px;
+    padding: 36px;
+    position: relative;
+  }
+  .split-card.works { background: var(--works-bg); }
+  .split-card.fails { background: var(--fails-bg); }
+  .split-card .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  .split-card.works .tag { color: var(--works); }
+  .split-card.fails .tag { color: var(--fails); }
+  .split-card .tag::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+  }
+  .split-card.works .tag::before { background: var(--works); }
+  .split-card.fails .tag::before { background: var(--fails); }
+  .split-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 26px;
+    letter-spacing: -0.015em;
+    line-height: 1.18;
+    margin-bottom: 28px;
+    max-width: 22ch;
+  }
+  .evidence-list { display: flex; flex-direction: column; gap: 22px; }
+  .ev {
+    padding: 18px 0;
+    border-top: 1px solid rgba(15,14,12,0.08);
+  }
+  .ev:first-child { border-top: 0; padding-top: 0; }
+  .ev .ev-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 36px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .split-card.works .ev-num { color: var(--works); }
+  .split-card.fails .ev-num { color: var(--fails); }
+  .ev .ev-claim {
+    font-size: 15px; line-height: 1.5;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .ev .ev-cite {
+    font-size: 12px; color: var(--ink-mute); font-style: italic;
+  }
+  .split-pull {
+    margin-top: 56px; max-width: 56ch;
+    font-family: 'Fraunces', serif;
+    font-size: 26px; line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .split-pull em { color: var(--gold-deep); font-style: italic; }
+
+  /* What we're building */
+  .products {
+    margin-top: 56px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .product {
+    background: var(--bg-soft);
+    border-radius: 18px; padding: 36px 32px 32px;
+    display: flex; flex-direction: column;
+    min-height: 360px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .product:hover { transform: translateY(-3px); box-shadow: 0 12px 40px -16px rgba(15,14,12,0.15); }
+  .product .p-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--gold-deep);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+  }
+  .product h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .product p {
+    color: var(--ink-soft);
+    font-size: 15px; line-height: 1.55;
+    flex: 1;
+  }
+  .product .p-tag {
+    margin-top: 22px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-mute);
+  }
+  .product .p-tag::before {
+    content: ""; width: 18px; height: 1px; background: var(--ink-mute);
+  }
+
+  /* Smackdowns */
+  .smackdown-intro { margin-top: 8px; max-width: 64ch; color: var(--ink-soft); font-size: 17px; }
+  .smackdowns {
+    margin-top: 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .smackdown {
+    background: var(--ink); color: var(--bg);
+    padding: 28px 24px; border-radius: 14px;
+    min-height: 180px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .smackdown:hover { transform: translateY(-3px); background: #1a1814; }
+  .smackdown .s-num {
+    font-family: 'Fraunces', serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--gold); letter-spacing: 0.08em;
+  }
+  .smackdown .s-q {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .smackdown .s-meta {
+    font-size: 11px; color: rgba(250,247,240,0.5);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* Newsletter preview */
+  .newsletter-block {
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px;
+    align-items: start; margin-top: 48px;
+  }
+  .nl-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 28px;
+    line-height: 1.2; letter-spacing: -0.015em;
+    margin-bottom: 18px;
+  }
+  .nl-intro p {
+    font-size: 16px; line-height: 1.6; color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .nl-intro ul {
+    list-style: none; padding: 0; margin-top: 22px;
+  }
+  .nl-intro li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px; color: var(--ink-soft);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .nl-intro li::before {
+    content: "—"; color: var(--gold-deep); font-weight: 700;
+  }
+  .nl-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 36px 36px 30px;
+    box-shadow: 0 24px 60px -32px rgba(15,14,12,0.18);
+    font-size: 14px;
+  }
+  .nl-card-head {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px; margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .nl-card-head .nl-brand {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 18px;
+  }
+  .nl-card-head .nl-brand b { color: var(--gold); font-weight: 800; }
+  .nl-card-head .nl-issue {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-mute);
+  }
+  .nl-section { margin-bottom: 22px; }
+  .nl-section .nl-tag {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+  .nl-section h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 19px;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px; line-height: 1.25;
+  }
+  .nl-section p {
+    color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .nl-section .nl-cite {
+    font-size: 11px; font-style: italic;
+    color: var(--ink-mute);
+  }
+  .nl-quote {
+    margin: 8px 0;
+    padding: 16px 18px;
+    background: var(--bg);
+    border-left: 2px solid var(--gold);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px; line-height: 1.4;
+  }
+  .nl-quote-author {
+    margin-top: 8px; font-size: 11px;
+    font-style: normal; color: var(--ink-mute);
+  }
+
+  /* Partners */
+  .partners-grid {
+    margin-top: 48px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .partner {
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 36px 30px;
+    display: flex; flex-direction: column; gap: 8px;
+    min-height: 150px;
+    justify-content: center;
+  }
+  .partner .p-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 22px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .partner .p-desc {
+    font-size: 13px; color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .partners-invite {
+    margin-top: 56px;
+    padding: 36px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 18px;
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 32px; align-items: center;
+  }
+  .partners-invite h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 28px;
+    letter-spacing: -0.01em; line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .partners-invite p {
+    color: rgba(250,247,240,0.75);
+    font-size: 15px;
+  }
+  .partners-invite .btn-primary {
+    background: var(--gold); color: var(--ink);
+    align-self: center; justify-self: end;
+  }
+  .partners-invite .btn-primary:hover { background: var(--bg); }
+
+  /* Forms */
+  .join-section { background: var(--bg-soft); }
+  .join-grid {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px;
+    align-items: start;
+  }
+  .form-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 36px;
+  }
+  .form-card.dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .form-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 26px;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .form-card .form-lede {
+    font-size: 14px; color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+  .form-card.dark .form-lede { color: rgba(250,247,240,0.65); }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .form-card.dark .field label { color: rgba(250,247,240,0.6); }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: inherit; font-size: 15px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-card.dark .field input, .form-card.dark .field select, .form-card.dark .field textarea {
+    background: #1a1814; border-color: #2a2620; color: var(--bg);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184,132,43,0.18);
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .checks { display: flex; flex-direction: column; gap: 8px; }
+  .check {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; cursor: pointer;
+  }
+  .check input { width: auto; margin-top: 3px; }
+  .submit-btn {
+    width: 100%; margin-top: 8px;
+    padding: 14px;
+    background: var(--ink); color: var(--bg);
+    border: 0; border-radius: 10px;
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-card.dark .submit-btn { background: var(--gold); color: var(--ink); }
+  .submit-btn:hover { background: var(--gold-deep); }
+  .form-card.dark .submit-btn:hover { background: var(--bg); }
+  .form-status {
+    margin-top: 14px; font-size: 14px;
+    padding: 12px 14px; border-radius: 10px;
+    display: none;
+  }
+  .form-status.show { display: block; }
+  .form-status.success {
+    background: var(--works-bg); color: var(--works);
+  }
+  .form-status.error {
+    background: var(--fails-bg); color: var(--fails);
+  }
+  .form-card.dark .form-status.success { background: rgba(45,95,62,0.2); color: #9ED2A6; }
+
+  /* Manifesto epigraph */
+  .epigraph {
+    padding: 80px 0;
+    background: var(--ink); color: var(--bg);
+    border-top: 0;
+  }
+  .epigraph blockquote {
+    max-width: 22ch;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .epigraph blockquote::before {
+    content: "“"; display: block;
+    font-size: 80px; line-height: 0.5;
+    color: var(--gold); margin-bottom: 32px;
+  }
+  .epigraph .author {
+    margin-top: 28px;
+    font-size: 14px; font-style: normal;
+    color: rgba(250,247,240,0.6);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .epigraph .gloss {
+    margin-top: 36px;
+    max-width: 50ch;
+    font-size: 17px;
+    color: rgba(250,247,240,0.8);
+    line-height: 1.55;
+  }
+
+  /* Footer */
+  footer.site {
+    padding: 56px 0 40px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 36px; margin-bottom: 40px;
+  }
+  .footer-grid h4 {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-mute); margin-bottom: 14px;
+  }
+  .footer-grid p, .footer-grid li {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.6;
+  }
+  .footer-grid ul { list-style: none; }
+  .footer-grid a { color: var(--ink-soft); text-decoration: none; }
+  .footer-grid a:hover { color: var(--ink); }
+  .footer-brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; margin-bottom: 10px; }
+  .footer-brand b { color: var(--gold); font-weight: 800; }
+  .footer-bottom {
+    border-top: 1px solid var(--rule); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--ink-mute);
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 64px 0 56px; }
+    .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+    .split { grid-template-columns: 1fr; gap: 20px; }
+    .products { grid-template-columns: 1fr; }
+    .smackdowns { grid-template-columns: 1fr 1fr; }
+    .newsletter-block { grid-template-columns: 1fr; gap: 32px; }
+    .partners-grid { grid-template-columns: 1fr 1fr; }
+    .partners-invite { grid-template-columns: 1fr; gap: 20px; }
+    .partners-invite .btn-primary { justify-self: start; }
+    .join-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 20px; }
+    .hero-meta { grid-template-columns: 1fr 1fr; }
+    .smackdowns { grid-template-columns: 1fr; }
+    .partners-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+
+  /* Fade-in on scroll */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav">
+    <a class="brand" href="#top">Evidenc<b>IA</b></a>
+    <nav class="nav-links">
+      <a href="#problema" data-i18n="nav.problem">El problema</a>
+      <a href="#construyendo" data-i18n="nav.building">Qué construimos</a>
+      <a href="#newsletter" data-i18n="nav.newsletter">Newsletter</a>
+      <a href="#socios" data-i18n="nav.partners">Socios</a>
+      <a href="#sumarte" data-i18n="nav.join" class="nav-cta">Sumate</a>
+      <div class="lang" role="tablist" aria-label="Language">
+        <button data-lang="es" class="active" aria-label="Español">ES</button>
+        <button data-lang="en" aria-label="English">EN</button>
+        <button data-lang="pt" aria-label="Português">PT</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top: 0;">
+    <div class="container narrow">
+      <div class="eyebrow" data-i18n="hero.eyebrow">Red Latinoamericana de IA y Aprendizaje</div>
+      <h1>
+        <span data-i18n="hero.h1a">El conocimiento existe.</span><br/>
+        <em data-i18n="hero.h1b">El espacio donde se encuentra, todavía no.</em>
+      </h1>
+      <p class="lede" data-i18n="hero.lede">EvidencIA es la red que conecta a investigadores, ministerios, universidades y empresas de edtech alrededor de la pregunta que más importa: ¿qué realmente ayuda a aprender, y qué solo hace que las cosas parezcan más fáciles?</p>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-arrow" href="#newsletter" data-i18n="hero.cta1">Suscribite al newsletter</a>
+        <a class="btn btn-secondary" href="#sumarte" data-i18n="hero.cta2">Sumate como socio</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="stat">
+          <div class="num">945+</div>
+          <div class="lbl" data-i18n="hero.stat1">universidades en la red MetaRed</div>
+        </div>
+        <div class="stat">
+          <div class="num">10</div>
+          <div class="lbl" data-i18n="hero.stat2">países en América Latina</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="lbl" data-i18n="hero.stat3">cosas que importan, cada semana</div>
+        </div>
+        <div class="stat">
+          <div class="num">2'</div>
+          <div class="lbl" data-i18n="hero.stat4">minutos de lectura por edición</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section id="problema">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="prob.eyebrow">El problema</div>
+      <h2 class="section-title" data-i18n="prob.title">La misma tecnología, resultados opuestos.</h2>
+      <p class="section-lede" data-i18n="prob.lede">La evidencia reciente es clara y contradictoria a la vez: la misma IA puede duplicar el aprendizaje o destruirlo. La diferencia no está en la tecnología. Está en el diseño, en la implementación, y en si el sistema preserva el esfuerzo cognitivo que produce aprendizaje real.</p>
+
+      <div class="split">
+        <div class="split-card works">
+          <div class="tag" data-i18n="prob.works.tag">Cuando funciona</div>
+          <h3 data-i18n="prob.works.h">IA bien diseñada, docentes preparados, ciencia del aprendizaje en el centro.</h3>
+          <div class="evidence-list">
+            <div class="ev">
+              <div class="ev-num">2×</div>
+              <div class="ev-claim" data-i18n="prob.works.e1c">Estudiantes de Harvard aprendieron más del doble en menos tiempo. El 83% calificó las explicaciones de la IA como comparables o mejores que las de instructores humanos.</div>
+              <div class="ev-cite">Kestin et al., Harvard, 2024</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">+0.31 SD</div>
+              <div class="ev-claim" data-i18n="prob.works.e2c">En seis semanas en Nigeria: equivalente a 1.5–2 años de aprendizaje típico. Superó al 80% de las intervenciones educativas evaluadas con RCTs en países en desarrollo. Las niñas mostraron ganancias aún mayores.</div>
+              <div class="ev-cite">De Simone et al., World Bank / Nigeria, 2024</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">$20</div>
+              <div class="ev-claim" data-i18n="prob.works.e3c">por tutor al año. Tutor CoPilot de Stanford apoyó a 900 tutores y 1,800 estudiantes; los tutores con IA usaron estrategias que fomentan comprensión profunda.</div>
+              <div class="ev-cite">Wang et al., Stanford, 2025</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">+0.28 SD</div>
+              <div class="ev-claim" data-i18n="prob.works.e4c">En matemática en educación superior en Ecuador (5,000 estudiantes con ALEKS). 9 puntos porcentuales menos de probabilidad de reprobar.</div>
+              <div class="ev-cite">Angel-Urdinola et al., World Bank / Ecuador, 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="split-card fails">
+          <div class="tag" data-i18n="prob.fails.tag">Cuando falla</div>
+          <h3 data-i18n="prob.fails.h">IA que reemplaza el pensamiento, en vez de amplificarlo.</h3>
+          <div class="evidence-list">
+            <div class="ev">
+              <div class="ev-num">−17%</div>
+              <div class="ev-claim" data-i18n="prob.fails.e1c">Casi 1,000 estudiantes de secundaria con GPT básico mejoraron 48% mientras lo usaban. Al quitarles el acceso, rindieron 17% peor que el grupo control. No habían aprendido: habían externalizado el pensamiento.</div>
+              <div class="ev-cite">Bastani et al., 2024</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">−</div>
+              <div class="ev-claim" data-i18n="prob.fails.e2c">Con 666 participantes: correlación negativa fuerte entre uso frecuente de IA y pensamiento crítico. Correlación positiva con "cognitive offloading" — la IA pensando por el estudiante.</div>
+              <div class="ev-cite">Gerlich, Societies, 2025</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">⤺</div>
+              <div class="ev-claim" data-i18n="prob.fails.e3c">Estudiantes prefieren las herramientas que menos esfuerzo requieren — exactamente las que socavan el aprendizaje. La fluidez del momento se confunde con dominio duradero.</div>
+              <div class="ev-cite">Benedek &amp; Sziklai, Corvinus, 2025</div>
+            </div>
+            <div class="ev">
+              <div class="ev-num">!</div>
+              <div class="ev-claim" data-i18n="prob.fails.e4c">El patrón es consistente: cuando la IA elimina la fricción cognitiva, también elimina el aprendizaje. La sensación de aprender no es lo mismo que aprender.</div>
+              <div class="ev-cite" data-i18n="prob.fails.e4cite">Síntesis de evidencia, 2024–2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="split-pull serif" data-i18n="prob.pull">La pregunta no es <em>si</em> la IA cambiará la educación. Es si los líderes que toman decisiones tendrán la evidencia que necesitan para que ese cambio sirva al aprendizaje, no solo al desempeño.</p>
+    </div>
+  </section>
+
+  <!-- CONSTRUYENDO -->
+  <section id="construyendo">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="build.eyebrow">Qué construimos</div>
+      <h2 class="section-title" data-i18n="build.title">Tres formatos. Una sola pregunta de fondo.</h2>
+      <p class="section-lede" data-i18n="build.lede">Todo lo que producimos pasa por el mismo filtro: ¿esto ayuda a los estudiantes a construir comprensión duradera, o solo hace que las cosas parezcan más fáciles?</p>
+
+      <div class="products">
+        <div class="product">
+          <div class="p-num">01</div>
+          <h3 data-i18n="build.p1.h">Newsletter semanal</h3>
+          <p data-i18n="build.p1.p">Tres cosas que importan esta semana. Qué funciona: evidencia de experimentos rigurosos. Qué sabemos: ciencia del aprendizaje aplicada. Qué están haciendo los países: políticas reales en marcha. Curado por los socios de la red.</p>
+          <div class="p-tag" data-i18n="build.p1.tag">Semanal · 2 minutos</div>
+        </div>
+        <div class="product">
+          <div class="p-num">02</div>
+          <h3 data-i18n="build.p2.h">Seminarios mensuales</h3>
+          <p data-i18n="build.p2.p">Cada mes, una conversación que vale la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.</p>
+          <div class="p-tag" data-i18n="build.p2.tag">Mensual · en vivo</div>
+        </div>
+        <div class="product">
+          <div class="p-num">03</div>
+          <h3 data-i18n="build.p3.h">Comunidad de práctica</h3>
+          <p data-i18n="build.p3.p">Universidades, ministerios, empresas de edtech, investigadores. Quienes generan evidencia conectados con quienes toman decisiones. Arrancamos con la comunidad de más de 700 participantes de MetaRed Global.</p>
+          <div class="p-tag" data-i18n="build.p3.tag">700+ participantes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMACKDOWNS -->
+  <section id="smackdowns">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="sd.eyebrow">EvidencIA Smackdowns</div>
+      <h2 class="section-title" data-i18n="sd.title">Las preguntas que la conversación pública evita.</h2>
+      <p class="smackdown-intro" data-i18n="sd.lede">Debates basados en evidencia, no diplomacias. Algunas de las preguntas que podríamos abrir:</p>
+
+      <div class="smackdowns">
+        <div class="smackdown">
+          <div class="s-num">01</div>
+          <div class="s-q" data-i18n="sd.q1">¿La IA nos hace más tontos?</div>
+          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
+        </div>
+        <div class="smackdown">
+          <div class="s-num">02</div>
+          <div class="s-q" data-i18n="sd.q2">¿El docente será obsoleto?</div>
+          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
+        </div>
+        <div class="smackdown">
+          <div class="s-num">03</div>
+          <div class="s-q" data-i18n="sd.q3">¿La IA amplía la brecha educativa?</div>
+          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
+        </div>
+        <div class="smackdown">
+          <div class="s-num">04</div>
+          <div class="s-q" data-i18n="sd.q4">¿Prohibir la IA en la escuela?</div>
+          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPIGRAPH -->
+  <section class="epigraph" style="border-top: 0;">
+    <div class="container">
+      <blockquote>
+        <span data-i18n="epi.quote">La memoria es el residuo del pensamiento.</span>
+        <div class="author">Daniel Willingham · <span data-i18n="epi.role">científico cognitivo</span></div>
+      </blockquote>
+      <p class="gloss" data-i18n="epi.gloss">Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.</p>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER PREVIEW -->
+  <section id="newsletter-preview">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="nlp.eyebrow">Cómo se ve el newsletter</div>
+      <h2 class="section-title" data-i18n="nlp.title">Tres secciones rotativas. Dos minutos de lectura. Evidencia, no ruido.</h2>
+
+      <div class="newsletter-block">
+        <div class="nl-intro">
+          <h3 data-i18n="nlp.h">El filtro: ciencia del aprendizaje</h3>
+          <p data-i18n="nlp.p1">No es un catálogo de herramientas. No recomendamos productos. Evaluamos principios de diseño.</p>
+          <p data-i18n="nlp.p2">No es hype ni miedo. Es evidencia, con sus matices y limitaciones.</p>
+          <p data-i18n="nlp.p3">Diseñado para que cualquier educador, decano, o tomador de decisiones pueda leerlo en dos minutos y salir con algo accionable.</p>
+          <ul>
+            <li data-i18n="nlp.l1"><b>La Evidencia.</b> Un estudio riguroso con implicaciones claras.</li>
+            <li data-i18n="nlp.l2"><b>Principio de Aprendizaje.</b> Un concepto de la ciencia cognitiva y cómo la IA lo apoya o lo viola.</li>
+            <li data-i18n="nlp.l3"><b>Herramienta Bajo la Lupa.</b> Una herramienta o enfoque contra criterios de ciencia del aprendizaje.</li>
+            <li data-i18n="nlp.l4"><b>Qué Están Haciendo los Países.</b> Políticas, regulaciones, iniciativas reales.</li>
+            <li data-i18n="nlp.l5"><b>La Pregunta Difícil.</b> Una tensión real sin respuestas fáciles.</li>
+          </ul>
+        </div>
+
+        <article class="nl-card">
+          <div class="nl-card-head">
+            <div class="nl-brand">Evidenc<b>IA</b></div>
+            <div class="nl-issue" data-i18n="nlp.issue">Edición #1 · muestra</div>
+          </div>
+
+          <div class="nl-section">
+            <div class="nl-tag" data-i18n="nlp.s1tag">La Evidencia</div>
+            <h4 data-i18n="nlp.s1h">La misma tecnología, resultados opuestos</h4>
+            <p data-i18n="nlp.s1p1">En Nigeria, un tutor con IA produjo ganancias de 0.31 desviaciones estándar en seis semanas — equivalente a 1.5–2 años de aprendizaje típico. El sistema funcionó porque exigía que los estudiantes hicieran el trabajo cognitivo, con la IA proveyendo andamiaje y retroalimentación.</p>
+            <p data-i18n="nlp.s1p2">En otra universidad, estudiantes con GPT-4 mostraron mejoras del 48% <em>mientras usaban</em> la herramienta. Al quitarles el acceso, rindieron 17% <em>peor</em> que el grupo control. No habían aprendido. Habían externalizado el pensamiento.</p>
+            <p class="nl-cite">De Simone et al., 2024 · Bastani et al., 2024</p>
+          </div>
+
+          <div class="nl-section">
+            <div class="nl-tag" data-i18n="nlp.s2tag">Principio de Aprendizaje</div>
+            <h4 data-i18n="nlp.s2h">Dificultades deseables</h4>
+            <p data-i18n="nlp.s2p">La práctica de recuperación es más difícil que releer. El espaciado, más difícil que estudiar todo junto. Y producen mejor aprendizaje. Al evaluar una herramienta de IA, la pregunta es: ¿hace que <em>aprender se sienta más fácil</em>, o hace que <em>el aprendizaje ocurra</em>?</p>
+          </div>
+
+          <div class="nl-quote">
+            <span data-i18n="nlp.quote">La memoria es el residuo del pensamiento.</span>
+            <div class="nl-quote-author">— Daniel Willingham</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIOS -->
+  <section id="socios">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="part.eyebrow">Quiénes están construyendo esto</div>
+      <h2 class="section-title" data-i18n="part.title">Una alianza, no un proveedor.</h2>
+      <p class="section-lede" data-i18n="part.lede">EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.</p>
+
+      <div class="partners-grid">
+        <div class="partner">
+          <div class="p-name">Banco Mundial</div>
+          <div class="p-desc" data-i18n="part.wb">Red global en educación y tecnología.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">MetaRed Global</div>
+          <div class="p-desc" data-i18n="part.mr">945+ universidades en 10 países de la región.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">Anthropic</div>
+          <div class="p-desc" data-i18n="part.an">Equipo de educación.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">IA.Edu Brasil</div>
+          <div class="p-desc" data-i18n="part.iae">150+ investigadores PhD, alianzas con el MEC.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">UPC</div>
+          <div class="p-desc" data-i18n="part.upc">Universidad Peruana de Ciencias Aplicadas.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">UCR</div>
+          <div class="p-desc" data-i18n="part.ucr">Universidad de Costa Rica.</div>
+        </div>
+      </div>
+
+      <div class="partners-invite">
+        <div>
+          <h3 data-i18n="part.invite.h">Invitando a co-liderar.</h3>
+          <p data-i18n="part.invite.p">Universidades, ministerios y empresas de México, Chile, Colombia, Brasil y Argentina que quieran dar forma a esta red desde el inicio. Buscamos socios — no participantes pasivos.</p>
+        </div>
+        <a class="btn btn-primary btn-arrow" href="#sumarte" data-i18n="part.invite.cta">Conversemos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMARTE -->
+  <section id="sumarte" class="join-section">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="join.eyebrow">Sumate a EvidencIA</div>
+      <h2 class="section-title" data-i18n="join.title">Dos formas de empezar.</h2>
+      <p class="section-lede" data-i18n="join.lede">Suscribite al newsletter para recibir la evidencia directamente. O escribinos si tu institución quiere ser socia fundadora de la red.</p>
+
+      <div class="join-grid">
+        <div class="form-card" id="newsletter">
+          <h3 data-i18n="join.nl.h">Newsletter</h3>
+          <p class="form-lede" data-i18n="join.nl.p">Tres cosas. Dos minutos. Cada semana.</p>
+          <form id="newsletter-form" novalidate>
+            <div class="field">
+              <label for="nl-name" data-i18n="join.nl.name">Nombre</label>
+              <input id="nl-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="nl-email" data-i18n="join.nl.email">Correo</label>
+              <input id="nl-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="nl-role" data-i18n="join.nl.role">Rol</label>
+              <select id="nl-role" name="role">
+                <option value="" data-i18n="join.nl.role.opt0">Seleccioná tu rol</option>
+                <option value="docente" data-i18n="join.nl.role.opt1">Docente (K-12 o superior)</option>
+                <option value="admin" data-i18n="join.nl.role.opt2">Administrador / decano</option>
+                <option value="ministerio" data-i18n="join.nl.role.opt3">Ministerio / política pública</option>
+                <option value="investigador" data-i18n="join.nl.role.opt4">Investigador</option>
+                <option value="edtech" data-i18n="join.nl.role.opt5">Empresa edtech</option>
+                <option value="otro" data-i18n="join.nl.role.opt6">Otro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="nl-country" data-i18n="join.nl.country">País</label>
+              <input id="nl-country" name="country" type="text" autocomplete="country-name" />
+            </div>
+            <div class="field">
+              <label for="nl-lang" data-i18n="join.nl.lang">Idioma preferido</label>
+              <select id="nl-lang" name="lang">
+                <option value="es" data-i18n="join.nl.lang.es">Español</option>
+                <option value="pt" data-i18n="join.nl.lang.pt">Português</option>
+                <option value="en" data-i18n="join.nl.lang.en">English</option>
+              </select>
+            </div>
+            <button type="submit" class="submit-btn" data-i18n="join.nl.submit">Suscribirme</button>
+            <div class="form-status" id="nl-status"></div>
+          </form>
+        </div>
+
+        <div class="form-card dark" id="partner-form-card">
+          <h3 data-i18n="join.partner.h">Sumate como socio</h3>
+          <p class="form-lede" data-i18n="join.partner.p">Para universidades, ministerios y empresas que quieran co-construir EvidencIA. Te respondemos en 5 días hábiles.</p>
+          <form id="partner-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="pf-name" data-i18n="join.partner.name">Tu nombre</label>
+                <input id="pf-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="pf-role" data-i18n="join.partner.role">Cargo / rol</label>
+                <input id="pf-role" name="role" type="text" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="pf-email" data-i18n="join.partner.email">Correo institucional</label>
+                <input id="pf-email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="pf-country" data-i18n="join.partner.country">País</label>
+                <input id="pf-country" name="country" type="text" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="pf-institution" data-i18n="join.partner.institution">Institución</label>
+              <input id="pf-institution" name="institution" type="text" required />
+            </div>
+            <div class="field">
+              <label data-i18n="join.partner.interest">¿Qué te interesa?</label>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="interest" value="co-lead" /> <span data-i18n="join.partner.opt1">Co-liderar la red como socio fundador</span></label>
+                <label class="check"><input type="checkbox" name="interest" value="speaker" /> <span data-i18n="join.partner.opt2">Proponer un investigador, ministerio o practitioner para un seminario</span></label>
+                <label class="check"><input type="checkbox" name="interest" value="research" /> <span data-i18n="join.partner.opt3">Compartir investigación o evidencia para curar</span></label>
+                <label class="check"><input type="checkbox" name="interest" value="policy" /> <span data-i18n="join.partner.opt4">Conectar con ministerios de educación de la región</span></label>
+                <label class="check"><input type="checkbox" name="interest" value="info" /> <span data-i18n="join.partner.opt5">Mantenerme informado mientras evaluamos</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="pf-message" data-i18n="join.partner.message">Mensaje (opcional)</label>
+              <textarea id="pf-message" name="message" rows="3" placeholder=""></textarea>
+            </div>
+            <button type="submit" class="submit-btn" data-i18n="join.partner.submit">Iniciar conversación</button>
+            <div class="form-status" id="pf-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Evidenc<b>IA</b></div>
+        <p data-i18n="foot.about">Red latinoamericana de IA y ciencia del aprendizaje. Una alianza entre el Banco Mundial, MetaRed Global, Anthropic, IA.Edu, UPC y UCR.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.explore">Explorar</h4>
+        <ul>
+          <li><a href="#problema" data-i18n="foot.l1">El problema</a></li>
+          <li><a href="#construyendo" data-i18n="foot.l2">Qué construimos</a></li>
+          <li><a href="#smackdowns" data-i18n="foot.l3">Smackdowns</a></li>
+          <li><a href="#socios" data-i18n="foot.l4">Socios</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.join">Sumate</h4>
+        <ul>
+          <li><a href="#newsletter" data-i18n="foot.j1">Newsletter</a></li>
+          <li><a href="#sumarte" data-i18n="foot.j2">Ser socio</a></li>
+          <li><a href="#sumarte" data-i18n="foot.j3">Proponer un seminario</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.contact">Contacto</h4>
+        <ul>
+          <li><a href="mailto:hola@evidencia.ai">hola@evidencia.ai</a></li>
+          <li><span data-i18n="foot.lang">Idiomas: ES · EN · PT</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div data-i18n="foot.copy">© 2026 EvidencIA. Una red en construcción.</div>
+      <div data-i18n="foot.tagline">Tres cosas. Dos minutos. Cada semana.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// CONFIG — wire these to Google Forms when ready (matches the
+// pattern used in capacitacion-docentes). Until URLs are set,
+// the form falls back to a mailto draft so nothing is lost.
+// ============================================================
+const CONTACT_EMAIL = 'hola@evidencia.ai'; // TODO: replace with real EvidencIA inbox
+
+const NEWSLETTER_FORM = {
+  action: '', // e.g. 'https://docs.google.com/forms/d/e/<FORM_ID>/formResponse'
+  fields: {
+    name:    'entry.0000000001',
+    email:   'entry.0000000002',
+    role:    'entry.0000000003',
+    country: 'entry.0000000004',
+    lang:    'entry.0000000005',
+  }
+};
+
+const PARTNER_FORM = {
+  action: '', // e.g. 'https://docs.google.com/forms/d/e/<FORM_ID>/formResponse'
+  fields: {
+    name:        'entry.0000000001',
+    role:        'entry.0000000002',
+    email:       'entry.0000000003',
+    country:     'entry.0000000004',
+    institution: 'entry.0000000005',
+    interest:    'entry.0000000006',
+    message:     'entry.0000000007',
+  }
+};
+
+// ============================================================
+// I18N — full content in ES / EN / PT
+// ============================================================
+const I18N = {
+  es: {
+    'nav.problem': 'El problema',
+    'nav.building': 'Qué construimos',
+    'nav.newsletter': 'Newsletter',
+    'nav.partners': 'Socios',
+    'nav.join': 'Sumate',
+
+    'hero.eyebrow': 'Red Latinoamericana de IA y Aprendizaje',
+    'hero.h1a': 'El conocimiento existe.',
+    'hero.h1b': 'El espacio donde se encuentra, todavía no.',
+    'hero.lede': 'EvidencIA es la red que conecta a investigadores, ministerios, universidades y empresas de edtech alrededor de la pregunta que más importa: ¿qué realmente ayuda a aprender, y qué solo hace que las cosas parezcan más fáciles?',
+    'hero.cta1': 'Suscribite al newsletter',
+    'hero.cta2': 'Sumate como socio',
+    'hero.stat1': 'universidades en la red MetaRed',
+    'hero.stat2': 'países en América Latina',
+    'hero.stat3': 'cosas que importan, cada semana',
+    'hero.stat4': 'minutos de lectura por edición',
+
+    'prob.eyebrow': 'El problema',
+    'prob.title': 'La misma tecnología, resultados opuestos.',
+    'prob.lede': 'La evidencia reciente es clara y contradictoria a la vez: la misma IA puede duplicar el aprendizaje o destruirlo. La diferencia no está en la tecnología. Está en el diseño, en la implementación, y en si el sistema preserva el esfuerzo cognitivo que produce aprendizaje real.',
+    'prob.works.tag': 'Cuando funciona',
+    'prob.works.h': 'IA bien diseñada, docentes preparados, ciencia del aprendizaje en el centro.',
+    'prob.works.e1c': 'Estudiantes de Harvard aprendieron más del doble en menos tiempo. El 83% calificó las explicaciones de la IA como comparables o mejores que las de instructores humanos.',
+    'prob.works.e2c': 'En seis semanas en Nigeria: equivalente a 1.5–2 años de aprendizaje típico. Superó al 80% de las intervenciones educativas evaluadas con RCTs en países en desarrollo. Las niñas mostraron ganancias aún mayores.',
+    'prob.works.e3c': 'por tutor al año. Tutor CoPilot de Stanford apoyó a 900 tutores y 1,800 estudiantes; los tutores con IA usaron estrategias que fomentan comprensión profunda.',
+    'prob.works.e4c': 'En matemática en educación superior en Ecuador (5,000 estudiantes con ALEKS). 9 puntos porcentuales menos de probabilidad de reprobar.',
+    'prob.fails.tag': 'Cuando falla',
+    'prob.fails.h': 'IA que reemplaza el pensamiento, en vez de amplificarlo.',
+    'prob.fails.e1c': 'Casi 1,000 estudiantes de secundaria con GPT básico mejoraron 48% mientras lo usaban. Al quitarles el acceso, rindieron 17% peor que el grupo control. No habían aprendido: habían externalizado el pensamiento.',
+    'prob.fails.e2c': 'Con 666 participantes: correlación negativa fuerte entre uso frecuente de IA y pensamiento crítico. Correlación positiva con "cognitive offloading" — la IA pensando por el estudiante.',
+    'prob.fails.e3c': 'Estudiantes prefieren las herramientas que menos esfuerzo requieren — exactamente las que socavan el aprendizaje. La fluidez del momento se confunde con dominio duradero.',
+    'prob.fails.e4c': 'El patrón es consistente: cuando la IA elimina la fricción cognitiva, también elimina el aprendizaje. La sensación de aprender no es lo mismo que aprender.',
+    'prob.fails.e4cite': 'Síntesis de evidencia, 2024–2025',
+    'prob.pull': 'La pregunta no es <em>si</em> la IA cambiará la educación. Es si los líderes que toman decisiones tendrán la evidencia que necesitan para que ese cambio sirva al aprendizaje, no solo al desempeño.',
+
+    'build.eyebrow': 'Qué construimos',
+    'build.title': 'Tres formatos. Una sola pregunta de fondo.',
+    'build.lede': 'Todo lo que producimos pasa por el mismo filtro: ¿esto ayuda a los estudiantes a construir comprensión duradera, o solo hace que las cosas parezcan más fáciles?',
+    'build.p1.h': 'Newsletter semanal',
+    'build.p1.p': 'Tres cosas que importan esta semana. Qué funciona: evidencia de experimentos rigurosos. Qué sabemos: ciencia del aprendizaje aplicada. Qué están haciendo los países: políticas reales en marcha. Curado por los socios de la red.',
+    'build.p1.tag': 'Semanal · 2 minutos',
+    'build.p2.h': 'Seminarios mensuales',
+    'build.p2.p': 'Cada mes, una conversación que vale la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.',
+    'build.p2.tag': 'Mensual · en vivo',
+    'build.p3.h': 'Comunidad de práctica',
+    'build.p3.p': 'Universidades, ministerios, empresas de edtech, investigadores. Quienes generan evidencia conectados con quienes toman decisiones. Arrancamos con la comunidad de más de 700 participantes de MetaRed Global.',
+    'build.p3.tag': '700+ participantes',
+
+    'sd.eyebrow': 'EvidencIA Smackdowns',
+    'sd.title': 'Las preguntas que la conversación pública evita.',
+    'sd.lede': 'Debates basados en evidencia, no diplomacias. Algunas de las preguntas que podríamos abrir:',
+    'sd.q1': '¿La IA nos hace más tontos?',
+    'sd.q2': '¿El docente será obsoleto?',
+    'sd.q3': '¿La IA amplía la brecha educativa?',
+    'sd.q4': '¿Prohibir la IA en la escuela?',
+    'sd.meta': 'Debate basado en evidencia',
+
+    'epi.quote': 'La memoria es el residuo del pensamiento.',
+    'epi.role': 'científico cognitivo',
+    'epi.gloss': 'Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.',
+
+    'nlp.eyebrow': 'Cómo se ve el newsletter',
+    'nlp.title': 'Tres secciones rotativas. Dos minutos de lectura. Evidencia, no ruido.',
+    'nlp.h': 'El filtro: ciencia del aprendizaje',
+    'nlp.p1': 'No es un catálogo de herramientas. No recomendamos productos. Evaluamos principios de diseño.',
+    'nlp.p2': 'No es hype ni miedo. Es evidencia, con sus matices y limitaciones.',
+    'nlp.p3': 'Diseñado para que cualquier educador, decano, o tomador de decisiones pueda leerlo en dos minutos y salir con algo accionable.',
+    'nlp.l1': '<b>La Evidencia.</b> Un estudio riguroso con implicaciones claras.',
+    'nlp.l2': '<b>Principio de Aprendizaje.</b> Un concepto de la ciencia cognitiva y cómo la IA lo apoya o lo viola.',
+    'nlp.l3': '<b>Herramienta Bajo la Lupa.</b> Una herramienta o enfoque contra criterios de ciencia del aprendizaje.',
+    'nlp.l4': '<b>Qué Están Haciendo los Países.</b> Políticas, regulaciones, iniciativas reales.',
+    'nlp.l5': '<b>La Pregunta Difícil.</b> Una tensión real sin respuestas fáciles.',
+    'nlp.issue': 'Edición #1 · muestra',
+    'nlp.s1tag': 'La Evidencia',
+    'nlp.s1h': 'La misma tecnología, resultados opuestos',
+    'nlp.s1p1': 'En Nigeria, un tutor con IA produjo ganancias de 0.31 desviaciones estándar en seis semanas — equivalente a 1.5–2 años de aprendizaje típico. El sistema funcionó porque exigía que los estudiantes hicieran el trabajo cognitivo, con la IA proveyendo andamiaje y retroalimentación.',
+    'nlp.s1p2': 'En otra universidad, estudiantes con GPT-4 mostraron mejoras del 48% <em>mientras usaban</em> la herramienta. Al quitarles el acceso, rindieron 17% <em>peor</em> que el grupo control. No habían aprendido. Habían externalizado el pensamiento.',
+    'nlp.s2tag': 'Principio de Aprendizaje',
+    'nlp.s2h': 'Dificultades deseables',
+    'nlp.s2p': 'La práctica de recuperación es más difícil que releer. El espaciado, más difícil que estudiar todo junto. Y producen mejor aprendizaje. Al evaluar una herramienta de IA, la pregunta es: ¿hace que <em>aprender se sienta más fácil</em>, o hace que <em>el aprendizaje ocurra</em>?',
+    'nlp.quote': 'La memoria es el residuo del pensamiento.',
+
+    'part.eyebrow': 'Quiénes están construyendo esto',
+    'part.title': 'Una alianza, no un proveedor.',
+    'part.lede': 'EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.',
+    'part.wb': 'Red global en educación y tecnología.',
+    'part.mr': '945+ universidades en 10 países de la región.',
+    'part.an': 'Equipo de educación.',
+    'part.iae': '150+ investigadores PhD, alianzas con el MEC.',
+    'part.upc': 'Universidad Peruana de Ciencias Aplicadas.',
+    'part.ucr': 'Universidad de Costa Rica.',
+    'part.invite.h': 'Invitando a co-liderar.',
+    'part.invite.p': 'Universidades, ministerios y empresas de México, Chile, Colombia, Brasil y Argentina que quieran dar forma a esta red desde el inicio. Buscamos socios — no participantes pasivos.',
+    'part.invite.cta': 'Conversemos',
+
+    'join.eyebrow': 'Sumate a EvidencIA',
+    'join.title': 'Dos formas de empezar.',
+    'join.lede': 'Suscribite al newsletter para recibir la evidencia directamente. O escribinos si tu institución quiere ser socia fundadora de la red.',
+    'join.nl.h': 'Newsletter',
+    'join.nl.p': 'Tres cosas. Dos minutos. Cada semana.',
+    'join.nl.name': 'Nombre',
+    'join.nl.email': 'Correo',
+    'join.nl.role': 'Rol',
+    'join.nl.role.opt0': 'Seleccioná tu rol',
+    'join.nl.role.opt1': 'Docente (K-12 o superior)',
+    'join.nl.role.opt2': 'Administrador / decano',
+    'join.nl.role.opt3': 'Ministerio / política pública',
+    'join.nl.role.opt4': 'Investigador',
+    'join.nl.role.opt5': 'Empresa edtech',
+    'join.nl.role.opt6': 'Otro',
+    'join.nl.country': 'País',
+    'join.nl.lang': 'Idioma preferido',
+    'join.nl.lang.es': 'Español',
+    'join.nl.lang.pt': 'Português',
+    'join.nl.lang.en': 'English',
+    'join.nl.submit': 'Suscribirme',
+    'join.partner.h': 'Sumate como socio',
+    'join.partner.p': 'Para universidades, ministerios y empresas que quieran co-construir EvidencIA. Te respondemos en 5 días hábiles.',
+    'join.partner.name': 'Tu nombre',
+    'join.partner.role': 'Cargo / rol',
+    'join.partner.email': 'Correo institucional',
+    'join.partner.country': 'País',
+    'join.partner.institution': 'Institución',
+    'join.partner.interest': '¿Qué te interesa?',
+    'join.partner.opt1': 'Co-liderar la red como socio fundador',
+    'join.partner.opt2': 'Proponer un investigador, ministerio o practitioner para un seminario',
+    'join.partner.opt3': 'Compartir investigación o evidencia para curar',
+    'join.partner.opt4': 'Conectar con ministerios de educación de la región',
+    'join.partner.opt5': 'Mantenerme informado mientras evaluamos',
+    'join.partner.message': 'Mensaje (opcional)',
+    'join.partner.submit': 'Iniciar conversación',
+
+    'foot.about': 'Red latinoamericana de IA y ciencia del aprendizaje. Una alianza entre el Banco Mundial, MetaRed Global, Anthropic, IA.Edu, UPC y UCR.',
+    'foot.explore': 'Explorar',
+    'foot.l1': 'El problema', 'foot.l2': 'Qué construimos', 'foot.l3': 'Smackdowns', 'foot.l4': 'Socios',
+    'foot.join': 'Sumate',
+    'foot.j1': 'Newsletter', 'foot.j2': 'Ser socio', 'foot.j3': 'Proponer un seminario',
+    'foot.contact': 'Contacto',
+    'foot.lang': 'Idiomas: ES · EN · PT',
+    'foot.copy': '© 2026 EvidencIA. Una red en construcción.',
+    'foot.tagline': 'Tres cosas. Dos minutos. Cada semana.',
+
+    'status.nl.success': '¡Listo! Te suscribimos. Revisá tu correo para confirmar.',
+    'status.nl.error': 'No pudimos enviar el formulario. Probá de nuevo o escribinos a ' + CONTACT_EMAIL,
+    'status.pf.success': '¡Mensaje recibido! Te contactamos en los próximos 5 días hábiles.',
+    'status.pf.error': 'No pudimos enviar el formulario. Probá de nuevo o escribinos a ' + CONTACT_EMAIL,
+    'status.validation': 'Completá los campos obligatorios para continuar.',
+  },
+
+  en: {
+    'nav.problem': 'The problem',
+    'nav.building': 'What we build',
+    'nav.newsletter': 'Newsletter',
+    'nav.partners': 'Partners',
+    'nav.join': 'Join',
+
+    'hero.eyebrow': 'The Latin American Network on AI and Learning',
+    'hero.h1a': 'The knowledge exists.',
+    'hero.h1b': 'The space where it meets, still does not.',
+    'hero.lede': 'EvidencIA is the network connecting researchers, ministries, universities and edtech companies around the question that matters most: what actually helps people learn, and what merely makes things look easier?',
+    'hero.cta1': 'Subscribe to the newsletter',
+    'hero.cta2': 'Become a partner',
+    'hero.stat1': 'universities in the MetaRed network',
+    'hero.stat2': 'countries across Latin America',
+    'hero.stat3': 'things that matter, every week',
+    'hero.stat4': 'minutes to read each issue',
+
+    'prob.eyebrow': 'The problem',
+    'prob.title': 'Same technology. Opposite results.',
+    'prob.lede': 'Recent evidence is clear — and contradictory at the same time: the same AI can double learning or undermine it. The difference is not in the technology. It is in the design, the implementation, and whether the system preserves the cognitive effort that produces real learning.',
+    'prob.works.tag': 'When it works',
+    'prob.works.h': 'AI designed well, teachers prepared, learning science at the center.',
+    'prob.works.e1c': 'Harvard students learned more than twice as much in less time. 83% rated the AI explanations as comparable to or better than human instructors.',
+    'prob.works.e2c': 'In six weeks in Nigeria: equivalent to 1.5–2 years of typical learning. Outperformed 80% of educational interventions evaluated with RCTs in developing countries. Girls showed even larger gains.',
+    'prob.works.e3c': 'per tutor per year. Stanford\'s Tutor CoPilot supported 900 tutors and 1,800 students; AI-assisted tutors used strategies that promote deep understanding.',
+    'prob.works.e4c': 'In math in higher education in Ecuador (5,000 students using ALEKS). 9 percentage points less likely to fail.',
+    'prob.fails.tag': 'When it fails',
+    'prob.fails.h': 'AI that replaces thinking, instead of amplifying it.',
+    'prob.fails.e1c': 'Nearly 1,000 high school students using basic GPT improved 48% while using it. When access was removed, they performed 17% worse than the control group. They had not learned — they had outsourced their thinking.',
+    'prob.fails.e2c': '666 participants: strong negative correlation between frequent AI use and critical thinking. Positive correlation with "cognitive offloading" — the AI thinking for the student.',
+    'prob.fails.e3c': 'Students prefer the tools that require the least effort — exactly the ones that undermine learning. The fluency of the moment is mistaken for lasting mastery.',
+    'prob.fails.e4c': 'The pattern is consistent: when AI removes cognitive friction, it removes learning too. Feeling like you\'re learning is not the same as learning.',
+    'prob.fails.e4cite': 'Evidence synthesis, 2024–2025',
+    'prob.pull': 'The question is not <em>whether</em> AI will change education. It is whether the leaders making decisions will have the evidence they need to make that change serve learning — not just performance.',
+
+    'build.eyebrow': 'What we build',
+    'build.title': 'Three formats. One underlying question.',
+    'build.lede': 'Everything we produce passes through the same filter: does this help students build durable understanding, or does it just make things seem easier?',
+    'build.p1.h': 'Weekly newsletter',
+    'build.p1.p': 'Three things that matter this week. What works: evidence from rigorous experiments. What we know: applied learning science. What countries are doing: real policies in motion. Curated by the network partners.',
+    'build.p1.tag': 'Weekly · 2 minutes',
+    'build.p2.h': 'Monthly seminars',
+    'build.p2.p': 'Each month, a conversation worth having. Researchers from Harvard, Stanford, UCLA. Teams behind the RCTs in Ecuador, Nigeria, Ghana. Ministries from Chile, Brazil, El Salvador, Uruguay. Includes the <b>EvidencIA Smackdowns</b>: evidence-based debates on the most uncomfortable questions.',
+    'build.p2.tag': 'Monthly · live',
+    'build.p3.h': 'Community of practice',
+    'build.p3.p': 'Universities, ministries, edtech companies, researchers. Those who generate evidence, connected to those who make decisions. We start with the 700+ participant community from MetaRed Global.',
+    'build.p3.tag': '700+ participants',
+
+    'sd.eyebrow': 'EvidencIA Smackdowns',
+    'sd.title': 'The questions the public conversation avoids.',
+    'sd.lede': 'Evidence-based debates, no diplomacy. A few of the questions we could open:',
+    'sd.q1': 'Is AI making us dumber?',
+    'sd.q2': 'Will teachers become obsolete?',
+    'sd.q3': 'Does AI widen the education gap?',
+    'sd.q4': 'Should AI be banned in schools?',
+    'sd.meta': 'Evidence-based debate',
+
+    'epi.quote': 'Memory is the residue of thought.',
+    'epi.role': 'cognitive scientist',
+    'epi.gloss': 'If a tool does the thinking for the student, no residue remains. No learning remains. EvidencIA exists to defend that distinction — at regional scale, with evidence.',
+
+    'nlp.eyebrow': 'What the newsletter looks like',
+    'nlp.title': 'Three rotating sections. Two-minute read. Evidence, not noise.',
+    'nlp.h': 'The filter: learning science',
+    'nlp.p1': 'It is not a catalog of tools. We don\'t recommend products. We evaluate design principles.',
+    'nlp.p2': 'It is not hype, and it is not fear. It is evidence — with its nuances and limits.',
+    'nlp.p3': 'Designed so any educator, dean or decision-maker can read it in two minutes and walk away with something actionable.',
+    'nlp.l1': '<b>The Evidence.</b> A rigorous study with clear implications.',
+    'nlp.l2': '<b>Learning Principle.</b> A concept from cognitive science and how AI supports or violates it.',
+    'nlp.l3': '<b>Tool Under the Lens.</b> A tool or approach measured against learning-science criteria.',
+    'nlp.l4': '<b>What Countries Are Doing.</b> Policies, regulations, real initiatives.',
+    'nlp.l5': '<b>The Hard Question.</b> A real tension without easy answers.',
+    'nlp.issue': 'Issue #1 · sample',
+    'nlp.s1tag': 'The Evidence',
+    'nlp.s1h': 'Same technology, opposite results',
+    'nlp.s1p1': 'In Nigeria, an AI tutor produced gains of 0.31 standard deviations in six weeks — equivalent to 1.5–2 years of typical learning. The system worked because it required students to do the cognitive work, with the AI providing scaffolding and feedback.',
+    'nlp.s1p2': 'At another university, students using GPT-4 improved 48% <em>while using</em> the tool. When access was removed, they performed 17% <em>worse</em> than the control group. They hadn\'t learned. They had outsourced their thinking.',
+    'nlp.s2tag': 'Learning Principle',
+    'nlp.s2h': 'Desirable difficulties',
+    'nlp.s2p': 'Retrieval practice is harder than re-reading. Spacing is harder than cramming. And both produce better learning. When evaluating an AI tool, the question is: does it make <em>learning feel easier</em>, or does it make <em>learning happen</em>?',
+    'nlp.quote': 'Memory is the residue of thought.',
+
+    'part.eyebrow': 'Who is building this',
+    'part.title': 'An alliance, not a vendor.',
+    'part.lede': 'EvidencIA is a network of founding partners contributing evidence, regional reach, and a direct line to decision-makers. We are inviting more leading institutions to co-lead from the start.',
+    'part.wb': 'Global network in education and technology.',
+    'part.mr': '945+ universities across 10 countries in the region.',
+    'part.an': 'Education team.',
+    'part.iae': '150+ PhD researchers, partnerships with Brazil\'s Ministry of Education.',
+    'part.upc': 'Universidad Peruana de Ciencias Aplicadas.',
+    'part.ucr': 'Universidad de Costa Rica.',
+    'part.invite.h': 'Inviting co-leaders.',
+    'part.invite.p': 'Universities, ministries and companies in Mexico, Chile, Colombia, Brazil and Argentina that want to shape this network from the start. We\'re looking for partners — not passive participants.',
+    'part.invite.cta': 'Let\'s talk',
+
+    'join.eyebrow': 'Join EvidencIA',
+    'join.title': 'Two ways to start.',
+    'join.lede': 'Subscribe to receive the evidence directly. Or write to us if your institution wants to be a founding partner.',
+    'join.nl.h': 'Newsletter',
+    'join.nl.p': 'Three things. Two minutes. Every week.',
+    'join.nl.name': 'Name',
+    'join.nl.email': 'Email',
+    'join.nl.role': 'Role',
+    'join.nl.role.opt0': 'Select your role',
+    'join.nl.role.opt1': 'Teacher (K-12 or higher ed)',
+    'join.nl.role.opt2': 'Administrator / dean',
+    'join.nl.role.opt3': 'Ministry / public policy',
+    'join.nl.role.opt4': 'Researcher',
+    'join.nl.role.opt5': 'Edtech company',
+    'join.nl.role.opt6': 'Other',
+    'join.nl.country': 'Country',
+    'join.nl.lang': 'Preferred language',
+    'join.nl.lang.es': 'Español',
+    'join.nl.lang.pt': 'Português',
+    'join.nl.lang.en': 'English',
+    'join.nl.submit': 'Subscribe',
+    'join.partner.h': 'Become a partner',
+    'join.partner.p': 'For universities, ministries and companies that want to co-build EvidencIA. We reply within 5 business days.',
+    'join.partner.name': 'Your name',
+    'join.partner.role': 'Title / role',
+    'join.partner.email': 'Institutional email',
+    'join.partner.country': 'Country',
+    'join.partner.institution': 'Institution',
+    'join.partner.interest': 'What interests you?',
+    'join.partner.opt1': 'Co-leading the network as a founding partner',
+    'join.partner.opt2': 'Proposing a researcher, ministry, or practitioner for a seminar',
+    'join.partner.opt3': 'Sharing research or evidence for curation',
+    'join.partner.opt4': 'Connecting with education ministries across the region',
+    'join.partner.opt5': 'Keeping me informed while we evaluate',
+    'join.partner.message': 'Message (optional)',
+    'join.partner.submit': 'Start the conversation',
+
+    'foot.about': 'The Latin American network on AI and the science of learning. An alliance among the World Bank, MetaRed Global, Anthropic, IA.Edu, UPC, and UCR.',
+    'foot.explore': 'Explore',
+    'foot.l1': 'The problem', 'foot.l2': 'What we build', 'foot.l3': 'Smackdowns', 'foot.l4': 'Partners',
+    'foot.join': 'Join',
+    'foot.j1': 'Newsletter', 'foot.j2': 'Become a partner', 'foot.j3': 'Propose a seminar',
+    'foot.contact': 'Contact',
+    'foot.lang': 'Languages: ES · EN · PT',
+    'foot.copy': '© 2026 EvidencIA. A network in the making.',
+    'foot.tagline': 'Three things. Two minutes. Every week.',
+
+    'status.nl.success': 'You\'re in. Check your inbox to confirm.',
+    'status.nl.error': 'Couldn\'t submit. Try again, or email ' + CONTACT_EMAIL,
+    'status.pf.success': 'Message received. We\'ll be in touch within 5 business days.',
+    'status.pf.error': 'Couldn\'t submit. Try again, or email ' + CONTACT_EMAIL,
+    'status.validation': 'Please complete the required fields.',
+  },
+
+  pt: {
+    'nav.problem': 'O problema',
+    'nav.building': 'O que construímos',
+    'nav.newsletter': 'Newsletter',
+    'nav.partners': 'Parceiros',
+    'nav.join': 'Junte-se',
+
+    'hero.eyebrow': 'A Rede Latino-Americana de IA e Aprendizagem',
+    'hero.h1a': 'O conhecimento existe.',
+    'hero.h1b': 'O espaço onde ele se encontra, ainda não.',
+    'hero.lede': 'A EvidencIA é a rede que conecta pesquisadores, ministérios, universidades e empresas de edtech em torno da pergunta que mais importa: o que de fato ajuda a aprender, e o que apenas faz com que as coisas pareçam mais fáceis?',
+    'hero.cta1': 'Assine a newsletter',
+    'hero.cta2': 'Torne-se parceiro',
+    'hero.stat1': 'universidades na rede MetaRed',
+    'hero.stat2': 'países na América Latina',
+    'hero.stat3': 'coisas que importam, toda semana',
+    'hero.stat4': 'minutos de leitura por edição',
+
+    'prob.eyebrow': 'O problema',
+    'prob.title': 'A mesma tecnologia. Resultados opostos.',
+    'prob.lede': 'A evidência recente é clara — e contraditória ao mesmo tempo: a mesma IA pode dobrar a aprendizagem ou destruí-la. A diferença não está na tecnologia. Está no design, na implementação e em se o sistema preserva o esforço cognitivo que produz aprendizagem real.',
+    'prob.works.tag': 'Quando funciona',
+    'prob.works.h': 'IA bem desenhada, professores preparados, ciência da aprendizagem no centro.',
+    'prob.works.e1c': 'Estudantes de Harvard aprenderam mais do que o dobro em menos tempo. 83% avaliaram as explicações da IA como comparáveis ou melhores que as de instrutores humanos.',
+    'prob.works.e2c': 'Em seis semanas na Nigéria: equivalente a 1,5–2 anos de aprendizagem típica. Superou 80% das intervenções educacionais avaliadas com RCTs em países em desenvolvimento. As meninas mostraram ganhos ainda maiores.',
+    'prob.works.e3c': 'por tutor por ano. O Tutor CoPilot de Stanford apoiou 900 tutores e 1.800 estudantes; os tutores com IA usaram estratégias que promovem compreensão profunda.',
+    'prob.works.e4c': 'Em matemática no ensino superior no Equador (5.000 estudantes usando ALEKS). 9 pontos percentuais menos de probabilidade de reprovação.',
+    'prob.fails.tag': 'Quando falha',
+    'prob.fails.h': 'IA que substitui o pensamento, em vez de amplificá-lo.',
+    'prob.fails.e1c': 'Quase 1.000 alunos do ensino médio com GPT básico melhoraram 48% enquanto usavam. Ao retirar o acesso, tiveram desempenho 17% pior que o grupo de controle. Não tinham aprendido — tinham terceirizado o pensamento.',
+    'prob.fails.e2c': '666 participantes: correlação negativa forte entre uso frequente de IA e pensamento crítico. Correlação positiva com "descarga cognitiva" — a IA pensando pelo aluno.',
+    'prob.fails.e3c': 'Estudantes preferem as ferramentas que exigem menos esforço — exatamente aquelas que minam a aprendizagem. A fluência do momento é confundida com domínio duradouro.',
+    'prob.fails.e4c': 'O padrão é consistente: quando a IA elimina o atrito cognitivo, elimina também a aprendizagem. Sentir que se está aprendendo não é o mesmo que aprender.',
+    'prob.fails.e4cite': 'Síntese de evidências, 2024–2025',
+    'prob.pull': 'A pergunta não é <em>se</em> a IA mudará a educação. É se os líderes que tomam decisões terão a evidência necessária para que essa mudança sirva à aprendizagem — e não apenas ao desempenho.',
+
+    'build.eyebrow': 'O que construímos',
+    'build.title': 'Três formatos. Uma única pergunta de fundo.',
+    'build.lede': 'Tudo o que produzimos passa pelo mesmo filtro: isto ajuda os estudantes a construir compreensão duradoura, ou apenas faz com que as coisas pareçam mais fáceis?',
+    'build.p1.h': 'Newsletter semanal',
+    'build.p1.p': 'Três coisas que importam esta semana. O que funciona: evidência de experimentos rigorosos. O que sabemos: ciência da aprendizagem aplicada. O que os países estão fazendo: políticas reais em curso. Curada pelos parceiros da rede.',
+    'build.p1.tag': 'Semanal · 2 minutos',
+    'build.p2.h': 'Seminários mensais',
+    'build.p2.p': 'A cada mês, uma conversa que vale a pena. Pesquisadores de Harvard, Stanford, UCLA. As equipes por trás dos RCTs no Equador, Nigéria, Gana. Ministérios do Chile, Brasil, El Salvador, Uruguai. Inclui os <b>EvidencIA Smackdowns</b>: debates baseados em evidências sobre as perguntas mais incômodas.',
+    'build.p2.tag': 'Mensal · ao vivo',
+    'build.p3.h': 'Comunidade de prática',
+    'build.p3.p': 'Universidades, ministérios, empresas de edtech, pesquisadores. Quem gera evidência conectado a quem toma decisões. Começamos com a comunidade de mais de 700 participantes da MetaRed Global.',
+    'build.p3.tag': '700+ participantes',
+
+    'sd.eyebrow': 'EvidencIA Smackdowns',
+    'sd.title': 'As perguntas que a conversa pública evita.',
+    'sd.lede': 'Debates baseados em evidências, sem diplomacia. Algumas das perguntas que poderíamos abrir:',
+    'sd.q1': 'A IA está nos deixando mais burros?',
+    'sd.q2': 'O professor se tornará obsoleto?',
+    'sd.q3': 'A IA amplia a desigualdade educacional?',
+    'sd.q4': 'Proibir a IA na escola?',
+    'sd.meta': 'Debate baseado em evidências',
+
+    'epi.quote': 'A memória é o resíduo do pensamento.',
+    'epi.role': 'cientista cognitivo',
+    'epi.gloss': 'Se uma ferramenta pensa pelo estudante, não resta resíduo. Não resta aprendizagem. A EvidencIA existe para defender essa distinção — em escala regional, com evidências.',
+
+    'nlp.eyebrow': 'Como é a newsletter',
+    'nlp.title': 'Três seções rotativas. Dois minutos de leitura. Evidência, não ruído.',
+    'nlp.h': 'O filtro: ciência da aprendizagem',
+    'nlp.p1': 'Não é um catálogo de ferramentas. Não recomendamos produtos. Avaliamos princípios de design.',
+    'nlp.p2': 'Não é hype nem medo. É evidência — com suas nuances e limites.',
+    'nlp.p3': 'Desenhada para que qualquer educador, decano ou tomador de decisão possa lê-la em dois minutos e sair com algo acionável.',
+    'nlp.l1': '<b>A Evidência.</b> Um estudo rigoroso com implicações claras.',
+    'nlp.l2': '<b>Princípio de Aprendizagem.</b> Um conceito da ciência cognitiva e como a IA o apoia ou o viola.',
+    'nlp.l3': '<b>Ferramenta sob a Lupa.</b> Uma ferramenta ou abordagem avaliada contra critérios da ciência da aprendizagem.',
+    'nlp.l4': '<b>O que os Países Estão Fazendo.</b> Políticas, regulamentações, iniciativas reais.',
+    'nlp.l5': '<b>A Pergunta Difícil.</b> Uma tensão real, sem respostas fáceis.',
+    'nlp.issue': 'Edição #1 · amostra',
+    'nlp.s1tag': 'A Evidência',
+    'nlp.s1h': 'A mesma tecnologia, resultados opostos',
+    'nlp.s1p1': 'Na Nigéria, um tutor de IA produziu ganhos de 0,31 desvios-padrão em seis semanas — equivalente a 1,5–2 anos de aprendizagem típica. O sistema funcionou porque exigia que os estudantes fizessem o trabalho cognitivo, com a IA fornecendo andaime e feedback.',
+    'nlp.s1p2': 'Em outra universidade, estudantes com GPT-4 melhoraram 48% <em>enquanto usavam</em> a ferramenta. Ao retirar o acesso, tiveram desempenho 17% <em>pior</em> que o grupo de controle. Não tinham aprendido. Tinham terceirizado o pensamento.',
+    'nlp.s2tag': 'Princípio de Aprendizagem',
+    'nlp.s2h': 'Dificuldades desejáveis',
+    'nlp.s2p': 'A prática de recuperação é mais difícil que reler. O espaçamento, mais difícil que estudar tudo de uma vez. E produzem melhor aprendizagem. Ao avaliar uma ferramenta de IA, a pergunta é: ela faz com que <em>aprender pareça mais fácil</em>, ou faz com que <em>a aprendizagem aconteça</em>?',
+    'nlp.quote': 'A memória é o resíduo do pensamento.',
+
+    'part.eyebrow': 'Quem está construindo isto',
+    'part.title': 'Uma aliança, não um fornecedor.',
+    'part.lede': 'A EvidencIA é uma rede de parceiros fundadores que aportam evidência, alcance regional e conexão direta com tomadores de decisão. Estamos convidando mais instituições líderes a co-liderar desde o início.',
+    'part.wb': 'Rede global em educação e tecnologia.',
+    'part.mr': '945+ universidades em 10 países da região.',
+    'part.an': 'Equipe de educação.',
+    'part.iae': '150+ pesquisadores PhD, parcerias com o MEC.',
+    'part.upc': 'Universidad Peruana de Ciencias Aplicadas.',
+    'part.ucr': 'Universidad de Costa Rica.',
+    'part.invite.h': 'Convidando a co-liderar.',
+    'part.invite.p': 'Universidades, ministérios e empresas do México, Chile, Colômbia, Brasil e Argentina que queiram dar forma a esta rede desde o início. Buscamos parceiros — não participantes passivos.',
+    'part.invite.cta': 'Vamos conversar',
+
+    'join.eyebrow': 'Junte-se à EvidencIA',
+    'join.title': 'Duas formas de começar.',
+    'join.lede': 'Assine a newsletter para receber a evidência diretamente. Ou escreva-nos se sua instituição quiser ser parceira fundadora da rede.',
+    'join.nl.h': 'Newsletter',
+    'join.nl.p': 'Três coisas. Dois minutos. Toda semana.',
+    'join.nl.name': 'Nome',
+    'join.nl.email': 'Email',
+    'join.nl.role': 'Função',
+    'join.nl.role.opt0': 'Selecione sua função',
+    'join.nl.role.opt1': 'Docente (educação básica ou superior)',
+    'join.nl.role.opt2': 'Administrador / decano',
+    'join.nl.role.opt3': 'Ministério / política pública',
+    'join.nl.role.opt4': 'Pesquisador',
+    'join.nl.role.opt5': 'Empresa edtech',
+    'join.nl.role.opt6': 'Outro',
+    'join.nl.country': 'País',
+    'join.nl.lang': 'Idioma preferido',
+    'join.nl.lang.es': 'Español',
+    'join.nl.lang.pt': 'Português',
+    'join.nl.lang.en': 'English',
+    'join.nl.submit': 'Assinar',
+    'join.partner.h': 'Torne-se parceiro',
+    'join.partner.p': 'Para universidades, ministérios e empresas que queiram co-construir a EvidencIA. Respondemos em até 5 dias úteis.',
+    'join.partner.name': 'Seu nome',
+    'join.partner.role': 'Cargo / função',
+    'join.partner.email': 'Email institucional',
+    'join.partner.country': 'País',
+    'join.partner.institution': 'Instituição',
+    'join.partner.interest': 'O que lhe interessa?',
+    'join.partner.opt1': 'Co-liderar a rede como parceiro fundador',
+    'join.partner.opt2': 'Indicar um pesquisador, ministério ou praticante para um seminário',
+    'join.partner.opt3': 'Compartilhar pesquisa ou evidência para curadoria',
+    'join.partner.opt4': 'Conectar-se com ministérios da educação da região',
+    'join.partner.opt5': 'Manter-me informado enquanto avaliamos',
+    'join.partner.message': 'Mensagem (opcional)',
+    'join.partner.submit': 'Iniciar a conversa',
+
+    'foot.about': 'Rede latino-americana de IA e ciência da aprendizagem. Uma aliança entre o Banco Mundial, MetaRed Global, Anthropic, IA.Edu, UPC e UCR.',
+    'foot.explore': 'Explorar',
+    'foot.l1': 'O problema', 'foot.l2': 'O que construímos', 'foot.l3': 'Smackdowns', 'foot.l4': 'Parceiros',
+    'foot.join': 'Junte-se',
+    'foot.j1': 'Newsletter', 'foot.j2': 'Ser parceiro', 'foot.j3': 'Propor um seminário',
+    'foot.contact': 'Contato',
+    'foot.lang': 'Idiomas: ES · EN · PT',
+    'foot.copy': '© 2026 EvidencIA. Uma rede em construção.',
+    'foot.tagline': 'Três coisas. Dois minutos. Toda semana.',
+
+    'status.nl.success': 'Pronto! Você está inscrito. Verifique seu email para confirmar.',
+    'status.nl.error': 'Não foi possível enviar. Tente novamente ou escreva para ' + CONTACT_EMAIL,
+    'status.pf.success': 'Mensagem recebida! Entraremos em contato em até 5 dias úteis.',
+    'status.pf.error': 'Não foi possível enviar. Tente novamente ou escreva para ' + CONTACT_EMAIL,
+    'status.validation': 'Por favor, preencha os campos obrigatórios.',
+  }
+};
+
+
+// ============================================================
+// LANGUAGE SWITCHING
+// ============================================================
+let currentLang = 'es';
+
+function applyLang(lang) {
+  if (!I18N[lang]) return;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const value = I18N[lang][key];
+    if (value !== undefined) el.innerHTML = value;
+  });
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem('evidencia-lang', lang); } catch (_) {}
+}
+
+document.querySelectorAll('.lang button').forEach(b => {
+  b.addEventListener('click', () => applyLang(b.dataset.lang));
+});
+
+// Restore previous selection or use browser language
+(function initLang() {
+  let stored = null;
+  try { stored = localStorage.getItem('evidencia-lang'); } catch (_) {}
+  if (stored && I18N[stored]) return applyLang(stored);
+  const nav = (navigator.language || 'es').slice(0,2).toLowerCase();
+  if (nav === 'en' || nav === 'pt') applyLang(nav);
+  else applyLang('es');
+})();
+
+// ============================================================
+// FORM HANDLING — Google Forms POST with mailto fallback
+// ============================================================
+function setStatus(el, type, msg) {
+  el.className = 'form-status show ' + type;
+  el.textContent = msg;
+}
+
+function buildMailto(subject, fields) {
+  const lines = Object.entries(fields)
+    .filter(([_, v]) => v && String(v).trim())
+    .map(([k, v]) => `${k}: ${v}`);
+  const body = encodeURIComponent(lines.join('\n'));
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
+
+async function submitToGoogleForm(config, payload) {
+  const fd = new FormData();
+  Object.entries(payload).forEach(([key, value]) => {
+    const entryId = config.fields[key];
+    if (!entryId) return;
+    if (Array.isArray(value)) {
+      value.forEach(v => fd.append(entryId, v));
+    } else if (value !== undefined && value !== null && value !== '') {
+      fd.append(entryId, value);
+    }
+  });
+  await fetch(config.action, { method: 'POST', mode: 'no-cors', body: fd });
+}
+
+// Newsletter form
+const nlForm = document.getElementById('newsletter-form');
+const nlStatus = document.getElementById('nl-status');
+nlForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const t = I18N[currentLang];
+  const payload = {
+    name: nlForm['name'].value.trim(),
+    email: nlForm['email'].value.trim(),
+    role: nlForm['role'].value,
+    country: nlForm['country'].value.trim(),
+    lang: nlForm['lang'].value,
+  };
+  if (!payload.name || !payload.email) {
+    setStatus(nlStatus, 'error', t['status.validation']);
+    return;
+  }
+  try {
+    if (NEWSLETTER_FORM.action) {
+      await submitToGoogleForm(NEWSLETTER_FORM, payload);
+      setStatus(nlStatus, 'success', t['status.nl.success']);
+      nlForm.reset();
+    } else {
+      // Fallback: open mailto with pre-filled body
+      window.location.href = buildMailto('EvidencIA — Newsletter signup', payload);
+      setStatus(nlStatus, 'success', t['status.nl.success']);
+    }
+  } catch (err) {
+    setStatus(nlStatus, 'error', t['status.nl.error']);
+  }
+});
+
+// Partner form
+const pfForm = document.getElementById('partner-form');
+const pfStatus = document.getElementById('pf-status');
+pfForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const t = I18N[currentLang];
+  const interests = Array.from(pfForm.querySelectorAll('input[name="interest"]:checked')).map(i => i.value);
+  const payload = {
+    name: pfForm['name'].value.trim(),
+    role: pfForm['role'].value.trim(),
+    email: pfForm['email'].value.trim(),
+    country: pfForm['country'].value.trim(),
+    institution: pfForm['institution'].value.trim(),
+    interest: interests.join(', '),
+    message: pfForm['message'].value.trim(),
+  };
+  if (!payload.name || !payload.email || !payload.institution) {
+    setStatus(pfStatus, 'error', t['status.validation']);
+    return;
+  }
+  try {
+    if (PARTNER_FORM.action) {
+      await submitToGoogleForm(PARTNER_FORM, payload);
+      setStatus(pfStatus, 'success', t['status.pf.success']);
+      pfForm.reset();
+    } else {
+      window.location.href = buildMailto('EvidencIA — Partnership inquiry', payload);
+      setStatus(pfStatus, 'success', t['status.pf.success']);
+    }
+  } catch (err) {
+    setStatus(pfStatus, 'error', t['status.pf.error']);
+  }
+});
+
+// ============================================================
+// FADE-IN ON SCROLL
+// ============================================================
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('section, .split-card, .product, .smackdown, .partner, .nl-card').forEach(el => {
+  el.classList.add('fade-in');
+  io.observe(el);
+});
+</script>
+</body>
+</html>
