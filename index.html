@@ -236,6 +236,113 @@
     color: var(--ink);
   }
 
+  /* Papers grid (Base de evidencia) */
+  .papers {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .paper {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .paper:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -16px rgba(15,14,12,0.12);
+  }
+  .paper-meta {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+  .paper-meta .paper-source { color: var(--ink-mute); font-weight: 500; }
+  .paper-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .paper-summary {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .paper-langs {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 8px;
+    flex-wrap: wrap;
+  }
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: all 0.18s;
+  }
+  .lang-btn:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .lang-btn::after {
+    content: "↗";
+    font-size: 10px;
+    opacity: 0.7;
+  }
+  .papers-footer {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--bg-soft);
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .papers-cta-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    flex: 1;
+    min-width: 240px;
+  }
+  .papers-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .papers-cta-btn:hover { background: var(--gold-deep); }
+
   /* Placeholder cards for stub sections */
   .placeholder-card {
     max-width: 760px;
@@ -656,6 +763,8 @@
     .split { grid-template-columns: 1fr; gap: 20px; }
     .products { grid-template-columns: 1fr; }
     .smackdowns { grid-template-columns: 1fr 1fr; }
+    .papers { grid-template-columns: 1fr; }
+    .papers-footer { flex-direction: column; align-items: stretch; }
     .newsletter-block { grid-template-columns: 1fr; gap: 32px; }
     .partners-grid { grid-template-columns: 1fr 1fr; }
     .partners-invite { grid-template-columns: 1fr; gap: 20px; }
@@ -924,13 +1033,20 @@
     <div class="container">
       <div class="section-eyebrow" data-i18n="res.eyebrow">Base de evidencia</div>
       <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
-      <p class="section-lede" data-i18n="res.lede">Estamos construyendo una base navegable de los estudios más relevantes para América Latina — RCTs, principios de ciencia cognitiva, evaluaciones de política pública. Pública y enlazable, con NotebookLM como capa de exploración.</p>
+      <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
 
-      <div class="placeholder-card">
-        <div class="ph-eyebrow" data-i18n="res.ph.eyebrow">Próximamente</div>
-        <h3 data-i18n="res.ph.h">La primera versión incluirá los RCTs más citados y los principios fundamentales de ciencia del aprendizaje.</h3>
-        <p data-i18n="res.ph.p">¿Querés proponer un estudio para incluir? Escribinos.</p>
-        <a class="ph-cta" href="#sumarte" data-i18n="res.ph.cta">Proponer estudio</a>
+      <div class="papers" id="papers-grid"></div>
+
+      <div class="papers-footer">
+        <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
+        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard completo →</a>
+      </div>
+
+      <div class="placeholder-card" style="margin-top: 48px;">
+        <div class="ph-eyebrow" data-i18n="res.add.eyebrow">¿Querés sumar un estudio?</div>
+        <h3 data-i18n="res.add.h">Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.</h3>
+        <p data-i18n="res.add.p">Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.</p>
+        <a class="ph-cta" href="#sumarte" data-i18n="res.add.cta">Proponer estudio</a>
       </div>
     </div>
   </section>
@@ -1227,11 +1343,13 @@ const I18N = {
 
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
-    'res.lede': 'Estamos construyendo una base navegable de los estudios más relevantes para América Latina — RCTs, principios de ciencia cognitiva, evaluaciones de política pública. Pública y enlazable, con NotebookLM como capa de exploración.',
-    'res.ph.eyebrow': 'Próximamente',
-    'res.ph.h': 'La primera versión incluirá los RCTs más citados y los principios fundamentales de ciencia del aprendizaje.',
-    'res.ph.p': '¿Querés proponer un estudio para incluir? Escribinos.',
-    'res.ph.cta': 'Proponer estudio',
+    'res.lede': 'Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.',
+    'res.cta.text': 'El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.',
+    'res.cta.btn': 'Ver dashboard completo →',
+    'res.add.eyebrow': '¿Querés sumar un estudio?',
+    'res.add.h': 'Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.',
+    'res.add.p': 'Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.',
+    'res.add.cta': 'Proponer estudio',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
@@ -1397,11 +1515,13 @@ const I18N = {
 
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
-    'res.lede': 'We\'re building a navigable base of the studies most relevant to Latin America — RCTs, cognitive-science principles, policy evaluations. Public and linkable, with NotebookLM as the exploration layer.',
-    'res.ph.eyebrow': 'Coming soon',
-    'res.ph.h': 'The first version will include the most-cited RCTs and the foundational principles of learning science.',
-    'res.ph.p': 'Want to propose a study to include? Write to us.',
-    'res.ph.cta': 'Propose a study',
+    'res.lede': 'We start with the World Bank series on AI in education, read across 213 countries and available in Spanish, English, Portuguese and Bulgarian. This is the starting point — the navigable base grows with the network.',
+    'res.cta.text': 'The full dashboard with downloads by country, language and publication is refreshed every two months.',
+    'res.cta.btn': 'Open full dashboard →',
+    'res.add.eyebrow': 'Want to add a study?',
+    'res.add.h': 'We\'re adding RCTs, cognitive-science principles and policy evaluations.',
+    'res.add.p': 'If you know of a study that should live here, write to us. The base is curated by the network partners.',
+    'res.add.cta': 'Propose a study',
 
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
@@ -1567,11 +1687,13 @@ const I18N = {
 
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
-    'res.lede': 'Estamos construindo uma base navegável dos estudos mais relevantes para a América Latina — RCTs, princípios de ciência cognitiva, avaliações de políticas públicas. Pública e linkável, com o NotebookLM como camada de exploração.',
-    'res.ph.eyebrow': 'Em breve',
-    'res.ph.h': 'A primeira versão incluirá os RCTs mais citados e os princípios fundamentais da ciência da aprendizagem.',
-    'res.ph.p': 'Quer propor um estudo para incluir? Escreva para nós.',
-    'res.ph.cta': 'Propor estudo',
+    'res.lede': 'Começamos com a série do Banco Mundial sobre IA em educação, lida em 213 países e disponível em espanhol, inglês, português e búlgaro. É o ponto de partida — a base navegável cresce com a rede.',
+    'res.cta.text': 'O dashboard completo com downloads por país, idioma e publicação é atualizado a cada dois meses.',
+    'res.cta.btn': 'Abrir dashboard completo →',
+    'res.add.eyebrow': 'Quer adicionar um estudo?',
+    'res.add.h': 'Estamos adicionando RCTs, princípios de ciência cognitiva e avaliações de políticas públicas.',
+    'res.add.p': 'Se conhece um estudo que deveria estar aqui, escreva para nós. A base é curada pelos parceiros da rede.',
+    'res.add.cta': 'Propor estudo',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
@@ -1668,6 +1790,139 @@ const I18N = {
 
 
 // ============================================================
+// PAPERS — World Bank AI-in-Education series (8 publications)
+// Source: WB_downloads_data.json (refreshed every 2 months by
+// the wb-downloads-dashboard pipeline). Live counts at
+// https://ezequielmolina-lang.github.io/wb-downloads-dashboard/
+// ============================================================
+const PAPERS = [
+  {
+    repnb: 191418, year: 2024,
+    title: 'AI Revolution in Education: What You Need to Know',
+    summary: {
+      es: 'Lo que ministerios, universidades y docentes necesitan saber: qué funciona en IA y aprendizaje, qué no, y por qué la diferencia está en el diseño.',
+      en: 'What ministries, universities and teachers need to know: what works in AI and learning, what doesn\'t, and why the difference lies in the design.',
+      pt: 'O que ministérios, universidades e professores precisam saber: o que funciona em IA e aprendizagem, o que não funciona, e por que a diferença está no design.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099355206192434920' },
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099734306182493324' },
+      { code: 'PT', url: 'https://documentos.bancomundial.org/pt/publication/documents-reports/documentdetail/099735306272422279' },
+    ],
+  },
+  {
+    repnb: 200478, year: 2025,
+    title: 'AI Revolution in Higher Education: What You Need to Know',
+    summary: {
+      es: 'Cómo las universidades pueden adoptar IA sin sacrificar el aprendizaje profundo: principios, evidencia y casos.',
+      en: 'How universities can adopt AI without sacrificing deep learning: principles, evidence and cases.',
+      pt: 'Como as universidades podem adotar IA sem sacrificar a aprendizagem profunda: princípios, evidências e casos.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099809404152514027' },
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099757104152527995' },
+      { code: 'PT', url: 'https://documentos.bancomundial.org/pt/publication/documents-reports/documentdetail/099614305052514637' },
+    ],
+  },
+  {
+    repnb: 204600, year: 2025,
+    title: 'El Director LIBRE: El Método de IA que Libera Horas de Papeleo',
+    summary: {
+      es: 'El método de IA que libera horas de papeleo a los directores escolares y las devuelve al liderazgo pedagógico.',
+      en: 'An AI method that frees school principals from paperwork hours and returns them to pedagogical leadership.',
+      pt: 'O método de IA que libera horas de papelada para os diretores escolares e as devolve à liderança pedagógica.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099731109172514920' },
+    ],
+  },
+  {
+    repnb: 203549, year: 2025,
+    title: 'Screen Time in Early Childhood Education: Balancing the Digital Scales',
+    summary: {
+      es: 'Qué dice la evidencia sobre pantallas en la primera infancia — y cómo distinguir el uso productivo del costo cognitivo.',
+      en: 'What the evidence says about screen time in early childhood — and how to tell productive use from cognitive cost.',
+      pt: 'O que a evidência diz sobre telas na primeira infância — e como distinguir uso produtivo de custo cognitivo.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099936107302595687' },
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099931007302544113' },
+    ],
+  },
+  {
+    repnb: 193710, year: 2024,
+    title: 'Ceibal: 15 Years of Learning from Uruguay\'s One-Laptop-Per-Child Programme',
+    summary: {
+      es: 'El caso Ceibal: dos décadas de tecnología en aulas uruguayas, lecciones para la integración de IA a escala.',
+      en: 'The Ceibal case: two decades of technology in Uruguayan classrooms, lessons for scaling AI integration.',
+      pt: 'O caso Ceibal: duas décadas de tecnologia em salas de aula uruguaias, lições para a integração de IA em escala.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099057209252410428' },
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099038209252435210' },
+      { code: 'PT', url: 'https://documentos.bancomundial.org/pt/publication/documents-reports/documentdetail/099740309262441578' },
+    ],
+  },
+  {
+    repnb: 206140, year: 2025,
+    title: 'La IA en el Aula: Tu Aliada Pedagógica',
+    summary: {
+      es: 'Guía práctica para docentes: cómo integrar IA generativa a la planificación de clase sin reemplazar la pedagogía.',
+      en: 'Practical guide for teachers: how to integrate generative AI into lesson planning without replacing pedagogy.',
+      pt: 'Guia prático para professores: como integrar IA generativa ao planejamento de aula sem substituir a pedagogia.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099623210222512099' },
+    ],
+  },
+  {
+    repnb: 206665, year: 2025,
+    title: 'Artificial Intelligence in Bulgarian School Education',
+    summary: {
+      es: 'Estudio de implementación: cómo un sistema educativo nacional adopta IA en aulas con regulación y formación docente.',
+      en: 'An implementation study: how a national education system adopts AI in classrooms with regulation and teacher training.',
+      pt: 'Estudo de implementação: como um sistema educacional nacional adota IA em salas de aula com regulação e formação docente.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://documentos.bancomundial.org/es/publication/documents-reports/documentdetail/099716303132630770' },
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099609411142514872' },
+      { code: 'BG', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099329102052621171' },
+    ],
+  },
+  {
+    repnb: 194458, year: 2024,
+    title: '100 Student Voices on AI and Education',
+    summary: {
+      es: 'Cien estudiantes de Asia, África y América Latina opinan sobre cómo debería usarse la IA — y dónde la rechazan.',
+      en: 'A hundred students from Asia, Africa and Latin America weigh in on how AI should be used — and where they reject it.',
+      pt: 'Cem estudantes da Ásia, África e América Latina opinam sobre como a IA deveria ser usada — e onde a rejeitam.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099115410312428266' },
+    ],
+  },
+];
+
+function renderPapers(lang) {
+  const grid = document.getElementById('papers-grid');
+  if (!grid) return;
+  const L = (PAPERS[0].summary[lang] !== undefined) ? lang : 'es';
+  grid.innerHTML = PAPERS.map(p => `
+    <article class="paper">
+      <div class="paper-meta">
+        <span>${p.year}</span>
+        <span class="paper-source">World Bank</span>
+      </div>
+      <h3 class="paper-title">${p.title}</h3>
+      <p class="paper-summary">${p.summary[L]}</p>
+      <div class="paper-langs">
+        ${p.langs.map(l => `<a class="lang-btn" href="${l.url}" target="_blank" rel="noopener">${l.code}</a>`).join('')}
+      </div>
+    </article>
+  `).join('');
+}
+
+// ============================================================
 // LANGUAGE SWITCHING
 // ============================================================
 let currentLang = 'es';
@@ -1684,6 +1939,7 @@ function applyLang(lang) {
   document.querySelectorAll('.lang button').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
+  renderPapers(lang);
   try { localStorage.setItem('evidencia-lang', lang); } catch (_) {}
 }
 
