@@ -212,29 +212,75 @@
     margin-bottom: 28px;
     max-width: 22ch;
   }
-  .evidence-list { display: flex; flex-direction: column; gap: 22px; }
-  .ev {
-    padding: 18px 0;
+  .claim-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 22px; }
+  .claim-list li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+    align-items: start;
+    padding: 20px 0;
     border-top: 1px solid rgba(15,14,12,0.08);
   }
-  .ev:first-child { border-top: 0; padding-top: 0; }
-  .ev .ev-num {
+  .claim-list li:first-child { border-top: 0; padding-top: 4px; }
+  .cl-num {
     font-family: 'Source Serif 4', Georgia, serif;
     font-weight: 500;
-    font-size: 36px;
+    font-size: 28px;
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-bottom: 8px;
   }
-  .split-card.works .ev-num { color: var(--works); }
-  .split-card.fails .ev-num { color: var(--fails); }
-  .ev .ev-claim {
-    font-size: 15px; line-height: 1.5;
-    color: var(--ink); margin-bottom: 6px;
+  .split-card.works .cl-num { color: var(--works); }
+  .split-card.fails .cl-num { color: var(--fails); }
+  .cl-text {
+    font-size: 16px; line-height: 1.55;
+    color: var(--ink);
   }
-  .ev .ev-cite {
-    font-size: 12px; color: var(--ink-mute); font-style: italic;
+
+  /* Placeholder cards for stub sections */
+  .placeholder-card {
+    max-width: 760px;
+    margin: 56px auto 0;
+    padding: 56px 48px;
+    background: var(--bg);
+    border: 1px dashed var(--rule);
+    border-radius: 18px;
+    text-align: center;
   }
+  .placeholder-card .ph-eyebrow {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    margin-bottom: 16px;
+  }
+  .placeholder-card h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 28px);
+    letter-spacing: -0.015em;
+    line-height: 1.22;
+    max-width: 26ch;
+    margin: 0 auto 14px;
+  }
+  .placeholder-card p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin: 0 auto 22px;
+  }
+  .placeholder-card .ph-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .placeholder-card .ph-cta:hover { background: var(--gold-deep); transform: translateY(-1px); }
+  .placeholder-card .ph-cta::after { content: "→"; }
   .split-pull {
     margin-top: 56px; max-width: 56ch;
     font-family: 'Source Serif 4', Georgia, serif;
@@ -644,8 +690,9 @@
     <nav class="nav-links">
       <a href="#problema" data-i18n="nav.problem">El problema</a>
       <a href="#construyendo" data-i18n="nav.building">Qué construimos</a>
-      <a href="#newsletter" data-i18n="nav.newsletter">Newsletter</a>
-      <a href="#socios" data-i18n="nav.partners">Socios</a>
+      <a href="#conversaciones" data-i18n="nav.events">Conversaciones</a>
+      <a href="#newsletter-preview" data-i18n="nav.newsletter">Newsletter</a>
+      <a href="#evidencia" data-i18n="nav.research">Evidencia</a>
       <a href="#sumarte" data-i18n="nav.join" class="nav-cta">Sumate</a>
       <div class="lang" role="tablist" aria-label="Language">
         <button data-lang="es" class="active" aria-label="Español">ES</button>
@@ -704,55 +751,21 @@
         <div class="split-card works">
           <div class="tag" data-i18n="prob.works.tag">Cuando funciona</div>
           <h3 data-i18n="prob.works.h">IA bien diseñada, docentes preparados, ciencia del aprendizaje en el centro.</h3>
-          <div class="evidence-list">
-            <div class="ev">
-              <div class="ev-num">2×</div>
-              <div class="ev-claim" data-i18n="prob.works.e1c">Estudiantes de Harvard aprendieron más del doble en menos tiempo. El 83% calificó las explicaciones de la IA como comparables o mejores que las de instructores humanos.</div>
-              <div class="ev-cite">Kestin et al., Harvard, 2024</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">+0.31 SD</div>
-              <div class="ev-claim" data-i18n="prob.works.e2c">En seis semanas en Nigeria: equivalente a 1.5–2 años de aprendizaje típico. Superó al 80% de las intervenciones educativas evaluadas con RCTs en países en desarrollo. Las niñas mostraron ganancias aún mayores.</div>
-              <div class="ev-cite">De Simone et al., World Bank / Nigeria, 2024</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">$20</div>
-              <div class="ev-claim" data-i18n="prob.works.e3c">por tutor al año. Tutor CoPilot de Stanford apoyó a 900 tutores y 1,800 estudiantes; los tutores con IA usaron estrategias que fomentan comprensión profunda.</div>
-              <div class="ev-cite">Wang et al., Stanford, 2025</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">+0.28 SD</div>
-              <div class="ev-claim" data-i18n="prob.works.e4c">En matemática en educación superior en Ecuador (5,000 estudiantes con ALEKS). 9 puntos porcentuales menos de probabilidad de reprobar.</div>
-              <div class="ev-cite">Angel-Urdinola et al., World Bank / Ecuador, 2023</div>
-            </div>
-          </div>
+          <ol class="claim-list">
+            <li><span class="cl-num">01</span><span class="cl-text" data-i18n="prob.works.c1">Cuando el sistema exige el trabajo cognitivo del estudiante y la IA aporta andamiaje, no atajos.</span></li>
+            <li><span class="cl-num">02</span><span class="cl-text" data-i18n="prob.works.c2">Cuando los docentes están preparados para integrar la herramienta a su práctica, no para reemplazarla.</span></li>
+            <li><span class="cl-num">03</span><span class="cl-text" data-i18n="prob.works.c3">Cuando la métrica de éxito es el aprendizaje duradero, no la sensación del momento.</span></li>
+          </ol>
         </div>
 
         <div class="split-card fails">
           <div class="tag" data-i18n="prob.fails.tag">Cuando falla</div>
           <h3 data-i18n="prob.fails.h">IA que reemplaza el pensamiento, en vez de amplificarlo.</h3>
-          <div class="evidence-list">
-            <div class="ev">
-              <div class="ev-num">−17%</div>
-              <div class="ev-claim" data-i18n="prob.fails.e1c">Casi 1,000 estudiantes de secundaria con GPT básico mejoraron 48% mientras lo usaban. Al quitarles el acceso, rindieron 17% peor que el grupo control. No habían aprendido: habían externalizado el pensamiento.</div>
-              <div class="ev-cite">Bastani et al., 2024</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">−</div>
-              <div class="ev-claim" data-i18n="prob.fails.e2c">Con 666 participantes: correlación negativa fuerte entre uso frecuente de IA y pensamiento crítico. Correlación positiva con "cognitive offloading" — la IA pensando por el estudiante.</div>
-              <div class="ev-cite">Gerlich, Societies, 2025</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">⤺</div>
-              <div class="ev-claim" data-i18n="prob.fails.e3c">Estudiantes prefieren las herramientas que menos esfuerzo requieren — exactamente las que socavan el aprendizaje. La fluidez del momento se confunde con dominio duradero.</div>
-              <div class="ev-cite">Benedek &amp; Sziklai, Corvinus, 2025</div>
-            </div>
-            <div class="ev">
-              <div class="ev-num">!</div>
-              <div class="ev-claim" data-i18n="prob.fails.e4c">El patrón es consistente: cuando la IA elimina la fricción cognitiva, también elimina el aprendizaje. La sensación de aprender no es lo mismo que aprender.</div>
-              <div class="ev-cite" data-i18n="prob.fails.e4cite">Síntesis de evidencia, 2024–2025</div>
-            </div>
-          </div>
+          <ol class="claim-list">
+            <li><span class="cl-num">01</span><span class="cl-text" data-i18n="prob.fails.c1">Cuando la IA responde por el estudiante, no queda residuo cognitivo. La sensación de aprender no es lo mismo que aprender.</span></li>
+            <li><span class="cl-num">02</span><span class="cl-text" data-i18n="prob.fails.c2">Cuando los estudiantes prefieren la herramienta que menos esfuerzo exige, terminan eligiendo justo la que socava el aprendizaje.</span></li>
+            <li><span class="cl-num">03</span><span class="cl-text" data-i18n="prob.fails.c3">Cuando la fluidez del momento se confunde con dominio, el aprendizaje se desvanece apenas se quita el acceso.</span></li>
+          </ol>
         </div>
       </div>
 
@@ -822,6 +835,22 @@
     </div>
   </section>
 
+  <!-- CONVERSACIONES -->
+  <section id="conversaciones">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="conv.eyebrow">Próximas conversaciones</div>
+      <h2 class="section-title" data-i18n="conv.title">Cada conversación, archivada.</h2>
+      <p class="section-lede" data-i18n="conv.lede">Investigadores, ministerios y practitioners en diálogo público. Las grabaciones, materiales y agenda quedarán acá apenas se publiquen.</p>
+
+      <div class="placeholder-card">
+        <div class="ph-eyebrow" data-i18n="conv.ph.eyebrow">Próximamente</div>
+        <h3 data-i18n="conv.ph.h">Estamos cerrando la agenda de la primera conversación.</h3>
+        <p data-i18n="conv.ph.p">Te avisamos por mail apenas se confirme la fecha y el panel.</p>
+        <a class="ph-cta" href="#newsletter" data-i18n="conv.ph.cta">Suscribite al newsletter</a>
+      </div>
+    </div>
+  </section>
+
   <!-- EPIGRAPH -->
   <section class="epigraph" style="border-top: 0;">
     <div class="container">
@@ -879,6 +908,29 @@
             <div class="nl-quote-author">— Daniel Willingham</div>
           </div>
         </article>
+      </div>
+
+      <div class="placeholder-card">
+        <div class="ph-eyebrow" data-i18n="nlp.archive.eyebrow">Ediciones publicadas</div>
+        <h3 data-i18n="nlp.archive.h">El archivo va a vivir acá.</h3>
+        <p data-i18n="nlp.archive.p">Apenas publiquemos la primera edición, el archivo completo va a quedar disponible para navegar y compartir.</p>
+        <a class="ph-cta" href="#newsletter" data-i18n="nlp.archive.cta">Suscribite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BASE DE EVIDENCIA -->
+  <section id="evidencia">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="res.eyebrow">Base de evidencia</div>
+      <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
+      <p class="section-lede" data-i18n="res.lede">Estamos construyendo una base navegable de los estudios más relevantes para América Latina — RCTs, principios de ciencia cognitiva, evaluaciones de política pública. Pública y enlazable, con NotebookLM como capa de exploración.</p>
+
+      <div class="placeholder-card">
+        <div class="ph-eyebrow" data-i18n="res.ph.eyebrow">Próximamente</div>
+        <h3 data-i18n="res.ph.h">La primera versión incluirá los RCTs más citados y los principios fundamentales de ciencia del aprendizaje.</h3>
+        <p data-i18n="res.ph.p">¿Querés proponer un estudio para incluir? Escribinos.</p>
+        <a class="ph-cta" href="#sumarte" data-i18n="res.ph.cta">Proponer estudio</a>
       </div>
     </div>
   </section>
@@ -1106,7 +1158,9 @@ const I18N = {
   es: {
     'nav.problem': 'El problema',
     'nav.building': 'Qué construimos',
+    'nav.events': 'Conversaciones',
     'nav.newsletter': 'Newsletter',
+    'nav.research': 'Evidencia',
     'nav.partners': 'Socios',
     'nav.join': 'Sumate',
 
@@ -1126,17 +1180,14 @@ const I18N = {
     'prob.lede': 'La evidencia reciente es clara y contradictoria a la vez: la misma IA puede duplicar el aprendizaje o destruirlo. La diferencia no está en la tecnología. Está en el diseño, en la implementación, y en si el sistema preserva el esfuerzo cognitivo que produce aprendizaje real.',
     'prob.works.tag': 'Cuando funciona',
     'prob.works.h': 'IA bien diseñada, docentes preparados, ciencia del aprendizaje en el centro.',
-    'prob.works.e1c': 'Estudiantes de Harvard aprendieron más del doble en menos tiempo. El 83% calificó las explicaciones de la IA como comparables o mejores que las de instructores humanos.',
-    'prob.works.e2c': 'En seis semanas en Nigeria: equivalente a 1.5–2 años de aprendizaje típico. Superó al 80% de las intervenciones educativas evaluadas con RCTs en países en desarrollo. Las niñas mostraron ganancias aún mayores.',
-    'prob.works.e3c': 'por tutor al año. Tutor CoPilot de Stanford apoyó a 900 tutores y 1,800 estudiantes; los tutores con IA usaron estrategias que fomentan comprensión profunda.',
-    'prob.works.e4c': 'En matemática en educación superior en Ecuador (5,000 estudiantes con ALEKS). 9 puntos porcentuales menos de probabilidad de reprobar.',
+    'prob.works.c1': 'Cuando el sistema exige el trabajo cognitivo del estudiante y la IA aporta andamiaje, no atajos.',
+    'prob.works.c2': 'Cuando los docentes están preparados para integrar la herramienta a su práctica, no para reemplazarla.',
+    'prob.works.c3': 'Cuando la métrica de éxito es el aprendizaje duradero, no la sensación del momento.',
     'prob.fails.tag': 'Cuando falla',
     'prob.fails.h': 'IA que reemplaza el pensamiento, en vez de amplificarlo.',
-    'prob.fails.e1c': 'Casi 1,000 estudiantes de secundaria con GPT básico mejoraron 48% mientras lo usaban. Al quitarles el acceso, rindieron 17% peor que el grupo control. No habían aprendido: habían externalizado el pensamiento.',
-    'prob.fails.e2c': 'Con 666 participantes: correlación negativa fuerte entre uso frecuente de IA y pensamiento crítico. Correlación positiva con "cognitive offloading" — la IA pensando por el estudiante.',
-    'prob.fails.e3c': 'Estudiantes prefieren las herramientas que menos esfuerzo requieren — exactamente las que socavan el aprendizaje. La fluidez del momento se confunde con dominio duradero.',
-    'prob.fails.e4c': 'El patrón es consistente: cuando la IA elimina la fricción cognitiva, también elimina el aprendizaje. La sensación de aprender no es lo mismo que aprender.',
-    'prob.fails.e4cite': 'Síntesis de evidencia, 2024–2025',
+    'prob.fails.c1': 'Cuando la IA responde por el estudiante, no queda residuo cognitivo. La sensación de aprender no es lo mismo que aprender.',
+    'prob.fails.c2': 'Cuando los estudiantes prefieren la herramienta que menos esfuerzo exige, terminan eligiendo justo la que socava el aprendizaje.',
+    'prob.fails.c3': 'Cuando la fluidez del momento se confunde con dominio, el aprendizaje se desvanece apenas se quita el acceso.',
     'prob.pull': 'La pregunta no es <em>si</em> la IA cambiará la educación. Es si los líderes que toman decisiones tendrán la evidencia que necesitan para que ese cambio sirva al aprendizaje, no solo al desempeño.',
 
     'build.eyebrow': 'Qué construimos',
@@ -1160,6 +1211,27 @@ const I18N = {
     'sd.q3': '¿La IA amplía la brecha educativa?',
     'sd.q4': '¿Prohibir la IA en la escuela?',
     'sd.meta': 'Debate basado en evidencia',
+
+    'conv.eyebrow': 'Próximas conversaciones',
+    'conv.title': 'Cada conversación, archivada.',
+    'conv.lede': 'Investigadores, ministerios y practitioners en diálogo público. Las grabaciones, materiales y agenda quedarán acá apenas se publiquen.',
+    'conv.ph.eyebrow': 'Próximamente',
+    'conv.ph.h': 'Estamos cerrando la agenda de la primera conversación.',
+    'conv.ph.p': 'Te avisamos por mail apenas se confirme la fecha y el panel.',
+    'conv.ph.cta': 'Suscribite al newsletter',
+
+    'nlp.archive.eyebrow': 'Ediciones publicadas',
+    'nlp.archive.h': 'El archivo va a vivir acá.',
+    'nlp.archive.p': 'Apenas publiquemos la primera edición, el archivo completo va a quedar disponible para navegar y compartir.',
+    'nlp.archive.cta': 'Suscribite',
+
+    'res.eyebrow': 'Base de evidencia',
+    'res.title': 'Investigación curada sobre IA y aprendizaje.',
+    'res.lede': 'Estamos construyendo una base navegable de los estudios más relevantes para América Latina — RCTs, principios de ciencia cognitiva, evaluaciones de política pública. Pública y enlazable, con NotebookLM como capa de exploración.',
+    'res.ph.eyebrow': 'Próximamente',
+    'res.ph.h': 'La primera versión incluirá los RCTs más citados y los principios fundamentales de ciencia del aprendizaje.',
+    'res.ph.p': '¿Querés proponer un estudio para incluir? Escribinos.',
+    'res.ph.cta': 'Proponer estudio',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
@@ -1256,7 +1328,9 @@ const I18N = {
   en: {
     'nav.problem': 'The problem',
     'nav.building': 'What we build',
+    'nav.events': 'Conversations',
     'nav.newsletter': 'Newsletter',
+    'nav.research': 'Evidence',
     'nav.partners': 'Partners',
     'nav.join': 'Join',
 
@@ -1276,17 +1350,14 @@ const I18N = {
     'prob.lede': 'Recent evidence is clear — and contradictory at the same time: the same AI can double learning or undermine it. The difference is not in the technology. It is in the design, the implementation, and whether the system preserves the cognitive effort that produces real learning.',
     'prob.works.tag': 'When it works',
     'prob.works.h': 'AI designed well, teachers prepared, learning science at the center.',
-    'prob.works.e1c': 'Harvard students learned more than twice as much in less time. 83% rated the AI explanations as comparable to or better than human instructors.',
-    'prob.works.e2c': 'In six weeks in Nigeria: equivalent to 1.5–2 years of typical learning. Outperformed 80% of educational interventions evaluated with RCTs in developing countries. Girls showed even larger gains.',
-    'prob.works.e3c': 'per tutor per year. Stanford\'s Tutor CoPilot supported 900 tutors and 1,800 students; AI-assisted tutors used strategies that promote deep understanding.',
-    'prob.works.e4c': 'In math in higher education in Ecuador (5,000 students using ALEKS). 9 percentage points less likely to fail.',
+    'prob.works.c1': 'When the system demands the student\'s cognitive work and the AI provides scaffolding, not shortcuts.',
+    'prob.works.c2': 'When teachers are prepared to integrate the tool into their practice, not to replace it.',
+    'prob.works.c3': 'When the success metric is lasting learning, not the feeling of the moment.',
     'prob.fails.tag': 'When it fails',
     'prob.fails.h': 'AI that replaces thinking, instead of amplifying it.',
-    'prob.fails.e1c': 'Nearly 1,000 high school students using basic GPT improved 48% while using it. When access was removed, they performed 17% worse than the control group. They had not learned — they had outsourced their thinking.',
-    'prob.fails.e2c': '666 participants: strong negative correlation between frequent AI use and critical thinking. Positive correlation with "cognitive offloading" — the AI thinking for the student.',
-    'prob.fails.e3c': 'Students prefer the tools that require the least effort — exactly the ones that undermine learning. The fluency of the moment is mistaken for lasting mastery.',
-    'prob.fails.e4c': 'The pattern is consistent: when AI removes cognitive friction, it removes learning too. Feeling like you\'re learning is not the same as learning.',
-    'prob.fails.e4cite': 'Evidence synthesis, 2024–2025',
+    'prob.fails.c1': 'When the AI answers for the student, no cognitive residue remains. Feeling like you\'re learning is not the same as learning.',
+    'prob.fails.c2': 'When students prefer the tool that demands the least effort, they end up choosing exactly the one that undermines learning.',
+    'prob.fails.c3': 'When the fluency of the moment is mistaken for mastery, learning fades as soon as access is removed.',
     'prob.pull': 'The question is not <em>whether</em> AI will change education. It is whether the leaders making decisions will have the evidence they need to make that change serve learning — not just performance.',
 
     'build.eyebrow': 'What we build',
@@ -1310,6 +1381,27 @@ const I18N = {
     'sd.q3': 'Does AI widen the education gap?',
     'sd.q4': 'Should AI be banned in schools?',
     'sd.meta': 'Evidence-based debate',
+
+    'conv.eyebrow': 'Upcoming conversations',
+    'conv.title': 'Every conversation, archived.',
+    'conv.lede': 'Researchers, ministries and practitioners in public dialogue. Recordings, materials and agenda will live here as soon as they\'re published.',
+    'conv.ph.eyebrow': 'Coming soon',
+    'conv.ph.h': 'We\'re finalizing the agenda for the first conversation.',
+    'conv.ph.p': 'We\'ll email you as soon as the date and panel are confirmed.',
+    'conv.ph.cta': 'Subscribe to the newsletter',
+
+    'nlp.archive.eyebrow': 'Published issues',
+    'nlp.archive.h': 'The archive will live here.',
+    'nlp.archive.p': 'As soon as we publish the first issue, the full archive will be browsable and shareable from here.',
+    'nlp.archive.cta': 'Subscribe',
+
+    'res.eyebrow': 'Evidence base',
+    'res.title': 'Curated research on AI and learning.',
+    'res.lede': 'We\'re building a navigable base of the studies most relevant to Latin America — RCTs, cognitive-science principles, policy evaluations. Public and linkable, with NotebookLM as the exploration layer.',
+    'res.ph.eyebrow': 'Coming soon',
+    'res.ph.h': 'The first version will include the most-cited RCTs and the foundational principles of learning science.',
+    'res.ph.p': 'Want to propose a study to include? Write to us.',
+    'res.ph.cta': 'Propose a study',
 
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
@@ -1406,7 +1498,9 @@ const I18N = {
   pt: {
     'nav.problem': 'O problema',
     'nav.building': 'O que construímos',
+    'nav.events': 'Conversas',
     'nav.newsletter': 'Newsletter',
+    'nav.research': 'Evidência',
     'nav.partners': 'Parceiros',
     'nav.join': 'Junte-se',
 
@@ -1426,17 +1520,14 @@ const I18N = {
     'prob.lede': 'A evidência recente é clara — e contraditória ao mesmo tempo: a mesma IA pode dobrar a aprendizagem ou destruí-la. A diferença não está na tecnologia. Está no design, na implementação e em se o sistema preserva o esforço cognitivo que produz aprendizagem real.',
     'prob.works.tag': 'Quando funciona',
     'prob.works.h': 'IA bem desenhada, professores preparados, ciência da aprendizagem no centro.',
-    'prob.works.e1c': 'Estudantes de Harvard aprenderam mais do que o dobro em menos tempo. 83% avaliaram as explicações da IA como comparáveis ou melhores que as de instrutores humanos.',
-    'prob.works.e2c': 'Em seis semanas na Nigéria: equivalente a 1,5–2 anos de aprendizagem típica. Superou 80% das intervenções educacionais avaliadas com RCTs em países em desenvolvimento. As meninas mostraram ganhos ainda maiores.',
-    'prob.works.e3c': 'por tutor por ano. O Tutor CoPilot de Stanford apoiou 900 tutores e 1.800 estudantes; os tutores com IA usaram estratégias que promovem compreensão profunda.',
-    'prob.works.e4c': 'Em matemática no ensino superior no Equador (5.000 estudantes usando ALEKS). 9 pontos percentuais menos de probabilidade de reprovação.',
+    'prob.works.c1': 'Quando o sistema exige o trabalho cognitivo do estudante e a IA aporta andaime, não atalhos.',
+    'prob.works.c2': 'Quando os professores estão preparados para integrar a ferramenta à sua prática, não para substituí-la.',
+    'prob.works.c3': 'Quando a métrica de sucesso é a aprendizagem duradoura, não a sensação do momento.',
     'prob.fails.tag': 'Quando falha',
     'prob.fails.h': 'IA que substitui o pensamento, em vez de amplificá-lo.',
-    'prob.fails.e1c': 'Quase 1.000 alunos do ensino médio com GPT básico melhoraram 48% enquanto usavam. Ao retirar o acesso, tiveram desempenho 17% pior que o grupo de controle. Não tinham aprendido — tinham terceirizado o pensamento.',
-    'prob.fails.e2c': '666 participantes: correlação negativa forte entre uso frequente de IA e pensamento crítico. Correlação positiva com "descarga cognitiva" — a IA pensando pelo aluno.',
-    'prob.fails.e3c': 'Estudantes preferem as ferramentas que exigem menos esforço — exatamente aquelas que minam a aprendizagem. A fluência do momento é confundida com domínio duradouro.',
-    'prob.fails.e4c': 'O padrão é consistente: quando a IA elimina o atrito cognitivo, elimina também a aprendizagem. Sentir que se está aprendendo não é o mesmo que aprender.',
-    'prob.fails.e4cite': 'Síntese de evidências, 2024–2025',
+    'prob.fails.c1': 'Quando a IA responde pelo estudante, não fica resíduo cognitivo. Sentir que se está aprendendo não é o mesmo que aprender.',
+    'prob.fails.c2': 'Quando os estudantes preferem a ferramenta que exige menos esforço, acabam escolhendo justamente a que mina a aprendizagem.',
+    'prob.fails.c3': 'Quando a fluência do momento é confundida com domínio, a aprendizagem desaparece assim que o acesso é retirado.',
     'prob.pull': 'A pergunta não é <em>se</em> a IA mudará a educação. É se os líderes que tomam decisões terão a evidência necessária para que essa mudança sirva à aprendizagem — e não apenas ao desempenho.',
 
     'build.eyebrow': 'O que construímos',
@@ -1460,6 +1551,27 @@ const I18N = {
     'sd.q3': 'A IA amplia a desigualdade educacional?',
     'sd.q4': 'Proibir a IA na escola?',
     'sd.meta': 'Debate baseado em evidências',
+
+    'conv.eyebrow': 'Próximas conversas',
+    'conv.title': 'Cada conversa, arquivada.',
+    'conv.lede': 'Pesquisadores, ministérios e praticantes em diálogo público. As gravações, materiais e agenda ficarão aqui assim que forem publicados.',
+    'conv.ph.eyebrow': 'Em breve',
+    'conv.ph.h': 'Estamos fechando a agenda da primeira conversa.',
+    'conv.ph.p': 'Avisamos por email assim que a data e o painel forem confirmados.',
+    'conv.ph.cta': 'Assine a newsletter',
+
+    'nlp.archive.eyebrow': 'Edições publicadas',
+    'nlp.archive.h': 'O arquivo vai viver aqui.',
+    'nlp.archive.p': 'Assim que publicarmos a primeira edição, o arquivo completo ficará disponível para navegar e compartilhar.',
+    'nlp.archive.cta': 'Assinar',
+
+    'res.eyebrow': 'Base de evidência',
+    'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
+    'res.lede': 'Estamos construindo uma base navegável dos estudos mais relevantes para a América Latina — RCTs, princípios de ciência cognitiva, avaliações de políticas públicas. Pública e linkável, com o NotebookLM como camada de exploração.',
+    'res.ph.eyebrow': 'Em breve',
+    'res.ph.h': 'A primeira versão incluirá os RCTs mais citados e os princípios fundamentais da ciência da aprendizagem.',
+    'res.ph.p': 'Quer propor um estudo para incluir? Escreva para nós.',
+    'res.ph.cta': 'Propor estudo',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
