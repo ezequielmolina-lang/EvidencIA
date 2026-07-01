@@ -277,6 +277,62 @@
     font-style: italic;
   }
 
+  /* Video + article */
+  .video-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    margin-top: 40px;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .article-callout {
+    margin-top: 24px;
+    padding: 28px 32px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .article-callout:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .article-callout .art-body { flex: 1; min-width: 240px; }
+  .article-callout .art-tag {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold-deep);
+    margin-bottom: 6px;
+  }
+  .article-callout .art-h {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500; font-size: 20px;
+    line-height: 1.22; letter-spacing: -0.01em;
+  }
+  .article-callout .art-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    white-space: nowrap;
+  }
+  .article-callout .art-cta::after { content: "↗"; font-size: 11px; }
+
   /* Resources */
   .res-row {
     display: grid;
@@ -411,6 +467,27 @@
         <li data-i18n="what.check3"><b>Ocho meses de acompañamiento por WhatsApp</b> — soporte de bajo costo y alta continuidad.</li>
         <li data-i18n="what.check4"><b>Sin materiales prescriptivos.</b> El programa construye habilidad transferible, no proficiencia con prompts fijos.</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- EN LOS MEDIOS -->
+  <section class="block">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="media.eyebrow">En los medios · Microsoft Build 2025</div>
+      <h2 class="section-title" data-i18n="media.title">Satya Nadella lo presentó desde el escenario.</h2>
+      <p class="section-lede" data-i18n="media.lede">Microsoft destacó a "La IA en el Aula" en el keynote de Microsoft Build 2025 y en un feature de Microsoft Source LATAM sobre docentes peruanos usando Copilot en el aula.</p>
+
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/HF7HpClQXm4" title="Empowering teachers in Peru with Microsoft 365 Copilot Chat: Satya Nadella at Microsoft Build 2025" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+      <a class="article-callout" href="https://news.microsoft.com/source/latam/features/ia/banco-mundial-peru-profesores-copilot-es/" target="_blank" rel="noopener" data-i18n-href="media.article.url">
+        <div class="art-body">
+          <div class="art-tag" data-i18n="media.article.tag">Microsoft Source LATAM · Nota</div>
+          <div class="art-h" data-i18n="media.article.title">Del escepticismo al éxito: cómo la IA está ayudando a docentes a transformar aulas en Perú</div>
+        </div>
+        <span class="art-cta" data-i18n="media.article.cta">Leer la nota</span>
+      </a>
     </div>
   </section>
 
@@ -553,6 +630,13 @@ const I18N = {
     'what.check2': '<b>Licencia de Microsoft Copilot</b> disponible durante toda la intervención.',
     'what.check3': '<b>Ocho meses de acompañamiento por WhatsApp</b> — soporte de bajo costo y alta continuidad.',
     'what.check4': '<b>Sin materiales prescriptivos.</b> El programa construye habilidad transferible, no proficiencia con prompts fijos.',
+    'media.eyebrow': 'En los medios · Microsoft Build 2025',
+    'media.title': 'Satya Nadella lo presentó desde el escenario.',
+    'media.lede': 'Microsoft destacó a "La IA en el Aula" en el keynote de Microsoft Build 2025 y en un feature de Microsoft Source LATAM sobre docentes peruanos usando Copilot en el aula.',
+    'media.article.url': 'https://news.microsoft.com/source/latam/features/ia/banco-mundial-peru-profesores-copilot-es/',
+    'media.article.tag': 'Microsoft Source LATAM · Nota',
+    'media.article.title': 'Del escepticismo al éxito: cómo la IA está ayudando a docentes a transformar aulas en Perú',
+    'media.article.cta': 'Leer la nota',
     'eval.eyebrow': 'La evaluación',
     'eval.title': 'RCT con 1.270 docentes en 390 escuelas de Lima.',
     'eval.lede': 'Aleatorización a nivel escuela, estratificada por distrito administrativo y por desempeño matemático de base. Sin diferencial de atrición entre tratamiento y control. Ocho meses de seguimiento mediante datos administrativos de plataforma + una encuesta endline con evaluación a ciegas.',
@@ -604,6 +688,13 @@ const I18N = {
     'what.check2': '<b>Microsoft Copilot license</b> available throughout the intervention.',
     'what.check3': '<b>Eight months of WhatsApp follow-up</b> — low-cost, high-continuity support.',
     'what.check4': '<b>No prescriptive materials.</b> The program builds transferable skill, not proficiency with fixed prompts.',
+    'media.eyebrow': 'In the news · Microsoft Build 2025',
+    'media.title': 'Satya Nadella featured it from the keynote stage.',
+    'media.lede': 'Microsoft highlighted "La IA en el Aula" at the Microsoft Build 2025 keynote and in a Microsoft Source LATAM feature about Peruvian teachers using Copilot in the classroom.',
+    'media.article.url': 'https://news.microsoft.com/source/latam/features/ai/world-bank-peru-teachers-copilot/?lang=en',
+    'media.article.tag': 'Microsoft Source LATAM · Feature',
+    'media.article.title': 'From skepticism to success: How AI is helping teachers transform classrooms in Peru',
+    'media.article.cta': 'Read the feature',
     'eval.eyebrow': 'The evaluation',
     'eval.title': 'RCT with 1,270 teachers across 390 schools in Lima.',
     'eval.lede': 'Randomized at the school level, stratified by administrative district and baseline math performance. No differential attrition between treatment and control. Eight months of follow-up via administrative platform data plus a blind-graded endline survey.',
@@ -655,6 +746,13 @@ const I18N = {
     'what.check2': '<b>Licença do Microsoft Copilot</b> disponível durante toda a intervenção.',
     'what.check3': '<b>Oito meses de acompanhamento por WhatsApp</b> — suporte de baixo custo e alta continuidade.',
     'what.check4': '<b>Sem materiais prescritivos.</b> O programa constrói habilidade transferível, não proficiência com prompts fixos.',
+    'media.eyebrow': 'Na mídia · Microsoft Build 2025',
+    'media.title': 'Satya Nadella o apresentou no palco principal.',
+    'media.lede': 'A Microsoft destacou "La IA en el Aula" no keynote do Microsoft Build 2025 e em um feature do Microsoft Source LATAM sobre professores peruanos usando o Copilot em sala de aula.',
+    'media.article.url': 'https://news.microsoft.com/source/latam/features/ai/world-bank-peru-teachers-copilot/?lang=en',
+    'media.article.tag': 'Microsoft Source LATAM · Feature',
+    'media.article.title': 'From skepticism to success: How AI is helping teachers transform classrooms in Peru',
+    'media.article.cta': 'Ler o feature',
     'eval.eyebrow': 'A avaliação',
     'eval.title': 'RCT com 1.270 professores em 390 escolas de Lima.',
     'eval.lede': 'Aleatorização em nível escolar, estratificada por distrito administrativo e pelo desempenho matemático de base. Sem diferencial de atrição entre tratamento e controle. Oito meses de acompanhamento via dados administrativos da plataforma + uma pesquisa endline com avaliação cega.',
@@ -703,6 +801,11 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const value = I18N[lang][key];
     if (value !== undefined) el.innerHTML = value;
+  });
+  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+    const key = el.getAttribute('data-i18n-href');
+    const value = I18N[lang][key];
+    if (value !== undefined) el.setAttribute('href', value);
   });
   document.querySelectorAll('.lang button').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
