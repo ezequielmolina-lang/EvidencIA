@@ -818,12 +818,23 @@
   }
   .product {
     background: var(--bg-soft);
-    border-radius: 18px; padding: 36px 32px 32px;
+    border-radius: 18px; overflow: hidden;
     display: flex; flex-direction: column;
     min-height: 360px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .product:hover { transform: translateY(-3px); box-shadow: 0 12px 40px -16px rgba(15,14,12,0.15); }
+  .product .p-img {
+    aspect-ratio: 16 / 9;
+    background: #FAF7F0;
+    border-bottom: 1px solid var(--rule);
+    display: block; overflow: hidden;
+  }
+  .product .p-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .product .p-body {
+    padding: 32px 32px 32px;
+    display: flex; flex-direction: column; flex: 1;
+  }
   .product .p-num {
     font-family: 'Source Serif 4', Georgia, serif;
     font-size: 14px; font-weight: 600;
@@ -1316,22 +1327,31 @@
 
       <div class="products">
         <div class="product">
-          <div class="p-num">01</div>
-          <h3 data-i18n="build.p1.h">Newsletter</h3>
-          <p data-i18n="build.p1.p">Qué funciona: evidencia de experimentos rigurosos. Qué sabemos: ciencia del aprendizaje aplicada. Qué están haciendo los países: políticas reales en marcha. Curado por los socios de la red.</p>
-          <div class="p-tag" data-i18n="build.p1.tag">Lectura corta</div>
+          <div class="p-img"><img src="img/card-newsletter.png" alt="" loading="lazy"></div>
+          <div class="p-body">
+            <div class="p-num">01</div>
+            <h3 data-i18n="build.p1.h">Newsletter</h3>
+            <p data-i18n="build.p1.p">Qué funciona: evidencia de experimentos rigurosos. Qué sabemos: ciencia del aprendizaje aplicada. Qué están haciendo los países: políticas reales en marcha. Curado por los socios de la red.</p>
+            <div class="p-tag" data-i18n="build.p1.tag">Lectura corta</div>
+          </div>
         </div>
         <div class="product">
-          <div class="p-num">02</div>
-          <h3 data-i18n="build.p2.h">Seminarios</h3>
-          <p data-i18n="build.p2.p">Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.</p>
-          <div class="p-tag" data-i18n="build.p2.tag">En vivo</div>
+          <div class="p-img"><img src="img/card-seminarios.png" alt="" loading="lazy"></div>
+          <div class="p-body">
+            <div class="p-num">02</div>
+            <h3 data-i18n="build.p2.h">Seminarios</h3>
+            <p data-i18n="build.p2.p">Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.</p>
+            <div class="p-tag" data-i18n="build.p2.tag">En vivo</div>
+          </div>
         </div>
         <div class="product">
-          <div class="p-num">03</div>
-          <h3 data-i18n="build.p3.h">Comunidad de práctica</h3>
-          <p data-i18n="build.p3.p">Universidades, ministerios, empresas de edtech, investigadores. Quienes generan evidencia conectados con quienes toman decisiones. Arrancamos con la comunidad de más de 700 participantes de MetaRed Global.</p>
-          <div class="p-tag" data-i18n="build.p3.tag">700+ participantes</div>
+          <div class="p-img"><img src="img/card-comunidad.png" alt="" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+          <div class="p-body">
+            <div class="p-num">03</div>
+            <h3 data-i18n="build.p3.h">Comunidad IA.EDU</h3>
+            <p data-i18n="build.p3.p">Docentes universitarios comparten experiencias reales del uso de IA en el aula. Comunidad de práctica de la <b>UPC</b> con <b>MetaredTIC Perú</b>. Reuniones en vivo los viernes 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Bitácora de sesiones</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Registro MetaredTIC</a></p>
+            <div class="p-tag" data-i18n="build.p3.tag">Viernes 10 am</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1844,9 +1864,9 @@ const I18N = {
     'build.p2.h': 'Seminarios',
     'build.p2.p': 'Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.',
     'build.p2.tag': 'En vivo',
-    'build.p3.h': 'Comunidad de práctica',
-    'build.p3.p': 'Universidades, ministerios, empresas de edtech, investigadores. Quienes generan evidencia conectados con quienes toman decisiones. Arrancamos con la comunidad de más de 700 participantes de MetaRed Global.',
-    'build.p3.tag': '700+ participantes',
+    'build.p3.h': 'Comunidad IA.EDU',
+    'build.p3.p': 'Docentes universitarios comparten experiencias reales del uso de IA en el aula. Comunidad de práctica de la <b>UPC</b> con <b>MetaredTIC Perú</b>. Reuniones en vivo los viernes 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Bitácora de sesiones</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Registro MetaredTIC</a>',
+    'build.p3.tag': 'Viernes 10 am',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'Las preguntas que la conversación pública evita.',
@@ -2062,9 +2082,9 @@ const I18N = {
     'build.p2.h': 'Seminars',
     'build.p2.p': 'Conversations worth having. Researchers from Harvard, Stanford, UCLA. Teams behind the RCTs in Ecuador, Nigeria, Ghana. Ministries from Chile, Brazil, El Salvador, Uruguay. Includes the <b>EvidencIA Smackdowns</b>: evidence-based debates on the most uncomfortable questions.',
     'build.p2.tag': 'Live',
-    'build.p3.h': 'Community of practice',
-    'build.p3.p': 'Universities, ministries, edtech companies, researchers. Those who generate evidence, connected to those who make decisions. We start with the 700+ participant community from MetaRed Global.',
-    'build.p3.tag': '700+ participants',
+    'build.p3.h': 'IA.EDU community',
+    'build.p3.p': 'University faculty share real experiences of AI use in the classroom. Community of practice hosted by <b>UPC</b> with <b>MetaredTIC Peru</b>. Live meetings every Friday at 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Session logs</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Register (MetaredTIC)</a>',
+    'build.p3.tag': 'Fridays 10 am',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'The questions the public conversation avoids.',
@@ -2280,9 +2300,9 @@ const I18N = {
     'build.p2.h': 'Seminários',
     'build.p2.p': 'Conversas que valem a pena. Pesquisadores de Harvard, Stanford, UCLA. As equipes por trás dos RCTs no Equador, Nigéria, Gana. Ministérios do Chile, Brasil, El Salvador, Uruguai. Inclui os <b>EvidencIA Smackdowns</b>: debates baseados em evidências sobre as perguntas mais incômodas.',
     'build.p2.tag': 'Ao vivo',
-    'build.p3.h': 'Comunidade de prática',
-    'build.p3.p': 'Universidades, ministérios, empresas de edtech, pesquisadores. Quem gera evidência conectado a quem toma decisões. Começamos com a comunidade de mais de 700 participantes da MetaRed Global.',
-    'build.p3.tag': '700+ participantes',
+    'build.p3.h': 'Comunidade IA.EDU',
+    'build.p3.p': 'Docentes universitários compartilham experiências reais do uso de IA na sala de aula. Comunidade de prática da <b>UPC</b> com a <b>MetaredTIC Peru</b>. Reuniões ao vivo às sextas-feiras às 10h. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Registro das sessões</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Cadastro MetaredTIC</a>',
+    'build.p3.tag': 'Sextas 10h',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'As perguntas que a conversa pública evita.',
