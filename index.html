@@ -477,66 +477,69 @@
   }
   .edition-card:hover { border-color: var(--gold); transform: translateY(-2px); }
   .edition-body { padding: 24px 30px 28px; display: flex; flex-direction: column; gap: 12px; }
-  .edition-viz {
-    padding: 32px 28px;
-    background: var(--ink);
+  .edition-photo {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #2C2418;
+  }
+  .edition-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+  .edition-card:hover .edition-photo img { transform: scale(1.03); }
+  .edition-badge {
+    position: absolute;
+    left: 18px; bottom: 18px;
+    padding: 12px 18px;
+    background: rgba(15,14,12,0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
     color: var(--bg);
-    border-bottom: 1px solid var(--rule);
-    text-align: center;
+    display: flex; flex-direction: column; gap: 4px;
+    max-width: calc(100% - 36px);
   }
-  .edition-viz-eyebrow {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-  .edition-viz-num {
+  .edition-badge .badge-num {
     font-family: 'Source Serif 4', Georgia, serif;
     font-weight: 500;
-    font-size: 56px;
+    font-size: 36px;
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--red);
   }
-  .edition-viz-num.small { font-size: 40px; }
-  .edition-viz-num.pos { color: #7BAE86; }
-  .edition-viz-lbl {
-    margin-top: 12px;
+  .edition-badge .badge-num.pos { color: #7BAE86; }
+  .edition-badge .badge-lbl {
     font-family: 'Source Serif 4', Georgia, serif;
     font-style: italic;
-    font-size: 14px;
-    line-height: 1.4;
-    color: rgba(250,247,240,0.75);
-    max-width: 30ch;
-    margin-left: auto; margin-right: auto;
+    font-size: 12px;
+    line-height: 1.35;
+    color: rgba(250,247,240,0.8);
+    max-width: 22ch;
   }
-  .edition-viz.split {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 0;
-    padding: 32px 0;
+  .edition-badge.split {
+    flex-direction: row;
     align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
   }
-  .edition-viz.split .edition-viz-side { padding: 0 20px; }
-  .edition-viz.split::before {
-    content: "";
-    grid-column: 2;
-    height: 60%;
-    background: rgba(250,247,240,0.15);
-    align-self: center;
-  }
-  .edition-viz.split > .edition-viz-side:nth-child(2) { grid-column: 3; }
-  .edition-viz-lbl-sm {
-    margin-top: 10px;
-    font-size: 10px;
+  .edition-badge.split .badge-side { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; }
+  .edition-badge.split .badge-num { font-size: 28px; }
+  .edition-badge .badge-lbl-sm {
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(250,247,240,0.6);
+    color: rgba(250,247,240,0.7);
   }
-  .edition-viz.split .down .edition-viz-lbl-sm { color: #E88F76; }
-  .edition-viz.split .up .edition-viz-lbl-sm { color: #7BAE86; }
+  .edition-badge.split .badge-side:first-child .badge-lbl-sm { color: #E88F76; }
+  .edition-badge.split .badge-side:last-child .badge-lbl-sm { color: #7BAE86; }
+  .edition-badge .badge-divider {
+    width: 1px; height: 32px;
+    background: rgba(250,247,240,0.2);
+  }
   .edition-meta {
     display: flex;
     align-items: center;
@@ -1259,10 +1262,12 @@
 
       <div class="editions-grid">
         <a class="edition-card" href="ediciones/egresados-universitarios.html">
-          <div class="edition-viz down">
-            <div class="edition-viz-eyebrow" data-i18n="nlp.ed1.stat.eyebrow">La cifra</div>
-            <div class="edition-viz-num">−16%</div>
-            <div class="edition-viz-lbl" data-i18n="nlp.ed1.stat.lbl">Empleabilidad de jóvenes 22–25 en sectores expuestos</div>
+          <div class="edition-photo">
+            <img src="img/edicion-egresados.png" alt="Ilustración editorial — camino de logro que se desvanece" loading="lazy" />
+            <div class="edition-badge">
+              <span class="badge-num">−16%</span>
+              <span class="badge-lbl" data-i18n="nlp.ed1.stat.lbl">Empleabilidad 22–25 · sectores expuestos</span>
+            </div>
           </div>
           <div class="edition-body">
             <div class="edition-meta">
@@ -1276,14 +1281,18 @@
           </div>
         </a>
         <a class="edition-card" href="ediciones/profesiones-encrucijada.html">
-          <div class="edition-viz split">
-            <div class="edition-viz-side down">
-              <div class="edition-viz-num small">−17%</div>
-              <div class="edition-viz-lbl-sm" data-i18n="nlp.ed2.stat.a">Desplazamiento</div>
-            </div>
-            <div class="edition-viz-side up">
-              <div class="edition-viz-num small pos">+22%</div>
-              <div class="edition-viz-lbl-sm" data-i18n="nlp.ed2.stat.b">Aumentación</div>
+          <div class="edition-photo">
+            <img src="img/edicion-profesiones.png" alt="Ilustración editorial — bifurcación de un camino al amanecer" loading="lazy" />
+            <div class="edition-badge split">
+              <div class="badge-side">
+                <span class="badge-num">−17%</span>
+                <span class="badge-lbl-sm" data-i18n="nlp.ed2.stat.a">Desplazamiento</span>
+              </div>
+              <div class="badge-divider"></div>
+              <div class="badge-side">
+                <span class="badge-num pos">+22%</span>
+                <span class="badge-lbl-sm" data-i18n="nlp.ed2.stat.b">Aumentación</span>
+              </div>
             </div>
           </div>
           <div class="edition-body">
