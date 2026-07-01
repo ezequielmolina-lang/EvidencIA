@@ -364,15 +364,11 @@
   }
   .ev-block-lead em {
     font-style: normal;
-    background: linear-gradient(180deg, transparent 62%, rgba(184,132,43,0.22) 62%);
-    padding: 0 2px;
+    font-weight: 500;
+    color: var(--gold-deep);
   }
-  .ev-block[data-cat="works"] .ev-block-lead em {
-    background: linear-gradient(180deg, transparent 62%, rgba(45,95,62,0.22) 62%);
-  }
-  .ev-block[data-cat="fails"] .ev-block-lead em {
-    background: linear-gradient(180deg, transparent 62%, rgba(177,70,41,0.20) 62%);
-  }
+  .ev-block[data-cat="works"] .ev-block-lead em { color: var(--works); }
+  .ev-block[data-cat="fails"] .ev-block-lead em { color: var(--fails); }
   .ev-papers-list {
     list-style: none;
     padding: 0;
@@ -409,6 +405,13 @@
     font-size: 13px;
     color: var(--ink-mute);
     line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .ev-paper-summary {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 68ch;
   }
   .ev-paper-langs {
     display: flex;
@@ -1357,38 +1360,6 @@
     </div>
   </section>
 
-  <!-- SMACKDOWNS -->
-  <section id="smackdowns">
-    <div class="container">
-      <div class="section-eyebrow" data-i18n="sd.eyebrow">EvidencIA Smackdowns</div>
-      <h2 class="section-title" data-i18n="sd.title">Las preguntas que la conversación pública evita.</h2>
-      <p class="smackdown-intro" data-i18n="sd.lede">Debates basados en evidencia, no diplomacias. Algunas de las preguntas que podríamos abrir:</p>
-
-      <div class="smackdowns">
-        <div class="smackdown">
-          <div class="s-num">01</div>
-          <div class="s-q" data-i18n="sd.q1">¿La IA nos hace más tontos?</div>
-          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
-        </div>
-        <div class="smackdown">
-          <div class="s-num">02</div>
-          <div class="s-q" data-i18n="sd.q2">¿El docente será obsoleto?</div>
-          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
-        </div>
-        <div class="smackdown">
-          <div class="s-num">03</div>
-          <div class="s-q" data-i18n="sd.q3">¿La IA amplía la brecha educativa?</div>
-          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
-        </div>
-        <div class="smackdown">
-          <div class="s-num">04</div>
-          <div class="s-q" data-i18n="sd.q4">¿Prohibir la IA en la escuela?</div>
-          <div class="s-meta" data-i18n="sd.meta">Debate basado en evidencia</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONVERSACIONES -->
   <section id="conversaciones">
     <div class="container">
@@ -1530,7 +1501,7 @@
 
       <div class="papers-footer">
         <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
-        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard completo →</a>
+        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard del Banco Mundial →</a>
       </div>
 
       <div class="placeholder-card" style="margin-top: 48px;">
@@ -1772,7 +1743,6 @@
         <ul>
           <li><a href="#problema" data-i18n="foot.l1">El problema</a></li>
           <li><a href="#construyendo" data-i18n="foot.l2">Qué construimos</a></li>
-          <li><a href="#smackdowns" data-i18n="foot.l3">Smackdowns</a></li>
           <li><a href="#socios" data-i18n="foot.l4">Socios</a></li>
         </ul>
       </div>
@@ -1862,7 +1832,7 @@ const I18N = {
     'build.p1.p': 'Qué funciona: evidencia de experimentos rigurosos. Qué sabemos: ciencia del aprendizaje aplicada. Qué están haciendo los países: políticas reales en marcha. Curado por los socios de la red.',
     'build.p1.tag': 'Lectura corta',
     'build.p2.h': 'Seminarios',
-    'build.p2.p': 'Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay. Incluye los <b>EvidencIA Smackdowns</b>: debates basados en evidencia sobre las preguntas más incómodas.',
+    'build.p2.p': 'Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay.',
     'build.p2.tag': 'En vivo',
     'build.p3.h': 'Comunidad IA.EDU',
     'build.p3.p': 'Docentes universitarios comparten experiencias reales del uso de IA en el aula. Comunidad de práctica de la <b>UPC</b> con <b>MetaredTIC Perú</b>. Reuniones en vivo los viernes 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Bitácora de sesiones</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Registro MetaredTIC</a>',
@@ -1923,8 +1893,8 @@ const I18N = {
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
     'res.lede': 'Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.',
-    'res.cta.text': 'El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.',
-    'res.cta.btn': 'Ver dashboard completo →',
+    'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
+    'res.cta.btn': 'Ver dashboard del Banco Mundial →',
     'res.add.eyebrow': '¿Querés sumar un estudio?',
     'res.add.h': 'Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.',
     'res.add.p': 'Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.',
@@ -1938,7 +1908,7 @@ const I18N = {
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
     'res.ev.landscape.title': 'Empezamos con la serie del Banco Mundial.',
-    'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. Se suman los estudios de habilidades digitales (WP-14 marco de competencias, WP-15 innovación y transformación económica en África Subsahariana) porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
+    'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. También se suman los estudios de habilidades digitales, porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
     'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
     'res.ev.tutoring.lead': 'Siete ensayos aleatorizados en cuatro continentes apuntan al mismo mecanismo. <em>Nigeria +0.31 SD</em> en seis semanas (≈ 1,5–2 años de escolarización). <em>Sierra Leona +0.26 SD</em> en pruebas externamente validadas, con más del 90% de las conversaciones dedicadas a construir comprensión conceptual. <em>Harvard</em>: los estudiantes con el tutor IA aprendieron más del doble en menos tiempo que la clase activa. <em>Taipéi</em> aisla la variable más profunda — mismo tutor guardrailed, sola diferencia el ordenamiento adaptativo de problemas, +0.15 SD en el examen final sin IA. <em>Reino Unido (LearnLM + Eedi)</em>: los tutores expertos aprobaron el 76% de los mensajes del modelo con cero o mínima edición. Y en <em>Turquía</em>, el brazo guardrailed del propio Bastani elimina el negative transfer del brazo libre — mismo estudio, mismo tipo de estudiantes; el diseño cambió el resultado.',
     'res.ev.wild.title': 'Cuando la IA entra sin barandas, el rendimiento sube y el aprendizaje cae.',
@@ -2080,7 +2050,7 @@ const I18N = {
     'build.p1.p': 'What works: evidence from rigorous experiments. What we know: applied learning science. What countries are doing: real policies in motion. Curated by the network partners.',
     'build.p1.tag': 'Short read',
     'build.p2.h': 'Seminars',
-    'build.p2.p': 'Conversations worth having. Researchers from Harvard, Stanford, UCLA. Teams behind the RCTs in Ecuador, Nigeria, Ghana. Ministries from Chile, Brazil, El Salvador, Uruguay. Includes the <b>EvidencIA Smackdowns</b>: evidence-based debates on the most uncomfortable questions.',
+    'build.p2.p': 'Conversations worth having. Researchers from Harvard, Stanford, UCLA. Teams behind the RCTs in Ecuador, Nigeria, Ghana. Ministries from Chile, Brazil, El Salvador, Uruguay.',
     'build.p2.tag': 'Live',
     'build.p3.h': 'IA.EDU community',
     'build.p3.p': 'University faculty share real experiences of AI use in the classroom. Community of practice hosted by <b>UPC</b> with <b>MetaredTIC Peru</b>. Live meetings every Friday at 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Session logs</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Register (MetaredTIC)</a>',
@@ -2141,8 +2111,8 @@ const I18N = {
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
     'res.lede': 'We start with the World Bank series on AI in education, read across 213 countries and available in Spanish, English, Portuguese and Bulgarian. This is the starting point — the navigable base grows with the network.',
-    'res.cta.text': 'The full dashboard with downloads by country, language and publication is refreshed every two months.',
-    'res.cta.btn': 'Open full dashboard →',
+    'res.cta.text': 'The World Bank AI-in-education publications have their own dashboard with downloads by country and language, refreshed every two months.',
+    'res.cta.btn': 'Open the World Bank dashboard →',
     'res.add.eyebrow': 'Want to add a study?',
     'res.add.h': 'We\'re adding RCTs, cognitive-science principles and policy evaluations.',
     'res.add.p': 'If you know of a study that should live here, write to us. The base is curated by the network partners.',
@@ -2156,7 +2126,7 @@ const I18N = {
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
     'res.ev.landscape.title': 'We start with the World Bank series.',
-    'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. We fold in the digital-skills studies (WP-14 competence frameworks, WP-15 innovation and economic transformation in Sub-Saharan Africa) because the AI-in-education debate can\'t be read without the human-capital map.',
+    'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The World Bank AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. Digital-skills studies are folded in because the AI-in-education debate can\'t be read without the human-capital map.',
     'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
     'res.ev.tutoring.lead': 'Seven randomized trials across four continents point to the same mechanism. <em>Nigeria +0.31 SD</em> in six weeks (≈ 1.5–2 years of schooling). <em>Sierra Leone +0.26 SD</em> on externally validated tests, with over 90% of conversations spent building conceptual understanding. <em>Harvard</em>: students with the AI tutor learned more than twice as much in less time than active learning. <em>Taipei</em> isolates the sharpest variable — same guardrailed tutor, only adaptive problem sequencing differs, +0.15 SD on the no-AI final exam. <em>UK (LearnLM + Eedi)</em>: expert tutors approved 76% of the model\'s messages with zero or minimal edits. <em>Chile (Gallegos)</em>: guidance on learning-oriented use raised final-exam scores by 0.21 SD; encouraging adoption alone did nothing. And in <em>Turkey</em>, the guardrailed arm of Bastani\'s own study erases the negative transfer of the free-access arm — same study, same students; design changed the outcome.',
     'res.ev.wild.title': 'When AI enters without guardrails, performance goes up and learning goes down.',
@@ -2298,7 +2268,7 @@ const I18N = {
     'build.p1.p': 'O que funciona: evidência de experimentos rigorosos. O que sabemos: ciência da aprendizagem aplicada. O que os países estão fazendo: políticas reais em curso. Curada pelos parceiros da rede.',
     'build.p1.tag': 'Leitura curta',
     'build.p2.h': 'Seminários',
-    'build.p2.p': 'Conversas que valem a pena. Pesquisadores de Harvard, Stanford, UCLA. As equipes por trás dos RCTs no Equador, Nigéria, Gana. Ministérios do Chile, Brasil, El Salvador, Uruguai. Inclui os <b>EvidencIA Smackdowns</b>: debates baseados em evidências sobre as perguntas mais incômodas.',
+    'build.p2.p': 'Conversas que valem a pena. Pesquisadores de Harvard, Stanford, UCLA. As equipes por trás dos RCTs no Equador, Nigéria, Gana. Ministérios do Chile, Brasil, El Salvador, Uruguai.',
     'build.p2.tag': 'Ao vivo',
     'build.p3.h': 'Comunidade IA.EDU',
     'build.p3.p': 'Docentes universitários compartilham experiências reais do uso de IA na sala de aula. Comunidade de prática da <b>UPC</b> com a <b>MetaredTIC Peru</b>. Reuniões ao vivo às sextas-feiras às 10h. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Registro das sessões</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Cadastro MetaredTIC</a>',
@@ -2359,8 +2329,8 @@ const I18N = {
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
     'res.lede': 'Começamos com a série do Banco Mundial sobre IA em educação, lida em 213 países e disponível em espanhol, inglês, português e búlgaro. É o ponto de partida — a base navegável cresce com a rede.',
-    'res.cta.text': 'O dashboard completo com downloads por país, idioma e publicação é atualizado a cada dois meses.',
-    'res.cta.btn': 'Abrir dashboard completo →',
+    'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
+    'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
     'res.add.eyebrow': 'Quer adicionar um estudo?',
     'res.add.h': 'Estamos adicionando RCTs, princípios de ciência cognitiva e avaliações de políticas públicas.',
     'res.add.p': 'Se conhece um estudo que deveria estar aqui, escreva para nós. A base é curada pelos parceiros da rede.',
@@ -2374,7 +2344,7 @@ const I18N = {
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
     'res.ev.landscape.title': 'Começamos pela série do Banco Mundial.',
-    'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Somam-se os estudos de habilidades digitais (WP-14 marco de competências, WP-15 inovação e transformação econômica na África Subsaariana) porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
+    'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Também entram os estudos de habilidades digitais, porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
     'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
     'res.ev.tutoring.lead': 'Sete ensaios aleatorizados em quatro continentes apontam ao mesmo mecanismo. <em>Nigéria +0,31 DP</em> em seis semanas (≈ 1,5–2 anos de escolaridade). <em>Serra Leoa +0,26 DP</em> em provas externamente validadas, com mais de 90% das conversas dedicadas à construção de compreensão conceitual. <em>Harvard</em>: os estudantes com o tutor de IA aprenderam mais do dobro em menos tempo do que a aula ativa. <em>Taipé</em> isola a variável mais fina — mesmo tutor guardrailed, só difere o sequenciamento adaptativo de problemas, +0,15 DP no exame sem IA. <em>Reino Unido (LearnLM + Eedi)</em>: os tutores especialistas aprovaram 76% das mensagens do modelo com zero ou mínima edição. <em>Chile (Gallegos)</em>: a orientação sobre uso voltado à aprendizagem elevou o exame final em 0,21 DP; incentivar a adoção sozinha não fez nada. E na <em>Turquia</em>, o braço guardrailed do próprio Bastani apaga o negative transfer do braço livre — mesmo estudo, mesmos alunos; o desenho mudou o resultado.',
     'res.ev.wild.title': 'Quando a IA entra sem grades, o desempenho sobe e a aprendizagem cai.',
@@ -2484,22 +2454,6 @@ const I18N = {
 // ============================================================
 const PAPERS = [
   // ============ WB GUIDES ============
-  {
-    id: 'not-faster-but-better', year: 2026, forthcoming: true,
-    category: 'wb-guides',
-    title: {
-      es: 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
-      en: 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
-      pt: 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
-    },
-    source: 'UW-Madison · World Bank · U Toronto',
-    summary: {
-      es: 'RCT con 1.270 docentes de 6to grado en 390 escuelas públicas de Lima. La capacitación en IA generativa no ahorró tiempo, pero mejoró la calidad de los prompts y la capacidad de juzgar respuestas de IA. Efectos mayores en docentes con más edad — cerrando brechas de habilidad.',
-      en: 'RCT with 1,270 6th-grade teachers across 390 public schools in Lima. Generative-AI training didn\'t save teachers time — but improved their prompt quality and their ability to judge AI outputs. Effects largest for older teachers, narrowing skill gaps.',
-      pt: 'RCT com 1.270 professores do 6º ano em 390 escolas públicas de Lima. O treinamento em IA generativa não economizou tempo dos professores — mas melhorou a qualidade dos prompts e a capacidade de avaliar respostas de IA. Efeitos maiores em professores com mais idade, reduzindo diferenças de habilidade.',
-    },
-    langs: [],
-  },
   {
     repnb: 191418, year: 2024,
     category: 'wb-guides',
@@ -2653,8 +2607,8 @@ const PAPERS = [
     source: 'Bastani et al. · Wharton (Turkey)',
     summary: { en: 'Same paper, guardrailed condition: the GPT-Tutor arm improved performance without the negative transfer that the unguided arm produced. Design choice — not access to AI — decided whether learning was preserved.' },
     langs: [
-      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
-      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
+      { code: 'Preprint', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
+      { code: 'Journal', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
     ],
   },
   {
@@ -2663,8 +2617,8 @@ const PAPERS = [
     source: 'De Simone, Tiberti, Barron Rodríguez, Manolio, Mosuro & Dikoru · World Bank',
     summary: { en: 'Six-week after-school RCT in nine public secondary schools in Edo State, Nigeria. Copilot (GPT-4) tutoring +0.31 SD overall, +0.23 SD in English — 1.5 to 2 years of business-as-usual schooling. Positive, low-resource mirror image of Bastani.' },
     langs: [
-      { code: 'WB', url: 'https://ideas.repec.org/p/wbk/wbrwps/11125.html' },
-      { code: 'BLOG', url: 'https://blogs.worldbank.org/en/education/From-chalkboards-to-chatbots-in-Nigeria' },
+      { code: 'Working paper', url: 'https://ideas.repec.org/p/wbk/wbrwps/11125.html' },
+      { code: 'Blog', url: 'https://blogs.worldbank.org/en/education/From-chalkboards-to-chatbots-in-Nigeria' },
     ],
   },
   {
@@ -2673,7 +2627,7 @@ const PAPERS = [
     source: 'Kestin, Miller, Klales, Milbourne & Ponti · Harvard',
     summary: { en: '194 undergraduates in Physical Sciences 2. Design-aligned AI tutor outperformed instructor-led active learning: students learned more than twice as much in less time, and 83% rated AI explanations at least as good as human instructors.' },
     langs: [
-      { code: 'NATURE', url: 'https://www.nature.com/articles/s41598-025-97652-6' },
+      { code: 'Journal', url: 'https://www.nature.com/articles/s41598-025-97652-6' },
     ],
   },
   {
@@ -2682,7 +2636,7 @@ const PAPERS = [
     source: 'Sebastian Gallegos · UAI Business School / J-PAL / IZA (Chile)',
     summary: { en: 'Two randomized interventions across 7 econometrics sections at a Chilean university. Encouraging adoption raised awareness and use but did not improve midterm scores. Guidance on learning-oriented use shifted interactions to tutor-style engagement, improved final-exam performance by 0.21 SD and raised the probability of passing by 12 pp. Design — not access — decides the effect.' },
     langs: [
-      { code: 'IZA', url: 'https://docs.iza.org/dp18513.pdf' },
+      { code: 'Working paper', url: 'https://docs.iza.org/dp18513.pdf' },
     ],
   },
   {
@@ -2691,7 +2645,7 @@ const PAPERS = [
     source: 'Chung, Zhang, Kung & Bastani · Wharton / NTU (Taipei)',
     summary: { en: '770 students, 10 high schools, Python. Every student had the same guardrailed tutor; only adaptive problem sequencing differed. +0.15 SD on the no-AI final exam, larger for novices. Cleanest evidence that instructional design — not compliance-checklist features — decides learning.' },
     langs: [
-      { code: 'MACK', url: 'https://mackinstitute.wharton.upenn.edu/2026/research-spotlight-bastani-chung/' },
+      { code: 'Research note', url: 'https://mackinstitute.wharton.upenn.edu/2026/research-spotlight-bastani-chung/' },
     ],
   },
   {
@@ -2700,7 +2654,7 @@ const PAPERS = [
     source: 'LearnLM Team & Eedi · Google DeepMind (UK)',
     summary: { en: '165 students across 5 UK secondary schools on the Eedi maths platform. Expert tutors approved 76.4% of LearnLM messages with zero or minimal edits; students receiving short LearnLM sessions were 5.5 pp more likely to solve novel problems than those with human tutors alone.' },
     langs: [
-      { code: 'arXiv', url: 'https://arxiv.org/abs/2512.23633' },
+      { code: 'Preprint', url: 'https://arxiv.org/abs/2512.23633' },
     ],
   },
   {
@@ -2709,8 +2663,8 @@ const PAPERS = [
     source: 'Google DeepMind & Fab AI (Sierra Leone)',
     summary: { en: '1,763 junior-secondary students, 48 classrooms, Port Loko District. +0.258 SD on externally validated math scores — roughly 1.2 to 1.7 years of typical learning in 8 weeks. Students used the tool to build conceptual understanding in >90% of conversations rather than to extract answers.' },
     langs: [
-      { code: 'BLOG', url: 'https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/' },
-      { code: 'PDF', url: 'https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf' },
+      { code: 'Paper (PDF)', url: 'https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf' },
+      { code: 'Blog', url: 'https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/' },
     ],
   },
 
@@ -2720,7 +2674,7 @@ const PAPERS = [
     source: 'Educational Psychology Review',
     summary: { en: 'Experimental study: students who brainstormed independently BEFORE consulting AI outperformed both AI-first and AI-only conditions on subsequent AI-free creative tasks. A concrete pre-task design principle that prevents cognitive surrender.' },
     langs: [
-      { code: 'DOI', url: 'https://doi.org/10.1007/s10648-026-10118-7' },
+      { code: 'Paper', url: 'https://doi.org/10.1007/s10648-026-10118-7' },
     ],
   },
 
@@ -2731,8 +2685,8 @@ const PAPERS = [
     source: 'Bastani, Bastani, Sungu, Ge, Kabakcı & Mariman · Wharton (Turkey)',
     summary: { en: 'RCT with ~1,000 Turkish high-school math students. Access to unguided ChatGPT boosted performance while it was on — and then hurt learning once the tool was removed. The negative transfer disappears only in the guardrailed GPT-Tutor arm. The canonical evidence that unguided AI use erodes durable learning.' },
     langs: [
-      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
-      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
+      { code: 'Preprint', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
+      { code: 'Journal', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
     ],
   },
   {
@@ -2741,8 +2695,8 @@ const PAPERS = [
     source: 'Strömberg, Lei & Wu · CEPR DP21577 (China, 26,811 students, 30-month panel)',
     summary: { en: 'Diff-in-diff on panel data from 26,811 Chinese secondary students. AI adoption lifts homework scores 18% and cuts completion time 30% — but monthly exam scores fall 20% within six months, and high-stakes entrance-exam scores fall 18–24% at two years. Losses concentrate among the ~80% of users whose pattern is consistent with homework outsourcing.' },
     langs: [
-      { code: 'CEPR', url: 'https://cepr.org/publications/dp21577' },
-      { code: 'WB BLOG', url: 'https://blogs.worldbank.org/en/investinpeople/a-warning-shot-for-human-capital--evidence-of-an-ai-learning-pen' },
+      { code: 'Working paper', url: 'https://cepr.org/publications/dp21577' },
+      { code: 'Blog', url: 'https://blogs.worldbank.org/en/investinpeople/a-warning-shot-for-human-capital--evidence-of-an-ai-learning-pen' },
     ],
   },
   {
@@ -2751,27 +2705,27 @@ const PAPERS = [
     source: 'Rismanchian, Uzun, Matayoshi, Cosyn & Kurd-Misto · ALEKS panel',
     summary: { en: 'Ten-year panel of 3.2M ALEKS learning interactions plus PPL placement-assessment data. Comparing AI-susceptible word problems to AI-resistant graph problems: college students cut study time 26.9%, high-schoolers 31.3%. Under proctoring the efficiency gains vanish and are replaced by a 25% cumulative drop in odds of correct response on retention items.' },
     langs: [
-      { code: 'arXiv', url: 'https://arxiv.org/abs/2605.21629' },
+      { code: 'Preprint', url: 'https://arxiv.org/abs/2605.21629' },
     ],
   },
 
   // ============ DIGITAL SKILLS (folded into 'the landscape') ============
   {
     year: 2025, category: 'wb-guides',
-    title: { en: 'Digital Skills Development — Competence Frameworks, Assessment Tools and Pedagogical Approaches' },
-    source: 'World Bank Education Working Paper No. 14',
-    summary: { en: 'Framework paper: how education systems define, assess and teach digital skills across primary, secondary and TVET. Reviews DigComp, ICT frameworks, and pedagogical approaches — a taxonomy for policy design.' },
+    title: { en: 'Digital Skills Development — Frameworks, Assessment Tools and Pedagogical Approaches' },
+    source: 'World Bank Education Working Paper',
+    summary: { en: 'How education systems can define, teach and measure digital skills across primary, secondary and TVET. Compares the main competence frameworks (DigComp and others) and pairs each with the classroom approaches that build them. A practical taxonomy for ministries designing curricula and assessments.' },
     langs: [
-      { code: 'PDF', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/3EDU-WP-14-Digital-skills-development.pdf' },
+      { code: 'Paper (PDF)', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/3EDU-WP-14-Digital-skills-development.pdf' },
     ],
   },
   {
     year: 2025, category: 'wb-guides',
-    title: { en: 'Digital Skills, Innovation, and Economic Transformation — Opportunities and Challenges for Sub-Saharan Africa' },
-    source: 'World Bank Education Working Paper No. 15',
-    summary: { en: 'How digital-skills supply interacts with innovation and jobs in Sub-Saharan Africa: labor-market signals, TVET reform, and the sequencing of foundational vs. advanced digital skills.' },
+    title: { en: 'Digital Skills, Innovation and Economic Transformation in Sub-Saharan Africa' },
+    source: 'World Bank Education Working Paper',
+    summary: { en: 'What the labour market actually rewards when digital skills reach a workforce, using Sub-Saharan Africa as the case. Argues that TVET, foundational-digital-skills programs and advanced tracks need to be sequenced together, not treated as parallel bets. Companion to the frameworks paper — the demand side.' },
     langs: [
-      { code: 'PDF', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/5EDU-WP-15-Digital-skills-innovation-and-economic-transformation.pdf' },
+      { code: 'Paper (PDF)', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/5EDU-WP-15-Digital-skills-innovation-and-economic-transformation.pdf' },
     ],
   },
 ];
@@ -2794,11 +2748,15 @@ function renderEvidenceBlocks(lang) {
     'fails': t['res.cat.fails'],
   };
   container.innerHTML = blocks.map(b => {
-    const papersHere = PAPERS.filter(p => (p.category || 'wb-guides') === b.cat);
+    const papersHere = PAPERS
+      .filter(p => (p.category || 'wb-guides') === b.cat)
+      .slice()
+      .sort((a, b) => (b.year || 0) - (a.year || 0));
     const list = papersHere.map(p => {
       const source = p.source || 'World Bank';
       const forthcoming = !!p.forthcoming;
       const yearLabel = forthcoming ? t['res.forthcoming.badge'] : p.year;
+      const summaryText = pickText(p.summary);
       const langsBlock = forthcoming
         ? `<span class="ev-paper-forthcoming">${t['res.forthcoming.note']}</span>`
         : (p.langs && p.langs.length
@@ -2810,6 +2768,7 @@ function renderEvidenceBlocks(lang) {
           <div class="ev-paper-body">
             <div class="ev-paper-title">${pickText(p.title)}</div>
             <div class="ev-paper-source">${source}</div>
+            <p class="ev-paper-summary">${summaryText}</p>
           </div>
           <div class="ev-paper-langs">${langsBlock}</div>
         </li>
