@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Eligiendo Mi Camino — EvidencIA</title>
+<meta name="description" content="Orientación vocacional y tutoría de matemática con IA para 5to año de secundaria en Lima. Dos herramientas al servicio de 6.600 estudiantes en 110 escuelas públicas." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAF7F0;
+    --bg-soft: #F2EDE2;
+    --ink: #0F0E0C;
+    --ink-soft: #3A352E;
+    --ink-mute: #6B6359;
+    --rule: #DDD4C0;
+    --gold: #B8842B;
+    --gold-deep: #8E6420;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 17px;
+  }
+  .serif { font-family: 'Source Serif 4', Georgia, serif; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 240, 0.9);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 22px;
+    letter-spacing: -0.01em;
+    text-decoration: none; color: var(--ink);
+  }
+  .brand b { color: var(--gold); font-weight: 800; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: "←"; font-size: 15px; }
+  .lang {
+    display: flex; gap: 2px; align-items: center;
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 4px; background: var(--bg);
+  }
+  .lang button {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    color: var(--ink-mute); padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.04em; transition: all 0.18s;
+  }
+  .lang button.active { background: var(--ink); color: var(--bg); }
+  .lang button:hover:not(.active) { color: var(--ink); }
+
+  .hero { padding: 72px 0 80px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    padding-bottom: 6px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(36px, 5.4vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 20px 0 22px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-deep); }
+  .hero-lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .hero-image {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 24px;
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-image video { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  section.block { padding: 88px 0; border-top: 1px solid var(--rule); }
+  section.block.dark { background: var(--ink); color: var(--bg); border-top: 0; }
+  section.block.soft { background: var(--bg-soft); }
+
+  .section-eyebrow {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    margin-bottom: 16px;
+  }
+  section.block.dark .section-eyebrow { color: var(--gold); }
+  .section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.6vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    margin-bottom: 22px;
+  }
+  .section-lede {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin-bottom: 40px;
+  }
+  section.block.dark .section-lede { color: rgba(250,247,240,0.75); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .col-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  section.block.soft .col-card { background: var(--bg); }
+  .col-card h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .col-card p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .stat {
+    padding: 32px 28px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+  section.block.dark .stat {
+    background: transparent;
+    border-color: rgba(250,247,240,0.15);
+  }
+  .stat .stat-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--gold-deep);
+  }
+  section.block.dark .stat .stat-num { color: var(--gold); }
+  .stat .stat-lbl { margin-top: 12px; font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+  section.block.dark .stat .stat-lbl { color: rgba(250,247,240,0.7); }
+  .stat .stat-sub { margin-top: 8px; font-size: 12px; font-style: italic; color: var(--ink-mute); }
+  section.block.dark .stat .stat-sub { color: rgba(250,247,240,0.5); }
+
+  /* Video */
+  .video-wrap {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    margin-top: 40px;
+  }
+  .video-wrap video {
+    width: 100%;
+    display: block;
+    max-height: 620px;
+  }
+
+  /* Chat card */
+  .chat-cta {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .chat-cta:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .chat-cta .chat-body { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .chat-cta .chat-tag {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold-deep);
+  }
+  .chat-cta h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500; font-size: 26px;
+    line-height: 1.2; letter-spacing: -0.015em;
+  }
+  .chat-cta p { font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+  .chat-cta .chat-btn {
+    margin-top: 8px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 12px 22px;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    align-self: flex-start;
+  }
+  .chat-cta .chat-btn::after { content: "↗"; font-size: 11px; }
+  .chat-cta .chat-preview {
+    background: var(--bg-soft);
+    border-left: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .chat-cta .chat-preview img { max-width: 100%; max-height: 360px; object-fit: contain; border-radius: 10px; box-shadow: 0 12px 32px -14px rgba(15,14,12,0.2); }
+
+  .partners-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  section.block.soft .partners-grid { border-color: var(--rule); }
+  .partner {
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 26px;
+    display: flex; flex-direction: column; gap: 6px;
+    min-height: 120px;
+    justify-content: center;
+    background: var(--bg);
+  }
+  section.block.soft .partner { background: var(--bg); }
+  .partner .p-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500; font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .partner .p-desc { font-size: 13px; color: var(--ink-mute); line-height: 1.4; }
+
+  .res-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .res-card {
+    display: flex; flex-direction: column; gap: 14px;
+    padding: 32px 30px;
+    background: var(--bg); border: 1px solid var(--rule); border-radius: 16px;
+    text-decoration: none; color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .res-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .res-card .res-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-deep); }
+  .res-card h4 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; font-size: 20px; line-height: 1.22; letter-spacing: -0.01em; }
+  .res-card p { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .res-card .res-cta { margin-top: auto; font-size: 13px; font-weight: 600; color: var(--ink); display: inline-flex; align-items: center; gap: 6px; }
+  .res-card .res-cta::after { content: "↗"; font-size: 11px; }
+
+  footer.site { padding: 40px 0 32px; border-top: 1px solid var(--rule); background: var(--bg); }
+  .foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--ink-mute); }
+  .foot a { color: var(--ink-soft); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .hero { padding: 48px 0 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-image { aspect-ratio: 4 / 3; }
+    section.block { padding: 64px 0; }
+    .two-col { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .partners-grid { grid-template-columns: 1fr 1fr; }
+    .chat-cta { grid-template-columns: 1fr; }
+    .chat-cta .chat-preview { border-left: 0; border-top: 1px solid var(--rule); }
+    .res-row { grid-template-columns: 1fr; }
+    .foot { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 20px; }
+    .stats { grid-template-columns: 1fr; }
+    .partners-grid { grid-template-columns: 1fr; }
+    .nav-right { gap: 12px; }
+    .back-link span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav">
+    <a class="brand" href="../">Evidenc<b>IA</b></a>
+    <div class="nav-right">
+      <a class="back-link" href="../#iniciativas"><span data-i18n="nav.back">Iniciativas</span></a>
+      <div class="lang">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="pt">PT</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow"><span data-i18n="hero.eyebrow">Iniciativa · Perú · Educación secundaria</span></div>
+          <h1 data-i18n="hero.title">Eligiendo Mi Camino</h1>
+          <p class="hero-lede" data-i18n="hero.lede">Orientación vocacional y tutoría de matemática con IA para el 5to año de secundaria en Lima Metropolitana. Dos herramientas al servicio de 6.600 estudiantes en 110 escuelas públicas — con DRELM, uDocz, UPC y el Banco Mundial. El acompañante virtual: el Gallito de las Rocas.</p>
+        </div>
+        <div class="hero-image">
+          <video autoplay muted loop playsinline preload="metadata" poster="../img/eligiendo-mi-camino.png" aria-label="Gallito de las Rocas — mascota de Eligiendo Mi Camino">
+            <source src="../img/gallito.mp4" type="video/mp4" />
+            <img src="../img/eligiendo-mi-camino.png" alt="Gallito de las Rocas" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ ES -->
+  <section class="block soft">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="what.eyebrow">Qué es Eligiendo Mi Camino</div>
+      <h2 class="section-title" data-i18n="what.title">Dos herramientas de IA. Un solo objetivo: que cada estudiante elija con información.</h2>
+      <p class="section-lede" data-i18n="what.lede">En Perú, solo el 30% de los estudiantes de secundaria continúa a la educación superior. Eligiendo Mi Camino integra al último año de la escuela pública dos productos de IA — un coach de carrera y un tutor de matemática — que conectan lo que se aprende en el aula con las oportunidades profesionales reales. Doce sesiones de 90 minutos, integradas al plan curricular de la DRELM.</p>
+
+      <div class="two-col">
+        <div class="col-card">
+          <h3 data-i18n="what.c1.h">Coach de carrera</h3>
+          <p data-i18n="what.c1.p">142 ocupaciones organizadas en 12 sectores económicos del Perú. El estudiante explora rutas de formación (universidad, instituto, técnico), retornos esperados, requisitos y trayectorias reales — acompañado por el Gallito de las Rocas.</p>
+        </div>
+        <div class="col-card">
+          <h3 data-i18n="what.c2.h">Tutor de matemática</h3>
+          <p data-i18n="what.c2.p">Alrededor de 4.000 preguntas alineadas al currículo de 5to de secundaria del Perú. Ejercicios adaptativos, retroalimentación inmediata y acompañamiento del Gallito para practicar sin fricciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL PROGRAMA EN VIDEO -->
+  <section class="block">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="video.eyebrow">El programa, en video</div>
+      <h2 class="section-title" data-i18n="video.title">Estudiantes, docentes y familias cuentan la experiencia.</h2>
+      <p class="section-lede" data-i18n="video.lede">Testimonios del piloto en escuelas públicas de Lima Metropolitana — cómo el Gallito entró al aula, qué cambió en la conversación de los estudiantes sobre su futuro, y qué aprendieron los docentes acompañando el proceso.</p>
+
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="../img/emc_testimonies_poster.jpg">
+          <source src="../img/emc_testimonies.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOS NÚMEROS -->
+  <section class="block dark">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="nums.eyebrow">Los números del piloto</div>
+      <h2 class="section-title" data-i18n="nums.title">Escala real, en escuelas públicas.</h2>
+      <p class="section-lede" data-i18n="nums.lede">Lanzamiento: 16 de marzo de 2026, en el arranque del año escolar peruano. El piloto llega a 6.600 estudiantes de 5to año en 110 escuelas públicas de Lima Metropolitana, integrado al plan curricular de la DRELM.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">6.600</div>
+          <div class="stat-lbl" data-i18n="nums.s1.lbl">Estudiantes de 5to año de secundaria</div>
+          <div class="stat-sub" data-i18n="nums.s1.sub">Lima Metropolitana, escuelas públicas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">110</div>
+          <div class="stat-lbl" data-i18n="nums.s2.lbl">Escuelas públicas de Lima</div>
+          <div class="stat-sub" data-i18n="nums.s2.sub">Todas las UGEL de Lima Metropolitana</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~400</div>
+          <div class="stat-lbl" data-i18n="nums.s3.lbl">Docentes acompañando</div>
+          <div class="stat-sub" data-i18n="nums.s3.sub">Formados por DRELM y el Banco Mundial</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">142</div>
+          <div class="stat-lbl" data-i18n="nums.s4.lbl">Ocupaciones cubiertas</div>
+          <div class="stat-sub" data-i18n="nums.s4.sub">Organizadas en 12 sectores económicos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">12</div>
+          <div class="stat-lbl" data-i18n="nums.s5.lbl">Sesiones de 90 minutos</div>
+          <div class="stat-sub" data-i18n="nums.s5.sub">Integradas al plan curricular</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~4.000</div>
+          <div class="stat-lbl" data-i18n="nums.s6.lbl">Preguntas de matemática</div>
+          <div class="stat-sub" data-i18n="nums.s6.sub">Alineadas al currículo de 5to año</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAT CON EL GALLITO -->
+  <section class="block soft">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="chat.eyebrow">Hablá con el Gallito</div>
+      <h2 class="section-title" data-i18n="chat.title">Preguntale lo que quieras sobre el programa.</h2>
+      <p class="section-lede" data-i18n="chat.lede">El mismo Gallito que acompaña a los estudiantes en el aula está disponible en el sitio del programa. Escribile en español, inglés o portugués: cómo funciona, qué materiales usa, cómo se implementa en una escuela, qué evidencia hay.</p>
+
+      <a class="chat-cta" href="https://eligiendomicamino.org/chat/" target="_blank" rel="noopener">
+        <div class="chat-body">
+          <div class="chat-tag" data-i18n="chat.tag">eligiendomicamino.org/chat</div>
+          <h3 data-i18n="chat.h">Un chat público con el mascota del programa.</h3>
+          <p data-i18n="chat.p">Multilingüe. Sin login. Sin captura de datos personales — está diseñado para explorar el programa, no para inscribirse.</p>
+          <span class="chat-btn" data-i18n="chat.btn">Abrir el chat</span>
+        </div>
+        <div class="chat-preview">
+          <img src="../img/emc_chat.png" alt="Vista previa del chat con el Gallito" loading="lazy" />
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ALIADOS -->
+  <section class="block">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="allies.eyebrow">Aliados</div>
+      <h2 class="section-title" data-i18n="allies.title">Un piloto es una alianza.</h2>
+      <p class="section-lede" data-i18n="allies.lede">Eligiendo Mi Camino es posible gracias a una alianza multisectorial: la autoridad educativa local, una edtech peruana, una universidad, un socio de IA, y el equipo de investigación del Banco Mundial.</p>
+
+      <div class="partners-grid">
+        <div class="partner">
+          <div class="p-name">DRELM</div>
+          <div class="p-desc" data-i18n="allies.drelm">Dirección Regional de Educación de Lima Metropolitana.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">uDocz</div>
+          <div class="p-desc" data-i18n="allies.udocz">Plataforma edtech peruana — implementación y contenido.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">UPC</div>
+          <div class="p-desc" data-i18n="allies.upc">Universidad Peruana de Ciencias Aplicadas — diseño instruccional.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">Anthropic</div>
+          <div class="p-desc" data-i18n="allies.an">Modelos de IA — Claude.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">Banco Mundial</div>
+          <div class="p-desc" data-i18n="allies.wb">Development Research Group (DECRG). Diseño, financiamiento y evaluación.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name" data-i18n="allies.gal.name">El Gallito de las Rocas</div>
+          <div class="p-desc" data-i18n="allies.gal.desc">Mascota del programa — presente en aula y en el chat.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section class="block">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="res.eyebrow">Recursos</div>
+      <h2 class="section-title" data-i18n="res.title">Explorá el programa.</h2>
+
+      <div class="res-row">
+        <a class="res-card" href="https://www.bancomundial.org/es/country/peru/brief/eligiendo-mi-camino" target="_blank" rel="noopener" data-i18n-href="res.r1.url">
+          <div class="res-tag" data-i18n="res.r1.tag">Brief · Banco Mundial</div>
+          <h4 data-i18n="res.r1.h">Eligiendo Mi Camino en el Banco Mundial</h4>
+          <p data-i18n="res.r1.p">La página oficial del programa: objetivos, alianza, cifras de escala y planes de expansión.</p>
+          <span class="res-cta" data-i18n="res.r1.cta">Leer el brief</span>
+        </a>
+        <a class="res-card" href="https://eligiendomicamino.org/" target="_blank" rel="noopener">
+          <div class="res-tag" data-i18n="res.r2.tag">Sitio · Programa</div>
+          <h4 data-i18n="res.r2.h">eligiendomicamino.org</h4>
+          <p data-i18n="res.r2.p">El sitio del programa para docentes y estudiantes. Materiales de las 12 sesiones, guía para la escuela, y el chat con el Gallito.</p>
+          <span class="res-cta" data-i18n="res.r2.cta">Visitar el sitio</span>
+        </a>
+        <a class="res-card" href="https://ezequielmolina-lang.github.io/eligiendo-mi-camino/" target="_blank" rel="noopener">
+          <div class="res-tag" data-i18n="res.r3.tag">Ecuador · Adaptación</div>
+          <h4 data-i18n="res.r3.h">Versión Ecuador — Gallo de la Peña</h4>
+          <p data-i18n="res.r3.p">Adaptación al contexto ecuatoriano con datos de ENEMDU y mascota propia. Punto de partida para llevar el modelo a otros países de la región.</p>
+          <span class="res-cta" data-i18n="res.r3.cta">Explorar la versión Ecuador</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container foot">
+    <div><a href="../">← <span data-i18n="foot.back">Volver a EvidencIA</span></a></div>
+    <div data-i18n="foot.copy">© 2026 EvidencIA. Una red en construcción.</div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  es: {
+    'nav.back': 'Iniciativas',
+    'hero.eyebrow': 'Iniciativa · Perú · Educación secundaria',
+    'hero.title': 'Eligiendo Mi Camino',
+    'hero.lede': 'Orientación vocacional y tutoría de matemática con IA para el 5to año de secundaria en Lima Metropolitana. Dos herramientas al servicio de 6.600 estudiantes en 110 escuelas públicas — con DRELM, uDocz, UPC y el Banco Mundial. El acompañante virtual: el Gallito de las Rocas.',
+    'what.eyebrow': 'Qué es Eligiendo Mi Camino',
+    'what.title': 'Dos herramientas de IA. Un solo objetivo: que cada estudiante elija con información.',
+    'what.lede': 'En Perú, solo el 30% de los estudiantes de secundaria continúa a la educación superior. Eligiendo Mi Camino integra al último año de la escuela pública dos productos de IA — un coach de carrera y un tutor de matemática — que conectan lo que se aprende en el aula con las oportunidades profesionales reales. Doce sesiones de 90 minutos, integradas al plan curricular de la DRELM.',
+    'what.c1.h': 'Coach de carrera',
+    'what.c1.p': '142 ocupaciones organizadas en 12 sectores económicos del Perú. El estudiante explora rutas de formación (universidad, instituto, técnico), retornos esperados, requisitos y trayectorias reales — acompañado por el Gallito de las Rocas.',
+    'what.c2.h': 'Tutor de matemática',
+    'what.c2.p': 'Alrededor de 4.000 preguntas alineadas al currículo de 5to de secundaria del Perú. Ejercicios adaptativos, retroalimentación inmediata y acompañamiento del Gallito para practicar sin fricciones.',
+    'video.eyebrow': 'El programa, en video',
+    'video.title': 'Estudiantes, docentes y familias cuentan la experiencia.',
+    'video.lede': 'Testimonios del piloto en escuelas públicas de Lima Metropolitana — cómo el Gallito entró al aula, qué cambió en la conversación de los estudiantes sobre su futuro, y qué aprendieron los docentes acompañando el proceso.',
+    'nums.eyebrow': 'Los números del piloto',
+    'nums.title': 'Escala real, en escuelas públicas.',
+    'nums.lede': 'Lanzamiento: 16 de marzo de 2026, en el arranque del año escolar peruano. El piloto llega a 6.600 estudiantes de 5to año en 110 escuelas públicas de Lima Metropolitana, integrado al plan curricular de la DRELM.',
+    'nums.s1.lbl': 'Estudiantes de 5to año de secundaria',
+    'nums.s1.sub': 'Lima Metropolitana, escuelas públicas',
+    'nums.s2.lbl': 'Escuelas públicas de Lima',
+    'nums.s2.sub': 'Todas las UGEL de Lima Metropolitana',
+    'nums.s3.lbl': 'Docentes acompañando',
+    'nums.s3.sub': 'Formados por DRELM y el Banco Mundial',
+    'nums.s4.lbl': 'Ocupaciones cubiertas',
+    'nums.s4.sub': 'Organizadas en 12 sectores económicos',
+    'nums.s5.lbl': 'Sesiones de 90 minutos',
+    'nums.s5.sub': 'Integradas al plan curricular',
+    'nums.s6.lbl': 'Preguntas de matemática',
+    'nums.s6.sub': 'Alineadas al currículo de 5to año',
+    'chat.eyebrow': 'Hablá con el Gallito',
+    'chat.title': 'Preguntale lo que quieras sobre el programa.',
+    'chat.lede': 'El mismo Gallito que acompaña a los estudiantes en el aula está disponible en el sitio del programa. Escribile en español, inglés o portugués: cómo funciona, qué materiales usa, cómo se implementa en una escuela, qué evidencia hay.',
+    'chat.tag': 'eligiendomicamino.org/chat',
+    'chat.h': 'Un chat público con la mascota del programa.',
+    'chat.p': 'Multilingüe. Sin login. Sin captura de datos personales — está diseñado para explorar el programa, no para inscribirse.',
+    'chat.btn': 'Abrir el chat',
+    'allies.eyebrow': 'Aliados',
+    'allies.title': 'Un piloto es una alianza.',
+    'allies.lede': 'Eligiendo Mi Camino es posible gracias a una alianza multisectorial: la autoridad educativa local, una edtech peruana, una universidad, un socio de IA, y el equipo de investigación del Banco Mundial.',
+    'allies.drelm': 'Dirección Regional de Educación de Lima Metropolitana.',
+    'allies.udocz': 'Plataforma edtech peruana — implementación y contenido.',
+    'allies.upc': 'Universidad Peruana de Ciencias Aplicadas — diseño instruccional.',
+    'allies.an': 'Modelos de IA — Claude.',
+    'allies.wb': 'Development Research Group (DECRG). Diseño, financiamiento y evaluación.',
+    'allies.gal.name': 'El Gallito de las Rocas',
+    'allies.gal.desc': 'Mascota del programa — presente en aula y en el chat.',
+    'res.eyebrow': 'Recursos',
+    'res.title': 'Explorá el programa.',
+    'res.r1.url': 'https://www.bancomundial.org/es/country/peru/brief/eligiendo-mi-camino',
+    'res.r1.tag': 'Brief · Banco Mundial',
+    'res.r1.h': 'Eligiendo Mi Camino en el Banco Mundial',
+    'res.r1.p': 'La página oficial del programa: objetivos, alianza, cifras de escala y planes de expansión.',
+    'res.r1.cta': 'Leer el brief',
+    'res.r2.tag': 'Sitio · Programa',
+    'res.r2.h': 'eligiendomicamino.org',
+    'res.r2.p': 'El sitio del programa para docentes y estudiantes. Materiales de las 12 sesiones, guía para la escuela, y el chat con el Gallito.',
+    'res.r2.cta': 'Visitar el sitio',
+    'res.r3.tag': 'Ecuador · Adaptación',
+    'res.r3.h': 'Versión Ecuador — Gallo de la Peña',
+    'res.r3.p': 'Adaptación al contexto ecuatoriano con datos de ENEMDU y mascota propia. Punto de partida para llevar el modelo a otros países de la región.',
+    'res.r3.cta': 'Explorar la versión Ecuador',
+    'foot.back': 'Volver a EvidencIA',
+    'foot.copy': '© 2026 EvidencIA. Una red en construcción.',
+  },
+  en: {
+    'nav.back': 'Initiatives',
+    'hero.eyebrow': 'Initiative · Peru · Secondary education',
+    'hero.title': 'Eligiendo Mi Camino',
+    'hero.lede': 'AI-powered career guidance and math tutoring for 5th-year secondary students in Metropolitan Lima. Two tools serving 6,600 students in 110 public schools — with DRELM, uDocz, UPC and the World Bank. The virtual companion: the Gallito de las Rocas.',
+    'what.eyebrow': 'What Eligiendo Mi Camino is',
+    'what.title': 'Two AI tools. One goal: every student chooses with information.',
+    'what.lede': 'In Peru, only 30% of secondary students continue to higher education. Eligiendo Mi Camino brings two AI products into the final year of public schooling — a career coach and a math tutor — that connect what happens in the classroom with real professional opportunities. Twelve 90-minute sessions, embedded in DRELM\'s curriculum.',
+    'what.c1.h': 'Career coach',
+    'what.c1.p': '142 occupations organized into 12 economic sectors of Peru. The student explores training paths (university, technical institute, vocational), expected returns, requirements and real trajectories — companioned by the Gallito de las Rocas.',
+    'what.c2.h': 'Math tutor',
+    'what.c2.p': 'About 4,000 questions aligned to Peru\'s 5th-year math curriculum. Adaptive exercises, immediate feedback and Gallito companionship for frictionless practice.',
+    'video.eyebrow': 'The program, on video',
+    'video.title': 'Students, teachers and families tell the story.',
+    'video.lede': 'Testimonies from the pilot in Metropolitan Lima public schools — how the Gallito entered the classroom, what changed in how students talk about their future, and what teachers learned along the way.',
+    'nums.eyebrow': 'Pilot numbers',
+    'nums.title': 'Real scale, in public schools.',
+    'nums.lede': 'Launch: March 16, 2026, at the start of the Peruvian school year. The pilot reaches 6,600 5th-year students in 110 public schools in Metropolitan Lima, embedded in DRELM\'s curriculum.',
+    'nums.s1.lbl': '5th-year secondary students',
+    'nums.s1.sub': 'Metropolitan Lima, public schools',
+    'nums.s2.lbl': 'Public schools in Lima',
+    'nums.s2.sub': 'All UGELs of Metropolitan Lima',
+    'nums.s3.lbl': 'Teachers accompanying',
+    'nums.s3.sub': 'Trained by DRELM and the World Bank',
+    'nums.s4.lbl': 'Occupations covered',
+    'nums.s4.sub': 'Organized into 12 economic sectors',
+    'nums.s5.lbl': '90-minute sessions',
+    'nums.s5.sub': 'Embedded in the curriculum',
+    'nums.s6.lbl': 'Math questions',
+    'nums.s6.sub': 'Aligned to the 5th-year curriculum',
+    'chat.eyebrow': 'Talk to the Gallito',
+    'chat.title': 'Ask anything about the program.',
+    'chat.lede': 'The same Gallito that companions students in the classroom is available on the program\'s site. Write to it in Spanish, English or Portuguese: how it works, what materials it uses, how a school implements it, what evidence exists.',
+    'chat.tag': 'eligiendomicamino.org/chat',
+    'chat.h': 'A public chat with the program\'s mascot.',
+    'chat.p': 'Multilingual. No login. No personal-data capture — it\'s designed for exploring the program, not for enrollment.',
+    'chat.btn': 'Open the chat',
+    'allies.eyebrow': 'Partners',
+    'allies.title': 'A pilot is an alliance.',
+    'allies.lede': 'Eligiendo Mi Camino exists thanks to a multi-sector alliance: the local education authority, a Peruvian edtech, a university, an AI partner, and the World Bank\'s research group.',
+    'allies.drelm': 'Regional Education Directorate of Metropolitan Lima.',
+    'allies.udocz': 'Peruvian edtech platform — implementation and content.',
+    'allies.upc': 'Universidad Peruana de Ciencias Aplicadas — instructional design.',
+    'allies.an': 'AI models — Claude.',
+    'allies.wb': 'Development Research Group (DECRG). Design, funding, evaluation.',
+    'allies.gal.name': 'The Gallito de las Rocas',
+    'allies.gal.desc': 'The program\'s mascot — in the classroom and in the chat.',
+    'res.eyebrow': 'Resources',
+    'res.title': 'Explore the program.',
+    'res.r1.url': 'https://www.worldbank.org/en/country/peru/brief/eligiendo-mi-camino',
+    'res.r1.tag': 'Brief · World Bank',
+    'res.r1.h': 'Eligiendo Mi Camino at the World Bank',
+    'res.r1.p': 'The official program page: goals, alliance, scale figures and expansion plans.',
+    'res.r1.cta': 'Read the brief',
+    'res.r2.tag': 'Site · Program',
+    'res.r2.h': 'eligiendomicamino.org',
+    'res.r2.p': 'The program site for teachers and students. Materials for the 12 sessions, school implementation guide, and the chat with the Gallito.',
+    'res.r2.cta': 'Visit the site',
+    'res.r3.tag': 'Ecuador · Adaptation',
+    'res.r3.h': 'Ecuador version — Gallo de la Peña',
+    'res.r3.p': 'Ecuadorian adaptation using ENEMDU data and a local mascot. Starting point for taking the model to other countries in the region.',
+    'res.r3.cta': 'Explore the Ecuador version',
+    'foot.back': 'Back to EvidencIA',
+    'foot.copy': '© 2026 EvidencIA. A network in the making.',
+  },
+  pt: {
+    'nav.back': 'Iniciativas',
+    'hero.eyebrow': 'Iniciativa · Peru · Ensino médio',
+    'hero.title': 'Eligiendo Mi Camino',
+    'hero.lede': 'Orientação vocacional e tutoria de matemática com IA para o 5º ano do ensino médio na Grande Lima. Duas ferramentas a serviço de 6.600 estudantes em 110 escolas públicas — com DRELM, uDocz, UPC e o Banco Mundial. O acompanhante virtual: o Gallito de las Rocas.',
+    'what.eyebrow': 'O que é Eligiendo Mi Camino',
+    'what.title': 'Duas ferramentas de IA. Um objetivo: que cada estudante escolha com informação.',
+    'what.lede': 'No Peru, só 30% dos estudantes do ensino médio continuam para o ensino superior. Eligiendo Mi Camino integra ao último ano da escola pública dois produtos de IA — um coach de carreira e um tutor de matemática — que conectam o que se aprende em sala de aula com as oportunidades profissionais reais. Doze sessões de 90 minutos, integradas ao plano curricular da DRELM.',
+    'what.c1.h': 'Coach de carreira',
+    'what.c1.p': '142 ocupações organizadas em 12 setores econômicos do Peru. O estudante explora rotas de formação (universidade, instituto, técnico), retornos esperados, requisitos e trajetórias reais — acompanhado pelo Gallito de las Rocas.',
+    'what.c2.h': 'Tutor de matemática',
+    'what.c2.p': 'Cerca de 4.000 questões alinhadas ao currículo do 5º ano do ensino médio do Peru. Exercícios adaptativos, feedback imediato e acompanhamento do Gallito para praticar sem fricções.',
+    'video.eyebrow': 'O programa, em vídeo',
+    'video.title': 'Estudantes, professores e famílias contam a experiência.',
+    'video.lede': 'Depoimentos do piloto em escolas públicas da Grande Lima — como o Gallito entrou na sala de aula, o que mudou na conversa dos estudantes sobre seu futuro, e o que os professores aprenderam acompanhando o processo.',
+    'nums.eyebrow': 'Os números do piloto',
+    'nums.title': 'Escala real, em escolas públicas.',
+    'nums.lede': 'Lançamento: 16 de março de 2026, no início do ano escolar peruano. O piloto alcança 6.600 estudantes do 5º ano em 110 escolas públicas da Grande Lima, integrado ao plano curricular da DRELM.',
+    'nums.s1.lbl': 'Estudantes do 5º ano do ensino médio',
+    'nums.s1.sub': 'Grande Lima, escolas públicas',
+    'nums.s2.lbl': 'Escolas públicas de Lima',
+    'nums.s2.sub': 'Todas as UGEL da Grande Lima',
+    'nums.s3.lbl': 'Professores acompanhando',
+    'nums.s3.sub': 'Formados pela DRELM e pelo Banco Mundial',
+    'nums.s4.lbl': 'Ocupações cobertas',
+    'nums.s4.sub': 'Organizadas em 12 setores econômicos',
+    'nums.s5.lbl': 'Sessões de 90 minutos',
+    'nums.s5.sub': 'Integradas ao plano curricular',
+    'nums.s6.lbl': 'Questões de matemática',
+    'nums.s6.sub': 'Alinhadas ao currículo do 5º ano',
+    'chat.eyebrow': 'Fale com o Gallito',
+    'chat.title': 'Pergunte o que quiser sobre o programa.',
+    'chat.lede': 'O mesmo Gallito que acompanha os estudantes em sala de aula está disponível no site do programa. Escreva para ele em espanhol, inglês ou português: como funciona, que materiais usa, como se implementa em uma escola, que evidência existe.',
+    'chat.tag': 'eligiendomicamino.org/chat',
+    'chat.h': 'Um chat público com o mascote do programa.',
+    'chat.p': 'Multilíngue. Sem login. Sem captura de dados pessoais — foi desenhado para explorar o programa, não para inscrever-se.',
+    'chat.btn': 'Abrir o chat',
+    'allies.eyebrow': 'Parceiros',
+    'allies.title': 'Um piloto é uma aliança.',
+    'allies.lede': 'Eligiendo Mi Camino é possível graças a uma aliança multisetorial: a autoridade educacional local, uma edtech peruana, uma universidade, um parceiro de IA, e a equipe de pesquisa do Banco Mundial.',
+    'allies.drelm': 'Direção Regional de Educação da Grande Lima.',
+    'allies.udocz': 'Plataforma edtech peruana — implementação e conteúdo.',
+    'allies.upc': 'Universidad Peruana de Ciencias Aplicadas — desenho instrucional.',
+    'allies.an': 'Modelos de IA — Claude.',
+    'allies.wb': 'Development Research Group (DECRG). Design, financiamento e avaliação.',
+    'allies.gal.name': 'O Gallito de las Rocas',
+    'allies.gal.desc': 'Mascote do programa — presente em sala de aula e no chat.',
+    'res.eyebrow': 'Recursos',
+    'res.title': 'Explore o programa.',
+    'res.r1.url': 'https://www.bancomundial.org/es/country/peru/brief/eligiendo-mi-camino',
+    'res.r1.tag': 'Brief · Banco Mundial',
+    'res.r1.h': 'Eligiendo Mi Camino no Banco Mundial',
+    'res.r1.p': 'A página oficial do programa: objetivos, aliança, números de escala e planos de expansão.',
+    'res.r1.cta': 'Ler o brief',
+    'res.r2.tag': 'Site · Programa',
+    'res.r2.h': 'eligiendomicamino.org',
+    'res.r2.p': 'O site do programa para professores e estudantes. Materiais das 12 sessões, guia para a escola, e o chat com o Gallito.',
+    'res.r2.cta': 'Visitar o site',
+    'res.r3.tag': 'Equador · Adaptação',
+    'res.r3.h': 'Versão Equador — Gallo de la Peña',
+    'res.r3.p': 'Adaptação ao contexto equatoriano com dados da ENEMDU e mascote próprio. Ponto de partida para levar o modelo a outros países da região.',
+    'res.r3.cta': 'Explorar a versão Equador',
+    'foot.back': 'Voltar ao EvidencIA',
+    'foot.copy': '© 2026 EvidencIA. Uma rede em construção.',
+  }
+};
+
+function applyLang(lang) {
+  if (!I18N[lang]) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const value = I18N[lang][key];
+    if (value !== undefined) el.innerHTML = value;
+  });
+  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+    const key = el.getAttribute('data-i18n-href');
+    const value = I18N[lang][key];
+    if (value !== undefined) el.setAttribute('href', value);
+  });
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem('evidencia-lang', lang); } catch (_) {}
+}
+
+document.querySelectorAll('.lang button').forEach(b => {
+  b.addEventListener('click', () => applyLang(b.dataset.lang));
+});
+
+// Ensure the hero gallito autoplays
+document.querySelectorAll('.hero-image video').forEach(v => { v.play().catch(() => {}); });
+
+(function initLang() {
+  let stored = null;
+  try { stored = localStorage.getItem('evidencia-lang'); } catch (_) {}
+  if (stored && I18N[stored]) return applyLang(stored);
+  const nav = (navigator.language || 'es').slice(0,2).toLowerCase();
+  if (nav === 'en' || nav === 'pt') applyLang(nav);
+  else applyLang('es');
+})();
+</script>
+</body>
+</html>
