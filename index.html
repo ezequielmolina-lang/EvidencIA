@@ -61,21 +61,22 @@
   }
   .brand {
     font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 30px;
-    letter-spacing: -0.01em;
+    font-weight: 600; font-size: 36px;
+    letter-spacing: -0.015em;
     text-decoration: none; color: var(--ink);
-    display: inline-flex; align-items: center; gap: 12px;
+    display: inline-flex; align-items: center; gap: 14px;
+    line-height: 1;
   }
-  .brand-mark { display: block; width: 56px; height: 26px; flex-shrink: 0; }
+  .brand-mark { display: block; width: 64px; height: 30px; flex-shrink: 0; }
   .brand-word { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; }
   .brand b { color: var(--gold); font-weight: 800; }
   @media (max-width: 900px) {
-    .brand-mark { width: 44px; height: 20px; }
-    .brand { gap: 10px; font-size: 26px; }
+    .brand-mark { width: 48px; height: 22px; }
+    .brand { gap: 10px; font-size: 28px; }
   }
   @media (max-width: 640px) {
-    .brand-mark { width: 38px; height: 18px; }
-    .brand { gap: 8px; font-size: 22px; }
+    .brand-mark { width: 40px; height: 18px; }
+    .brand { gap: 8px; font-size: 24px; }
   }
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a {
@@ -1249,8 +1250,8 @@
       <a href="#construyendo" data-i18n="nav.building">Qué construimos</a>
       <a href="#conversaciones" data-i18n="nav.events">Conversaciones</a>
       <a href="#newsletter-preview" data-i18n="nav.newsletter">Newsletter</a>
-      <a href="#evidencia" data-i18n="nav.research">Evidencia</a>
       <a href="#iniciativas" data-i18n="nav.initiatives">Iniciativas</a>
+      <a href="#evidencia" data-i18n="nav.research">Evidencia</a>
       <a href="#sumarte" data-i18n="nav.join" class="nav-cta">Sumate</a>
       <div class="lang" role="tablist" aria-label="Language">
         <button data-lang="es" class="active" aria-label="Español">ES</button>
@@ -1522,29 +1523,6 @@
     </div>
   </section>
 
-  <!-- BASE DE EVIDENCIA -->
-  <section id="evidencia">
-    <div class="container">
-      <div class="section-eyebrow" data-i18n="res.eyebrow">Base de evidencia</div>
-      <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
-      <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
-
-      <div id="papers-blocks"></div>
-
-      <div class="papers-footer">
-        <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
-        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard del Banco Mundial →</a>
-      </div>
-
-      <div class="placeholder-card" style="margin-top: 48px;">
-        <div class="ph-eyebrow" data-i18n="res.add.eyebrow">¿Querés sumar un estudio?</div>
-        <h3 data-i18n="res.add.h">Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.</h3>
-        <p data-i18n="res.add.p">Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.</p>
-        <a class="ph-cta" href="#sumarte" data-i18n="res.add.cta">Proponer estudio</a>
-      </div>
-    </div>
-  </section>
-
   <!-- INICIATIVAS -->
   <section id="iniciativas">
     <div class="container">
@@ -1607,6 +1585,29 @@
             <a class="init-link" href="iniciativas/ape.html" data-i18n="init.ape.link">Conocé la iniciativa</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BASE DE EVIDENCIA -->
+  <section id="evidencia">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="res.eyebrow">Base de evidencia</div>
+      <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
+      <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
+
+      <div id="papers-blocks"></div>
+
+      <div class="papers-footer">
+        <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
+        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard del Banco Mundial →</a>
+      </div>
+
+      <div class="placeholder-card" style="margin-top: 48px;">
+        <div class="ph-eyebrow" data-i18n="res.add.eyebrow">¿Querés sumar un estudio?</div>
+        <h3 data-i18n="res.add.h">Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.</h3>
+        <p data-i18n="res.add.p">Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.</p>
+        <a class="ph-cta" href="#sumarte" data-i18n="res.add.cta">Proponer estudio</a>
       </div>
     </div>
   </section>
