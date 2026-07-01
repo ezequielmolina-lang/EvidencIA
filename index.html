@@ -61,16 +61,20 @@
   }
   .brand {
     font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 24px;
+    font-weight: 600; font-size: 30px;
     letter-spacing: -0.01em;
     text-decoration: none; color: var(--ink);
-    display: inline-flex; align-items: center; gap: 10px;
+    display: inline-flex; align-items: center; gap: 12px;
   }
-  .brand-mark { display: block; width: 42px; height: 20px; flex-shrink: 0; }
+  .brand-mark { display: block; width: 56px; height: 26px; flex-shrink: 0; }
   .brand-word { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; }
   .brand b { color: var(--gold); font-weight: 800; }
+  @media (max-width: 900px) {
+    .brand-mark { width: 44px; height: 20px; }
+    .brand { gap: 10px; font-size: 26px; }
+  }
   @media (max-width: 640px) {
-    .brand-mark { width: 34px; height: 16px; }
+    .brand-mark { width: 38px; height: 18px; }
     .brand { gap: 8px; font-size: 22px; }
   }
   .nav-links { display: flex; gap: 28px; align-items: center; }
@@ -834,6 +838,8 @@
     display: block; overflow: hidden;
   }
   .product .p-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .product .p-img--svg { display: flex; align-items: center; justify-content: center; padding: 8px; }
+  .product .p-img--svg svg { width: 100%; height: 100%; display: block; }
   .product .p-body {
     padding: 32px 32px 32px;
     display: flex; flex-direction: column; flex: 1;
@@ -1330,7 +1336,20 @@
 
       <div class="products">
         <div class="product">
-          <div class="p-img"><img src="img/card-newsletter.png" alt="" loading="lazy"></div>
+          <div class="p-img p-img--svg">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Newsletter" preserveAspectRatio="xMidYMid meet">
+              <rect x="112" y="42" width="176" height="150" fill="#FFFFFF" stroke="#0F0E0C" stroke-width="3"/>
+              <rect x="128" y="28" width="42" height="18" fill="#B14629"/>
+              <line x1="128" y1="62" x2="272" y2="62" stroke="#B8842B" stroke-width="4" stroke-linecap="round"/>
+              <line x1="128" y1="82" x2="272" y2="82" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="94" x2="272" y2="94" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="106" x2="248" y2="106" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="126" x2="272" y2="126" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="138" x2="260" y2="138" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="150" x2="235" y2="150" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+              <line x1="128" y1="170" x2="272" y2="170" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
+            </svg>
+          </div>
           <div class="p-body">
             <div class="p-num">01</div>
             <h3 data-i18n="build.p1.h">Newsletter</h3>
@@ -1348,7 +1367,16 @@
           </div>
         </div>
         <div class="product">
-          <div class="p-img"><img src="img/card-comunidad.png" alt="" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+          <div class="p-img p-img--svg">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comunidad" preserveAspectRatio="xMidYMid meet">
+              <path d="M92 78 Q92 58 112 58 L208 58 Q228 58 228 78 L228 116 Q228 136 208 136 L146 136 L124 158 L131 136 Q92 136 92 116 Z" fill="#FFFFFF" stroke="#0F0E0C" stroke-width="2.8"/>
+              <circle cx="140" cy="97" r="4.5" fill="#0F0E0C"/>
+              <circle cx="160" cy="97" r="4.5" fill="#0F0E0C"/>
+              <circle cx="180" cy="97" r="4.5" fill="#0F0E0C"/>
+              <path d="M180 112 Q180 92 200 92 L296 92 Q316 92 316 112 L316 150 Q316 170 296 170 L232 170 L212 192 L219 170 Q180 170 180 150 Z" fill="#25D366" stroke="#0F0E0C" stroke-width="2.8"/>
+              <path d="M240 130 L260 145 L285 118" fill="none" stroke="#FAF7F0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="p-body">
             <div class="p-num">03</div>
             <h3 data-i18n="build.p3.h">Comunidad IA.EDU</h3>
