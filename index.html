@@ -322,11 +322,85 @@
   .init-link::after { content: "↗"; font-size: 11px; }
 
   /* Papers grid (Base de evidencia) */
+  .papers-filters {
+    margin-top: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .paper-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .paper-chip:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .paper-chip .chip-count {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    padding: 2px 6px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+  }
+  .paper-chip.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .paper-chip.active .chip-count {
+    color: var(--bg);
+    background: rgba(250,247,240,0.15);
+  }
+  .paper-chip[data-cat="wb-guides"].active { background: var(--gold-deep); border-color: var(--gold-deep); }
+  .paper-chip[data-cat="works"].active { background: var(--works); border-color: var(--works); }
+  .paper-chip[data-cat="fails"].active { background: var(--fails); border-color: var(--fails); }
+  .paper-chip[data-cat="digital-skills"].active { background: var(--cobalt); border-color: var(--cobalt); }
   .papers {
-    margin-top: 56px;
+    margin-top: 28px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
+  }
+  .paper[data-cat="wb-guides"] .paper-meta > span:first-child { color: var(--gold-deep); }
+  .paper[data-cat="works"] .paper-meta > span:first-child { color: var(--works); }
+  .paper[data-cat="fails"] .paper-meta > span:first-child { color: var(--fails); }
+  .paper[data-cat="digital-skills"] .paper-meta > span:first-child { color: var(--cobalt); }
+  .paper-cat-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  .paper[data-cat="wb-guides"] .paper-cat-tag { background: rgba(184,132,43,0.10); color: var(--gold-deep); }
+  .paper[data-cat="works"] .paper-cat-tag { background: var(--works-bg); color: var(--works); }
+  .paper[data-cat="fails"] .paper-cat-tag { background: var(--fails-bg); color: var(--fails); }
+  .paper[data-cat="digital-skills"] .paper-cat-tag { background: rgba(30,58,138,0.08); color: var(--cobalt); }
+  @media (max-width: 720px) {
+    .papers { grid-template-columns: 1fr; }
+    .papers-filters { gap: 6px; }
+    .paper-chip { padding: 8px 12px; font-size: 11px; }
   }
   .paper {
     background: var(--bg);
@@ -1317,6 +1391,8 @@
       <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
       <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
 
+      <div class="papers-filters" id="papers-filters" role="tablist"></div>
+
       <div class="papers" id="papers-grid"></div>
 
       <div class="papers-footer">
@@ -1715,6 +1791,12 @@ const I18N = {
     'res.add.cta': 'Proponer estudio',
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint próximamente',
+    'res.wp.note': 'Working paper',
+    'res.cat.all': 'Todos',
+    'res.cat.guides': 'Marcos y guías',
+    'res.cat.works': 'Cuando funciona',
+    'res.cat.fails': 'Cuando falla',
+    'res.cat.digital': 'Habilidades digitales',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
@@ -1921,6 +2003,12 @@ const I18N = {
     'res.add.cta': 'Propose a study',
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint coming soon',
+    'res.wp.note': 'Working paper',
+    'res.cat.all': 'All',
+    'res.cat.guides': 'Frameworks & guides',
+    'res.cat.works': 'When it works',
+    'res.cat.fails': 'When it fails',
+    'res.cat.digital': 'Digital skills',
 
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
@@ -2127,6 +2215,12 @@ const I18N = {
     'res.add.cta': 'Propor estudo',
     'res.forthcoming.badge': 'Em breve',
     'res.forthcoming.note': 'Preprint em breve',
+    'res.wp.note': 'Working paper',
+    'res.cat.all': 'Todos',
+    'res.cat.guides': 'Marcos e guias',
+    'res.cat.works': 'Quando funciona',
+    'res.cat.fails': 'Quando falha',
+    'res.cat.digital': 'Habilidades digitais',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
@@ -2224,14 +2318,17 @@ const I18N = {
 
 
 // ============================================================
-// PAPERS — World Bank AI-in-Education series (8 publications)
-// Source: WB_downloads_data.json (refreshed every 2 months by
-// the wb-downloads-dashboard pipeline). Live counts at
-// https://ezequielmolina-lang.github.io/wb-downloads-dashboard/
+// PAPERS — Evidence base
+// Categories: wb-guides | works | fails | digital-skills
+// WB pubs sourced from WB_downloads_data.json (refreshed by
+// the wb-downloads-dashboard pipeline every 2 months).
+// Academic papers from the Convergence edition + related.
 // ============================================================
 const PAPERS = [
+  // ============ WB GUIDES ============
   {
     id: 'not-faster-but-better', year: 2026, forthcoming: true,
+    category: 'wb-guides',
     title: {
       es: 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
       en: 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
@@ -2247,6 +2344,7 @@ const PAPERS = [
   },
   {
     repnb: 191418, year: 2024,
+    category: 'wb-guides',
     title: {
       es: 'Revolución de la IA en la Educación: Lo que hay que saber',
       en: 'AI Revolution in Education: What You Need to Know',
@@ -2265,6 +2363,7 @@ const PAPERS = [
   },
   {
     repnb: 200478, year: 2025,
+    category: 'wb-guides',
     title: {
       es: 'Revolución de la IA en Educación Superior: Lo que hay que saber',
       en: 'AI Revolution in Higher Education: What You Need to Know',
@@ -2283,6 +2382,7 @@ const PAPERS = [
   },
   {
     repnb: 204600, year: 2025,
+    category: 'wb-guides',
     title: {
       es: 'El Director LIBRE: El Método de IA que Libera Horas de Papeleo',
       en: 'El Director LIBRE: The AI Method that Frees Up Paperwork Hours',
@@ -2299,6 +2399,7 @@ const PAPERS = [
   },
   {
     repnb: 203549, year: 2025,
+    category: 'wb-guides',
     title: {
       es: 'El tiempo frente a la pantalla en la educación infantil: Equilibrar la balanza digital',
       en: 'Screen Time in Early Childhood Education: Balancing the Digital Scales',
@@ -2316,6 +2417,7 @@ const PAPERS = [
   },
   {
     repnb: 193710, year: 2024,
+    category: 'wb-guides',
     title: {
       es: 'Ceibal: Transformando la educación a través del uso inteligente de la tecnología',
       en: 'Ceibal: Transforming Education in Uruguay through Technology',
@@ -2334,6 +2436,7 @@ const PAPERS = [
   },
   {
     repnb: 206140, year: 2025,
+    category: 'wb-guides',
     title: {
       es: 'La IA en el Aula: Tu Aliada Pedagógica',
       en: 'La IA en el Aula: Your Pedagogical Ally',
@@ -2350,6 +2453,7 @@ const PAPERS = [
   },
   {
     repnb: 206665, year: 2025,
+    category: 'wb-guides',
     title: {
       es: 'La Inteligencia Artificial en la Educación Escolar Búlgara',
       en: 'Artificial Intelligence in Bulgarian School Education',
@@ -2368,6 +2472,7 @@ const PAPERS = [
   },
   {
     repnb: 194458, year: 2024,
+    category: 'wb-guides',
     title: {
       es: '100 voces estudiantiles sobre la IA y la educación',
       en: '100 Student Voices on AI and Education',
@@ -2382,30 +2487,190 @@ const PAPERS = [
       { code: 'EN', url: 'https://documentos.bancomundial.org/en/publication/documents-reports/documentdetail/099115410312428266' },
     ],
   },
+
+  // ============ CONVERGENCE — WHEN IT WORKS ============
+  {
+    year: 2024, category: 'works',
+    title: { en: 'Generative AI Without Guardrails Can Harm Learning — Evidence from High School Mathematics' },
+    source: 'Bastani, Bastani, Sungu, Ge, Kabakcı & Mariman · Wharton (Turkey)',
+    summary: { en: 'RCT with ~1,000 Turkish high-school math students. The guardrailed GPT-Tutor arm eliminates the negative transfer seen with unguided ChatGPT — the "cautionary" citation, correctly read, is anti-unguided AI, not anti-AI.' },
+    langs: [
+      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
+      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
+    ],
+  },
+  {
+    year: 2025, category: 'works',
+    title: { en: 'From Chalkboards to Chatbots — Impact of Generative AI on Learning in Nigeria' },
+    source: 'De Simone, Tiberti, Barron Rodríguez, Manolio, Mosuro & Dikoru · World Bank',
+    summary: { en: 'Six-week after-school RCT in nine public secondary schools in Edo State, Nigeria. Copilot (GPT-4) tutoring +0.31 SD overall, +0.23 SD in English — 1.5 to 2 years of business-as-usual schooling. Positive, low-resource mirror image of Bastani.' },
+    langs: [
+      { code: 'WB', url: 'https://ideas.repec.org/p/wbk/wbrwps/11125.html' },
+      { code: 'BLOG', url: 'https://blogs.worldbank.org/en/education/From-chalkboards-to-chatbots-in-Nigeria' },
+    ],
+  },
+  {
+    year: 2024, category: 'works',
+    title: { en: 'AI Tutoring Outperforms In-Class Active Learning — RCT in Harvard Physics' },
+    source: 'Kestin, Miller, Klales, Milbourne & Ponti · Harvard',
+    summary: { en: '194 undergraduates in Physical Sciences 2. Design-aligned AI tutor outperformed instructor-led active learning: students learned more than twice as much in less time, and 83% rated AI explanations at least as good as human instructors.' },
+    langs: [
+      { code: 'NATURE', url: 'https://www.nature.com/articles/s41598-025-97652-6' },
+    ],
+  },
+  {
+    year: 2025, category: 'works',
+    title: { en: 'Guidance, Not Adoption — ChatGPT Access and Undergraduate Learning in Chile' },
+    source: 'Gallegos et al. · Chile',
+    summary: { en: 'Free ChatGPT access alone does not improve learning; guided, task-specific use does. The title states the finding: design and guidance, not adoption, decide the effect.' },
+    langs: [],
+  },
+  {
+    year: 2025, category: 'works',
+    title: { en: 'Adaptive AI Tutoring Improves Post-AI Learning — 5-Month RCT in Taipei High Schools' },
+    source: 'Chung, Zhang, Kung & Bastani · Wharton / NTU (Taipei)',
+    summary: { en: '770 students, 10 high schools, Python. Every student had the same guardrailed tutor; only adaptive problem sequencing differed. +0.15 SD on the no-AI final exam, larger for novices. Cleanest evidence that instructional design — not compliance-checklist features — decides learning.' },
+    langs: [
+      { code: 'MACK', url: 'https://mackinstitute.wharton.upenn.edu/2026/research-spotlight-bastani-chung/' },
+    ],
+  },
+  {
+    year: 2025, category: 'works',
+    title: { en: 'AI Tutoring Can Safely and Effectively Support Students — Exploratory RCT in UK Classrooms' },
+    source: 'LearnLM Team & Eedi · Google DeepMind (UK)',
+    summary: { en: '165 students across 5 UK secondary schools on the Eedi maths platform. Expert tutors approved 76.4% of LearnLM messages with zero or minimal edits; students receiving short LearnLM sessions were 5.5 pp more likely to solve novel problems than those with human tutors alone.' },
+    langs: [
+      { code: 'arXiv', url: 'https://arxiv.org/abs/2512.23633' },
+    ],
+  },
+  {
+    year: 2026, category: 'works',
+    title: { en: 'Gemini’s Guided Learning — Randomized Controlled Trial in Sierra Leone' },
+    source: 'Google DeepMind & Fab AI (Sierra Leone)',
+    summary: { en: '1,763 junior-secondary students, 48 classrooms, Port Loko District. +0.258 SD on externally validated math scores — roughly 1.2 to 1.7 years of typical learning in 8 weeks. Students used the tool to build conceptual understanding in >90% of conversations rather than to extract answers.' },
+    langs: [
+      { code: 'BLOG', url: 'https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/' },
+      { code: 'PDF', url: 'https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf' },
+    ],
+  },
+
+  {
+    year: 2026, category: 'works',
+    title: { en: 'Brainstorm First, Then AI — Independent Ideation Before ChatGPT Improves Post-AI Creative Performance' },
+    source: 'Educational Psychology Review',
+    summary: { en: 'Experimental study: students who brainstormed independently BEFORE consulting AI outperformed both AI-first and AI-only conditions on subsequent AI-free creative tasks. A concrete pre-task design principle that prevents cognitive surrender.' },
+    langs: [
+      { code: 'DOI', url: 'https://doi.org/10.1007/s10648-026-10118-7' },
+    ],
+  },
+
+  // ============ WHEN DESIGN GOES WRONG ============
+  {
+    year: 2026, category: 'fails',
+    title: { en: 'The Generative AI Learning Penalty — Evidence from Chinese Secondary Education' },
+    source: 'Strömberg, Lei & Wu · CEPR DP21577 (China, 26,811 students, 30-month panel)',
+    summary: { en: 'Diff-in-diff on panel data from 26,811 Chinese secondary students. AI adoption lifts homework scores 18% and cuts completion time 30% — but monthly exam scores fall 20% within six months, and high-stakes entrance-exam scores fall 18–24% at two years. Losses concentrate among the ~80% of users whose pattern is consistent with homework outsourcing.' },
+    langs: [
+      { code: 'CEPR', url: 'https://cepr.org/publications/dp21577' },
+      { code: 'WB BLOG', url: 'https://blogs.worldbank.org/en/investinpeople/a-warning-shot-for-human-capital--evidence-of-an-ai-learning-pen' },
+    ],
+  },
+  {
+    year: 2026, category: 'fails',
+    title: { en: 'Faster Completion, Less Learning — Generative AI Reduced Study Time on Math Problems and the Knowledge They Build' },
+    source: 'Rismanchian, Uzun, Matayoshi, Cosyn & Kurd-Misto · ALEKS panel',
+    summary: { en: 'Ten-year panel of 3.2M ALEKS learning interactions plus PPL placement-assessment data. Comparing AI-susceptible word problems to AI-resistant graph problems: college students cut study time 26.9%, high-schoolers 31.3%. Under proctoring the efficiency gains vanish and are replaced by a 25% cumulative drop in odds of correct response on retention items.' },
+    langs: [
+      { code: 'arXiv', url: 'https://arxiv.org/abs/2605.21629' },
+    ],
+  },
+
+  // ============ DIGITAL SKILLS ============
+  {
+    year: 2025, category: 'digital-skills',
+    title: { en: 'Digital Skills Development — Competence Frameworks, Assessment Tools and Pedagogical Approaches' },
+    source: 'World Bank Education Working Paper No. 14',
+    summary: { en: 'Framework paper: how education systems define, assess and teach digital skills across primary, secondary and TVET. Reviews DigComp, ICT frameworks, and pedagogical approaches — a taxonomy for policy design.' },
+    langs: [
+      { code: 'PDF', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/3EDU-WP-14-Digital-skills-development.pdf' },
+    ],
+  },
+  {
+    year: 2025, category: 'digital-skills',
+    title: { en: 'Digital Skills, Innovation, and Economic Transformation — Opportunities and Challenges for Sub-Saharan Africa' },
+    source: 'World Bank Education Working Paper No. 15',
+    summary: { en: 'How digital-skills supply interacts with innovation and jobs in Sub-Saharan Africa: labor-market signals, TVET reform, and the sequencing of foundational vs. advanced digital skills.' },
+    langs: [
+      { code: 'PDF', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/5EDU-WP-15-Digital-skills-innovation-and-economic-transformation.pdf' },
+    ],
+  },
 ];
+
+let paperCatFilter = 'all';
+
+function renderPaperFilters(lang) {
+  const bar = document.getElementById('papers-filters');
+  if (!bar) return;
+  const t = I18N[lang] || I18N.es;
+  const cats = [
+    { key: 'all', label: t['res.cat.all'] },
+    { key: 'wb-guides', label: t['res.cat.guides'] },
+    { key: 'works', label: t['res.cat.works'] },
+    { key: 'fails', label: t['res.cat.fails'] },
+    { key: 'digital-skills', label: t['res.cat.digital'] },
+  ];
+  bar.innerHTML = cats.map(c => {
+    const n = c.key === 'all' ? PAPERS.length : PAPERS.filter(p => p.category === c.key).length;
+    const active = c.key === paperCatFilter;
+    return `<button type="button" class="paper-chip${active ? ' active' : ''}" data-cat="${c.key}" role="tab" aria-selected="${active}">
+      ${c.label}<span class="chip-count">${n}</span>
+    </button>`;
+  }).join('');
+  bar.querySelectorAll('.paper-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      paperCatFilter = btn.dataset.cat;
+      renderPaperFilters(currentLang);
+      renderPapers(currentLang);
+    });
+  });
+}
 
 function renderPapers(lang) {
   const grid = document.getElementById('papers-grid');
   if (!grid) return;
-  const L = (PAPERS[0].summary[lang] !== undefined) ? lang : 'es';
   const t = I18N[lang] || I18N.es;
-  grid.innerHTML = PAPERS.map(p => {
+  const catTagLabels = {
+    'wb-guides': t['res.cat.guides'],
+    'works': t['res.cat.works'],
+    'fails': t['res.cat.fails'],
+    'digital-skills': t['res.cat.digital'],
+  };
+  const filtered = paperCatFilter === 'all' ? PAPERS : PAPERS.filter(p => p.category === paperCatFilter);
+  grid.innerHTML = filtered.map(p => {
     const forthcoming = !!p.forthcoming;
     const yearBadge = forthcoming
       ? `<span class="paper-forthcoming-badge">${t['res.forthcoming.badge']}</span>`
       : `<span>${p.year}</span>`;
     const source = p.source || 'World Bank';
+    const cat = p.category || 'wb-guides';
+    const catTag = `<span class="paper-cat-tag">${catTagLabels[cat] || ''}</span>`;
+    const pickText = obj => (obj && typeof obj === 'object')
+      ? (obj[lang] || obj.en || Object.values(obj)[0])
+      : obj;
     const langsBlock = forthcoming
       ? `<span class="paper-forthcoming-note">${t['res.forthcoming.note']}</span>`
-      : p.langs.map(l => `<a class="lang-btn" href="${l.url}" target="_blank" rel="noopener">${l.code}</a>`).join('');
+      : (p.langs && p.langs.length
+          ? p.langs.map(l => `<a class="lang-btn" href="${l.url}" target="_blank" rel="noopener">${l.code}</a>`).join('')
+          : `<span class="paper-forthcoming-note">${t['res.wp.note']}</span>`);
     return `
-      <article class="paper${forthcoming ? ' paper-forthcoming' : ''}">
+      <article class="paper${forthcoming ? ' paper-forthcoming' : ''}" data-cat="${cat}">
         <div class="paper-meta">
           ${yearBadge}
           <span class="paper-source">${source}</span>
+          ${catTag}
         </div>
-        <h3 class="paper-title">${(p.title && typeof p.title === 'object') ? (p.title[L] || p.title.en || Object.values(p.title)[0]) : p.title}</h3>
-        <p class="paper-summary">${p.summary[L]}</p>
+        <h3 class="paper-title">${pickText(p.title)}</h3>
+        <p class="paper-summary">${pickText(p.summary)}</p>
         <div class="paper-langs">${langsBlock}</div>
       </article>
     `;
@@ -2429,6 +2694,7 @@ function applyLang(lang) {
   document.querySelectorAll('.lang button').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
+  renderPaperFilters(lang);
   renderPapers(lang);
   try { localStorage.setItem('evidencia-lang', lang); } catch (_) {}
 }
