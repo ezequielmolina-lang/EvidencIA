@@ -265,11 +265,15 @@
     justify-content: center;
     overflow: hidden;
   }
-  .init-media img {
+  .init-media img,
+  .init-media video {
     width: 100%;
     height: 100%;
     object-fit: contain;
     padding: 20px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .init-media video { display: none; }
   }
   .init-body {
     padding: 22px 24px 26px;
@@ -1156,7 +1160,12 @@
 
       <div class="initiatives">
         <article class="initiative">
-          <div class="init-media"><img src="img/eligiendo-mi-camino.png" alt="Gallito de las Rocas — mascota de Eligiendo Mi Camino" loading="lazy" /></div>
+          <div class="init-media">
+            <video autoplay muted loop playsinline preload="metadata" poster="img/eligiendo-mi-camino.png" aria-label="Gallito de las Rocas — mascota de Eligiendo Mi Camino">
+              <source src="img/gallito.mp4" type="video/mp4" />
+              <img src="img/eligiendo-mi-camino.png" alt="Gallito de las Rocas — mascota de Eligiendo Mi Camino" />
+            </video>
+          </div>
           <div class="init-body">
             <div class="init-tag" data-i18n="init.emc.tag">Perú · Educación secundaria</div>
             <h3 class="init-name">Eligiendo Mi Camino</h3>
@@ -2266,6 +2275,14 @@ pfForm.addEventListener('submit', async (e) => {
   } catch (err) {
     setStatus(pfStatus, 'error', t['status.pf.error']);
   }
+});
+
+// ============================================================
+// AUTOPLAY VIDEOS — nudge muted-loop videos that some browsers
+// (Safari, Electron previews) won't autoplay from HTML attrs alone.
+// ============================================================
+document.querySelectorAll('.init-media video').forEach(v => {
+  v.play().catch(() => {}); // silently ignore autoplay blocks — the poster shows
 });
 
 // ============================================================
