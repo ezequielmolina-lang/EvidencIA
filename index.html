@@ -2945,11 +2945,19 @@ document.querySelectorAll('.init-media video').forEach(v => {
 // ============================================================
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px -80px 0px' });
 
 document.querySelectorAll('section, .split-card, .product, .smackdown, .partner, .nl-card').forEach(el => {
   el.classList.add('fade-in');
-  io.observe(el);
+  // For elements taller than the viewport (e.g. the Evidencia section on mobile),
+  // IntersectionObserver behaves inconsistently — the element can 'enclose' the
+  // viewport without the observer firing. Mark them visible upfront so they never
+  // stay stuck at opacity: 0.
+  if (el.getBoundingClientRect().height > window.innerHeight) {
+    el.classList.add('visible');
+  } else {
+    io.observe(el);
+  }
 });
 </script>
 </body>
