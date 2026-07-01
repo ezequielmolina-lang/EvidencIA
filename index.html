@@ -1792,10 +1792,10 @@ const I18N = {
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint próximamente',
     'res.wp.note': 'Working paper',
-    'res.cat.all': 'Todos',
-    'res.cat.guides': 'Marcos y guías',
-    'res.cat.works': 'Cuando funciona',
-    'res.cat.fails': 'Cuando falla',
+    'res.cat.all': 'Todo',
+    'res.cat.guides': 'El terreno',
+    'res.cat.works': 'Tutoría IA — RCTs',
+    'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
@@ -2005,9 +2005,9 @@ const I18N = {
     'res.forthcoming.note': 'Preprint coming soon',
     'res.wp.note': 'Working paper',
     'res.cat.all': 'All',
-    'res.cat.guides': 'Frameworks & guides',
-    'res.cat.works': 'When it works',
-    'res.cat.fails': 'When it fails',
+    'res.cat.guides': 'The landscape',
+    'res.cat.works': 'AI tutoring — RCTs',
+    'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
 
     'epi.quote': 'Memory is the residue of thought.',
@@ -2216,10 +2216,10 @@ const I18N = {
     'res.forthcoming.badge': 'Em breve',
     'res.forthcoming.note': 'Preprint em breve',
     'res.wp.note': 'Working paper',
-    'res.cat.all': 'Todos',
-    'res.cat.guides': 'Marcos e guias',
-    'res.cat.works': 'Quando funciona',
-    'res.cat.fails': 'Quando falha',
+    'res.cat.all': 'Tudo',
+    'res.cat.guides': 'O cenário',
+    'res.cat.works': 'Tutoria com IA — RCTs',
+    'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
@@ -2488,17 +2488,7 @@ const PAPERS = [
     ],
   },
 
-  // ============ CONVERGENCE — WHEN IT WORKS ============
-  {
-    year: 2024, category: 'works',
-    title: { en: 'Generative AI Without Guardrails Can Harm Learning — Evidence from High School Mathematics' },
-    source: 'Bastani, Bastani, Sungu, Ge, Kabakcı & Mariman · Wharton (Turkey)',
-    summary: { en: 'RCT with ~1,000 Turkish high-school math students. The guardrailed GPT-Tutor arm eliminates the negative transfer seen with unguided ChatGPT — the "cautionary" citation, correctly read, is anti-unguided AI, not anti-AI.' },
-    langs: [
-      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
-      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
-    ],
-  },
+  // ============ AI TUTORING — RCT EVIDENCE ============
   {
     year: 2025, category: 'works',
     title: { en: 'From Chalkboards to Chatbots — Impact of Generative AI on Learning in Nigeria' },
@@ -2564,7 +2554,17 @@ const PAPERS = [
     ],
   },
 
-  // ============ WHEN DESIGN GOES WRONG ============
+  // ============ AI IN THE WILD — WHEN DESIGN IS ABSENT ============
+  {
+    year: 2024, category: 'fails',
+    title: { en: 'Generative AI Without Guardrails Can Harm Learning — Evidence from High School Mathematics' },
+    source: 'Bastani, Bastani, Sungu, Ge, Kabakcı & Mariman · Wharton (Turkey)',
+    summary: { en: 'RCT with ~1,000 Turkish high-school math students. Access to unguided ChatGPT boosted performance while it was on — and then hurt learning once the tool was removed. The negative transfer disappears only in the guardrailed GPT-Tutor arm. The canonical evidence that unguided AI use erodes durable learning.' },
+    langs: [
+      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
+      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
+    ],
+  },
   {
     year: 2026, category: 'fails',
     title: { en: 'The Generative AI Learning Penalty — Evidence from Chinese Secondary Education' },
@@ -2585,9 +2585,9 @@ const PAPERS = [
     ],
   },
 
-  // ============ DIGITAL SKILLS ============
+  // ============ DIGITAL SKILLS (folded into 'the landscape') ============
   {
-    year: 2025, category: 'digital-skills',
+    year: 2025, category: 'wb-guides',
     title: { en: 'Digital Skills Development — Competence Frameworks, Assessment Tools and Pedagogical Approaches' },
     source: 'World Bank Education Working Paper No. 14',
     summary: { en: 'Framework paper: how education systems define, assess and teach digital skills across primary, secondary and TVET. Reviews DigComp, ICT frameworks, and pedagogical approaches — a taxonomy for policy design.' },
@@ -2596,7 +2596,7 @@ const PAPERS = [
     ],
   },
   {
-    year: 2025, category: 'digital-skills',
+    year: 2025, category: 'wb-guides',
     title: { en: 'Digital Skills, Innovation, and Economic Transformation — Opportunities and Challenges for Sub-Saharan Africa' },
     source: 'World Bank Education Working Paper No. 15',
     summary: { en: 'How digital-skills supply interacts with innovation and jobs in Sub-Saharan Africa: labor-market signals, TVET reform, and the sequencing of foundational vs. advanced digital skills.' },
@@ -2617,7 +2617,6 @@ function renderPaperFilters(lang) {
     { key: 'wb-guides', label: t['res.cat.guides'] },
     { key: 'works', label: t['res.cat.works'] },
     { key: 'fails', label: t['res.cat.fails'] },
-    { key: 'digital-skills', label: t['res.cat.digital'] },
   ];
   bar.innerHTML = cats.map(c => {
     const n = c.key === 'all' ? PAPERS.length : PAPERS.filter(p => p.category === c.key).length;
@@ -2643,7 +2642,6 @@ function renderPapers(lang) {
     'wb-guides': t['res.cat.guides'],
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
-    'digital-skills': t['res.cat.digital'],
   };
   const filtered = paperCatFilter === 'all' ? PAPERS : PAPERS.filter(p => p.category === paperCatFilter);
   grid.innerHTML = filtered.map(p => {
