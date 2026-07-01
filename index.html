@@ -365,14 +365,18 @@
     color: var(--ink-soft);
     max-width: 62ch;
     margin-bottom: 32px;
+    text-align: justify;
+    text-align-last: left;
+    hyphens: none;
+  }
+  @media (max-width: 720px) {
+    .ev-block-lead { text-align: left; }
   }
   .ev-block-lead em {
     font-style: normal;
     font-weight: 500;
-    color: var(--gold-deep);
+    color: var(--ink);
   }
-  .ev-block[data-cat="works"] .ev-block-lead em { color: var(--works); }
-  .ev-block[data-cat="fails"] .ev-block-lead em { color: var(--fails); }
   .ev-papers-list {
     list-style: none;
     padding: 0;
