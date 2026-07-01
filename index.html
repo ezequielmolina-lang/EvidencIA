@@ -321,7 +321,107 @@
   .init-link:hover { color: var(--gold-deep); border-color: var(--gold-deep); }
   .init-link::after { content: "↗"; font-size: 11px; }
 
-  /* Papers grid (Base de evidencia) */
+  /* Evidencia — editorial blocks (Landscape / AI tutoring RCTs / AI in the wild) */
+  .ev-block {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .ev-block:first-child { border-top: none; padding-top: 8px; margin-top: 44px; }
+  .ev-block-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ev-block[data-cat="wb-guides"] .ev-block-eyebrow { color: var(--gold-deep); }
+  .ev-block[data-cat="works"] .ev-block-eyebrow { color: var(--works); }
+  .ev-block[data-cat="fails"] .ev-block-eyebrow { color: var(--fails); }
+  .ev-block-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 32ch;
+  }
+  .ev-block-lead {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin-bottom: 32px;
+  }
+  .ev-block-lead em {
+    font-style: normal;
+    background: linear-gradient(180deg, transparent 62%, rgba(184,132,43,0.22) 62%);
+    padding: 0 2px;
+  }
+  .ev-block[data-cat="works"] .ev-block-lead em {
+    background: linear-gradient(180deg, transparent 62%, rgba(45,95,62,0.22) 62%);
+  }
+  .ev-block[data-cat="fails"] .ev-block-lead em {
+    background: linear-gradient(180deg, transparent 62%, rgba(177,70,41,0.20) 62%);
+  }
+  .ev-papers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .ev-paper-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 18px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ev-paper-year {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+  }
+  .ev-paper-body {
+    min-width: 0;
+  }
+  .ev-paper-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .ev-paper-source {
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .ev-paper-langs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .ev-paper-forthcoming {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-mute);
+    align-self: center;
+  }
+  @media (max-width: 720px) {
+    .ev-paper-row { grid-template-columns: 1fr; gap: 8px; }
+    .ev-paper-langs { justify-content: flex-start; }
+    .ev-paper-year { order: -1; }
+  }
+
+  /* Papers grid (legacy — kept in case they're referenced elsewhere) */
   .papers-filters {
     margin-top: 44px;
     display: flex;
@@ -1391,9 +1491,7 @@
       <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
       <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
 
-      <div class="papers-filters" id="papers-filters" role="tablist"></div>
-
-      <div class="papers" id="papers-grid"></div>
+      <div id="papers-blocks"></div>
 
       <div class="papers-footer">
         <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
@@ -1797,6 +1895,12 @@ const I18N = {
     'res.cat.works': 'Tutoría IA — RCTs',
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
+    'res.ev.landscape.title': 'Empezamos con la serie del Banco Mundial.',
+    'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. Se suman los estudios de habilidades digitales (WP-14 marco de competencias, WP-15 innovación y transformación económica en África Subsahariana) porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
+    'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
+    'res.ev.tutoring.lead': 'Siete ensayos aleatorizados en cuatro continentes apuntan al mismo mecanismo. <em>Nigeria +0.31 SD</em> en seis semanas (≈ 1,5–2 años de escolarización). <em>Sierra Leona +0.26 SD</em> en pruebas externamente validadas, con más del 90% de las conversaciones dedicadas a construir comprensión conceptual. <em>Harvard</em>: los estudiantes con el tutor IA aprendieron más del doble en menos tiempo que la clase activa. <em>Taipéi</em> aisla la variable más profunda — mismo tutor guardrailed, sola diferencia el ordenamiento adaptativo de problemas, +0.15 SD en el examen final sin IA. <em>Reino Unido (LearnLM + Eedi)</em>: los tutores expertos aprobaron el 76% de los mensajes del modelo con cero o mínima edición. Y en <em>Turquía</em>, el brazo guardrailed del propio Bastani elimina el negative transfer del brazo libre — mismo estudio, mismo tipo de estudiantes; el diseño cambió el resultado.',
+    'res.ev.wild.title': 'Cuando la IA entra sin barandas, el rendimiento sube y el aprendizaje cae.',
+    'res.ev.wild.lead': 'Tres estudios grandes describen el mismo patrón — lo que Demombynes llama <em>cognitive surrender</em>. <em>Turquía (Bastani, brazo libre)</em>: el acceso a ChatGPT boostea el desempeño en la tarea, pero cuando la IA se apaga el aprendizaje retrocede. <em>China (Strömberg, Lei & Wu, 26.811 estudiantes, panel de 30 meses)</em>: las tareas suben 18%, el tiempo de completado cae 30%, los exámenes mensuales bajan 20% en seis meses y los exámenes de ingreso a la universidad caen 18–24% en dos años. <em>Plataforma ALEKS (3,2M interacciones)</em>: en problemas susceptibles al AI el tiempo de estudio cae ~27%; bajo proctoring esas ganancias desaparecen y la probabilidad de responder bien cae 25%. En los tres casos, el problema no es la IA — es el diseño ausente.',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
@@ -2009,6 +2113,12 @@ const I18N = {
     'res.cat.works': 'AI tutoring — RCTs',
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
+    'res.ev.landscape.title': 'We start with the World Bank series.',
+    'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. We fold in the digital-skills studies (WP-14 competence frameworks, WP-15 innovation and economic transformation in Sub-Saharan Africa) because the AI-in-education debate can\'t be read without the human-capital map.',
+    'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
+    'res.ev.tutoring.lead': 'Seven randomized trials across four continents point to the same mechanism. <em>Nigeria +0.31 SD</em> in six weeks (≈ 1.5–2 years of schooling). <em>Sierra Leone +0.26 SD</em> on externally validated tests, with over 90% of conversations spent building conceptual understanding. <em>Harvard</em>: students with the AI tutor learned more than twice as much in less time than active learning. <em>Taipei</em> isolates the sharpest variable — same guardrailed tutor, only adaptive problem sequencing differs, +0.15 SD on the no-AI final exam. <em>UK (LearnLM + Eedi)</em>: expert tutors approved 76% of the model\'s messages with zero or minimal edits. <em>Chile (Gallegos)</em>: guidance on learning-oriented use raised final-exam scores by 0.21 SD; encouraging adoption alone did nothing. And in <em>Turkey</em>, the guardrailed arm of Bastani\'s own study erases the negative transfer of the free-access arm — same study, same students; design changed the outcome.',
+    'res.ev.wild.title': 'When AI enters without guardrails, performance goes up and learning goes down.',
+    'res.ev.wild.lead': 'Three large studies describe the same pattern — what Demombynes calls <em>cognitive surrender</em>. <em>Turkey (Bastani, free-access arm)</em>: ChatGPT boosts on-task performance, but when the tool is turned off, learning slides back. <em>China (Strömberg, Lei & Wu, 26,811 students, 30-month panel)</em>: homework scores +18%, completion time -30%, monthly exams -20% within six months, high-stakes entrance exams -18–24% at two years. <em>ALEKS platform (3.2M interactions)</em>: on AI-susceptible items study time falls ~27%; under proctoring the efficiency gains vanish and the odds of a correct response fall 25%. In all three, the problem isn\'t AI — it\'s absent design.',
 
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
@@ -2221,6 +2331,12 @@ const I18N = {
     'res.cat.works': 'Tutoria com IA — RCTs',
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
+    'res.ev.landscape.title': 'Começamos pela série do Banco Mundial.',
+    'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Somam-se os estudos de habilidades digitais (WP-14 marco de competências, WP-15 inovação e transformação econômica na África Subsaariana) porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
+    'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
+    'res.ev.tutoring.lead': 'Sete ensaios aleatorizados em quatro continentes apontam ao mesmo mecanismo. <em>Nigéria +0,31 DP</em> em seis semanas (≈ 1,5–2 anos de escolaridade). <em>Serra Leoa +0,26 DP</em> em provas externamente validadas, com mais de 90% das conversas dedicadas à construção de compreensão conceitual. <em>Harvard</em>: os estudantes com o tutor de IA aprenderam mais do dobro em menos tempo do que a aula ativa. <em>Taipé</em> isola a variável mais fina — mesmo tutor guardrailed, só difere o sequenciamento adaptativo de problemas, +0,15 DP no exame sem IA. <em>Reino Unido (LearnLM + Eedi)</em>: os tutores especialistas aprovaram 76% das mensagens do modelo com zero ou mínima edição. <em>Chile (Gallegos)</em>: a orientação sobre uso voltado à aprendizagem elevou o exame final em 0,21 DP; incentivar a adoção sozinha não fez nada. E na <em>Turquia</em>, o braço guardrailed do próprio Bastani apaga o negative transfer do braço livre — mesmo estudo, mesmos alunos; o desenho mudou o resultado.',
+    'res.ev.wild.title': 'Quando a IA entra sem grades, o desempenho sobe e a aprendizagem cai.',
+    'res.ev.wild.lead': 'Três estudos grandes descrevem o mesmo padrão — o que Demombynes chama de <em>cognitive surrender</em>. <em>Turquia (Bastani, braço livre)</em>: o ChatGPT eleva o desempenho na tarefa, mas quando a ferramenta se desliga a aprendizagem retrocede. <em>China (Strömberg, Lei & Wu, 26.811 estudantes, painel de 30 meses)</em>: tarefas +18%, tempo de conclusão -30%, exames mensais -20% em seis meses e exames de ingresso caem 18–24% em dois anos. <em>Plataforma ALEKS (3,2M interações)</em>: em itens susceptíveis à IA o tempo de estudo cai ~27%; sob proctoring os ganhos de eficiência desaparecem e a probabilidade de acerto cai 25%. Nos três casos o problema não é a IA — é o desenho ausente.',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
@@ -2490,6 +2606,16 @@ const PAPERS = [
 
   // ============ AI TUTORING — RCT EVIDENCE ============
   {
+    year: 2024, category: 'works',
+    title: { en: 'Generative AI Without Guardrails Can Harm Learning — Guardrailed Arm (Turkey)' },
+    source: 'Bastani et al. · Wharton (Turkey)',
+    summary: { en: 'Same paper, guardrailed condition: the GPT-Tutor arm improved performance without the negative transfer that the unguided arm produced. Design choice — not access to AI — decided whether learning was preserved.' },
+    langs: [
+      { code: 'SSRN', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4895486' },
+      { code: 'PNAS', url: 'https://www.pnas.org/doi/10.1073/pnas.2422633122' },
+    ],
+  },
+  {
     year: 2025, category: 'works',
     title: { en: 'From Chalkboards to Chatbots — Impact of Generative AI on Learning in Nigeria' },
     source: 'De Simone, Tiberti, Barron Rodríguez, Manolio, Mosuro & Dikoru · World Bank',
@@ -2509,11 +2635,13 @@ const PAPERS = [
     ],
   },
   {
-    year: 2025, category: 'works',
-    title: { en: 'Guidance, Not Adoption — ChatGPT Access and Undergraduate Learning in Chile' },
-    source: 'Gallegos et al. · Chile',
-    summary: { en: 'Free ChatGPT access alone does not improve learning; guided, task-specific use does. The title states the finding: design and guidance, not adoption, decide the effect.' },
-    langs: [],
+    year: 2026, category: 'works',
+    title: { en: 'Guidance Over Adoption — Experimental Evidence on AI-Assisted Learning (Chile)' },
+    source: 'Sebastian Gallegos · UAI Business School / J-PAL / IZA (Chile)',
+    summary: { en: 'Two randomized interventions across 7 econometrics sections at a Chilean university. Encouraging adoption raised awareness and use but did not improve midterm scores. Guidance on learning-oriented use shifted interactions to tutor-style engagement, improved final-exam performance by 0.21 SD and raised the probability of passing by 12 pp. Design — not access — decides the effect.' },
+    langs: [
+      { code: 'IZA', url: 'https://docs.iza.org/dp18513.pdf' },
+    ],
   },
   {
     year: 2025, category: 'works',
@@ -2606,70 +2734,51 @@ const PAPERS = [
   },
 ];
 
-let paperCatFilter = 'all';
-
-function renderPaperFilters(lang) {
-  const bar = document.getElementById('papers-filters');
-  if (!bar) return;
+function renderEvidenceBlocks(lang) {
+  const container = document.getElementById('papers-blocks');
+  if (!container) return;
   const t = I18N[lang] || I18N.es;
-  const cats = [
-    { key: 'all', label: t['res.cat.all'] },
-    { key: 'wb-guides', label: t['res.cat.guides'] },
-    { key: 'works', label: t['res.cat.works'] },
-    { key: 'fails', label: t['res.cat.fails'] },
+  const pickText = obj => (obj && typeof obj === 'object')
+    ? (obj[lang] || obj.en || Object.values(obj)[0])
+    : obj;
+  const blocks = [
+    { cat: 'wb-guides', title: t['res.ev.landscape.title'], lead: t['res.ev.landscape.lead'] },
+    { cat: 'works', title: t['res.ev.tutoring.title'], lead: t['res.ev.tutoring.lead'] },
+    { cat: 'fails', title: t['res.ev.wild.title'], lead: t['res.ev.wild.lead'] },
   ];
-  bar.innerHTML = cats.map(c => {
-    const n = c.key === 'all' ? PAPERS.length : PAPERS.filter(p => p.category === c.key).length;
-    const active = c.key === paperCatFilter;
-    return `<button type="button" class="paper-chip${active ? ' active' : ''}" data-cat="${c.key}" role="tab" aria-selected="${active}">
-      ${c.label}<span class="chip-count">${n}</span>
-    </button>`;
-  }).join('');
-  bar.querySelectorAll('.paper-chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-      paperCatFilter = btn.dataset.cat;
-      renderPaperFilters(currentLang);
-      renderPapers(currentLang);
-    });
-  });
-}
-
-function renderPapers(lang) {
-  const grid = document.getElementById('papers-grid');
-  if (!grid) return;
-  const t = I18N[lang] || I18N.es;
-  const catTagLabels = {
+  const labelByCat = {
     'wb-guides': t['res.cat.guides'],
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
   };
-  const filtered = paperCatFilter === 'all' ? PAPERS : PAPERS.filter(p => p.category === paperCatFilter);
-  grid.innerHTML = filtered.map(p => {
-    const forthcoming = !!p.forthcoming;
-    const yearBadge = forthcoming
-      ? `<span class="paper-forthcoming-badge">${t['res.forthcoming.badge']}</span>`
-      : `<span>${p.year}</span>`;
-    const source = p.source || 'World Bank';
-    const cat = p.category || 'wb-guides';
-    const catTag = `<span class="paper-cat-tag">${catTagLabels[cat] || ''}</span>`;
-    const pickText = obj => (obj && typeof obj === 'object')
-      ? (obj[lang] || obj.en || Object.values(obj)[0])
-      : obj;
-    const langsBlock = forthcoming
-      ? `<span class="paper-forthcoming-note">${t['res.forthcoming.note']}</span>`
-      : (p.langs && p.langs.length
-          ? p.langs.map(l => `<a class="lang-btn" href="${l.url}" target="_blank" rel="noopener">${l.code}</a>`).join('')
-          : `<span class="paper-forthcoming-note">${t['res.wp.note']}</span>`);
+  container.innerHTML = blocks.map(b => {
+    const papersHere = PAPERS.filter(p => (p.category || 'wb-guides') === b.cat);
+    const list = papersHere.map(p => {
+      const source = p.source || 'World Bank';
+      const forthcoming = !!p.forthcoming;
+      const yearLabel = forthcoming ? t['res.forthcoming.badge'] : p.year;
+      const langsBlock = forthcoming
+        ? `<span class="ev-paper-forthcoming">${t['res.forthcoming.note']}</span>`
+        : (p.langs && p.langs.length
+            ? p.langs.map(l => `<a class="lang-btn" href="${l.url}" target="_blank" rel="noopener">${l.code}</a>`).join('')
+            : `<span class="ev-paper-forthcoming">${t['res.wp.note']}</span>`);
+      return `
+        <li class="ev-paper-row">
+          <div class="ev-paper-year">${yearLabel}</div>
+          <div class="ev-paper-body">
+            <div class="ev-paper-title">${pickText(p.title)}</div>
+            <div class="ev-paper-source">${source}</div>
+          </div>
+          <div class="ev-paper-langs">${langsBlock}</div>
+        </li>
+      `;
+    }).join('');
     return `
-      <article class="paper${forthcoming ? ' paper-forthcoming' : ''}" data-cat="${cat}">
-        <div class="paper-meta">
-          ${yearBadge}
-          <span class="paper-source">${source}</span>
-          ${catTag}
-        </div>
-        <h3 class="paper-title">${pickText(p.title)}</h3>
-        <p class="paper-summary">${pickText(p.summary)}</p>
-        <div class="paper-langs">${langsBlock}</div>
+      <article class="ev-block" data-cat="${b.cat}">
+        <div class="ev-block-eyebrow">${labelByCat[b.cat]} · ${papersHere.length}</div>
+        <h3 class="ev-block-title">${b.title}</h3>
+        <p class="ev-block-lead">${b.lead}</p>
+        <ol class="ev-papers-list">${list}</ol>
       </article>
     `;
   }).join('');
@@ -2692,8 +2801,7 @@ function applyLang(lang) {
   document.querySelectorAll('.lang button').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
-  renderPaperFilters(lang);
-  renderPapers(lang);
+  renderEvidenceBlocks(lang);
   try { localStorage.setItem('evidencia-lang', lang); } catch (_) {}
 }
 
