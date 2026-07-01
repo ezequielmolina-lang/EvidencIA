@@ -2947,18 +2947,25 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0, rootMargin: '0px 0px -80px 0px' });
 
-document.querySelectorAll('section, .split-card, .product, .smackdown, .partner, .nl-card').forEach(el => {
+const fadeEls = document.querySelectorAll('section, .split-card, .product, .smackdown, .partner, .nl-card');
+fadeEls.forEach(el => {
   el.classList.add('fade-in');
-  // For elements taller than the viewport (e.g. the Evidencia section on mobile),
-  // IntersectionObserver behaves inconsistently — the element can 'enclose' the
-  // viewport without the observer firing. Mark them visible upfront so they never
-  // stay stuck at opacity: 0.
-  if (el.getBoundingClientRect().height > window.innerHeight) {
+  // Sections (the big blocks that structure the page) never get the reveal
+  // animation — on mobile, tall ones like Evidencia sometimes 'enclose' the
+  // viewport and IntersectionObserver never fires, leaving them stuck at
+  // opacity: 0. Cards inside sections keep the reveal.
+  if (el.tagName === 'SECTION') {
     el.classList.add('visible');
   } else {
     io.observe(el);
   }
 });
+
+// Belt and suspenders: if for any reason (broken IO, missed frame) an element
+// is still hidden after a second, force it visible so nothing stays blank.
+setTimeout(() => {
+  fadeEls.forEach(el => { if (!el.classList.contains('visible')) el.classList.add('visible'); });
+}, 1000);
 </script>
 </body>
 </html>
