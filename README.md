@@ -1,103 +1,113 @@
 # EvidencIA — Landing Page
 
-Single-file, trilingual (ES / EN / PT) landing page for EvidencIA, the Latin American network on AI and learning science. Built from the three source documents (`EvidencIA_Invitacion`, `EvidencIA_Newsletter_Propuesta`, `EvidencIA_Overview_EN`).
+Single-file, trilingual (ES / EN / PT) landing page for the Latin American network on AI and learning science, plus a Google Apps Script that captures form submissions to a Google Sheet.
+
+## Files
+
+- `index.html` — the whole site: HTML, inline CSS, inline JS, ES/EN/PT content, papers grid, form handlers.
+- `apps_script/datasheet.gs` — Google Apps Script Web App that receives POSTs from the forms and appends them to a Google Sheet with `newsletter` and `partners` tabs.
+- `README.md` — this file.
+
+No build step, no local dependencies. Fonts (Source Serif 4 + Inter) load from Google Fonts.
 
 ## Run locally
 
 ```bash
-# from C:\Users\cosmo\Downloads
-python -m http.server 9876
-# open http://localhost:9876/EvidencIA/
+python -m http.server 9886 --directory EvidencIA
+# open http://localhost:9886/
 ```
-
-Already wired into the running `cert-page` preview server (port 9876, cwd `C:\Users\cosmo\Downloads`): open `/EvidencIA/`.
-
-## Files
-
-- `index.html` — everything is here: HTML structure, inline CSS, inline JS, full ES/EN/PT content dictionaries.
-- `README.md` — this file.
-
-No build step. No dependencies installed locally. Google Fonts (Fraunces + Inter) load from CDN.
 
 ## Language switching
 
-- Default language: detected from `navigator.language`, falling back to Spanish.
-- User selection is persisted in `localStorage` (`evidencia-lang`).
-- ES / EN / PT toggle is in the top-right of the header and updates every element with a `data-i18n` attribute.
-- Portuguese is a working draft translation — recommend a quick review by IA.Edu Brasil before launch.
+- Default language: detected from `navigator.language`, falls back to Spanish.
+- Selection is persisted in `localStorage` (`evidencia-lang`).
+- ES / EN / PT toggle in the header updates every element tagged with `data-i18n`.
+- Portuguese is a working machine-drafted translation — worth a review by IA.Edu Brasil before launch.
 
-## Forms — wiring instructions
+## Data collection — 5-minute setup
 
-Both forms (newsletter + partner inquiry) are scaffolded for the same Google Forms POST pattern used in `capacitacion-docentes`. Until URLs are set, both forms fall back to opening a pre-filled `mailto:` draft so no submissions are lost.
+Both forms POST to a single Google Apps Script Web App that writes to a Google Sheet with two tabs.
 
-### To wire up a form
+### 1. Create the Apps Script project
 
-1. Create a Google Form with the fields below.
-2. Open the form's `viewform` page source, search for `FB_PUBLIC_LOAD_DATA_`, and grab:
-   - The `formResponse` URL — looks like `https://docs.google.com/forms/d/e/<FORM_ID>/formResponse`
-   - The numeric `entry.XXXXXXX` ID for each field
-3. Paste them into the CONFIG block at the top of `<script>` in `index.html`:
+1. Open <https://script.google.com/> and click **New project**.
+2. Delete the boilerplate in `Code.gs` and paste the contents of [`apps_script/datasheet.gs`](apps_script/datasheet.gs).
+3. Rename the project to `EvidencIA — data collection`.
+
+### 2. Run `setup()` once
+
+1. In the editor's function dropdown, select `setup`.
+2. Click **Run**. Grant the permissions Google asks for.
+3. Open the **Execution log** — you'll see the URL and ID of the sheet the script just created (or reused, if it already existed).
+4. Open the sheet to confirm the `newsletter` and `partners` tabs exist with headers.
+
+### 3. Deploy as a Web App
+
+1. Click **Deploy → New deployment**.
+2. Select type **Web app**.
+3. Configuration:
+   - **Description**: `EvidencIA data collection v1`
+   - **Execute as**: **Me** (your Google account — the sheet owner)
+   - **Who has access**: **Anyone**
+4. Click **Deploy** and copy the **Web app URL** (it ends in `/exec`).
+
+### 4. Wire the page
+
+In [`index.html`](index.html), find the CONFIG block near the top of `<script>` and paste your `/exec` URL:
 
 ```js
-const NEWSLETTER_FORM = {
-  action: 'https://docs.google.com/forms/d/e/<FORM_ID>/formResponse',
-  fields: {
-    name:    'entry.XXXX',
-    email:   'entry.XXXX',
-    role:    'entry.XXXX',
-    country: 'entry.XXXX',
-    lang:    'entry.XXXX',
-  }
-};
+const CONTACT_EMAIL = 'hola@evidencia.ai'; // TODO
+const DATA_ENDPOINT = 'https://script.google.com/macros/s/AKfycb.../exec';
 ```
 
-### Field list — newsletter form
-| Form field | Type | Required |
-|---|---|---|
-| name | short text | yes |
-| email | short text (validate email) | yes |
-| role | dropdown (docente, admin, ministerio, investigador, edtech, otro) | no |
-| country | short text | no |
-| lang | dropdown (es, pt, en) | no |
+Push. Every submission from the live site lands in the sheet.
 
-### Field list — partner inquiry form
-| Form field | Type | Required |
-|---|---|---|
-| name | short text | yes |
-| role | short text | yes |
-| email | short text (validate email) | yes |
-| country | short text | yes |
-| institution | short text | yes |
-| interest | checkboxes (co-lead, speaker, research, policy, info) | no |
-| message | paragraph | no |
+### If you ever change the Apps Script
 
-Also update `CONTACT_EMAIL` at the top of the script — currently a placeholder `hola@evidencia.ai`.
+Re-deploy: **Deploy → Manage deployments → Edit → New version → Deploy**. The `/exec` URL stays the same across versions.
+
+### If you want to rotate the URL
+
+**Deploy → New deployment** — this issues a new `/exec` URL. Update `DATA_ENDPOINT`. Old deployment keeps working until you archive it under **Manage deployments**.
+
+### Fallback
+
+If `DATA_ENDPOINT` is empty, both forms open a pre-filled `mailto:` draft to `CONTACT_EMAIL` — nothing is silently lost while the sheet is being set up.
+
+## What lands in the sheet
+
+**`newsletter` tab** — one row per signup:
+Timestamp · Name · Email · Role · Country · Preferred language · Page language · Source · User agent
+
+**`partners` tab** — one row per inquiry:
+Timestamp · Name · Role · Email · Country · Institution · Interests · Message · Page language · Source · User agent
+
+`Interests` is a comma-separated list from the checkboxes (co-lead / speaker / research / policy / info).
 
 ## Deployment
 
-The page is fully static and can deploy anywhere. To follow the `capacitacion-docentes` → `eligiendomicamino.org` pattern:
+The site is static — deploys anywhere. To follow the `capacitacion-docentes` → `eligiendomicamino.org` pattern with a custom domain:
 
-1. Push `EvidencIA/` (or its contents) to a GitHub repo.
-2. Enable GitHub Pages on the relevant branch.
-3. Add a `CNAME` file with the target domain (e.g. `evidencia.ai`, `evidencia.org`, etc.).
-4. Point the domain's DNS to GitHub Pages.
+1. Push to GitHub (already done: [ezequielmolina-lang/EvidencIA](https://github.com/ezequielmolina-lang/EvidencIA)).
+2. GitHub Pages is enabled from `main` root. Live at <https://ezequielmolina-lang.github.io/EvidencIA/>.
+3. When a domain is decided, add a `CNAME` file at the repo root with the domain, and point the DNS at GitHub Pages.
 
 ## Content sources
 
-| Section | Source doc |
+| Section | Source |
 |---|---|
 | Hero, problem framing, products, founding partners, invitation | `EvidencIA_Invitacion.docx`, `EvidencIA_Overview_EN.docx` |
-| Newsletter preview card, "Three rotating sections" | `EvidencIA_Newsletter_Propuesta.docx` (Edition #1) |
-| 12 Smackdown questions + SÍ/NO arguments per debate | `EvidencIA_Smackdowns_12.docx` |
-| Evidence numbers (Harvard 2×, Nigeria +0.31SD, Stanford $20, Ecuador +0.28SD, Bastani −17%, Gerlich, Benedek) | `EvidencIA_Invitacion.docx`, `EvidencIA_Newsletter_Propuesta.docx` |
-| Willingham epigraph | `EvidencIA_Newsletter_Propuesta.docx` (Edition #1, Pensamiento Final) |
+| Newsletter preview card | `EvidencIA_Newsletter_Propuesta.docx` (Edition #1) |
+| Smackdowns (4 sample questions) | `EvidencIA_Smackdowns_12.docx` (full 12 available if we ever commit to them) |
+| Willingham epigraph | Newsletter proposal, Edition #1 |
+| Base de evidencia — 8-paper WB AI series | `WB_downloads_data.json` (refreshed every 2 months by the `wb-downloads-dashboard` pipeline) |
 
-## Known checks before launch
+## Before launch — checklist
 
 - [ ] Replace `CONTACT_EMAIL` placeholder
-- [ ] Wire both Google Forms (action URL + entry IDs)
-- [ ] Native-speaker review of PT translations (esp. the 96 Smackdown arguments — drafted by me)
-- [ ] Add a 4th newsletter sample edition if "Egresados universitarios: Alerta temprana de la crisis del empleo" gets unlocked (Google Doc was not fetchable)
-- [ ] Confirm partner roster — currently lists World Bank, MetaRed Global, Anthropic, IA.Edu Brasil, UPC, UCR (from the EN overview; the Spanish invitation lists only WB + UPC)
-- [ ] Decide final domain + canonical URL for `<meta property="og:url">` (not yet set)
-- [ ] Add a real OG image once the visual identity is locked in
+- [ ] Run the Apps Script setup + deploy + paste `DATA_ENDPOINT`
+- [ ] Native-speaker review of PT translations
+- [ ] Confirm partner roster on the page vs the real founding-partners list
+- [ ] Decide domain, add `CNAME`, update `<meta property="og:url">`
+- [ ] Add an OG image once the visual identity is locked
+- [ ] Refresh the 8-paper URLs if the WB dashboard data changes materially

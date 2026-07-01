@@ -1237,35 +1237,18 @@
 
 <script>
 // ============================================================
-// CONFIG — wire these to Google Forms when ready (matches the
-// pattern used in capacitacion-docentes). Until URLs are set,
-// the form falls back to a mailto draft so nothing is lost.
+// CONFIG — where form submissions go
+//
+// DATA_ENDPOINT is a Google Apps Script Web App deployed from
+// apps_script/datasheet.gs (in this repo). It writes newsletter
+// signups and partner inquiries to a single Google Sheet with two
+// tabs. See the README for the 5-minute setup.
+//
+// Until DATA_ENDPOINT is filled in, the forms fall back to opening
+// a pre-filled mailto: draft so nothing is ever lost.
 // ============================================================
-const CONTACT_EMAIL = 'hola@evidencia.ai'; // TODO: replace with real EvidencIA inbox
-
-const NEWSLETTER_FORM = {
-  action: '', // e.g. 'https://docs.google.com/forms/d/e/<FORM_ID>/formResponse'
-  fields: {
-    name:    'entry.0000000001',
-    email:   'entry.0000000002',
-    role:    'entry.0000000003',
-    country: 'entry.0000000004',
-    lang:    'entry.0000000005',
-  }
-};
-
-const PARTNER_FORM = {
-  action: '', // e.g. 'https://docs.google.com/forms/d/e/<FORM_ID>/formResponse'
-  fields: {
-    name:        'entry.0000000001',
-    role:        'entry.0000000002',
-    email:       'entry.0000000003',
-    country:     'entry.0000000004',
-    institution: 'entry.0000000005',
-    interest:    'entry.0000000006',
-    message:     'entry.0000000007',
-  }
-};
+const CONTACT_EMAIL  = 'hola@evidencia.ai'; // TODO: replace with real EvidencIA inbox
+const DATA_ENDPOINT  = ''; // TODO: paste the /exec URL after deploying datasheet.gs
 
 // ============================================================
 // I18N — full content in ES / EN / PT
@@ -1958,7 +1941,9 @@ document.querySelectorAll('.lang button').forEach(b => {
 })();
 
 // ============================================================
-// FORM HANDLING — Google Forms POST with mailto fallback
+// FORM HANDLING — POST JSON to the Apps Script Web App
+// Falls back to mailto: if DATA_ENDPOINT is unset, so a form
+// submission is never silently lost while the sheet is being set up.
 // ============================================================
 function setStatus(el, type, msg) {
   el.className = 'form-status show ' + type;
@@ -1968,23 +1953,28 @@ function setStatus(el, type, msg) {
 function buildMailto(subject, fields) {
   const lines = Object.entries(fields)
     .filter(([_, v]) => v && String(v).trim())
-    .map(([k, v]) => `${k}: ${v}`);
+    .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`);
   const body = encodeURIComponent(lines.join('\n'));
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
 
-async function submitToGoogleForm(config, payload) {
-  const fd = new FormData();
-  Object.entries(payload).forEach(([key, value]) => {
-    const entryId = config.fields[key];
-    if (!entryId) return;
-    if (Array.isArray(value)) {
-      value.forEach(v => fd.append(entryId, v));
-    } else if (value !== undefined && value !== null && value !== '') {
-      fd.append(entryId, value);
-    }
+// Apps Script /exec does not send CORS headers, so we send as
+// text/plain (a "simple" request that skips CORS preflight) with a
+// JSON string body. The doPost() in datasheet.gs parses it via
+// JSON.parse(e.postData.contents).
+async function postToSheet(payload) {
+  if (!DATA_ENDPOINT) throw new Error('no endpoint configured');
+  await fetch(DATA_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({
+      ...payload,
+      pageLang: currentLang,
+      source: 'evidencia landing',
+      userAgent: navigator.userAgent,
+    }),
   });
-  await fetch(config.action, { method: 'POST', mode: 'no-cors', body: fd });
 }
 
 // Newsletter form
@@ -1994,6 +1984,7 @@ nlForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const t = I18N[currentLang];
   const payload = {
+    type: 'newsletter',
     name: nlForm['name'].value.trim(),
     email: nlForm['email'].value.trim(),
     role: nlForm['role'].value,
@@ -2005,12 +1996,11 @@ nlForm.addEventListener('submit', async (e) => {
     return;
   }
   try {
-    if (NEWSLETTER_FORM.action) {
-      await submitToGoogleForm(NEWSLETTER_FORM, payload);
+    if (DATA_ENDPOINT) {
+      await postToSheet(payload);
       setStatus(nlStatus, 'success', t['status.nl.success']);
       nlForm.reset();
     } else {
-      // Fallback: open mailto with pre-filled body
       window.location.href = buildMailto('EvidencIA — Newsletter signup', payload);
       setStatus(nlStatus, 'success', t['status.nl.success']);
     }
@@ -2027,12 +2017,13 @@ pfForm.addEventListener('submit', async (e) => {
   const t = I18N[currentLang];
   const interests = Array.from(pfForm.querySelectorAll('input[name="interest"]:checked')).map(i => i.value);
   const payload = {
+    type: 'partner',
     name: pfForm['name'].value.trim(),
     role: pfForm['role'].value.trim(),
     email: pfForm['email'].value.trim(),
     country: pfForm['country'].value.trim(),
     institution: pfForm['institution'].value.trim(),
-    interest: interests.join(', '),
+    interest: interests,
     message: pfForm['message'].value.trim(),
   };
   if (!payload.name || !payload.email || !payload.institution) {
@@ -2040,8 +2031,8 @@ pfForm.addEventListener('submit', async (e) => {
     return;
   }
   try {
-    if (PARTNER_FORM.action) {
-      await submitToGoogleForm(PARTNER_FORM, payload);
+    if (DATA_ENDPOINT) {
+      await postToSheet(payload);
       setStatus(pfStatus, 'success', t['status.pf.success']);
       pfForm.reset();
     } else {
