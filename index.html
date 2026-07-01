@@ -240,7 +240,7 @@
   .initiatives {
     margin-top: 56px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
   }
   .initiative {
@@ -440,6 +440,77 @@
     color: var(--ink-mute);
     letter-spacing: 0.02em;
   }
+
+  /* Newsletter editions */
+  .editions-header {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .editions-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(24px, 2.6vw, 30px);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    max-width: 26ch;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+  .editions-grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .edition-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 30px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .edition-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .edition-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-deep);
+  }
+  .edition-meta .edition-dot { color: var(--ink-mute); }
+  .edition-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .edition-dek {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .edition-cta {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .edition-cta::after { content: "↗"; font-size: 11px; opacity: 0.7; }
 
   /* Placeholder cards for stub sections */
   .placeholder-card {
@@ -864,6 +935,7 @@
     .papers { grid-template-columns: 1fr; }
     .papers-footer { flex-direction: column; align-items: stretch; }
     .initiatives { grid-template-columns: 1fr; }
+    .editions-grid { grid-template-columns: 1fr; }
     .newsletter-block { grid-template-columns: 1fr; gap: 32px; }
     .partners-grid { grid-template-columns: 1fr 1fr; }
     .partners-invite { grid-template-columns: 1fr; gap: 20px; }
@@ -1119,11 +1191,32 @@
         </article>
       </div>
 
-      <div class="placeholder-card">
-        <div class="ph-eyebrow" data-i18n="nlp.archive.eyebrow">Ediciones publicadas</div>
-        <h3 data-i18n="nlp.archive.h">El archivo va a vivir acá.</h3>
-        <p data-i18n="nlp.archive.p">Apenas publiquemos la primera edición, el archivo completo va a quedar disponible para navegar y compartir.</p>
-        <a class="ph-cta" href="#newsletter" data-i18n="nlp.archive.cta">Suscribite</a>
+      <div class="editions-header">
+        <div class="section-eyebrow" data-i18n="nlp.archive.eyebrow">Ediciones publicadas</div>
+        <h3 class="editions-title" data-i18n="nlp.archive.title">Empezamos con dos ediciones sobre mercado laboral e IA.</h3>
+      </div>
+
+      <div class="editions-grid">
+        <a class="edition-card" href="https://docs.google.com/document/d/1twIBaL7-APkIz4ooPnr7aMBxWepQcqWFo9EkbwETz9o/edit?usp=sharing" target="_blank" rel="noopener">
+          <div class="edition-meta">
+            <span class="edition-num" data-i18n="nlp.ed1.num">Edición 01</span>
+            <span class="edition-dot">·</span>
+            <span data-i18n="nlp.ed1.tag">Mercado laboral</span>
+          </div>
+          <h4 class="edition-title" data-i18n="nlp.ed1.title">Egresados universitarios: alerta temprana de la crisis del empleo</h4>
+          <p class="edition-dek" data-i18n="nlp.ed1.dek">Qué nos dicen los primeros datos sobre el empleo de recién egresados en tiempos de IA. Y qué hacer con esa señal.</p>
+          <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+        </a>
+        <a class="edition-card" href="https://docs.google.com/document/d/1rQ8A5QRm5DkRA7JSoiQi-XweuYXwvF9JPjnfTIcUfwo/edit?usp=sharing" target="_blank" rel="noopener">
+          <div class="edition-meta">
+            <span class="edition-num" data-i18n="nlp.ed2.num">Edición 02</span>
+            <span class="edition-dot">·</span>
+            <span data-i18n="nlp.ed2.tag">Profesiones</span>
+          </div>
+          <h4 class="edition-title" data-i18n="nlp.ed2.title">Profesiones en la encrucijada algorítmica</h4>
+          <p class="edition-dek" data-i18n="nlp.ed2.dek">Qué profesiones se transforman, cuáles resisten, y qué hace la diferencia. Un análisis basado en evidencia.</p>
+          <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1201,6 +1294,30 @@
             <h3 class="init-name">Teach + IA</h3>
             <p class="init-desc" data-i18n="init.teach.desc">Automatización de la observación de aula del marco Teach del Banco Mundial con LLMs. En un estudio en Perú con 199 aulas primarias, el sistema alcanza los estándares de confiabilidad de observadores humanos certificados (92,9% de acuerdo).</p>
             <a class="init-link" href="iniciativas/teach-ia.html" data-i18n="init.teach.link">Conocé la iniciativa</a>
+          </div>
+        </article>
+
+        <article class="initiative">
+          <div class="init-media">
+            <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="APE — Autonomous Project Evaluation" style="width:100%;height:100%">
+              <rect width="480" height="300" fill="#F2EDE2"/>
+              <g fill="#DDD4C0">
+                <circle cx="60" cy="60" r="3"/><circle cx="120" cy="90" r="3"/><circle cx="80" cy="130" r="3"/>
+                <circle cx="380" cy="60" r="3"/><circle cx="420" cy="100" r="3"/><circle cx="360" cy="140" r="3"/>
+                <circle cx="60" cy="240" r="3"/><circle cx="120" cy="210" r="3"/><circle cx="80" cy="170" r="3"/>
+                <circle cx="380" cy="240" r="3"/><circle cx="420" cy="200" r="3"/><circle cx="360" cy="160" r="3"/>
+              </g>
+              <text x="240" y="145" text-anchor="middle" font-family="'Source Serif 4', Georgia, serif" font-weight="500" font-size="88" letter-spacing="-2" fill="#0F0E0C">APE</text>
+              <line x1="180" y1="170" x2="300" y2="170" stroke="#B8842B" stroke-width="1.5"/>
+              <text x="240" y="196" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="700" font-size="10" letter-spacing="2.5" fill="#8E6420">AUTONOMOUS PROJECT EVALUATION</text>
+              <text x="240" y="234" text-anchor="middle" font-family="'Source Serif 4', Georgia, serif" font-style="italic" font-size="14" fill="#3A352E">1,000 papers · 18,000 head-to-head matches</text>
+            </svg>
+          </div>
+          <div class="init-body">
+            <div class="init-tag" data-i18n="init.ape.tag">Global · Investigación económica</div>
+            <h3 class="init-name">APE</h3>
+            <p class="init-desc" data-i18n="init.ape.desc">Un sistema experimental que testea si la IA puede generar, replicar y revisar investigación de política pública a escala usando datos abiertos. Del Social Catalyst Lab y la Universidad de Zúrich: 1.000 papers generados, 18.000+ enfrentamientos head-to-head, todo público — incluidos los fracasos.</p>
+            <a class="init-link" href="https://ape.socialcatalystlab.org/" target="_blank" rel="noopener" data-i18n="init.ape.link">Explorar APE</a>
           </div>
         </article>
       </div>
@@ -1380,6 +1497,7 @@
         <h4 data-i18n="foot.contact">Contacto</h4>
         <ul>
           <li><a href="mailto:hola@evidencia.ai">hola@evidencia.ai</a></li>
+          <li><a href="https://www.linkedin.com/company/redevidencia/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><span data-i18n="foot.lang">Idiomas: ES · EN · PT</span></li>
         </ul>
       </div>
@@ -1483,6 +1601,9 @@ const I18N = {
     'init.teach.tag': 'Global · Observación de aula',
     'init.teach.desc': 'Automatización de la observación de aula del marco Teach del Banco Mundial con LLMs. En un estudio en Perú con 199 aulas primarias, el sistema alcanza los estándares de confiabilidad de observadores humanos certificados (92,9% de acuerdo).',
     'init.teach.link': 'Conocé la iniciativa',
+    'init.ape.tag': 'Global · Investigación económica',
+    'init.ape.desc': 'Un sistema experimental que testea si la IA puede generar, replicar y revisar investigación de política pública a escala usando datos abiertos. Del Social Catalyst Lab y la Universidad de Zúrich: 1.000 papers generados, 18.000+ enfrentamientos head-to-head, todo público — incluidos los fracasos.',
+    'init.ape.link': 'Explorar APE',
 
     'conv.eyebrow': 'Próximas conversaciones',
     'conv.title': 'Cada conversación, archivada.',
@@ -1493,9 +1614,16 @@ const I18N = {
     'conv.ph.cta': 'Suscribite al newsletter',
 
     'nlp.archive.eyebrow': 'Ediciones publicadas',
-    'nlp.archive.h': 'El archivo va a vivir acá.',
-    'nlp.archive.p': 'Apenas publiquemos la primera edición, el archivo completo va a quedar disponible para navegar y compartir.',
-    'nlp.archive.cta': 'Suscribite',
+    'nlp.archive.title': 'Empezamos con dos ediciones sobre mercado laboral e IA.',
+    'nlp.ed1.num': 'Edición 01',
+    'nlp.ed1.tag': 'Mercado laboral',
+    'nlp.ed1.title': 'Egresados universitarios: alerta temprana de la crisis del empleo',
+    'nlp.ed1.dek': 'Qué nos dicen los primeros datos sobre el empleo de recién egresados en tiempos de IA. Y qué hacer con esa señal.',
+    'nlp.ed2.num': 'Edición 02',
+    'nlp.ed2.tag': 'Profesiones',
+    'nlp.ed2.title': 'Profesiones en la encrucijada algorítmica',
+    'nlp.ed2.dek': 'Qué profesiones se transforman, cuáles resisten, y qué hace la diferencia. Un análisis basado en evidencia.',
+    'nlp.ed.read': 'Leer la edición',
 
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
@@ -1675,6 +1803,9 @@ const I18N = {
     'init.teach.tag': 'Global · Classroom observation',
     'init.teach.desc': 'Automating classroom observation under the World Bank\'s Teach framework with LLMs. In a Peru study across 199 primary classrooms, the system meets the reliability standards of certified human observers (92.9% agreement).',
     'init.teach.link': 'Learn about the initiative',
+    'init.ape.tag': 'Global · Economic policy research',
+    'init.ape.desc': 'An experimental system testing whether AI can generate, replicate and revise public-policy research at scale using open data. From the Social Catalyst Lab and the University of Zurich: 1,000 papers generated, 18,000+ head-to-head matches, everything public — including the failures.',
+    'init.ape.link': 'Explore APE',
 
     'conv.eyebrow': 'Upcoming conversations',
     'conv.title': 'Every conversation, archived.',
@@ -1685,9 +1816,16 @@ const I18N = {
     'conv.ph.cta': 'Subscribe to the newsletter',
 
     'nlp.archive.eyebrow': 'Published issues',
-    'nlp.archive.h': 'The archive will live here.',
-    'nlp.archive.p': 'As soon as we publish the first issue, the full archive will be browsable and shareable from here.',
-    'nlp.archive.cta': 'Subscribe',
+    'nlp.archive.title': 'Two opening issues on the labor market and AI.',
+    'nlp.ed1.num': 'Issue 01',
+    'nlp.ed1.tag': 'Labor market',
+    'nlp.ed1.title': 'University graduates: an early warning of the employment crisis',
+    'nlp.ed1.dek': 'What the first data on recent-graduate employment tells us in the age of AI — and what to do with the signal.',
+    'nlp.ed2.num': 'Issue 02',
+    'nlp.ed2.tag': 'Professions',
+    'nlp.ed2.title': 'Professions at the algorithmic crossroads',
+    'nlp.ed2.dek': 'Which professions transform, which resist, and what makes the difference. An evidence-based analysis.',
+    'nlp.ed.read': 'Read the issue',
 
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
@@ -1867,6 +2005,9 @@ const I18N = {
     'init.teach.tag': 'Global · Observação de aula',
     'init.teach.desc': 'Automação da observação de aula sob o framework Teach do Banco Mundial com LLMs. Em um estudo no Peru com 199 salas de aula primárias, o sistema atinge os padrões de confiabilidade dos observadores humanos certificados (92,9% de concordância).',
     'init.teach.link': 'Conheça a iniciativa',
+    'init.ape.tag': 'Global · Pesquisa de política econômica',
+    'init.ape.desc': 'Um sistema experimental que testa se a IA pode gerar, replicar e revisar pesquisa de política pública em escala usando dados abertos. Do Social Catalyst Lab e da Universidade de Zurique: 1.000 papers gerados, 18.000+ confrontos diretos, tudo público — incluindo os fracassos.',
+    'init.ape.link': 'Explorar APE',
 
     'conv.eyebrow': 'Próximas conversas',
     'conv.title': 'Cada conversa, arquivada.',
@@ -1877,9 +2018,16 @@ const I18N = {
     'conv.ph.cta': 'Assine a newsletter',
 
     'nlp.archive.eyebrow': 'Edições publicadas',
-    'nlp.archive.h': 'O arquivo vai viver aqui.',
-    'nlp.archive.p': 'Assim que publicarmos a primeira edição, o arquivo completo ficará disponível para navegar e compartilhar.',
-    'nlp.archive.cta': 'Assinar',
+    'nlp.archive.title': 'Começamos com duas edições sobre mercado de trabalho e IA.',
+    'nlp.ed1.num': 'Edição 01',
+    'nlp.ed1.tag': 'Mercado de trabalho',
+    'nlp.ed1.title': 'Recém-formados universitários: alerta antecipado da crise do emprego',
+    'nlp.ed1.dek': 'O que os primeiros dados dizem sobre o emprego de recém-formados na era da IA — e o que fazer com esse sinal.',
+    'nlp.ed2.num': 'Edição 02',
+    'nlp.ed2.tag': 'Profissões',
+    'nlp.ed2.title': 'Profissões na encruzilhada algorítmica',
+    'nlp.ed2.dek': 'Quais profissões se transformam, quais resistem, e o que faz a diferença. Uma análise baseada em evidências.',
+    'nlp.ed.read': 'Ler a edição',
 
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
