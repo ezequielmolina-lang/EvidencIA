@@ -366,12 +366,9 @@
     color: var(--ink-soft);
     max-width: 62ch;
     margin-bottom: 32px;
-    text-align: justify;
-    text-align-last: left;
+    text-align: left;
+    text-wrap: pretty;
     hyphens: none;
-  }
-  @media (max-width: 720px) {
-    .ev-block-lead { text-align: left; }
   }
   .ev-block-lead em {
     font-style: normal;
@@ -1341,20 +1338,7 @@
 
       <div class="products">
         <div class="product">
-          <div class="p-img p-img--svg">
-            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Newsletter" preserveAspectRatio="xMidYMid meet">
-              <rect x="112" y="42" width="176" height="150" fill="#FFFFFF" stroke="#0F0E0C" stroke-width="3"/>
-              <rect x="128" y="28" width="42" height="18" fill="#B14629"/>
-              <line x1="128" y1="62" x2="272" y2="62" stroke="#B8842B" stroke-width="4" stroke-linecap="round"/>
-              <line x1="128" y1="82" x2="272" y2="82" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="94" x2="272" y2="94" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="106" x2="248" y2="106" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="126" x2="272" y2="126" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="138" x2="260" y2="138" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="150" x2="235" y2="150" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-              <line x1="128" y1="170" x2="272" y2="170" stroke="#0F0E0C" stroke-width="2" opacity="0.55"/>
-            </svg>
-          </div>
+          <div class="p-img"><img src="img/card-newsletter.png" alt="" loading="lazy"></div>
           <div class="p-body">
             <div class="p-num">01</div>
             <h3 data-i18n="build.p1.h">Newsletter</h3>
@@ -1372,21 +1356,12 @@
           </div>
         </div>
         <div class="product">
-          <div class="p-img p-img--svg">
-            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comunidad" preserveAspectRatio="xMidYMid meet">
-              <path d="M92 78 Q92 58 112 58 L208 58 Q228 58 228 78 L228 116 Q228 136 208 136 L146 136 L124 158 L131 136 Q92 136 92 116 Z" fill="#FFFFFF" stroke="#0F0E0C" stroke-width="2.8"/>
-              <circle cx="140" cy="97" r="4.5" fill="#0F0E0C"/>
-              <circle cx="160" cy="97" r="4.5" fill="#0F0E0C"/>
-              <circle cx="180" cy="97" r="4.5" fill="#0F0E0C"/>
-              <path d="M180 112 Q180 92 200 92 L296 92 Q316 92 316 112 L316 150 Q316 170 296 170 L232 170 L212 192 L219 170 Q180 170 180 150 Z" fill="#25D366" stroke="#0F0E0C" stroke-width="2.8"/>
-              <path d="M240 130 L260 145 L285 118" fill="none" stroke="#FAF7F0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+          <div class="p-img"><img src="img/card-comunidad.png" alt="" loading="lazy"></div>
           <div class="p-body">
             <div class="p-num">03</div>
-            <h3 data-i18n="build.p3.h">Comunidad IA.EDU</h3>
-            <p data-i18n="build.p3.p">Docentes universitarios comparten experiencias reales del uso de IA en el aula. Comunidad de práctica de la <b>UPC</b> con <b>MetaredTIC Perú</b>. Reuniones en vivo los viernes 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Bitácora de sesiones</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Registro MetaredTIC</a></p>
-            <div class="p-tag" data-i18n="build.p3.tag">Viernes 10 am</div>
+            <h3 data-i18n="build.p3.h">Comunidad EvidencIA</h3>
+            <p data-i18n="build.p3.p">Un grupo de WhatsApp donde investigadores, ministerios y practitioners de la región intercambian evidencia sobre IA y aprendizaje en vivo — sin filtros. <a href="https://wa.me/51944571205?text=Hola%20Gabriela%2C%20quiero%20sumarme%20al%20grupo%20de%20WhatsApp%20de%20EvidencIA" target="_blank" rel="noopener">Escribile a Gabriela para sumarte al grupo →</a></p>
+            <div class="p-tag" data-i18n="build.p3.tag">WhatsApp</div>
           </div>
         </div>
       </div>
@@ -1816,7 +1791,7 @@
 // a pre-filled mailto: draft so nothing is ever lost.
 // ============================================================
 const CONTACT_EMAIL  = 'ezequiel.molina@gmail.com';
-const DATA_ENDPOINT  = ''; // TODO: paste the /exec URL after deploying apps_script/datasheet.gs
+const DATA_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzDlLpras03Hal1rimBO-YTAW_fBtmgYTN6q3aS9X2dSQNTwOtX8Hu2__yipQAnFsGu/exec';
 
 // ============================================================
 // I18N — full content in ES / EN / PT
@@ -1867,9 +1842,9 @@ const I18N = {
     'build.p2.h': 'Seminarios',
     'build.p2.p': 'Conversaciones que valen la pena. Investigadores de Harvard, Stanford, UCLA. Equipos detrás de los RCTs en Ecuador, Nigeria, Ghana. Ministerios de Chile, Brasil, El Salvador, Uruguay.',
     'build.p2.tag': 'En vivo',
-    'build.p3.h': 'Comunidad IA.EDU',
-    'build.p3.p': 'Docentes universitarios comparten experiencias reales del uso de IA en el aula. Comunidad de práctica de la <b>UPC</b> con <b>MetaredTIC Perú</b>. Reuniones en vivo los viernes 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Bitácora de sesiones</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Registro MetaredTIC</a>',
-    'build.p3.tag': 'Viernes 10 am',
+    'build.p3.h': 'Comunidad EvidencIA',
+    'build.p3.p': 'Un grupo de WhatsApp donde investigadores, ministerios y practitioners de la región intercambian evidencia sobre IA y aprendizaje en vivo — sin filtros. <a href="https://wa.me/51944571205?text=Hola%20Gabriela%2C%20quiero%20sumarme%20al%20grupo%20de%20WhatsApp%20de%20EvidencIA" target="_blank" rel="noopener">Escribile a Gabriela para sumarte al grupo →</a>',
+    'build.p3.tag': 'WhatsApp',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'Las preguntas que la conversación pública evita.',
@@ -2085,9 +2060,9 @@ const I18N = {
     'build.p2.h': 'Seminars',
     'build.p2.p': 'Conversations worth having. Researchers from Harvard, Stanford, UCLA. Teams behind the RCTs in Ecuador, Nigeria, Ghana. Ministries from Chile, Brazil, El Salvador, Uruguay.',
     'build.p2.tag': 'Live',
-    'build.p3.h': 'IA.EDU community',
-    'build.p3.p': 'University faculty share real experiences of AI use in the classroom. Community of practice hosted by <b>UPC</b> with <b>MetaredTIC Peru</b>. Live meetings every Friday at 10 am. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Session logs</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Register (MetaredTIC)</a>',
-    'build.p3.tag': 'Fridays 10 am',
+    'build.p3.h': 'EvidencIA community',
+    'build.p3.p': 'A WhatsApp group where researchers, ministries, and practitioners from across the region trade evidence on AI and learning in real time — no filters. <a href="https://wa.me/51944571205?text=Hi%20Gabriela%2C%20I%27d%20like%20to%20join%20the%20EvidencIA%20WhatsApp%20group" target="_blank" rel="noopener">Message Gabriela to join the group →</a>',
+    'build.p3.tag': 'WhatsApp',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'The questions the public conversation avoids.',
@@ -2303,9 +2278,9 @@ const I18N = {
     'build.p2.h': 'Seminários',
     'build.p2.p': 'Conversas que valem a pena. Pesquisadores de Harvard, Stanford, UCLA. As equipes por trás dos RCTs no Equador, Nigéria, Gana. Ministérios do Chile, Brasil, El Salvador, Uruguai.',
     'build.p2.tag': 'Ao vivo',
-    'build.p3.h': 'Comunidade IA.EDU',
-    'build.p3.p': 'Docentes universitários compartilham experiências reais do uso de IA na sala de aula. Comunidade de prática da <b>UPC</b> com a <b>MetaredTIC Peru</b>. Reuniões ao vivo às sextas-feiras às 10h. <a href="https://innovacioneducativa.upc.edu.pe/inteligencia-artificial-en-la-educacion/comunidadia/" target="_blank" rel="noopener">Registro das sessões</a> · <a href="https://forms.office.com/r/6nCJ4wtVaS" target="_blank" rel="noopener">Cadastro MetaredTIC</a>',
-    'build.p3.tag': 'Sextas 10h',
+    'build.p3.h': 'Comunidade EvidencIA',
+    'build.p3.p': 'Um grupo de WhatsApp onde pesquisadores, ministérios e praticantes da região trocam evidência sobre IA e aprendizagem em tempo real — sem filtros. <a href="https://wa.me/51944571205?text=Ol%C3%A1%20Gabriela%2C%20quero%20entrar%20no%20grupo%20de%20WhatsApp%20da%20EvidencIA" target="_blank" rel="noopener">Escreva à Gabriela para entrar no grupo →</a>',
+    'build.p3.tag': 'WhatsApp',
 
     'sd.eyebrow': 'EvidencIA Smackdowns',
     'sd.title': 'As perguntas que a conversa pública evita.',
