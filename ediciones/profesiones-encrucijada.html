@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profesiones en la encrucijada algorítmica — EvidencIA</title>
+<meta name="description" content="La IA generativa apunta al trabajo mental. La demanda cae 17% en ocupaciones automatizables y sube 22% en las que permiten colaboración humano-máquina." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAF7F0;
+    --bg-soft: #F2EDE2;
+    --ink: #0F0E0C;
+    --ink-soft: #3A352E;
+    --ink-mute: #6B6359;
+    --rule: #DDD4C0;
+    --gold: #B8842B;
+    --gold-deep: #8E6420;
+    --red: #B14629;
+    --green: #2D5F3E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+  .container.wide { max-width: 1180px; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 240, 0.9);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 22px;
+    letter-spacing: -0.01em;
+    text-decoration: none; color: var(--ink);
+  }
+  .brand b { color: var(--gold); font-weight: 800; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: "←"; font-size: 15px; }
+  .lang {
+    display: flex; gap: 2px; align-items: center;
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 4px; background: var(--bg);
+  }
+  .lang button {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    color: var(--ink-mute); padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.04em; transition: all 0.18s;
+  }
+  .lang button.active { background: var(--ink); color: var(--bg); }
+  .lang button:hover:not(.active) { color: var(--ink); }
+
+  .art-header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+  .art-kicker {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+  }
+  .art-kicker::before { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
+  .art-kicker::after { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--gold); vertical-align: middle; margin-left: 12px; }
+  .art-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 22ch;
+    margin: 0 auto 20px;
+  }
+  .art-dek {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin: 0 auto 32px;
+  }
+  .art-meta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+  .art-meta .sep { color: var(--rule); }
+
+  /* Split-hero data card */
+  .split-card {
+    margin: 20px 0 56px;
+    padding: 48px 0;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: center;
+  }
+  .split-card .side { padding: 0 32px; text-align: center; }
+  .split-card .divider { background: rgba(250,247,240,0.15); height: 100%; align-self: stretch; }
+  .split-card .side-eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .split-card .side.down .side-eyebrow { color: var(--red); }
+  .split-card .side.up .side-eyebrow { color: #7BAE86; }
+  .split-card .side-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(56px, 8vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .split-card .side.down .side-num { color: var(--red); }
+  .split-card .side.up .side-num { color: #7BAE86; }
+  .split-card .side-lbl {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.6vw, 17px);
+    line-height: 1.4;
+    color: rgba(250,247,240,0.75);
+    margin-top: 16px;
+    max-width: 30ch;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .art-body { padding: 0 0 40px; }
+  .art-body p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.62;
+    color: var(--ink);
+    margin-bottom: 26px;
+    letter-spacing: -0.005em;
+  }
+  .art-body p.lead {
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .art-body p.lead::first-letter {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 78px;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 14px 0 0;
+    color: var(--gold-deep);
+    letter-spacing: -0.03em;
+  }
+  .art-body h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 48px 0 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .art-body b, .art-body strong { font-weight: 600; }
+  .art-body em { font-style: italic; }
+  .art-body mark {
+    background: transparent;
+    color: var(--red);
+    font-weight: 600;
+    font-style: normal;
+  }
+  .art-body mark.pos { color: var(--green); }
+  .art-body mark.gold { color: var(--gold-deep); }
+
+  .pull-quote {
+    margin: 40px 0;
+    padding: 32px 0 32px 32px;
+    border-left: 3px solid var(--gold);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .pull-quote::before {
+    content: "";
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  /* Comparison bars */
+  .comparison {
+    margin: 40px 0;
+    padding: 32px;
+    background: var(--bg-soft);
+    border-radius: 14px;
+  }
+  .comparison h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    gap: 20px;
+  }
+  .comparison-row:first-of-type { border-top: 0; }
+  .comparison-row .cr-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .comparison-row .cr-name b { font-weight: 600; }
+  .comparison-row .cr-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .comparison-row .cr-num.neg { color: var(--red); }
+  .comparison-row .cr-num.pos { color: var(--green); }
+
+  .refs-block {
+    margin-top: 60px;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+    background: var(--bg-soft);
+  }
+  .refs-eyebrow {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .refs-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+  .refs {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    counter-reset: ref;
+  }
+  .refs li {
+    counter-increment: ref;
+    padding-left: 32px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .refs li::before {
+    content: counter(ref);
+    position: absolute;
+    left: 0; top: 0;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gold-deep);
+  }
+
+  .cta-block {
+    margin: 60px 0 40px;
+    padding: 36px 40px;
+    background: var(--bg-soft);
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--rule);
+  }
+  .cta-block h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .cta-block p { font-size: 15px; color: var(--ink-soft); margin-bottom: 22px; }
+  .cta-block .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-block .cta-btn:hover { background: var(--gold-deep); }
+  .cta-block .cta-btn::after { content: "→"; }
+
+  footer.site {
+    padding: 40px 0 32px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px; color: var(--ink-mute);
+  }
+  .foot a { color: var(--ink-soft); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .art-header { padding: 40px 0 30px; }
+    .art-body p { font-size: 17px; }
+    .art-body p.lead { font-size: 19px; }
+    .art-body p.lead::first-letter { font-size: 60px; }
+    .split-card {
+      grid-template-columns: 1fr;
+      padding: 32px 0;
+    }
+    .split-card .divider { height: 1px; width: calc(100% - 48px); margin: 24px auto; }
+    .pull-quote { font-size: 21px; padding-left: 20px; }
+    .comparison { padding: 24px; }
+    .cta-block { padding: 28px 24px; }
+    .back-link span { display: none; }
+    .nav-right { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container wide nav">
+    <a class="brand" href="../">Evidenc<b>IA</b></a>
+    <div class="nav-right">
+      <a class="back-link" href="../#newsletter-preview"><span>Ediciones</span></a>
+      <div class="lang">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="pt">PT</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <article>
+    <header class="art-header">
+      <div class="container">
+        <div class="art-kicker">Edición 02 · Profesiones</div>
+        <h1 class="art-title">Profesiones en la encrucijada algorítmica</h1>
+        <p class="art-dek">Por primera vez, una revolución tecnológica apunta al trabajo <em>mental</em>. Algunas profesiones se transforman, otras se desplazan — la diferencia no es la técnica, es la relación humano-máquina.</p>
+        <div class="art-meta">
+          <span>EvidencIA · Red LAC</span>
+          <span class="sep">·</span>
+          <span>2026</span>
+          <span class="sep">·</span>
+          <span>Lectura: 4 min</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="split-card">
+        <div class="side down">
+          <div class="side-eyebrow">Desplazamiento</div>
+          <div class="side-num">−17%</div>
+          <p class="side-lbl">Caída en la demanda de ocupaciones con alto potencial de automatización.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="side up">
+          <div class="side-eyebrow">Aumentación</div>
+          <div class="side-num">+22%</div>
+          <p class="side-lbl">Incremento en ofertas de empleo que permiten la colaboración humano-máquina.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container art-body">
+
+      <p class="lead">La inteligencia artificial marca un punto de inflexión en la historia del trabajo. Por primera vez, una revolución tecnológica no apunta a las tareas manuales y rutinarias del pasado, sino al <em>trabajo mental</em>: a las tareas cognitivas, analíticas y administrativas que tradicionalmente exigían altos niveles de educación formal.</p>
+
+      <p>Los datos actuales revelan un mercado laboral heterogéneo. La demanda para ocupaciones con alto potencial de automatización ha caído <mark>17%</mark>. Al mismo tiempo, aquellas que permiten la colaboración humano-máquina — la <em>aumentación</em> — han visto un incremento de <mark class="pos">22%</mark> en sus ofertas de empleo. No es un solo mercado que se enfría: son dos mercados que se abren en direcciones opuestas.</p>
+
+      <h2>Las profesiones bajo mayor presión</h2>
+
+      <p>Las carreras administrativas y de soporte encabezan la lista de las más vulnerables. Sus funciones se basan en <b>conocimiento codificado y estructurado</b> — precisamente el terreno donde los algoritmos son más eficientes. Auxiliares contables, secretarios generales, transcriptores y especialistas en entrada de datos enfrentan un riesgo crítico de sustitución directa por sistemas capaces de procesar información con mayor velocidad y precisión.</p>
+
+      <p>En estos sectores, la desaparición de los <em>empleos escalón</em> — los puestos de entrada donde los jóvenes ganaban experiencia práctica — está rompiendo la escalera profesional desde su base.</p>
+
+      <h2>Los refugios que dejaron de serlo</h2>
+
+      <p>El impacto se extiende a sectores que hasta hace poco se consideraban refugios seguros. Los programadores informáticos y desarrolladores de software junior muestran una exposición observada de hasta <mark>74.5%</mark>. Y en el último año, el empleo para los desarrolladores más jóvenes en Estados Unidos cayó cerca del <mark>20%</mark>.</p>
+
+      <div class="comparison">
+        <h3>Profesiones bajo presión — exposición observada</h3>
+        <div class="comparison-row">
+          <div class="cr-name"><b>Programadores y desarrolladores</b> junior · software</div>
+          <div class="cr-num neg">74.5%</div>
+        </div>
+        <div class="comparison-row">
+          <div class="cr-name">Empleo de desarrolladores más jóvenes · EE.UU. (último año)</div>
+          <div class="cr-num neg">−20%</div>
+        </div>
+        <div class="comparison-row">
+          <div class="cr-name"><b>Asistentes jurídicos</b> y analistas de documentos · legal</div>
+          <div class="cr-num neg">Alta</div>
+        </div>
+        <div class="comparison-row">
+          <div class="cr-name"><b>Oficiales de crédito</b> y analistas financieros junior · finanzas</div>
+          <div class="cr-num neg">Alta</div>
+        </div>
+      </div>
+
+      <p>En el sector legal, los asistentes jurídicos y analistas de documentos están siendo desplazados por sistemas que identifican precedentes y contradicciones en miles de archivos en segundos. En las finanzas, los oficiales de crédito y analistas financieros de nivel inicial ven cómo sus tareas de evaluación de riesgos son absorbidas progresivamente por modelos de aprendizaje automático.</p>
+
+      <h2>El otro lado del mercado: la aumentación</h2>
+
+      <p>La IA también actúa como un <b>multiplicador de productividad</b> para las profesiones de alta complementariedad — donde el juicio humano y la responsabilidad ética son irreemplazables. La medicina (especialmente en diagnóstico), la docencia universitaria, la gestión estratégica y la judicatura se perfilan como las grandes beneficiarias de la aumentación.</p>
+
+      <div class="pull-quote">El profesional deja de ser un ejecutor manual de procesos para convertirse en un "humano en el bucle": supervisa, valida, y decide.</div>
+
+      <h2>El nuevo pacto formativo</h2>
+
+      <p>El título universitario ya no garantizará la seguridad laboral. La empleabilidad futura dependerá de la capacidad del profesional para transitar desde tareas automatizables hacia roles que requieran <b>conocimiento tácito, intuición y empatía</b> — habilidades que la IA aún no puede replicar. Las instituciones educativas tienen que rediseñar sus currículos urgentemente: no para preparar estudiantes que compitan contra la IA, sino para dirigirla y complementarla en un entorno de cambio acelerado.</p>
+
+    </div>
+
+    <div class="container">
+      <div class="cta-block">
+        <h3>Recibí las próximas ediciones</h3>
+        <p>Evidencia, sin ruido. En tu correo.</p>
+        <a class="cta-btn" href="../#newsletter">Suscribite al newsletter</a>
+      </div>
+    </div>
+
+    <section class="refs-block">
+      <div class="container">
+        <div class="refs-eyebrow">Fuentes</div>
+        <h2 class="refs-title">9 referencias que sostienen esta edición</h2>
+        <ol class="refs">
+          <li>Brynjolfsson, E., Chandar, B., y Chen, R. (2025). <em>Canaries in the coal mine? Six facts about the recent employment effects of artificial intelligence</em>. Stanford Digital Economy Lab.</li>
+          <li>Cazzaniga, M., Pizzinelli, C., Rockall, E., y Tavares, M. M. (2024). <em>Exposure to artificial intelligence and occupational mobility: A cross-country analysis</em> (IMF Working Paper 24/116). Fondo Monetario Internacional.</li>
+          <li>Chen, W. X., Srinivasan, S., y Zakerinia, S. (2025). <em>Displacement or complementarity? The labor market impact of generative AI</em> (Working Paper 25-039). Harvard Business School.</li>
+          <li>Eloundou, T., Manning, S., Mishkin, P., y Rock, D. (2024). GPTs are GPTs: Labor market impact potential of LLMs. <em>Science, 384</em>(6702), 1306–1308.</li>
+          <li>Gmyrek, P., Berg, J., Kamiński, K., Konopczyński, F., Ładna, A., Nafradi, B., Rosłaniec, K., y Troszyński, M. (2025). <em>Generative AI and jobs: A refined global index of occupational exposure</em> (ILO Working Paper 140). OIT.</li>
+          <li>Hampole, M., Papanikolaou, D., Schmidt, L. D. W., y Seegmiller, B. (2025). <em>Artificial intelligence and the labor market</em> (Working Paper 33509). NBER.</li>
+          <li>Liu, Y., Wang, H., y Yu, S. (2025). <em>Labor demand in the age of generative AI: Early evidence from the U.S. job posting data</em> (Policy Research Working Paper 11263). Grupo Banco Mundial.</li>
+          <li>Massenkoff, M., y McCrory, P. (2026). <em>Labor market impacts of AI: A new measure and early evidence</em>. Anthropic.</li>
+          <li>World Economic Forum. (2025). <em>The future of jobs report 2025</em>. WEF.</li>
+        </ol>
+      </div>
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="site">
+  <div class="container wide foot">
+    <div><a href="../">← Volver a EvidencIA</a></div>
+    <div>© 2026 EvidencIA. Una red en construcción.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Egresados universitarios: alerta temprana de la crisis del empleo — EvidencIA</title>
+<meta name="description" content="Los recién graduados son el paciente cero de la transformación laboral por IA. Su empleabilidad se desploma 16% en los sectores más expuestos al algoritmo." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAF7F0;
+    --bg-soft: #F2EDE2;
+    --ink: #0F0E0C;
+    --ink-soft: #3A352E;
+    --ink-mute: #6B6359;
+    --rule: #DDD4C0;
+    --gold: #B8842B;
+    --gold-deep: #8E6420;
+    --red: #B14629;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+  .container.wide { max-width: 1180px; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 240, 0.9);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 22px;
+    letter-spacing: -0.01em;
+    text-decoration: none; color: var(--ink);
+  }
+  .brand b { color: var(--gold); font-weight: 800; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: "←"; font-size: 15px; }
+  .lang {
+    display: flex; gap: 2px; align-items: center;
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 4px; background: var(--bg);
+  }
+  .lang button {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    color: var(--ink-mute); padding: 5px 10px; border-radius: 999px;
+    letter-spacing: 0.04em; transition: all 0.18s;
+  }
+  .lang button.active { background: var(--ink); color: var(--bg); }
+  .lang button:hover:not(.active) { color: var(--ink); }
+
+  /* Article header */
+  .art-header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+  .art-kicker {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+  .art-kicker::before { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--red); vertical-align: middle; margin-right: 12px; }
+  .art-kicker::after { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--red); vertical-align: middle; margin-left: 12px; }
+  .art-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 22ch;
+    margin: 0 auto 20px;
+  }
+  .art-dek {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin: 0 auto 32px;
+  }
+  .art-meta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+  .art-meta .sep { color: var(--rule); }
+
+  /* Hero data card */
+  .hero-card {
+    margin: 20px 0 56px;
+    padding: 60px 40px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before, .hero-card::after {
+    content: "";
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(184,132,43,0.2);
+    border-radius: 50%;
+  }
+  .hero-card::before { top: -60px; left: -60px; }
+  .hero-card::after { bottom: -60px; right: -60px; }
+  .hero-card .hc-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .hero-card .hc-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(72px, 12vw, 128px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--gold);
+    position: relative;
+  }
+  .hero-card .hc-lbl {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.4;
+    color: rgba(250,247,240,0.85);
+    max-width: 30ch;
+    margin: 24px auto 0;
+    position: relative;
+  }
+
+  /* Article body */
+  .art-body { padding: 0 0 40px; }
+  .art-body p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.62;
+    color: var(--ink);
+    margin-bottom: 26px;
+    letter-spacing: -0.005em;
+  }
+  .art-body p.lead {
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .art-body p.lead::first-letter {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 78px;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 14px 0 0;
+    color: var(--gold-deep);
+    letter-spacing: -0.03em;
+  }
+  .art-body h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 48px 0 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .art-body b, .art-body strong { font-weight: 600; }
+  .art-body em { font-style: italic; }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 40px 0;
+    padding: 32px 0 32px 32px;
+    border-left: 3px solid var(--red);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .pull-quote::before {
+    content: "";
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--red);
+    margin-bottom: 20px;
+  }
+
+  /* Stat callout */
+  .stat-callout {
+    margin: 36px 0;
+    padding: 32px;
+    background: var(--bg-soft);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .stat-callout .sc-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--red);
+  }
+  .stat-callout .sc-lbl {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* Highlight span for inline stats */
+  .art-body mark {
+    background: transparent;
+    color: var(--red);
+    font-weight: 600;
+    font-style: normal;
+  }
+  .art-body mark.pos { color: var(--gold-deep); }
+
+  /* Numbered list for closing */
+  .action-list {
+    margin: 32px 0;
+    counter-reset: item;
+    list-style: none;
+    padding: 0;
+  }
+  .action-list li {
+    counter-increment: item;
+    padding: 20px 0 20px 60px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink);
+    position: relative;
+  }
+  .action-list li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--gold-deep);
+    letter-spacing: -0.02em;
+  }
+  .action-list li:last-child { border-bottom: 1px solid var(--rule); }
+
+  /* Footer / references */
+  .refs-block {
+    margin-top: 60px;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+    background: var(--bg-soft);
+  }
+  .refs-eyebrow {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .refs-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+  .refs {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    counter-reset: ref;
+  }
+  .refs li {
+    counter-increment: ref;
+    padding-left: 32px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .refs li::before {
+    content: counter(ref);
+    position: absolute;
+    left: 0; top: 0;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gold-deep);
+  }
+
+  /* CTA block */
+  .cta-block {
+    margin: 60px 0 40px;
+    padding: 36px 40px;
+    background: var(--bg-soft);
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--rule);
+  }
+  .cta-block h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .cta-block p {
+    font-size: 15px; color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .cta-block .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-block .cta-btn:hover { background: var(--gold-deep); }
+  .cta-block .cta-btn::after { content: "→"; }
+
+  footer.site {
+    padding: 40px 0 32px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px; color: var(--ink-mute);
+  }
+  .foot a { color: var(--ink-soft); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .art-header { padding: 40px 0 30px; }
+    .art-body p { font-size: 17px; }
+    .art-body p.lead { font-size: 19px; }
+    .art-body p.lead::first-letter { font-size: 60px; }
+    .hero-card { padding: 40px 24px; }
+    .pull-quote { font-size: 21px; padding-left: 20px; }
+    .stat-callout { grid-template-columns: 1fr; gap: 8px; text-align: center; padding: 24px; }
+    .stat-callout .sc-num { font-size: 52px; }
+    .cta-block { padding: 28px 24px; }
+    .back-link span { display: none; }
+    .nav-right { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container wide nav">
+    <a class="brand" href="../">Evidenc<b>IA</b></a>
+    <div class="nav-right">
+      <a class="back-link" href="../#newsletter-preview"><span>Ediciones</span></a>
+      <div class="lang">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="pt">PT</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HEADER -->
+  <article>
+    <header class="art-header">
+      <div class="container">
+        <div class="art-kicker">Edición 01 · Mercado laboral</div>
+        <h1 class="art-title">Egresados universitarios: alerta temprana de la crisis del empleo</h1>
+        <p class="art-dek">Los recién graduados son el paciente cero de la transformación del mercado laboral por IA. Y lo que están viviendo hoy es un cambio de guardia estructural — no una mala racha.</p>
+        <div class="art-meta">
+          <span>EvidencIA · Red LAC</span>
+          <span class="sep">·</span>
+          <span>2026</span>
+          <span class="sep">·</span>
+          <span>Lectura: 5 min</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO DATA CARD -->
+    <div class="container">
+      <div class="hero-card">
+        <div class="hc-eyebrow">La cifra que abre la conversación</div>
+        <div class="hc-num">−16%</div>
+        <p class="hc-lbl">Caída en la empleabilidad de jóvenes de 22 a 25 años en los sectores más expuestos al algoritmo.</p>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="container art-body">
+
+      <p class="lead">Recibir un diploma universitario ha sido por mucho tiempo un momento de emoción, un simple pliego de cartón que simboliza un salvoconducto hacia el mundo profesional. Pero pronto, para un graduado de veintitrés años, ese papel parecerá más bien el viejo mapa de un territorio que ya dejó de existir. No es un pesimismo gratuito — es la frialdad de los datos.</p>
+
+      <p>Los jóvenes de entre 22 y 25 años se han convertido en el <b>paciente cero</b> del proceso de transformación del mercado laboral. Mientras los trabajadores con más canas surfean la ola de la inteligencia artificial mejorando su productividad, los recién llegados ven cómo su empleabilidad se desploma <mark>16% en los sectores más expuestos</mark> al algoritmo. No es una mala racha estacional. Es un cambio de guardia estructural donde la máquina no viene (aún) por los gerentes, sino por los peldaños iniciales de la escalera profesional.</p>
+
+      <h2>El cortocircuito generacional</h2>
+
+      <p>La inteligencia artificial es una experta imitadora del <em>conocimiento codificado</em>: ese que se aprende en las aulas y que es, precisamente, el único tesoro que un profesional junior ofrece al empezar. Al automatizar estas tareas de entrada, se están rompiendo los <b>empleos escalón</b> — esos espacios donde el joven solía ganar el conocimiento tácito, la experiencia, los trucos del oficio y la intuición que ninguna red neuronal puede plagiar, al menos por ahora.</p>
+
+      <div class="pull-quote">Si no hay un primer empleo para aprender haciendo, ¿de dónde saldrán los expertos de la próxima década?</div>
+
+      <p>El riesgo no es solo el desempleo. Es la atrofia cognitiva de una juventud que podría terminar generando <em>trabajo chatarra</em>: superficial y mediocre, ocultando un razonamiento débil tras una salida de texto bien pulida.</p>
+
+      <h2>Iberoamérica, con un tinte más amargo</h2>
+
+      <p>En nuestra región el drama añade una capa adicional: la brecha digital. Es una ironía cruel que casi la mitad de los puestos que podrían beneficiarse de la <em>aumentación</em> tecnológica estén varados simplemente porque el trabajador no tiene una computadora o internet estable en su oficina. La IA, que debería ser una herramienta de democratización, amenaza con convertir la brecha digital en un abismo insalvable para los más vulnerables.</p>
+
+      <div class="stat-callout">
+        <div class="sc-num">≈50%</div>
+        <div class="sc-lbl">de los puestos con potencial de aumentación tecnológica en LAC están varados por falta de conectividad o equipamiento.</div>
+      </div>
+
+      <p>Estamos ante un <b>reinicio estructural del sistema de títulos profesionales</b>, donde el mercado laboral ha dejado de preguntar <em>dónde</em> o <em>qué</em> estudiaste para exigir que demuestres qué sabes resolver ahora mismo. El mercado exige experiencia.</p>
+
+      <h2>Cinco palancas de política pública</h2>
+
+      <p>El sistema educativo tiene que actuar para que esta situación no desemboque en frustración y desesperanza en las nuevas generaciones. Cinco líneas de acción concretas:</p>
+
+      <ol class="action-list">
+        <li><b>Formación dual institucionalizada</b> — que el alumno no pise una oficina por primera vez el día de su graduación. Rescatar el aprendizaje experiencial.</li>
+        <li><b>Currículos rediseñados para el "humano en el bucle"</b> — formar profesionales que no compitan con la IA, sino que supervisen y validen lo que la máquina produce.</li>
+        <li><b>Microcredenciales con blockchain</b> — certificados rápidos, seguros y portátiles que hagan visible el talento joven antes de terminar una carrera de cinco años.</li>
+        <li><b>Emprendimiento nativo en IA</b> — incentivar que los jóvenes no solo busquen vacantes, sino que creen ecosistemas de valor usando la tecnología para identificar nichos que la vieja guardia aún no ve.</li>
+        <li><b>Cerrar la brecha digital como política de empleabilidad</b> — no como política de infraestructura. Sin conectividad, la aumentación no llega.</li>
+      </ol>
+
+      <div class="pull-quote">El cartón universitario está naufragando. Pero la inteligencia humana, si se alía con la máquina en lugar de imitarla, todavía tiene mucho que decir.</div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+      <div class="cta-block">
+        <h3>Recibí las próximas ediciones</h3>
+        <p>Evidencia, sin ruido. En tu correo.</p>
+        <a class="cta-btn" href="../#newsletter">Suscribite al newsletter</a>
+      </div>
+    </div>
+
+    <!-- REFERENCES -->
+    <section class="refs-block">
+      <div class="container">
+        <div class="refs-eyebrow">Fuentes</div>
+        <h2 class="refs-title">12 referencias que sostienen esta edición</h2>
+        <ol class="refs">
+          <li>Brynjolfsson, E., Chandar, B., y Chen, R. (2025). <em>Canaries in the coal mine? Six facts about the recent employment effects of artificial intelligence</em>. Stanford Digital Economy Lab.</li>
+          <li>Chen, W. X., Srinivasan, S., y Zakerinia, S. (2025). <em>Displacement or complementarity? The labor market impact of generative AI</em> (Working Paper 25-039). Harvard Business School.</li>
+          <li>Eloundou, T., Manning, S., Mishkin, P., y Rock, D. (2024). GPTs are GPTs: Labor market impact potential of LLMs. <em>Science, 384</em>(6702), 1306–1308.</li>
+          <li>Gavino Ramírez, T. A., y Gutiérrez Huanca, P. A. (2024). Los Cetpro como alternativa para fortalecer la productividad del capital humano y la transitabilidad a la educación superior de grupos en condiciones de vulnerabilidad en el Perú. <em>Educación, 33</em>(65), 189–212.</li>
+          <li>Gmyrek, P., Winkler, H., y Garganta, S. (2024). <em>Buffer or bottleneck? Employment exposure to generative AI and the digital divide in Latin America</em> (ILO Working Paper 121). International Labour Office &amp; The World Bank.</li>
+          <li>Jung, J., y Katz, R. (2025). <em>Impacto económico de la inteligencia artificial en América Latina: transformación tecnológica y rezago en materia de inversión y capacidades laborales</em> (Documentos de Proyectos LC/TS.2025/37/Rev.2). CEPAL.</li>
+          <li>MIT Working Group. <em>Humans in the loop: Generative AI and the work of the future</em>.</li>
+          <li>National Association of Colleges and Employers. (2024). <em>2024 internship &amp; co-op report executive summary</em>.</li>
+          <li>OECD. (2025). <em>Empowering the workforce in the context of a skills-first approach</em> (OECD Skills Studies).</li>
+          <li>Organización Internacional del Trabajo. (2025). <em>Juventud en cambio: Desafíos y oportunidades en el mercado laboral de América Latina y el Caribe</em>.</li>
+          <li>UNESCO. (2026). <em>Transforming higher education: Global collaboration on visioning and action</em>.</li>
+          <li>World Economic Forum. (2026). <em>Latin America in the intelligent age: A new path for growth</em> (White Paper).</li>
+        </ol>
+      </div>
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="site">
+  <div class="container wide foot">
+    <div><a href="../">← Volver a EvidencIA</a></div>
+    <div>© 2026 EvidencIA. Una red en construcción.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -28,6 +28,7 @@
     --fails: #B14629;
     --fails-bg: #F3E3DC;
     --cobalt: #1E3A8A;
+    --red: #B14629;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -466,16 +467,76 @@
   .edition-card {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 28px 30px;
     background: var(--bg);
     border: 1px solid var(--rule);
     border-radius: 14px;
     text-decoration: none;
     color: var(--ink);
+    overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
   }
   .edition-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .edition-body { padding: 24px 30px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .edition-viz {
+    padding: 32px 28px;
+    background: var(--ink);
+    color: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  .edition-viz-eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .edition-viz-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--red);
+  }
+  .edition-viz-num.small { font-size: 40px; }
+  .edition-viz-num.pos { color: #7BAE86; }
+  .edition-viz-lbl {
+    margin-top: 12px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(250,247,240,0.75);
+    max-width: 30ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .edition-viz.split {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 32px 0;
+    align-items: center;
+  }
+  .edition-viz.split .edition-viz-side { padding: 0 20px; }
+  .edition-viz.split::before {
+    content: "";
+    grid-column: 2;
+    height: 60%;
+    background: rgba(250,247,240,0.15);
+    align-self: center;
+  }
+  .edition-viz.split > .edition-viz-side:nth-child(2) { grid-column: 3; }
+  .edition-viz-lbl-sm {
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.6);
+  }
+  .edition-viz.split .down .edition-viz-lbl-sm { color: #E88F76; }
+  .edition-viz.split .up .edition-viz-lbl-sm { color: #7BAE86; }
   .edition-meta {
     display: flex;
     align-items: center;
@@ -1197,25 +1258,44 @@
       </div>
 
       <div class="editions-grid">
-        <a class="edition-card" href="https://docs.google.com/document/d/1twIBaL7-APkIz4ooPnr7aMBxWepQcqWFo9EkbwETz9o/edit?usp=sharing" target="_blank" rel="noopener">
-          <div class="edition-meta">
-            <span class="edition-num" data-i18n="nlp.ed1.num">Edición 01</span>
-            <span class="edition-dot">·</span>
-            <span data-i18n="nlp.ed1.tag">Mercado laboral</span>
+        <a class="edition-card" href="ediciones/egresados-universitarios.html">
+          <div class="edition-viz down">
+            <div class="edition-viz-eyebrow" data-i18n="nlp.ed1.stat.eyebrow">La cifra</div>
+            <div class="edition-viz-num">−16%</div>
+            <div class="edition-viz-lbl" data-i18n="nlp.ed1.stat.lbl">Empleabilidad de jóvenes 22–25 en sectores expuestos</div>
           </div>
-          <h4 class="edition-title" data-i18n="nlp.ed1.title">Egresados universitarios: alerta temprana de la crisis del empleo</h4>
-          <p class="edition-dek" data-i18n="nlp.ed1.dek">Qué nos dicen los primeros datos sobre el empleo de recién egresados en tiempos de IA. Y qué hacer con esa señal.</p>
-          <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+          <div class="edition-body">
+            <div class="edition-meta">
+              <span class="edition-num" data-i18n="nlp.ed1.num">Edición 01</span>
+              <span class="edition-dot">·</span>
+              <span data-i18n="nlp.ed1.tag">Mercado laboral</span>
+            </div>
+            <h4 class="edition-title" data-i18n="nlp.ed1.title">Egresados universitarios: alerta temprana de la crisis del empleo</h4>
+            <p class="edition-dek" data-i18n="nlp.ed1.dek">Los recién graduados son el paciente cero de la transformación laboral por IA. Un cambio de guardia estructural — no una mala racha.</p>
+            <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+          </div>
         </a>
-        <a class="edition-card" href="https://docs.google.com/document/d/1rQ8A5QRm5DkRA7JSoiQi-XweuYXwvF9JPjnfTIcUfwo/edit?usp=sharing" target="_blank" rel="noopener">
-          <div class="edition-meta">
-            <span class="edition-num" data-i18n="nlp.ed2.num">Edición 02</span>
-            <span class="edition-dot">·</span>
-            <span data-i18n="nlp.ed2.tag">Profesiones</span>
+        <a class="edition-card" href="ediciones/profesiones-encrucijada.html">
+          <div class="edition-viz split">
+            <div class="edition-viz-side down">
+              <div class="edition-viz-num small">−17%</div>
+              <div class="edition-viz-lbl-sm" data-i18n="nlp.ed2.stat.a">Desplazamiento</div>
+            </div>
+            <div class="edition-viz-side up">
+              <div class="edition-viz-num small pos">+22%</div>
+              <div class="edition-viz-lbl-sm" data-i18n="nlp.ed2.stat.b">Aumentación</div>
+            </div>
           </div>
-          <h4 class="edition-title" data-i18n="nlp.ed2.title">Profesiones en la encrucijada algorítmica</h4>
-          <p class="edition-dek" data-i18n="nlp.ed2.dek">Qué profesiones se transforman, cuáles resisten, y qué hace la diferencia. Un análisis basado en evidencia.</p>
-          <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+          <div class="edition-body">
+            <div class="edition-meta">
+              <span class="edition-num" data-i18n="nlp.ed2.num">Edición 02</span>
+              <span class="edition-dot">·</span>
+              <span data-i18n="nlp.ed2.tag">Profesiones</span>
+            </div>
+            <h4 class="edition-title" data-i18n="nlp.ed2.title">Profesiones en la encrucijada algorítmica</h4>
+            <p class="edition-dek" data-i18n="nlp.ed2.dek">La IA apunta al trabajo mental. Dos mercados que se abren en direcciones opuestas — desplazamiento vs. aumentación.</p>
+            <span class="edition-cta" data-i18n="nlp.ed.read">Leer la edición</span>
+          </div>
         </a>
       </div>
     </div>
@@ -1604,11 +1684,15 @@ const I18N = {
     'nlp.ed1.num': 'Edición 01',
     'nlp.ed1.tag': 'Mercado laboral',
     'nlp.ed1.title': 'Egresados universitarios: alerta temprana de la crisis del empleo',
-    'nlp.ed1.dek': 'Qué nos dicen los primeros datos sobre el empleo de recién egresados en tiempos de IA. Y qué hacer con esa señal.',
+    'nlp.ed1.dek': 'Los recién graduados son el paciente cero de la transformación laboral por IA. Un cambio de guardia estructural — no una mala racha.',
+    'nlp.ed1.stat.eyebrow': 'La cifra',
+    'nlp.ed1.stat.lbl': 'Empleabilidad de jóvenes 22–25 en sectores expuestos',
     'nlp.ed2.num': 'Edición 02',
     'nlp.ed2.tag': 'Profesiones',
     'nlp.ed2.title': 'Profesiones en la encrucijada algorítmica',
-    'nlp.ed2.dek': 'Qué profesiones se transforman, cuáles resisten, y qué hace la diferencia. Un análisis basado en evidencia.',
+    'nlp.ed2.dek': 'La IA apunta al trabajo mental. Dos mercados que se abren en direcciones opuestas — desplazamiento vs. aumentación.',
+    'nlp.ed2.stat.a': 'Desplazamiento',
+    'nlp.ed2.stat.b': 'Aumentación',
     'nlp.ed.read': 'Leer la edición',
 
     'res.eyebrow': 'Base de evidencia',
@@ -1806,11 +1890,15 @@ const I18N = {
     'nlp.ed1.num': 'Issue 01',
     'nlp.ed1.tag': 'Labor market',
     'nlp.ed1.title': 'University graduates: an early warning of the employment crisis',
-    'nlp.ed1.dek': 'What the first data on recent-graduate employment tells us in the age of AI — and what to do with the signal.',
+    'nlp.ed1.dek': 'Recent graduates are the AI labor-shift\'s patient zero. A structural changing of the guard — not a rough patch.',
+    'nlp.ed1.stat.eyebrow': 'The figure',
+    'nlp.ed1.stat.lbl': 'Employability of 22–25-year-olds in exposed sectors',
     'nlp.ed2.num': 'Issue 02',
     'nlp.ed2.tag': 'Professions',
     'nlp.ed2.title': 'Professions at the algorithmic crossroads',
-    'nlp.ed2.dek': 'Which professions transform, which resist, and what makes the difference. An evidence-based analysis.',
+    'nlp.ed2.dek': 'AI targets mental work. Two labor markets opening in opposite directions — displacement vs. augmentation.',
+    'nlp.ed2.stat.a': 'Displacement',
+    'nlp.ed2.stat.b': 'Augmentation',
     'nlp.ed.read': 'Read the issue',
 
     'res.eyebrow': 'Evidence base',
@@ -2008,11 +2096,15 @@ const I18N = {
     'nlp.ed1.num': 'Edição 01',
     'nlp.ed1.tag': 'Mercado de trabalho',
     'nlp.ed1.title': 'Recém-formados universitários: alerta antecipado da crise do emprego',
-    'nlp.ed1.dek': 'O que os primeiros dados dizem sobre o emprego de recém-formados na era da IA — e o que fazer com esse sinal.',
+    'nlp.ed1.dek': 'Os recém-formados são o paciente zero da transformação do trabalho pela IA. Uma troca de guarda estrutural — não uma má fase.',
+    'nlp.ed1.stat.eyebrow': 'O número',
+    'nlp.ed1.stat.lbl': 'Empregabilidade de jovens 22–25 em setores expostos',
     'nlp.ed2.num': 'Edição 02',
     'nlp.ed2.tag': 'Profissões',
     'nlp.ed2.title': 'Profissões na encruzilhada algorítmica',
-    'nlp.ed2.dek': 'Quais profissões se transformam, quais resistem, e o que faz a diferença. Uma análise baseada em evidências.',
+    'nlp.ed2.dek': 'A IA aponta ao trabalho mental. Dois mercados abrindo em direções opostas — deslocamento vs. aumentação.',
+    'nlp.ed2.stat.a': 'Deslocamento',
+    'nlp.ed2.stat.b': 'Aumentação',
     'nlp.ed.read': 'Ler a edição',
 
     'res.eyebrow': 'Base de evidência',
