@@ -375,10 +375,42 @@
     font-weight: 500;
     color: var(--ink);
   }
+  .ev-papers-toggle { margin-top: 8px; }
+  .ev-papers-toggle > summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--bg);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    transition: border-color 0.18s, color 0.18s, background 0.18s;
+    user-select: none;
+  }
+  .ev-papers-toggle > summary::-webkit-details-marker { display: none; }
+  .ev-papers-toggle > summary::marker { content: ''; }
+  .ev-papers-toggle > summary::after {
+    content: "↓";
+    font-size: 13px;
+    margin-left: 2px;
+    transition: transform 0.2s;
+  }
+  .ev-papers-toggle[open] > summary::after { transform: rotate(180deg); }
+  .ev-papers-toggle > summary:hover { border-color: var(--ink); color: var(--ink); }
+  .ev-papers-toggle .ev-papers-toggle-hide { display: none; }
+  .ev-papers-toggle[open] .ev-papers-toggle-show { display: none; }
+  .ev-papers-toggle[open] .ev-papers-toggle-hide { display: inline; }
   .ev-papers-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 20px 0 0;
     border-top: 1px solid var(--rule);
   }
   .ev-paper-row {
@@ -1297,6 +1329,17 @@
   </section>
 
   <!-- PROBLEMA -->
+  <!-- EPIGRAPH -->
+  <section class="epigraph" style="border-top: 0;">
+    <div class="container">
+      <blockquote>
+        <span data-i18n="epi.quote">La memoria es el residuo del pensamiento.</span>
+        <div class="author">Daniel Willingham · <span data-i18n="epi.role">científico cognitivo</span></div>
+      </blockquote>
+      <p class="gloss" data-i18n="epi.gloss">Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.</p>
+    </div>
+  </section>
+
   <section id="problema">
     <div class="container">
       <div class="section-eyebrow" data-i18n="prob.eyebrow">El problema</div>
@@ -1330,6 +1373,50 @@
   </section>
 
   <!-- CONSTRUYENDO -->
+  <!-- SOCIOS -->
+  <section id="socios">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="part.eyebrow">Quiénes están construyendo esto</div>
+      <h2 class="section-title" data-i18n="part.title">Una alianza, no un proveedor.</h2>
+      <p class="section-lede" data-i18n="part.lede">EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.</p>
+
+      <div class="partners-grid">
+        <div class="partner">
+          <div class="p-name">Banco Mundial</div>
+          <div class="p-desc" data-i18n="part.wb">Red global en educación y tecnología.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">MetaRed Global</div>
+          <div class="p-desc" data-i18n="part.mr">945+ universidades en 10 países de la región.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">Anthropic</div>
+          <div class="p-desc" data-i18n="part.an">Equipo de educación.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">IA.Edu Brasil</div>
+          <div class="p-desc" data-i18n="part.iae">150+ investigadores PhD, alianzas con el MEC.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">UPC</div>
+          <div class="p-desc" data-i18n="part.upc">Universidad Peruana de Ciencias Aplicadas.</div>
+        </div>
+        <div class="partner">
+          <div class="p-name">UCR</div>
+          <div class="p-desc" data-i18n="part.ucr">Universidad de Costa Rica.</div>
+        </div>
+      </div>
+
+      <div class="partners-invite">
+        <div>
+          <h3 data-i18n="part.invite.h">Invitando a co-liderar.</h3>
+          <p data-i18n="part.invite.p">Universidades, ministerios y empresas de México, Chile, Colombia, Brasil y Argentina que quieran dar forma a esta red desde el inicio. Buscamos socios — no participantes pasivos.</p>
+        </div>
+        <a class="btn btn-primary btn-arrow" href="#sumarte" data-i18n="part.invite.cta">Conversemos</a>
+      </div>
+    </div>
+  </section>
+
   <section id="construyendo">
     <div class="container">
       <div class="section-eyebrow" data-i18n="build.eyebrow">Qué construimos</div>
@@ -1384,17 +1471,6 @@
     </div>
   </section>
 
-  <!-- EPIGRAPH -->
-  <section class="epigraph" style="border-top: 0;">
-    <div class="container">
-      <blockquote>
-        <span data-i18n="epi.quote">La memoria es el residuo del pensamiento.</span>
-        <div class="author">Daniel Willingham · <span data-i18n="epi.role">científico cognitivo</span></div>
-      </blockquote>
-      <p class="gloss" data-i18n="epi.gloss">Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.</p>
-    </div>
-  </section>
-
   <!-- NEWSLETTER PREVIEW -->
   <section id="newsletter-preview">
     <div class="container">
@@ -1445,7 +1521,7 @@
 
       <div class="editions-header">
         <div class="section-eyebrow" data-i18n="nlp.archive.eyebrow">Ediciones publicadas</div>
-        <h3 class="editions-title" data-i18n="nlp.archive.title">Empezamos con dos ediciones sobre mercado laboral e IA.</h3>
+        <h3 class="editions-title" data-i18n="nlp.archive.title">Ediciones temáticas sobre IA y mercado laboral.</h3>
       </div>
 
       <div class="editions-grid">
@@ -1569,7 +1645,7 @@
     <div class="container">
       <div class="section-eyebrow" data-i18n="res.eyebrow">Base de evidencia</div>
       <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
-      <p class="section-lede" data-i18n="res.lede">Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.</p>
+      <p class="section-lede" data-i18n="res.lede">Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.</p>
 
       <div id="papers-blocks"></div>
 
@@ -1583,50 +1659,6 @@
         <h3 data-i18n="res.add.h">Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.</h3>
         <p data-i18n="res.add.p">Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.</p>
         <a class="ph-cta" href="#sumarte" data-i18n="res.add.cta">Proponer estudio</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIOS -->
-  <section id="socios">
-    <div class="container">
-      <div class="section-eyebrow" data-i18n="part.eyebrow">Quiénes están construyendo esto</div>
-      <h2 class="section-title" data-i18n="part.title">Una alianza, no un proveedor.</h2>
-      <p class="section-lede" data-i18n="part.lede">EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.</p>
-
-      <div class="partners-grid">
-        <div class="partner">
-          <div class="p-name">Banco Mundial</div>
-          <div class="p-desc" data-i18n="part.wb">Red global en educación y tecnología.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">MetaRed Global</div>
-          <div class="p-desc" data-i18n="part.mr">945+ universidades en 10 países de la región.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">Anthropic</div>
-          <div class="p-desc" data-i18n="part.an">Equipo de educación.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">IA.Edu Brasil</div>
-          <div class="p-desc" data-i18n="part.iae">150+ investigadores PhD, alianzas con el MEC.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">UPC</div>
-          <div class="p-desc" data-i18n="part.upc">Universidad Peruana de Ciencias Aplicadas.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">UCR</div>
-          <div class="p-desc" data-i18n="part.ucr">Universidad de Costa Rica.</div>
-        </div>
-      </div>
-
-      <div class="partners-invite">
-        <div>
-          <h3 data-i18n="part.invite.h">Invitando a co-liderar.</h3>
-          <p data-i18n="part.invite.p">Universidades, ministerios y empresas de México, Chile, Colombia, Brasil y Argentina que quieran dar forma a esta red desde el inicio. Buscamos socios — no participantes pasivos.</p>
-        </div>
-        <a class="btn btn-primary btn-arrow" href="#sumarte" data-i18n="part.invite.cta">Conversemos</a>
       </div>
     </div>
   </section>
@@ -1883,7 +1915,7 @@ const I18N = {
     'conv.ph.cta': 'Suscribite al newsletter',
 
     'nlp.archive.eyebrow': 'Ediciones publicadas',
-    'nlp.archive.title': 'Empezamos con dos ediciones sobre mercado laboral e IA.',
+    'nlp.archive.title': 'Ediciones temáticas sobre IA y mercado laboral.',
     'nlp.ed1.num': 'Edición 01',
     'nlp.ed1.tag': 'Mercado laboral',
     'nlp.ed1.title': 'Egresados universitarios: alerta temprana de la crisis del empleo',
@@ -1900,7 +1932,7 @@ const I18N = {
 
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
-    'res.lede': 'Empezamos con la serie del Banco Mundial sobre IA en educación, leída en 213 países y disponible en español, inglés, portugués y búlgaro. Es el punto de partida — la base navegable va creciendo con la red.',
+    'res.lede': 'Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.',
     'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
     'res.cta.btn': 'Ver dashboard del Banco Mundial →',
     'res.add.eyebrow': '¿Querés sumar un estudio?',
@@ -1910,12 +1942,14 @@ const I18N = {
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint próximamente',
     'res.wp.note': 'Working paper',
+    'res.papers.show': 'Ver los papers',
+    'res.papers.hide': 'Ocultar los papers',
     'res.cat.all': 'Todo',
     'res.cat.guides': 'El terreno',
     'res.cat.works': 'Tutoría IA — RCTs',
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
-    'res.ev.landscape.title': 'Empezamos con la serie del Banco Mundial.',
+    'res.ev.landscape.title': 'Marcos, guías y publicaciones del Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. También se suman los estudios de habilidades digitales, porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
     'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
     'res.ev.tutoring.lead': 'Siete ensayos aleatorizados en cuatro continentes apuntan al mismo mecanismo. <em>Nigeria +0.31 SD</em> en seis semanas (≈ 1,5–2 años de escolarización). <em>Sierra Leona +0.26 SD</em> en pruebas externamente validadas, con más del 90% de las conversaciones dedicadas a construir comprensión conceptual. <em>Harvard</em>: los estudiantes con el tutor IA aprendieron más del doble en menos tiempo que la clase activa. <em>Taipéi</em> aisla la variable más profunda — mismo tutor guardrailed, sola diferencia el ordenamiento adaptativo de problemas, +0.15 SD en el examen final sin IA. <em>Reino Unido (LearnLM + Eedi)</em>: los tutores expertos aprobaron el 76% de los mensajes del modelo con cero o mínima edición. Y en <em>Turquía</em>, el brazo guardrailed del propio Bastani elimina el negative transfer del brazo libre — mismo estudio, mismo tipo de estudiantes; el diseño cambió el resultado.',
@@ -2101,7 +2135,7 @@ const I18N = {
     'conv.ph.cta': 'Subscribe to the newsletter',
 
     'nlp.archive.eyebrow': 'Published issues',
-    'nlp.archive.title': 'Two opening issues on the labor market and AI.',
+    'nlp.archive.title': 'Themed issues on AI and the labor market.',
     'nlp.ed1.num': 'Issue 01',
     'nlp.ed1.tag': 'Labor market',
     'nlp.ed1.title': 'University graduates: an early warning of the employment crisis',
@@ -2118,7 +2152,7 @@ const I18N = {
 
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
-    'res.lede': 'We start with the World Bank series on AI in education, read across 213 countries and available in Spanish, English, Portuguese and Bulgarian. This is the starting point — the navigable base grows with the network.',
+    'res.lede': 'A landscape of the programmatic and academic evidence on AI and learning: the World Bank series — read across 213 countries in Spanish, English, Portuguese and Bulgarian — alongside recent RCTs and digital-skills studies. Updated with every edition.',
     'res.cta.text': 'The World Bank AI-in-education publications have their own dashboard with downloads by country and language, refreshed every two months.',
     'res.cta.btn': 'Open the World Bank dashboard →',
     'res.add.eyebrow': 'Want to add a study?',
@@ -2128,12 +2162,14 @@ const I18N = {
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint coming soon',
     'res.wp.note': 'Working paper',
+    'res.papers.show': 'See the papers',
+    'res.papers.hide': 'Hide the papers',
     'res.cat.all': 'All',
     'res.cat.guides': 'The landscape',
     'res.cat.works': 'AI tutoring — RCTs',
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
-    'res.ev.landscape.title': 'We start with the World Bank series.',
+    'res.ev.landscape.title': 'Frameworks, guides and World Bank publications.',
     'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The World Bank AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. Digital-skills studies are folded in because the AI-in-education debate can\'t be read without the human-capital map.',
     'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
     'res.ev.tutoring.lead': 'Seven randomized trials across four continents point to the same mechanism. <em>Nigeria +0.31 SD</em> in six weeks (≈ 1.5–2 years of schooling). <em>Sierra Leone +0.26 SD</em> on externally validated tests, with over 90% of conversations spent building conceptual understanding. <em>Harvard</em>: students with the AI tutor learned more than twice as much in less time than active learning. <em>Taipei</em> isolates the sharpest variable — same guardrailed tutor, only adaptive problem sequencing differs, +0.15 SD on the no-AI final exam. <em>UK (LearnLM + Eedi)</em>: expert tutors approved 76% of the model\'s messages with zero or minimal edits. <em>Chile (Gallegos)</em>: guidance on learning-oriented use raised final-exam scores by 0.21 SD; encouraging adoption alone did nothing. And in <em>Turkey</em>, the guardrailed arm of Bastani\'s own study erases the negative transfer of the free-access arm — same study, same students; design changed the outcome.',
@@ -2319,7 +2355,7 @@ const I18N = {
     'conv.ph.cta': 'Assine a newsletter',
 
     'nlp.archive.eyebrow': 'Edições publicadas',
-    'nlp.archive.title': 'Começamos com duas edições sobre mercado de trabalho e IA.',
+    'nlp.archive.title': 'Edições temáticas sobre IA e mercado de trabalho.',
     'nlp.ed1.num': 'Edição 01',
     'nlp.ed1.tag': 'Mercado de trabalho',
     'nlp.ed1.title': 'Recém-formados universitários: alerta antecipado da crise do emprego',
@@ -2336,7 +2372,7 @@ const I18N = {
 
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
-    'res.lede': 'Começamos com a série do Banco Mundial sobre IA em educação, lida em 213 países e disponível em espanhol, inglês, português e búlgaro. É o ponto de partida — a base navegável cresce com a rede.',
+    'res.lede': 'Landscape da evidência programática e acadêmica sobre IA e aprendizagem: a série do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — junto a RCTs recentes e estudos de habilidades digitais. Atualiza-se a cada edição.',
     'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
     'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
     'res.add.eyebrow': 'Quer adicionar um estudo?',
@@ -2346,12 +2382,14 @@ const I18N = {
     'res.forthcoming.badge': 'Em breve',
     'res.forthcoming.note': 'Preprint em breve',
     'res.wp.note': 'Working paper',
+    'res.papers.show': 'Ver os papers',
+    'res.papers.hide': 'Ocultar os papers',
     'res.cat.all': 'Tudo',
     'res.cat.guides': 'O cenário',
     'res.cat.works': 'Tutoria com IA — RCTs',
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
-    'res.ev.landscape.title': 'Começamos pela série do Banco Mundial.',
+    'res.ev.landscape.title': 'Marcos, guias e publicações do Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Também entram os estudos de habilidades digitais, porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
     'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
     'res.ev.tutoring.lead': 'Sete ensaios aleatorizados em quatro continentes apontam ao mesmo mecanismo. <em>Nigéria +0,31 DP</em> em seis semanas (≈ 1,5–2 anos de escolaridade). <em>Serra Leoa +0,26 DP</em> em provas externamente validadas, com mais de 90% das conversas dedicadas à construção de compreensão conceitual. <em>Harvard</em>: os estudantes com o tutor de IA aprenderam mais do dobro em menos tempo do que a aula ativa. <em>Taipé</em> isola a variável mais fina — mesmo tutor guardrailed, só difere o sequenciamento adaptativo de problemas, +0,15 DP no exame sem IA. <em>Reino Unido (LearnLM + Eedi)</em>: os tutores especialistas aprovaram 76% das mensagens do modelo com zero ou mínima edição. <em>Chile (Gallegos)</em>: a orientação sobre uso voltado à aprendizagem elevou o exame final em 0,21 DP; incentivar a adoção sozinha não fez nada. E na <em>Turquia</em>, o braço guardrailed do próprio Bastani apaga o negative transfer do braço livre — mesmo estudo, mesmos alunos; o desenho mudou o resultado.',
@@ -2755,7 +2793,7 @@ function renderEvidenceBlocks(lang) {
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
   };
-  container.innerHTML = blocks.map(b => {
+  container.innerHTML = blocks.map((b, i) => {
     const papersHere = PAPERS
       .filter(p => (p.category || 'wb-guides') === b.cat)
       .slice()
@@ -2782,12 +2820,18 @@ function renderEvidenceBlocks(lang) {
         </li>
       `;
     }).join('');
+    const openAttr = i === 0 ? ' open' : '';
+    const showLabel = t['res.papers.show'] || 'Ver los papers';
+    const hideLabel = t['res.papers.hide'] || 'Ocultar los papers';
     return `
       <article class="ev-block" data-cat="${b.cat}">
         <div class="ev-block-eyebrow">${labelByCat[b.cat]} · ${papersHere.length}</div>
         <h3 class="ev-block-title">${b.title}</h3>
         <p class="ev-block-lead">${b.lead}</p>
-        <ol class="ev-papers-list">${list}</ol>
+        <details class="ev-papers-toggle"${openAttr}>
+          <summary><span class="ev-papers-toggle-show">${showLabel} (${papersHere.length})</span><span class="ev-papers-toggle-hide">${hideLabel}</span></summary>
+          <ol class="ev-papers-list">${list}</ol>
+        </details>
       </article>
     `;
   }).join('');
