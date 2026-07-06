@@ -56,7 +56,7 @@ Both forms POST to a single Google Apps Script Web App that writes to a Google S
 In [`index.html`](index.html), find the CONFIG block near the top of `<script>` and paste your `/exec` URL:
 
 ```js
-const CONTACT_EMAIL = 'hola@evidencia.ai'; // TODO
+const CONTACT_EMAIL = 'ezequiel.molina@gmail.com';
 const DATA_ENDPOINT = 'https://script.google.com/macros/s/AKfycb.../exec';
 ```
 
