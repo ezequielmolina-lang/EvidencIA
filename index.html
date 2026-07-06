@@ -843,6 +843,36 @@
   }
   .placeholder-card .ph-cta:hover { background: var(--gold-deep); transform: translateY(-1px); }
   .placeholder-card .ph-cta::after { content: "→"; }
+  .study-proposal-card { padding: 32px 32px 28px; }
+  .study-proposal-form { margin-top: 20px; display: grid; gap: 14px; }
+  .study-proposal-form .field label {
+    display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--ink-mute); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .study-proposal-form .field input,
+  .study-proposal-form .field textarea {
+    width: 100%; padding: 10px 12px;
+    border: 1px solid var(--rule); border-radius: 8px;
+    background: var(--bg); color: var(--ink);
+    font-family: inherit; font-size: 14px; line-height: 1.4;
+    transition: border-color 0.18s;
+  }
+  .study-proposal-form .field textarea { resize: vertical; min-height: 60px; }
+  .study-proposal-form .field input:focus,
+  .study-proposal-form .field textarea:focus { outline: none; border-color: var(--gold); }
+  .study-proposal-form .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .study-proposal-form .submit-btn {
+    justify-self: start;
+    padding: 12px 24px; border: 0; border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+    font-family: inherit; font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s;
+  }
+  .study-proposal-form .submit-btn:hover { background: var(--gold-deep); transform: translateY(-1px); }
+  @media (max-width: 640px) {
+    .study-proposal-form .field-row { grid-template-columns: 1fr; }
+  }
   .split-pull {
     margin-top: 56px; max-width: 56ch;
     font-family: 'Source Serif 4', Georgia, serif;
@@ -1658,11 +1688,40 @@
         <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard del Banco Mundial →</a>
       </div>
 
-      <div class="placeholder-card" style="margin-top: 48px;">
+      <div class="placeholder-card study-proposal-card" style="margin-top: 48px;">
         <div class="ph-eyebrow" data-i18n="res.add.eyebrow">¿Querés sumar un estudio?</div>
-        <h3 data-i18n="res.add.h">Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.</h3>
-        <p data-i18n="res.add.p">Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.</p>
-        <a class="ph-cta" href="#sumarte" data-i18n="res.add.cta">Proponer estudio</a>
+        <h3 data-i18n="res.add.h">Estamos sumando RCTs, ciencia cognitiva y evaluaciones de política pública.</h3>
+        <p data-i18n="res.add.p">Si conocés un estudio riguroso, empírico y con foco en IA + aprendizaje que debería estar acá, mandanos el link. La base la curan los socios de la red.</p>
+        <form id="study-proposal-form" class="study-proposal-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="sp-name" data-i18n="res.add.name">Tu nombre</label>
+              <input id="sp-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="sp-email" data-i18n="res.add.email">Correo</label>
+              <input id="sp-email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="sp-url" data-i18n="res.add.url">Link al paper (o DOI)</label>
+            <input id="sp-url" name="url" type="url" required placeholder="https://…" />
+          </div>
+          <div class="field">
+            <label for="sp-title" data-i18n="res.add.title">Título del paper</label>
+            <input id="sp-title" name="title" type="text" required />
+          </div>
+          <div class="field">
+            <label for="sp-authors" data-i18n="res.add.authors">Autores · institución · país</label>
+            <input id="sp-authors" name="authors" type="text" placeholder="ej. De Simone, Tiberti et al. · World Bank · Nigeria" />
+          </div>
+          <div class="field">
+            <label for="sp-reason" data-i18n="res.add.reason">Por qué debería estar acá (1 línea)</label>
+            <textarea id="sp-reason" name="reason" rows="2" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" data-i18n="res.add.submit">Enviar propuesta</button>
+          <div class="form-status" id="sp-status"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -1940,9 +1999,16 @@ const I18N = {
     'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
     'res.cta.btn': 'Ver dashboard del Banco Mundial →',
     'res.add.eyebrow': '¿Querés sumar un estudio?',
-    'res.add.h': 'Estamos sumando RCTs, principios de ciencia cognitiva y evaluaciones de política pública.',
-    'res.add.p': 'Si conocés un estudio que debería estar acá, escribinos. La base la curan los socios de la red.',
+    'res.add.h': 'Estamos sumando RCTs, ciencia cognitiva y evaluaciones de política pública.',
+    'res.add.p': 'Si conocés un estudio riguroso, empírico y con foco en IA + aprendizaje que debería estar acá, mandanos el link. La base la curan los socios de la red.',
     'res.add.cta': 'Proponer estudio',
+    'res.add.name': 'Tu nombre',
+    'res.add.email': 'Correo',
+    'res.add.url': 'Link al paper (o DOI)',
+    'res.add.title': 'Título del paper',
+    'res.add.authors': 'Autores · institución · país',
+    'res.add.reason': 'Por qué debería estar acá (1 línea)',
+    'res.add.submit': 'Enviar propuesta',
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint próximamente',
     'res.wp.note': 'Working paper',
@@ -2051,6 +2117,8 @@ const I18N = {
     'status.nl.error': 'No pudimos enviar el formulario. Probá de nuevo o escribinos a ' + CONTACT_EMAIL,
     'status.pf.success': '¡Mensaje recibido! Te contactamos en los próximos 5 días hábiles.',
     'status.pf.error': 'No pudimos enviar el formulario. Probá de nuevo o escribinos a ' + CONTACT_EMAIL,
+    'status.sp.success': '¡Gracias! Vamos a revisar el estudio y, si entra en la curación, lo sumamos a la base.',
+    'status.sp.error': 'No pudimos enviar la propuesta. Probá de nuevo o escribinos a ' + CONTACT_EMAIL,
     'status.validation': 'Completá los campos obligatorios para continuar.',
   },
 
@@ -2162,8 +2230,15 @@ const I18N = {
     'res.cta.btn': 'Open the World Bank dashboard →',
     'res.add.eyebrow': 'Want to add a study?',
     'res.add.h': 'We\'re adding RCTs, cognitive-science principles and policy evaluations.',
-    'res.add.p': 'If you know of a study that should live here, write to us. The base is curated by the network partners.',
+    'res.add.p': 'If you know of a rigorous, empirical study focused on AI + learning that should live here, send us the link. The base is curated by the network partners.',
     'res.add.cta': 'Propose a study',
+    'res.add.name': 'Your name',
+    'res.add.email': 'Email',
+    'res.add.url': 'Link to the paper (or DOI)',
+    'res.add.title': 'Paper title',
+    'res.add.authors': 'Authors · institution · country',
+    'res.add.reason': 'Why it should live here (1 line)',
+    'res.add.submit': 'Send proposal',
     'res.forthcoming.badge': 'Forthcoming',
     'res.forthcoming.note': 'Preprint coming soon',
     'res.wp.note': 'Working paper',
@@ -2272,6 +2347,8 @@ const I18N = {
     'status.nl.error': 'Couldn\'t submit. Try again, or email ' + CONTACT_EMAIL,
     'status.pf.success': 'Message received. We\'ll be in touch within 5 business days.',
     'status.pf.error': 'Couldn\'t submit. Try again, or email ' + CONTACT_EMAIL,
+    'status.sp.success': 'Thanks! We\'ll review the study and add it if it makes the cut.',
+    'status.sp.error': 'Couldn\'t submit the proposal. Try again, or email ' + CONTACT_EMAIL,
     'status.validation': 'Please complete the required fields.',
   },
 
@@ -2382,9 +2459,16 @@ const I18N = {
     'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
     'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
     'res.add.eyebrow': 'Quer adicionar um estudo?',
-    'res.add.h': 'Estamos adicionando RCTs, princípios de ciência cognitiva e avaliações de políticas públicas.',
-    'res.add.p': 'Se conhece um estudo que deveria estar aqui, escreva para nós. A base é curada pelos parceiros da rede.',
+    'res.add.h': 'Estamos adicionando RCTs, ciência cognitiva e avaliações de políticas públicas.',
+    'res.add.p': 'Se conhece um estudo rigoroso, empírico e com foco em IA + aprendizagem que deveria estar aqui, envie o link. A base é curada pelos parceiros da rede.',
     'res.add.cta': 'Propor estudo',
+    'res.add.name': 'Seu nome',
+    'res.add.email': 'Email',
+    'res.add.url': 'Link do paper (ou DOI)',
+    'res.add.title': 'Título do paper',
+    'res.add.authors': 'Autores · instituição · país',
+    'res.add.reason': 'Por que deveria estar aqui (1 linha)',
+    'res.add.submit': 'Enviar proposta',
     'res.forthcoming.badge': 'Em breve',
     'res.forthcoming.note': 'Preprint em breve',
     'res.wp.note': 'Working paper',
@@ -2493,6 +2577,8 @@ const I18N = {
     'status.nl.error': 'Não foi possível enviar. Tente novamente ou escreva para ' + CONTACT_EMAIL,
     'status.pf.success': 'Mensagem recebida! Entraremos em contato em até 5 dias úteis.',
     'status.pf.error': 'Não foi possível enviar. Tente novamente ou escreva para ' + CONTACT_EMAIL,
+    'status.sp.success': 'Obrigado! Vamos revisar o estudo e adicioná-lo se entrar na curadoria.',
+    'status.sp.error': 'Não foi possível enviar a proposta. Tente novamente ou escreva para ' + CONTACT_EMAIL,
     'status.validation': 'Por favor, preencha os campos obrigatórios.',
   }
 };
@@ -2982,6 +3068,41 @@ pfForm.addEventListener('submit', async (e) => {
     setStatus(pfStatus, 'error', t['status.pf.error']);
   }
 });
+
+// Study-proposal form
+const spForm = document.getElementById('study-proposal-form');
+const spStatus = document.getElementById('sp-status');
+if (spForm) {
+  spForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const t = I18N[currentLang];
+    const payload = {
+      type: 'study-proposal',
+      name: spForm['name'].value.trim(),
+      email: spForm['email'].value.trim(),
+      url: spForm['url'].value.trim(),
+      title: spForm['title'].value.trim(),
+      authors: spForm['authors'].value.trim(),
+      reason: spForm['reason'].value.trim(),
+    };
+    if (!payload.name || !payload.email || !payload.url || !payload.title || !payload.reason) {
+      setStatus(spStatus, 'error', t['status.validation']);
+      return;
+    }
+    try {
+      if (DATA_ENDPOINT) {
+        await postToSheet(payload);
+        setStatus(spStatus, 'success', t['status.sp.success']);
+        spForm.reset();
+      } else {
+        window.location.href = buildMailto('EvidencIA — Study proposal', payload);
+        setStatus(spStatus, 'success', t['status.sp.success']);
+      }
+    } catch (err) {
+      setStatus(spStatus, 'error', t['status.sp.error']);
+    }
+  });
+}
 
 // ============================================================
 // AUTOPLAY VIDEOS — nudge muted-loop videos that some browsers

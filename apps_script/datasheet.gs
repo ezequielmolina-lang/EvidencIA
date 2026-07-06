@@ -34,6 +34,18 @@ const PARTNERS_HEADERS = [
   'Timestamp', 'Name', 'Role', 'Email', 'Country', 'Institution',
   'Interests', 'Message', 'Page language', 'Source', 'User agent'
 ];
+// study-proposals: what the site's 'Proponer estudio' form submits.
+const STUDY_PROPOSALS_HEADERS = [
+  'Timestamp', 'Name', 'Email', 'Paper URL', 'Paper title',
+  'Authors / institution / country', 'Why it belongs',
+  'Page language', 'Source', 'User agent', 'Reviewed', 'Decision', 'Notes'
+];
+// paper-candidates: what the _tooling/paper_watcher.py script POSTs weekly.
+const PAPER_CANDIDATES_HEADERS = [
+  'Timestamp', 'Fetched at', 'Source', 'Query', 'Title', 'Authors',
+  'Year', 'Venue', 'URL', 'DOI', 'Abstract',
+  'Rigor score', 'LAC bonus', 'Total score', 'Reviewed', 'Decision', 'Notes'
+];
 
 /**
  * Run once from the editor. Creates the sheet (if not already) and adds/fixes
@@ -51,8 +63,10 @@ function setup() {
     sid = ss.getId();
     props.setProperty('SHEET_ID', sid);
   }
-  ensureTab_(ss, 'newsletter', NEWSLETTER_HEADERS);
-  ensureTab_(ss, 'partners',   PARTNERS_HEADERS);
+  ensureTab_(ss, 'newsletter',        NEWSLETTER_HEADERS);
+  ensureTab_(ss, 'partners',          PARTNERS_HEADERS);
+  ensureTab_(ss, 'study-proposals',   STUDY_PROPOSALS_HEADERS);
+  ensureTab_(ss, 'paper-candidates',  PAPER_CANDIDATES_HEADERS);
   // Drop the auto-created Sheet1 if it's empty
   const s1 = ss.getSheetByName('Sheet1');
   if (s1 && s1.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(s1);
@@ -107,6 +121,32 @@ function doPost(e) {
         payload.country || '', payload.institution || '',
         interests, payload.message || '',
         pageLang, source, ua
+      ]);
+    } else if (payload.type === 'study-proposal') {
+      ss.getSheetByName('study-proposals').appendRow([
+        ts, payload.name || '', payload.email || '',
+        payload.url || '', payload.title || '',
+        payload.authors || '', payload.reason || '',
+        pageLang, source, ua,
+        '', '', ''  // Reviewed / Decision / Notes — filled in by hand
+      ]);
+    } else if (payload.type === 'paper-candidate') {
+      ss.getSheetByName('paper-candidates').appendRow([
+        ts,
+        payload.fetchedAt || '',
+        payload.source || '',
+        payload.query || '',
+        payload.title || '',
+        payload.authors || '',
+        payload.year || '',
+        payload.venue || '',
+        payload.url || '',
+        payload.doi || '',
+        payload.abstract || '',
+        payload.rigorScore == null ? '' : payload.rigorScore,
+        payload.lacBonus == null ? '' : payload.lacBonus,
+        payload.totalScore == null ? '' : payload.totalScore,
+        '', '', ''  // Reviewed / Decision / Notes
       ]);
     } else {
       return json_({ ok: false, error: 'unknown type: ' + payload.type });
