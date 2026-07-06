@@ -44,7 +44,7 @@ from pathlib import Path
 
 DATA_ENDPOINT = (
     "https://script.google.com/macros/s/"
-    "AKfycbzDlLpras03Hal1rimBO-YTAW_fBtmgYTN6q3aS9X2dSQNTwOtX8Hu2__yipQAnFsGu/exec"
+    "AKfycbw3nqcBepdwlvtScKFFscp23Ddktf0CZJRGj5WzCKWQMLKfDSJ-iewuVyztkcOh2H0t/exec"
 )
 
 # What we mean by 'this is about AI in education / learning'.
