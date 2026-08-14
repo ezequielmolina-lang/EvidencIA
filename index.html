@@ -57,11 +57,10 @@
     -webkit-backdrop-filter: saturate(180%) blur(14px);
     border-bottom: 1px solid var(--rule);
   }
-  header.site .container.nav { max-width: 1400px; }
   .nav {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 0;
-    gap: 32px;
+    gap: 24px;
   }
   .brand {
     font-family: 'Source Serif 4', Georgia, serif;
@@ -1261,7 +1260,7 @@
   }
 
   /* Mid: hide lower-priority nav items to prevent crowding */
-  @media (max-width: 1180px) {
+  @media (max-width: 1080px) {
     .nav-links a[href="#problema"],
     .nav-links a[href="#newsletter-preview"] { display: none; }
   }
@@ -2176,9 +2175,6 @@ const I18N = {
     'res.cat.works': 'Tutoría IA — RCTs',
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
-    'res.cat.costs': 'Costos y adopción',
-    'res.ev.costs.title': 'Cuánto cuesta y quién lo puede pagar: el mapa de adopción y financiamiento.',
-    'res.ev.costs.lead': 'Los efectos importan cuando el precio importa. Estos documentos ordenan las decisiones de presupuesto, gobernanza y despliegue que quedan afuera de la mayoría de los RCTs — incluyendo cómo evitar que la brecha digital se profundice con la adopción de IA.',
     'res.ev.landscape.title': 'Marcos, guías y publicaciones del Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. También se suman los estudios de habilidades digitales, porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
     'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
@@ -2423,9 +2419,6 @@ const I18N = {
     'res.cat.works': 'AI tutoring — RCTs',
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
-    'res.cat.costs': 'Costs and adoption',
-    'res.ev.costs.title': 'What it costs and who can pay: the adoption and financing map.',
-    'res.ev.costs.lead': 'Impacts matter when price matters. These documents order the budget, governance and deployment decisions that fall outside most RCTs — including how to prevent the digital divide from widening as AI is adopted.',
     'res.ev.landscape.title': 'Frameworks, guides and World Bank publications.',
     'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The World Bank AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. Digital-skills studies are folded in because the AI-in-education debate can\'t be read without the human-capital map.',
     'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
@@ -2670,9 +2663,6 @@ const I18N = {
     'res.cat.works': 'Tutoria com IA — RCTs',
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
-    'res.cat.costs': 'Custos e adoção',
-    'res.ev.costs.title': 'Quanto custa e quem pode pagar: o mapa da adoção e do financiamento.',
-    'res.ev.costs.lead': 'Efeitos importam quando o preço importa. Estes documentos ordenam as decisões de orçamento, governança e implementação que ficam de fora da maioria dos RCTs — incluindo como evitar que a brecha digital se aprofunde com a adoção de IA.',
     'res.ev.landscape.title': 'Marcos, guias e publicações do Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Também entram os estudos de habilidades digitais, porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
     'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
@@ -3080,9 +3070,8 @@ const PAPERS = [
     ],
   },
 
-  // ============ COSTS + ADOPTION ============
   {
-    year: 2026, category: 'costs',
+    year: 2026, category: 'wb-guides',
     title: {
       es: 'Cuánto cuesta la IA en educación en países de ingreso bajo y mediano',
       en: 'Costing AI Use in Education in Low- and Middle-Income Countries',
@@ -3100,7 +3089,7 @@ const PAPERS = [
     ],
   },
   {
-    year: 2026, category: 'costs',
+    year: 2026, category: 'wb-guides',
     title: {
       es: 'World Development Report 2026: La promesa de la inteligencia artificial',
       en: 'World Development Report 2026: The Promise of Artificial Intelligence',
@@ -3127,13 +3116,11 @@ function renderEvidenceBlocks(lang) {
     : obj;
   const blocks = [
     { cat: 'wb-guides', title: t['res.ev.landscape.title'], lead: t['res.ev.landscape.lead'] },
-    { cat: 'costs', title: t['res.ev.costs.title'], lead: t['res.ev.costs.lead'] },
     { cat: 'works', title: t['res.ev.tutoring.title'], lead: t['res.ev.tutoring.lead'] },
     { cat: 'fails', title: t['res.ev.wild.title'], lead: t['res.ev.wild.lead'] },
   ];
   const labelByCat = {
     'wb-guides': t['res.cat.guides'],
-    'costs': t['res.cat.costs'],
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
   };
