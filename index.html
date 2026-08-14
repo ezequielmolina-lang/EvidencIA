@@ -1292,6 +1292,107 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Publicaciones de la red */
+  #publicaciones {
+    padding: 96px 0;
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+  }
+  .publication-card {
+    margin-top: 40px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    padding: 40px 44px;
+    border-radius: 2px;
+  }
+  .pub-kicker {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .pub-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(24px, 3.2vw, 34px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .pub-byline {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
+    font-style: italic;
+  }
+  .pub-hook {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 26px;
+  }
+  .pub-findings {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pub-findings li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pub-cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .pub-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pub-cta-primary {
+    background: var(--gold);
+    color: #fff;
+  }
+  .pub-cta-primary:hover { background: var(--gold-deep); }
+  .pub-cta-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .pub-cta-secondary:hover { background: var(--ink); color: var(--bg); }
+  .pub-fineprint {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .pub-fineprint em { color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 640px) {
+    .publication-card { padding: 28px 22px; }
+    .pub-cta-row { flex-direction: column; }
+    .pub-cta { text-align: center; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -1312,6 +1413,7 @@
       <a href="#conversaciones" data-i18n="nav.events">Conversaciones</a>
       <a href="#newsletter-preview" data-i18n="nav.newsletter">Newsletter</a>
       <a href="#iniciativas" data-i18n="nav.initiatives">Iniciativas</a>
+      <a href="#publicaciones" data-i18n="nav.publications">Publicaciones</a>
       <a href="#evidencia" data-i18n="nav.research">Evidencia</a>
       <a href="#sumarte" data-i18n="nav.join" class="nav-cta">Sumate</a>
       <div class="lang" role="tablist" aria-label="Language">
@@ -1676,6 +1778,35 @@
     </div>
   </section>
 
+  <!-- PUBLICACIONES DE LA RED -->
+  <section id="publicaciones">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="pub.eyebrow">Publicaciones de la red</div>
+      <h2 class="section-title" data-i18n="pub.title">Investigación propia con estándares de rigor.</h2>
+      <p class="section-lede" data-i18n="pub.lede">Papers, síntesis y meta-análisis producidos por los socios de la red. Aporte propio a la conversación regional — distinto en categoría de la curaduría de terceros que vive en la <a href="#evidencia">Base de evidencia</a>.</p>
+
+      <article class="publication-card">
+        <div class="pub-kicker" data-i18n="pub.p1.kicker">Documento de referencia · Informe sobre el Desarrollo Mundial 2026</div>
+        <h3 class="pub-title" data-i18n="pub.p1.title">¿Puede la EdTech cerrar las brechas de aprendizaje?</h3>
+        <div class="pub-byline" data-i18n="pub.p1.byline">Alegría Burneo Terán · Lelys Dinarte-Diaz · Carolina Lopez · Ezequiel Molina</div>
+        <p class="pub-hook" data-i18n="pub.p1.hook">Meta-análisis de <strong>17 estimaciones de 6 RCTs</strong> que sobreviven a un filtro estricto: grupo de control puro, atrición &lt;30 %, instrumentos validados. De 4.117 estudios revisados, solo 14 cumplen el estándar — <strong>ninguno en un país de bajos ingresos</strong>.</p>
+
+        <ul class="pub-findings">
+          <li data-i18n="pub.p1.f1"><strong>+0,125 SD</strong> — el efecto pooled de herramientas adaptativas y de IA, por encima de la mediana de 0,10 SD para intervenciones educativas evaluadas con RCT.</li>
+          <li data-i18n="pub.p1.f2"><strong>La IA generativa no supera</strong> al software adaptativo que reemplaza: +0,022 SD (SE 0,075). Solo 3 estudios evalúan herramientas generativas.</li>
+          <li data-i18n="pub.p1.f3"><strong>0 de 14 estudios en países de bajos ingresos</strong>; solo 3 reportan costo por estudiante — la promesa de "personalización a fracción del costo de la tutoría" casi nunca se ha medido junto al efecto que busca justificar.</li>
+        </ul>
+
+        <div class="pub-cta-row">
+          <a class="pub-cta pub-cta-primary" href="https://lnkd.in/g69U9nFg" target="_blank" rel="noopener"><span data-i18n="pub.p1.cta.paper">Leer el paper</span> <span aria-hidden="true">→</span></a>
+          <a class="pub-cta pub-cta-secondary" href="https://lnkd.in/g2kNYgDF" target="_blank" rel="noopener" data-i18n="pub.p1.cta.nb">Interrogar la evidencia con NotebookLM</a>
+        </div>
+
+        <p class="pub-fineprint" data-i18n="pub.p1.fine">La búsqueda cerró en mayo de 2026; trabajos posteriores no están incluidos. Contexto: el paper fue preparado como documento de referencia para el <em>Informe sobre el Desarrollo Mundial 2026 — La promesa de la inteligencia artificial</em>.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- BASE DE EVIDENCIA -->
   <section id="evidencia">
     <div class="container">
@@ -1995,6 +2126,20 @@ const I18N = {
     'nlp.ed2.stat.b': 'Aumentación',
     'nlp.ed.read': 'Leer la edición',
 
+    'nav.publications': 'Publicaciones',
+    'pub.eyebrow': 'Publicaciones de la red',
+    'pub.title': 'Investigación propia con estándares de rigor.',
+    'pub.lede': 'Papers, síntesis y meta-análisis producidos por los socios de la red. Aporte propio a la conversación regional — distinto en categoría de la curaduría de terceros que vive en la <a href="#evidencia">Base de evidencia</a>.',
+    'pub.p1.kicker': 'Documento de referencia · Informe sobre el Desarrollo Mundial 2026',
+    'pub.p1.title': '¿Puede la EdTech cerrar las brechas de aprendizaje?',
+    'pub.p1.byline': 'Alegría Burneo Terán · Lelys Dinarte-Diaz · Carolina Lopez · Ezequiel Molina',
+    'pub.p1.hook': 'Meta-análisis de <strong>17 estimaciones de 6 RCTs</strong> que sobreviven a un filtro estricto: grupo de control puro, atrición &lt;30 %, instrumentos validados. De 4.117 estudios revisados, solo 14 cumplen el estándar — <strong>ninguno en un país de bajos ingresos</strong>.',
+    'pub.p1.f1': '<strong>+0,125 SD</strong> — el efecto pooled de herramientas adaptativas y de IA, por encima de la mediana de 0,10 SD para intervenciones educativas evaluadas con RCT.',
+    'pub.p1.f2': '<strong>La IA generativa no supera</strong> al software adaptativo que reemplaza: +0,022 SD (SE 0,075). Solo 3 estudios evalúan herramientas generativas.',
+    'pub.p1.f3': '<strong>0 de 14 estudios en países de bajos ingresos</strong>; solo 3 reportan costo por estudiante — la promesa de "personalización a fracción del costo de la tutoría" casi nunca se ha medido junto al efecto que busca justificar.',
+    'pub.p1.cta.paper': 'Leer el paper',
+    'pub.p1.cta.nb': 'Interrogar la evidencia con NotebookLM',
+    'pub.p1.fine': 'La búsqueda cerró en mayo de 2026; trabajos posteriores no están incluidos. Contexto: el paper fue preparado como documento de referencia para el <em>Informe sobre el Desarrollo Mundial 2026 — La promesa de la inteligencia artificial</em>.',
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
     'res.lede': 'Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.',
@@ -2021,6 +2166,9 @@ const I18N = {
     'res.cat.works': 'Tutoría IA — RCTs',
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
+    'res.cat.costs': 'Costos y adopción',
+    'res.ev.costs.title': 'Cuánto cuesta y quién lo puede pagar: el mapa de adopción y financiamiento.',
+    'res.ev.costs.lead': 'Los efectos importan cuando el precio importa. Estos documentos ordenan las decisiones de presupuesto, gobernanza y despliegue que quedan afuera de la mayoría de los RCTs — incluyendo cómo evitar que la brecha digital se profundice con la adopción de IA.',
     'res.ev.landscape.title': 'Marcos, guías y publicaciones del Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. También se suman los estudios de habilidades digitales, porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
     'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
@@ -2225,6 +2373,20 @@ const I18N = {
     'nlp.ed2.stat.b': 'Augmentation',
     'nlp.ed.read': 'Read the issue',
 
+    'nav.publications': 'Publications',
+    'pub.eyebrow': 'Network publications',
+    'pub.title': 'Original research at a strict bar.',
+    'pub.lede': 'Papers, syntheses and meta-analyses produced by the network\'s partners. Original contributions to the regional conversation — different in kind from the third-party curation that lives in the <a href="#evidencia">evidence base</a>.',
+    'pub.p1.kicker': 'Background paper · World Development Report 2026',
+    'pub.p1.title': 'Can EdTech Close Learning Gaps?',
+    'pub.p1.byline': 'Alegría Burneo Terán · Lelys Dinarte-Diaz · Carolina Lopez · Ezequiel Molina',
+    'pub.p1.hook': 'Meta-analysis of <strong>17 estimates from 6 RCTs</strong> that survive a strict filter: pure control group, attrition below 30%, validated instruments. Of 4,117 studies screened, only 14 clear the bar — <strong>none in a low-income country</strong>.',
+    'pub.p1.f1': '<strong>+0.125 SD</strong> — pooled effect for adaptive and AI-enabled tools, above the 0.10 SD median for RCT-evaluated education interventions.',
+    'pub.p1.f2': '<strong>Generative AI has not outperformed</strong> the adaptive software it replaces: +0.022 SD (SE 0.075). Only 3 studies evaluate generative tools.',
+    'pub.p1.f3': '<strong>0 of 14 studies in low-income countries</strong>; only 3 report per-student costs — the "personalisation at a fraction of the cost of tutoring" claim has almost never been measured alongside the effect it means to justify.',
+    'pub.p1.cta.paper': 'Read the paper',
+    'pub.p1.cta.nb': 'Interrogate the evidence with NotebookLM',
+    'pub.p1.fine': 'The search closed in May 2026; later work is not included. Context: the paper was prepared as a background paper for the <em>World Development Report 2026 — The Promise of Artificial Intelligence</em>.',
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
     'res.lede': 'A landscape of the programmatic and academic evidence on AI and learning: the World Bank series — read across 213 countries in Spanish, English, Portuguese and Bulgarian — alongside recent RCTs and digital-skills studies. Updated with every edition.',
@@ -2251,6 +2413,9 @@ const I18N = {
     'res.cat.works': 'AI tutoring — RCTs',
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
+    'res.cat.costs': 'Costs and adoption',
+    'res.ev.costs.title': 'What it costs and who can pay: the adoption and financing map.',
+    'res.ev.costs.lead': 'Impacts matter when price matters. These documents order the budget, governance and deployment decisions that fall outside most RCTs — including how to prevent the digital divide from widening as AI is adopted.',
     'res.ev.landscape.title': 'Frameworks, guides and World Bank publications.',
     'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The World Bank AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. Digital-skills studies are folded in because the AI-in-education debate can\'t be read without the human-capital map.',
     'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
@@ -2455,6 +2620,20 @@ const I18N = {
     'nlp.ed2.stat.b': 'Aumentação',
     'nlp.ed.read': 'Ler a edição',
 
+    'nav.publications': 'Publicações',
+    'pub.eyebrow': 'Publicações da rede',
+    'pub.title': 'Pesquisa própria com padrão de rigor.',
+    'pub.lede': 'Artigos, sínteses e meta-análises produzidos pelos parceiros da rede. Contribuição própria à conversa regional — distinta em categoria da curadoria de terceiros que vive na <a href="#evidencia">Base de evidência</a>.',
+    'pub.p1.kicker': 'Documento de referência · Relatório sobre o Desenvolvimento Mundial 2026',
+    'pub.p1.title': 'A EdTech pode fechar as brechas de aprendizagem?',
+    'pub.p1.byline': 'Alegría Burneo Terán · Lelys Dinarte-Diaz · Carolina Lopez · Ezequiel Molina',
+    'pub.p1.hook': 'Meta-análise de <strong>17 estimativas de 6 RCTs</strong> que sobrevivem a um filtro rigoroso: grupo de controle puro, atrição abaixo de 30%, instrumentos validados. Dos 4.117 estudos revisados, apenas 14 passam — <strong>nenhum em país de baixa renda</strong>.',
+    'pub.p1.f1': '<strong>+0,125 SD</strong> — efeito pooled de ferramentas adaptativas e de IA, acima da mediana de 0,10 SD para intervenções educacionais avaliadas por RCT.',
+    'pub.p1.f2': '<strong>A IA generativa não superou</strong> o software adaptativo que substitui: +0,022 SD (SE 0,075). Apenas 3 estudos avaliam ferramentas generativas.',
+    'pub.p1.f3': '<strong>0 de 14 estudos em países de baixa renda</strong>; só 3 reportam custo por estudante — a promessa de "personalização a uma fração do custo da tutoria" quase nunca foi medida junto ao efeito que pretende justificar.',
+    'pub.p1.cta.paper': 'Ler o artigo',
+    'pub.p1.cta.nb': 'Interrogar a evidência com NotebookLM',
+    'pub.p1.fine': 'A busca encerrou em maio de 2026; trabalhos posteriores não estão incluídos. Contexto: o artigo foi preparado como documento de referência para o <em>Relatório sobre o Desenvolvimento Mundial 2026 — A promessa da inteligência artificial</em>.',
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
     'res.lede': 'Landscape da evidência programática e acadêmica sobre IA e aprendizagem: a série do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — junto a RCTs recentes e estudos de habilidades digitais. Atualiza-se a cada edição.',
@@ -2481,6 +2660,9 @@ const I18N = {
     'res.cat.works': 'Tutoria com IA — RCTs',
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
+    'res.cat.costs': 'Custos e adoção',
+    'res.ev.costs.title': 'Quanto custa e quem pode pagar: o mapa da adoção e do financiamento.',
+    'res.ev.costs.lead': 'Efeitos importam quando o preço importa. Estes documentos ordenam as decisões de orçamento, governança e implementação que ficam de fora da maioria dos RCTs — incluindo como evitar que a brecha digital se aprofunde com a adoção de IA.',
     'res.ev.landscape.title': 'Marcos, guias e publicações do Banco Mundial.',
     'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Também entram os estudos de habilidades digitais, porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
     'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
@@ -2869,6 +3051,60 @@ const PAPERS = [
       { code: 'Paper (PDF)', url: 'https://thedocs.worldbank.org/en/doc/a607bb6e3b76d2be0f3db8db34dcf73e-0140022025/related/5EDU-WP-15-Digital-skills-innovation-and-economic-transformation.pdf' },
     ],
   },
+
+  // ============ COSTS + ADOPTION ============
+  {
+    year: 2026, category: 'costs',
+    title: {
+      es: 'Cuánto cuesta la IA en educación en países de ingreso bajo y mediano',
+      en: 'Costing AI Use in Education in Low- and Middle-Income Countries',
+      pt: 'Quanto custa o uso de IA na educação em países de baixa e média renda',
+    },
+    source: 'World Bank Documents & Reports',
+    summary: {
+      es: 'Cuáles son los costos reales y los riesgos fiscales de adoptar IA en sistemas educativos. Cómo los ministerios deberían planear presupuestos de IA más allá de los pilotos y del gasto inicial visible.',
+      en: 'The real costs and fiscal risks of adopting AI in education systems. How ministries should plan AI budgets beyond pilots and visible upfront spending.',
+      pt: 'Quais são os custos reais e os riscos fiscais de adotar IA em sistemas educacionais. Como os ministérios devem planejar orçamentos de IA além dos pilotos e do gasto inicial visível.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099317007132640857' },
+      { code: 'PDF', url: 'https://documents1.worldbank.org/curated/en/099317007132640857/pdf/IDU-1709a634-79e8-45b6-8f67-1e1c901644d7.pdf' },
+    ],
+  },
+  {
+    year: 2026, category: 'costs',
+    title: {
+      es: 'World Development Report 2026: La promesa de la inteligencia artificial',
+      en: 'World Development Report 2026: The Promise of Artificial Intelligence',
+      pt: 'Relatório sobre o Desenvolvimento Mundial 2026: A promessa da inteligência artificial',
+    },
+    source: 'World Development Report 2026',
+    summary: {
+      es: 'Qué significa la IA para los países de ingreso bajo y mediano y qué política pública debería seguir. El marco general dentro del cual leer el resto de la evidencia sobre IA en educación.',
+      en: 'What AI means for low- and middle-income countries and the public policy that should follow. The broader frame within which the rest of the AI-in-education evidence should be read.',
+      pt: 'O que a IA significa para países de baixa e média renda e qual política pública deve segui-la. O quadro geral dentro do qual ler o restante da evidência sobre IA na educação.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://openknowledge.worldbank.org/entities/publication/8d048ad2-5cc3-4fc0-ba22-2e1f82f5d7de' },
+    ],
+  },
+  {
+    year: 2026, category: 'costs',
+    title: {
+      es: 'Adopción costo-efectiva de IA en educación',
+      en: 'Supporting Cost-Effective AI Adoption in Education',
+      pt: 'Adoção custo-efetiva de IA na educação',
+    },
+    source: 'World Bank Blog · Development Talk',
+    summary: {
+      es: 'Cómo los países pueden adoptar IA de forma costo-efectiva sin profundizar la brecha digital. Blog complementario al paper de costos: los principios traducidos a decisiones operativas.',
+      en: 'How countries can adopt AI cost-effectively without widening the digital divide. Companion blog to the costing paper: principles translated into operational decisions.',
+      pt: 'Como os países podem adotar IA de forma custo-efetiva sem ampliar a brecha digital. Blog complementar ao artigo de custos: princípios traduzidos em decisões operacionais.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/developmenttalk/supporting-cost-effective-ai-adoption-in-education' },
+    ],
+  },
 ];
 
 function renderEvidenceBlocks(lang) {
@@ -2880,11 +3116,13 @@ function renderEvidenceBlocks(lang) {
     : obj;
   const blocks = [
     { cat: 'wb-guides', title: t['res.ev.landscape.title'], lead: t['res.ev.landscape.lead'] },
+    { cat: 'costs', title: t['res.ev.costs.title'], lead: t['res.ev.costs.lead'] },
     { cat: 'works', title: t['res.ev.tutoring.title'], lead: t['res.ev.tutoring.lead'] },
     { cat: 'fails', title: t['res.ev.wild.title'], lead: t['res.ev.wild.lead'] },
   ];
   const labelByCat = {
     'wb-guides': t['res.cat.guides'],
+    'costs': t['res.cat.costs'],
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
   };
