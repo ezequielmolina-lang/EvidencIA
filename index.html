@@ -57,33 +57,36 @@
     -webkit-backdrop-filter: saturate(180%) blur(14px);
     border-bottom: 1px solid var(--rule);
   }
+  header.site .container.nav { max-width: 1400px; }
   .nav {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 0;
+    gap: 32px;
   }
   .brand {
     font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 36px;
+    font-weight: 600; font-size: 30px;
     letter-spacing: -0.015em;
     text-decoration: none; color: var(--ink);
-    display: inline-flex; align-items: center; gap: 14px;
+    display: inline-flex; align-items: center; gap: 10px;
     line-height: 1;
+    flex-shrink: 0;
   }
-  .brand-mark { display: block; width: 64px; height: 30px; flex-shrink: 0; }
-  .brand-word { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; }
+  .brand-mark { display: block; width: 52px; height: 24px; flex-shrink: 0; }
+  .brand-word { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; white-space: nowrap; }
   .brand b { color: var(--gold); font-weight: 800; }
   @media (max-width: 900px) {
-    .brand-mark { width: 48px; height: 22px; }
-    .brand { gap: 10px; font-size: 28px; }
+    .brand-mark { width: 44px; height: 20px; }
+    .brand { gap: 8px; font-size: 26px; }
   }
   @media (max-width: 640px) {
-    .brand-mark { width: 40px; height: 18px; }
-    .brand { gap: 8px; font-size: 24px; }
+    .brand-mark { width: 38px; height: 17px; }
+    .brand { gap: 6px; font-size: 22px; }
   }
-  .nav-links { display: flex; gap: 22px; align-items: center; flex-wrap: nowrap; }
+  .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: nowrap; }
   .nav-links a {
     color: var(--ink-soft); text-decoration: none;
-    font-size: 14px; font-weight: 500;
+    font-size: 13px; font-weight: 500;
     transition: color 0.2s;
     white-space: nowrap;
   }
@@ -1255,6 +1258,12 @@
     border-top: 1px solid var(--rule); padding-top: 24px;
     display: flex; justify-content: space-between; align-items: center;
     font-size: 12px; color: var(--ink-mute);
+  }
+
+  /* Mid: hide lower-priority nav items to prevent crowding */
+  @media (max-width: 1180px) {
+    .nav-links a[href="#problema"],
+    .nav-links a[href="#newsletter-preview"] { display: none; }
   }
 
   /* Mobile */
@@ -2778,6 +2787,24 @@ const I18N = {
 // ============================================================
 const PAPERS = [
   // ============ WB GUIDES ============
+  {
+    year: 2026, category: 'wb-guides',
+    title: {
+      es: '¿Puede la EdTech cerrar las brechas de aprendizaje?',
+      en: 'Can EdTech Close Learning Gaps?',
+      pt: 'A EdTech pode fechar as brechas de aprendizagem?',
+    },
+    source: 'Background paper · World Development Report 2026',
+    summary: {
+      es: 'Meta-análisis de 17 estimaciones de 6 RCTs — de 4.117 estudios revisados, 14 pasan filtros estrictos (control puro, atrición &lt;30 %, instrumentos validados). Adaptativo/IA: +0,125 SD; IA generativa no distinguible del adaptativo que reemplaza. 0 de 14 en países de bajos ingresos. Producción de la red — Burneo Terán, Dinarte-Diaz, Lopez, Molina.',
+      en: 'Meta-analysis of 17 estimates from 6 RCTs — of 4,117 screened, 14 clear strict filters (pure control, attrition &lt;30%, validated instruments). Adaptive/AI-enabled: +0.125 SD; generative AI not distinguishable from the adaptive tools it replaces. 0 of 14 in low-income countries. Network output — Burneo Terán, Dinarte-Diaz, Lopez, Molina.',
+      pt: 'Meta-análise de 17 estimativas de 6 RCTs — dos 4.117 estudos revisados, 14 passam filtros rigorosos (controle puro, atrição &lt;30%, instrumentos validados). Adaptativo/IA: +0,125 SD; IA generativa não distinguível da adaptativa que substitui. 0 de 14 em países de baixa renda. Produção da rede — Burneo Terán, Dinarte-Diaz, Lopez, Molina.',
+    },
+    langs: [
+      { code: 'Paper', url: 'https://lnkd.in/g69U9nFg' },
+      { code: 'NotebookLM', url: 'https://lnkd.in/g2kNYgDF' },
+    ],
+  },
   {
     repnb: 191418, year: 2024,
     category: 'wb-guides',
