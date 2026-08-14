@@ -80,11 +80,12 @@
     .brand-mark { width: 40px; height: 18px; }
     .brand { gap: 8px; font-size: 24px; }
   }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links { display: flex; gap: 22px; align-items: center; flex-wrap: nowrap; }
   .nav-links a {
     color: var(--ink-soft); text-decoration: none;
     font-size: 14px; font-weight: 500;
     transition: color 0.2s;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--ink); }
   .lang {
@@ -3086,23 +3087,6 @@ const PAPERS = [
     },
     langs: [
       { code: 'EN', url: 'https://openknowledge.worldbank.org/entities/publication/8d048ad2-5cc3-4fc0-ba22-2e1f82f5d7de' },
-    ],
-  },
-  {
-    year: 2026, category: 'costs',
-    title: {
-      es: 'Adopción costo-efectiva de IA en educación',
-      en: 'Supporting Cost-Effective AI Adoption in Education',
-      pt: 'Adoção custo-efetiva de IA na educação',
-    },
-    source: 'World Bank Blog · Development Talk',
-    summary: {
-      es: 'Cómo los países pueden adoptar IA de forma costo-efectiva sin profundizar la brecha digital. Blog complementario al paper de costos: los principios traducidos a decisiones operativas.',
-      en: 'How countries can adopt AI cost-effectively without widening the digital divide. Companion blog to the costing paper: principles translated into operational decisions.',
-      pt: 'Como os países podem adotar IA de forma custo-efetiva sem ampliar a brecha digital. Blog complementar ao artigo de custos: princípios traduzidos em decisões operacionais.',
-    },
-    langs: [
-      { code: 'EN', url: 'https://blogs.worldbank.org/en/developmenttalk/supporting-cost-effective-ai-adoption-in-education' },
     ],
   },
 ];
