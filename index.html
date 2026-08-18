@@ -654,6 +654,92 @@
     transition: background 0.2s;
   }
   .papers-cta-btn:hover { background: var(--gold-deep); }
+  .papers-companions {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .companion-card {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 28px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .companion-card:hover {
+    border-color: var(--gold);
+    background: var(--bg);
+  }
+  .companion-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-right: 1px solid var(--rule);
+    padding-right: 24px;
+    min-width: 96px;
+  }
+  .companion-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--gold-deep);
+  }
+  .companion-num-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .companion-meta { flex: 1; }
+  .companion-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .companion-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .companion-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .companion-card:hover .companion-cta { color: var(--gold-deep); }
+  @media (max-width: 900px) {
+    .papers-companions { grid-template-columns: 1fr; }
+    .companion-card { flex-direction: column; padding: 22px; gap: 18px; }
+    .companion-stat {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 10px;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding-right: 0;
+      padding-bottom: 14px;
+      min-width: 0;
+      width: 100%;
+    }
+    .companion-num-label { margin-top: 0; }
+  }
   .paper-forthcoming {
     border-style: dashed;
     border-color: var(--gold);
@@ -1825,9 +1911,30 @@
 
       <div id="papers-blocks"></div>
 
-      <div class="papers-footer">
-        <p class="papers-cta-text" data-i18n="res.cta.text">El dashboard completo con descargas por país, idioma y publicación se actualiza cada dos meses.</p>
-        <a class="papers-cta-btn" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.cta.btn">Ver dashboard del Banco Mundial →</a>
+      <div class="papers-companions">
+        <a class="companion-card" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener">
+          <div class="companion-stat">
+            <span class="companion-num">238</span>
+            <span class="companion-num-label" data-i18n="res.comp.dash.numlabel">publicaciones</span>
+          </div>
+          <div class="companion-meta">
+            <div class="companion-title" data-i18n="res.comp.dash.title">Dashboard del Banco Mundial</div>
+            <p class="companion-desc" data-i18n="res.comp.dash.desc">474.605 descargas en 213 países. Se actualiza cada 2 meses con las nuevas publicaciones de la HD Digital &amp; AI Practice.</p>
+            <span class="companion-cta" data-i18n="res.comp.dash.cta">Ver dashboard →</span>
+          </div>
+        </a>
+
+        <a class="companion-card" href="https://world-bank-policy-library.criscob.chatgpt.site/" target="_blank" rel="noopener">
+          <div class="companion-stat">
+            <span class="companion-num">169</span>
+            <span class="companion-num-label" data-i18n="res.comp.lib.numlabel">recursos</span>
+          </div>
+          <div class="companion-meta">
+            <div class="companion-title" data-i18n="res.comp.lib.title">Biblioteca de política del Banco Mundial</div>
+            <p class="companion-desc" data-i18n="res.comp.lib.desc">Curada por Cristóbal Cobo (Banco Mundial). Marcos, guías, evaluaciones y casos país sobre EdTech e IA, organizados por decisión de política.</p>
+            <span class="companion-cta" data-i18n="res.comp.lib.cta">Explorar biblioteca →</span>
+          </div>
+        </a>
       </div>
 
       <div class="placeholder-card study-proposal-card" style="margin-top: 48px;">
@@ -2154,6 +2261,14 @@ const I18N = {
     'res.lede': 'Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.',
     'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
     'res.cta.btn': 'Ver dashboard del Banco Mundial →',
+    'res.comp.dash.numlabel': 'publicaciones',
+    'res.comp.dash.title': 'Dashboard del Banco Mundial',
+    'res.comp.dash.desc': '474.605 descargas en 213 países. Se actualiza cada 2 meses con las nuevas publicaciones de la HD Digital &amp; AI Practice.',
+    'res.comp.dash.cta': 'Ver dashboard →',
+    'res.comp.lib.numlabel': 'recursos',
+    'res.comp.lib.title': 'Biblioteca de política del Banco Mundial',
+    'res.comp.lib.desc': 'Curada por Cristóbal Cobo (Banco Mundial). Marcos, guías, evaluaciones y casos país sobre EdTech e IA, organizados por decisión de política.',
+    'res.comp.lib.cta': 'Explorar biblioteca →',
     'res.add.eyebrow': '¿Querés sumar un estudio?',
     'res.add.h': 'Estamos sumando RCTs, ciencia cognitiva y evaluaciones de política pública.',
     'res.add.p': 'Si conocés un estudio riguroso, empírico y con foco en IA + aprendizaje que debería estar acá, mandanos el link. La base la curan los socios de la red.',
@@ -2398,6 +2513,14 @@ const I18N = {
     'res.lede': 'A landscape of the programmatic and academic evidence on AI and learning: the World Bank series — read across 213 countries in Spanish, English, Portuguese and Bulgarian — alongside recent RCTs and digital-skills studies. Updated with every edition.',
     'res.cta.text': 'The World Bank AI-in-education publications have their own dashboard with downloads by country and language, refreshed every two months.',
     'res.cta.btn': 'Open the World Bank dashboard →',
+    'res.comp.dash.numlabel': 'publications',
+    'res.comp.dash.title': 'World Bank downloads dashboard',
+    'res.comp.dash.desc': '474,605 downloads across 213 countries. Refreshed every 2 months with new publications from the HD Digital &amp; AI Practice.',
+    'res.comp.dash.cta': 'Open the dashboard →',
+    'res.comp.lib.numlabel': 'resources',
+    'res.comp.lib.title': 'World Bank Policy Evidence Library',
+    'res.comp.lib.desc': 'Curated by Cristóbal Cobo (World Bank). Frameworks, guides, evaluations and country cases on EdTech and AI, organized by policy decision.',
+    'res.comp.lib.cta': 'Explore the library →',
     'res.add.eyebrow': 'Want to add a study?',
     'res.add.h': 'We\'re adding RCTs, cognitive-science principles and policy evaluations.',
     'res.add.p': 'If you know of a rigorous, empirical study focused on AI + learning that should live here, send us the link. The base is curated by the network partners.',
@@ -2642,6 +2765,14 @@ const I18N = {
     'res.lede': 'Landscape da evidência programática e acadêmica sobre IA e aprendizagem: a série do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — junto a RCTs recentes e estudos de habilidades digitais. Atualiza-se a cada edição.',
     'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
     'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
+    'res.comp.dash.numlabel': 'publicações',
+    'res.comp.dash.title': 'Dashboard do Banco Mundial',
+    'res.comp.dash.desc': '474.605 downloads em 213 países. Atualiza-se a cada 2 meses com novas publicações da HD Digital &amp; AI Practice.',
+    'res.comp.dash.cta': 'Abrir dashboard →',
+    'res.comp.lib.numlabel': 'recursos',
+    'res.comp.lib.title': 'Biblioteca de política do Banco Mundial',
+    'res.comp.lib.desc': 'Curada por Cristóbal Cobo (Banco Mundial). Marcos, guias, avaliações e casos por país sobre EdTech e IA, organizados por decisão de política.',
+    'res.comp.lib.cta': 'Explorar biblioteca →',
     'res.add.eyebrow': 'Quer adicionar um estudo?',
     'res.add.h': 'Estamos adicionando RCTs, ciência cognitiva e avaliações de políticas públicas.',
     'res.add.p': 'Se conhece um estudo rigoroso, empírico e com foco em IA + aprendizagem que deveria estar aqui, envie o link. A base é curada pelos parceiros da rede.',
