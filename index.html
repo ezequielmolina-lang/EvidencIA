@@ -656,11 +656,26 @@
   .papers-cta-btn:hover { background: var(--gold-deep); }
   .papers-companions {
     margin-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
   }
+  .papers-dashlink {
+    margin-top: 14px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+  }
+  .papers-dashlink a {
+    color: var(--ink-mute);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .papers-dashlink a:hover { color: var(--gold-deep); }
   .companion-card {
+    flex: 1 1 480px;
+    max-width: 720px;
     display: flex;
     gap: 24px;
     align-items: flex-start;
@@ -1912,18 +1927,6 @@
       <div id="papers-blocks"></div>
 
       <div class="papers-companions">
-        <a class="companion-card" href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener">
-          <div class="companion-stat">
-            <span class="companion-num">238</span>
-            <span class="companion-num-label" data-i18n="res.comp.dash.numlabel">publicaciones</span>
-          </div>
-          <div class="companion-meta">
-            <div class="companion-title" data-i18n="res.comp.dash.title">Dashboard del Banco Mundial</div>
-            <p class="companion-desc" data-i18n="res.comp.dash.desc">474.605 descargas en 213 países. Se actualiza cada 2 meses con las nuevas publicaciones de la HD Digital &amp; AI Practice.</p>
-            <span class="companion-cta" data-i18n="res.comp.dash.cta">Ver dashboard →</span>
-          </div>
-        </a>
-
         <a class="companion-card" href="https://world-bank-policy-library.criscob.chatgpt.site/" target="_blank" rel="noopener">
           <div class="companion-stat">
             <span class="companion-num">169</span>
@@ -1936,6 +1939,9 @@
           </div>
         </a>
       </div>
+      <p class="papers-dashlink">
+        <a href="https://ezequielmolina-lang.github.io/wb-downloads-dashboard/hd-digital-ai.html" target="_blank" rel="noopener" data-i18n="res.dashlink">Dashboard con descargas por país e idioma →</a>
+      </p>
 
       <div class="placeholder-card study-proposal-card" style="margin-top: 48px;">
         <div class="ph-eyebrow" data-i18n="res.add.eyebrow">¿Querés sumar un estudio?</div>
@@ -2261,10 +2267,7 @@ const I18N = {
     'res.lede': 'Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.',
     'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
     'res.cta.btn': 'Ver dashboard del Banco Mundial →',
-    'res.comp.dash.numlabel': 'publicaciones',
-    'res.comp.dash.title': 'Dashboard del Banco Mundial',
-    'res.comp.dash.desc': '474.605 descargas en 213 países. Se actualiza cada 2 meses con las nuevas publicaciones de la HD Digital &amp; AI Practice.',
-    'res.comp.dash.cta': 'Ver dashboard →',
+    'res.dashlink': 'Dashboard con descargas por país e idioma →',
     'res.comp.lib.numlabel': 'recursos',
     'res.comp.lib.title': 'Biblioteca de política del Banco Mundial',
     'res.comp.lib.desc': 'Curada por Cristóbal Cobo (Banco Mundial). Marcos, guías, evaluaciones y casos país sobre EdTech e IA, organizados por decisión de política.',
@@ -2513,10 +2516,7 @@ const I18N = {
     'res.lede': 'A landscape of the programmatic and academic evidence on AI and learning: the World Bank series — read across 213 countries in Spanish, English, Portuguese and Bulgarian — alongside recent RCTs and digital-skills studies. Updated with every edition.',
     'res.cta.text': 'The World Bank AI-in-education publications have their own dashboard with downloads by country and language, refreshed every two months.',
     'res.cta.btn': 'Open the World Bank dashboard →',
-    'res.comp.dash.numlabel': 'publications',
-    'res.comp.dash.title': 'World Bank downloads dashboard',
-    'res.comp.dash.desc': '474,605 downloads across 213 countries. Refreshed every 2 months with new publications from the HD Digital &amp; AI Practice.',
-    'res.comp.dash.cta': 'Open the dashboard →',
+    'res.dashlink': 'Dashboard with downloads by country and language →',
     'res.comp.lib.numlabel': 'resources',
     'res.comp.lib.title': 'World Bank Policy Evidence Library',
     'res.comp.lib.desc': 'Curated by Cristóbal Cobo (World Bank). Frameworks, guides, evaluations and country cases on EdTech and AI, organized by policy decision.',
@@ -2765,10 +2765,7 @@ const I18N = {
     'res.lede': 'Landscape da evidência programática e acadêmica sobre IA e aprendizagem: a série do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — junto a RCTs recentes e estudos de habilidades digitais. Atualiza-se a cada edição.',
     'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
     'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
-    'res.comp.dash.numlabel': 'publicações',
-    'res.comp.dash.title': 'Dashboard do Banco Mundial',
-    'res.comp.dash.desc': '474.605 downloads em 213 países. Atualiza-se a cada 2 meses com novas publicações da HD Digital &amp; AI Practice.',
-    'res.comp.dash.cta': 'Abrir dashboard →',
+    'res.dashlink': 'Dashboard com downloads por país e idioma →',
     'res.comp.lib.numlabel': 'recursos',
     'res.comp.lib.title': 'Biblioteca de política do Banco Mundial',
     'res.comp.lib.desc': 'Curada por Cristóbal Cobo (Banco Mundial). Marcos, guias, avaliações e casos por país sobre EdTech e IA, organizados por decisão de política.',
