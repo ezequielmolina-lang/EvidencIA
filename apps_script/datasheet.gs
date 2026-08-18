@@ -24,6 +24,11 @@
  * TO ROTATE: create a new deployment; old URL keeps working until you delete it.
  */
 
+// If set, bind to this existing sheet by ID. Leave empty ('') to have setup()
+// create a brand-new sheet on first run. For redevidencia.org this is the
+// user-owned sheet at docs.google.com/spreadsheets/d/<SHEET_ID>/edit
+const SHEET_ID = '1OWsEqeoNlTmjYOCzeNqDqscGhxDGOEkHOkkHUK8bJpA';
+
 const SHEET_TITLE = 'EvidencIA — data collection';
 
 const NEWSLETTER_HEADERS = [
@@ -53,7 +58,7 @@ const PAPER_CANDIDATES_HEADERS = [
  */
 function setup() {
   const props = PropertiesService.getScriptProperties();
-  let sid = props.getProperty('SHEET_ID');
+  let sid = SHEET_ID || props.getProperty('SHEET_ID');
   let ss;
   if (sid) {
     try { ss = SpreadsheetApp.openById(sid); } catch (e) { ss = null; }
@@ -61,8 +66,8 @@ function setup() {
   if (!ss) {
     ss = SpreadsheetApp.create(SHEET_TITLE);
     sid = ss.getId();
-    props.setProperty('SHEET_ID', sid);
   }
+  props.setProperty('SHEET_ID', sid);
   ensureTab_(ss, 'newsletter',        NEWSLETTER_HEADERS);
   ensureTab_(ss, 'partners',          PARTNERS_HEADERS);
   ensureTab_(ss, 'study-proposals',   STUDY_PROPOSALS_HEADERS);
@@ -98,7 +103,7 @@ function doPost(e) {
     }
     const payload = JSON.parse(e.postData.contents);
     const props = PropertiesService.getScriptProperties();
-    const sid = props.getProperty('SHEET_ID');
+    const sid = SHEET_ID || props.getProperty('SHEET_ID');
     if (!sid) return json_({ ok: false, error: 'run setup() first' });
     const ss = SpreadsheetApp.openById(sid);
     const ts = new Date();
