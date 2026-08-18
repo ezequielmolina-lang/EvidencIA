@@ -163,9 +163,41 @@ function doPost(e) {
 }
 
 /**
- * Optional: friendly page for anyone who opens /exec in a browser.
+ * GET endpoint:
+ *   - /exec?check=1  → JSON with row counts (and last row) per tab, so we can
+ *                      verify writes are landing without opening the sheet
+ *   - /exec (bare)   → friendly text so opening in a browser isn't confusing
  */
 function doGet(e) {
+  const params = (e && e.parameter) || {};
+  if (params.check === '1' || params.check === 'true') {
+    try {
+      const sid = SHEET_ID || PropertiesService.getScriptProperties().getProperty('SHEET_ID');
+      if (!sid) return json_({ ok: false, error: 'run setup() first' });
+      const ss = SpreadsheetApp.openById(sid);
+      const tabs = ['newsletter', 'partners', 'study-proposals', 'paper-candidates'];
+      const out = {};
+      tabs.forEach(name => {
+        const s = ss.getSheetByName(name);
+        if (!s) { out[name] = { exists: false }; return; }
+        const last = s.getLastRow();
+        const dataRows = Math.max(0, last - 1); // minus header
+        let lastRow = null;
+        if (last >= 2) {
+          const width = s.getLastColumn();
+          lastRow = s.getRange(last, 1, 1, width).getValues()[0].map(v => {
+            if (v instanceof Date) return v.toISOString();
+            const s = String(v);
+            return s.length > 120 ? s.slice(0, 120) + '…' : s;
+          });
+        }
+        out[name] = { rows: dataRows, lastRow };
+      });
+      return json_({ ok: true, sheet: sid, tabs: out });
+    } catch (err) {
+      return json_({ ok: false, error: String(err) });
+    }
+  }
   return ContentService
     .createTextOutput('EvidencIA data-collection endpoint. Use POST with a JSON body.')
     .setMimeType(ContentService.MimeType.TEXT);
