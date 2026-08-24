@@ -1403,6 +1403,22 @@
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  /* Willingham epigraph — recent post link */
+  .epi-recent {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    text-align: center;
+  }
+  .epi-recent a {
+    color: var(--gold-deep);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .epi-recent a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
   /* Publicaciones de la red */
   #publicaciones {
     padding: 96px 0;
@@ -1581,6 +1597,7 @@
         <div class="author">Daniel Willingham · <span data-i18n="epi.role">científico cognitivo</span></div>
       </blockquote>
       <p class="gloss" data-i18n="epi.gloss">Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.</p>
+      <p class="epi-recent"><a href="https://substack.com/home/post/p-212058626" target="_blank" rel="noopener" data-i18n="epi.recent">→ Su reflexión más reciente sobre IA en aulas (agosto 2026)</a></p>
     </div>
   </section>
 
@@ -2303,6 +2320,7 @@ const I18N = {
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
     'epi.gloss': 'Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.',
+    'epi.recent': '→ Su reflexión más reciente sobre IA en aulas (agosto 2026)',
 
     'nlp.eyebrow': 'Cómo se ve el newsletter',
     'nlp.title': 'Evidencia, no ruido.',
@@ -2552,6 +2570,7 @@ const I18N = {
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
     'epi.gloss': 'If a tool does the thinking for the student, no residue remains. No learning remains. EvidencIA exists to defend that distinction — at regional scale, with evidence.',
+    'epi.recent': '→ His most recent reflection on AI in classrooms (August 2026)',
 
     'nlp.eyebrow': 'What the newsletter looks like',
     'nlp.title': 'Evidence, not noise.',
@@ -2801,6 +2820,7 @@ const I18N = {
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
     'epi.gloss': 'Se uma ferramenta pensa pelo estudante, não resta resíduo. Não resta aprendizagem. A EvidencIA existe para defender essa distinção — em escala regional, com evidências.',
+    'epi.recent': '→ Sua reflexão mais recente sobre IA em salas de aula (agosto 2026)',
 
     'nlp.eyebrow': 'Como é a newsletter',
     'nlp.title': 'Evidência, não ruído.',
@@ -3070,6 +3090,41 @@ const PAPERS = [
   },
 
   // ============ AI TUTORING — RCT EVIDENCE ============
+  {
+    year: 2026, category: 'works',
+    title: {
+      es: 'One Click Away: Tutoría con IA (Khanmigo) — RCT de 2 años en Tennessee',
+      en: 'One Click Away: AI Tutoring with Khanmigo in a Two-Year School Experiment',
+      pt: 'One Click Away: Tutoria com IA (Khanmigo) — RCT de 2 anos no Tennessee',
+    },
+    source: 'Oreopoulos & Low · NBER Working Paper 35620',
+    summary: {
+      es: 'RCT cluster de 2 años en 18 escuelas medias de Tennessee. Khanmigo — el tutor de IA de Khan Academy configurado para <em>coach en vez de dar respuestas</em> — sube el logro matemático +0,06–0,08 SD por año (+0,14 SD con participación completa). El efecto es similar al de Khan Academy sin IA: 96% probó Khanmigo, pero el estudiante mediano lo usó solo en 1/3 de los días de práctica y en 17% de las sesiones donde falló. Los mensajes eran mayormente respuestas escuetas. <em>Bottom line:</em> concretar la promesa de la tutoría IA requiere lograr que los estudiantes la usen, no solo darles acceso.',
+      en: 'Two-year cluster RCT across 18 Tennessee middle schools. Khanmigo — Khan Academy\'s AI tutor configured to <em>coach rather than give answers</em> — raises math achievement by +0.06–0.08 SD per school year (+0.14 SD with active full-year participation). Gains resemble Khan Academy practice without AI: 96% of students tried Khanmigo, but the median student messaged it on just 1/3 of practice days and only 17% of exercise sessions where they made a mistake. Messages were mostly bare answers or clicks on suggested prompts. <em>Bottom line:</em> realizing the promise of AI tutoring will require getting students to use it, not just giving them access.',
+      pt: 'RCT cluster de 2 anos em 18 escolas médias do Tennessee. Khanmigo — o tutor de IA da Khan Academy configurado para <em>orientar em vez de dar respostas</em> — eleva o desempenho em matemática em +0,06–0,08 SD por ano (+0,14 SD com participação plena). O efeito é semelhante ao de Khan Academy sem IA: 96% experimentaram Khanmigo, mas o estudante mediano o usou em apenas 1/3 dos dias de prática e em só 17% das sessões em que errou. As mensagens eram majoritariamente respostas curtas. <em>Bottom line:</em> concretizar a promessa da tutoria com IA exige levar os estudantes a usá-la, não apenas dar-lhes acesso.',
+    },
+    langs: [
+      { code: 'Paper (NBER)', url: 'https://www.nber.org/papers/w35620' },
+      { code: 'PDF', url: 'https://www.nber.org/system/files/working_papers/w35620/w35620.pdf' },
+    ],
+  },
+  {
+    year: 2026, category: 'works',
+    title: {
+      es: 'Complementando docentes: ¿Puede la IA mejorar el aprendizaje abordando la variabilidad? (Bogotá)',
+      en: 'Complementing Teachers: Can AI Improve Student Learning by Addressing Learning Variability? (Bogotá)',
+      pt: 'Complementando professores: A IA pode melhorar a aprendizagem abordando a variabilidade? (Bogotá)',
+    },
+    source: 'Barrera-Osorio & Muñoz-Morales · Vanderbilt & IÉSEG (Bogotá · midline preliminar)',
+    summary: {
+      es: 'RCT a nivel de escuela en 158 secundarias públicas de bajos ingresos de Bogotá (Colombia). La intervención da a docentes de matemática de 6º a 9º acceso a <em>ShaIA</em>, una plataforma de IA para planificación de clase construida sobre marcos de learner variability y math mindsets. Efecto midline preliminar: <strong>+0,2 a 0,4 SD</strong> en matemática, costo-efectivo vs. evidencia previa. Intervención al <em>docente</em>, no al estudiante — el mecanismo es reducir el costo de preparar clase diferenciada. Pre-registrado (AEARCTR-0017147); endline pendiente.',
+      en: 'School-level RCT across 158 low-income public secondary schools in Bogotá (Colombia). The intervention gives math teachers (grades 6–9) access to <em>ShaIA</em>, an AI lesson-planning platform built around learner variability and math mindsets frameworks. Preliminary midline effect: <strong>+0.2 to 0.4 SD</strong> in math achievement, cost-effective vs prior evidence. This is a <em>teacher-level</em> intervention, not student-level — the mechanism is lowering the cost of preparing differentiated instruction. Pre-registered (AEARCTR-0017147); endline pending.',
+      pt: 'RCT em nível escolar em 158 escolas secundárias públicas de baixa renda em Bogotá (Colômbia). A intervenção dá aos professores de matemática (6º a 9º ano) acesso ao <em>ShaIA</em>, uma plataforma de IA para planejamento de aula baseada em marcos de learner variability e math mindsets. Efeito midline preliminar: <strong>+0,2 a 0,4 SD</strong> em matemática, custo-efetivo em comparação com evidência prévia. Intervenção ao <em>professor</em>, não ao estudante — o mecanismo é reduzir o custo de preparar aula diferenciada. Pré-registrado (AEARCTR-0017147); endline pendente.',
+    },
+    langs: [
+      { code: 'PDF', url: 'https://juansmunoz.github.io/AI_Evaluation_Bogota.pdf' },
+    ],
+  },
   {
     year: 2024, category: 'works',
     title: { en: 'Generative AI Without Guardrails Can Harm Learning — Guardrailed Arm (Turkey)' },
