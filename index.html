@@ -1404,6 +1404,98 @@
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  /* Conversations — event card */
+  .conv-event {
+    display: grid;
+    grid-template-columns: minmax(280px, 400px) 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+  .conv-event-media {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--bg);
+  }
+  .conv-event-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .conv-event-media:hover img { transform: scale(1.02); }
+  .conv-event-kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .conv-event-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(22px, 2.8vw, 30px);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .conv-event-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .conv-event-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 18px;
+  }
+  .conv-event-meta-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .conv-event-meta-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .conv-panel-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .conv-panel-list li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .conv-event { grid-template-columns: 1fr; padding: 22px; gap: 24px; }
+    .conv-event-meta { grid-template-columns: 1fr; gap: 14px; }
+  }
+
   /* Willingham epigraph — recent post link (sits on the dark epigraph bg) */
   .epi-recent {
     margin-top: 16px;
@@ -1730,12 +1822,38 @@
       <h2 class="section-title" data-i18n="conv.title">Cada conversación, archivada.</h2>
       <p class="section-lede" data-i18n="conv.lede">Investigadores, ministerios y profesionales del sector en diálogo público. Las grabaciones, materiales y agenda quedarán acá apenas se publiquen.</p>
 
-      <div class="placeholder-card">
-        <div class="ph-eyebrow" data-i18n="conv.ph.eyebrow">Próximamente</div>
-        <h3 data-i18n="conv.ph.h">Estamos cerrando la agenda de la primera conversación.</h3>
-        <p data-i18n="conv.ph.p">Te avisamos por mail apenas se confirme la fecha y el panel.</p>
-        <a class="ph-cta" href="#newsletter" data-i18n="conv.ph.cta">Suscribite al newsletter</a>
-      </div>
+      <article class="conv-event">
+        <a class="conv-event-media" href="img/evento-lima-31ago.jpg" target="_blank" rel="noopener">
+          <img src="img/evento-lima-31ago.jpg" alt="Panel EvidencIA · Lima 31 de agosto de 2026" loading="lazy" />
+        </a>
+        <div class="conv-event-body">
+          <div class="conv-event-kicker" data-i18n="conv.ev1.kicker">Pre-lanzamiento · Lima</div>
+          <h3 class="conv-event-title" data-i18n="conv.ev1.title">El futuro de la educación en la era de la IA</h3>
+          <p class="conv-event-desc" data-i18n="conv.ev1.desc">Primera conversación de EvidencIA antes del lanzamiento formal de la red en Lima. Un panel de cinco voces del ecosistema peruano, con investigación, sector privado y política pública en la misma mesa.</p>
+
+          <div class="conv-event-meta">
+            <div>
+              <div class="conv-event-meta-lbl" data-i18n="conv.ev1.when.lbl">Cuándo</div>
+              <div class="conv-event-meta-val" data-i18n="conv.ev1.when.val">Lunes 31 de agosto de 2026 · 17:00</div>
+            </div>
+            <div>
+              <div class="conv-event-meta-lbl" data-i18n="conv.ev1.where.lbl">Dónde</div>
+              <div class="conv-event-meta-val" data-i18n="conv.ev1.where.val">UPC · Campus Monterrico<br>Av. Primavera 2390, Surco (Lima)</div>
+            </div>
+          </div>
+
+          <div class="conv-event-panel">
+            <div class="conv-event-meta-lbl" data-i18n="conv.ev1.panel.lbl">Panel</div>
+            <ul class="conv-panel-list">
+              <li><strong>Marcela Benavides</strong> · Empresarios por la Educación</li>
+              <li><strong>Paul Neira</strong> · The Learning Factory</li>
+              <li><strong>Lucía Acurio</strong> · Grupo Edutec</li>
+              <li><strong>Andreas Blom</strong> · Banco Mundial</li>
+              <li><strong>Santiago Cueto</strong> · Investigador Principal · GRADE</li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -2251,6 +2369,14 @@ const I18N = {
     'conv.ph.h': 'Estamos cerrando la agenda de la primera conversación.',
     'conv.ph.p': 'Te avisamos por mail apenas se confirme la fecha y el panel.',
     'conv.ph.cta': 'Suscribite al newsletter',
+    'conv.ev1.kicker': 'Pre-lanzamiento · Lima',
+    'conv.ev1.title': 'El futuro de la educación en la era de la IA',
+    'conv.ev1.desc': 'Primera conversación de EvidencIA antes del lanzamiento formal de la red en Lima. Un panel de cinco voces del ecosistema peruano, con investigación, sector privado y política pública en la misma mesa.',
+    'conv.ev1.when.lbl': 'Cuándo',
+    'conv.ev1.when.val': 'Lunes 31 de agosto de 2026 · 17:00',
+    'conv.ev1.where.lbl': 'Dónde',
+    'conv.ev1.where.val': 'UPC · Campus Monterrico<br>Av. Primavera 2390, Surco (Lima)',
+    'conv.ev1.panel.lbl': 'Panel',
 
     'nlp.archive.eyebrow': 'Ediciones publicadas',
     'nlp.archive.title': 'Ediciones temáticas sobre IA y mercado laboral.',
@@ -2501,6 +2627,14 @@ const I18N = {
     'conv.ph.h': 'We\'re finalizing the agenda for the first conversation.',
     'conv.ph.p': 'We\'ll email you as soon as the date and panel are confirmed.',
     'conv.ph.cta': 'Subscribe to the newsletter',
+    'conv.ev1.kicker': 'Pre-launch · Lima',
+    'conv.ev1.title': 'The future of education in the age of AI',
+    'conv.ev1.desc': 'The first EvidencIA conversation, ahead of the network\'s formal launch in Lima. A panel of five voices from Peru\'s ecosystem — research, private sector and public policy at the same table.',
+    'conv.ev1.when.lbl': 'When',
+    'conv.ev1.when.val': 'Monday, 31 August 2026 · 5:00 pm',
+    'conv.ev1.where.lbl': 'Where',
+    'conv.ev1.where.val': 'UPC · Monterrico Campus<br>Av. Primavera 2390, Surco (Lima)',
+    'conv.ev1.panel.lbl': 'Panel',
 
     'nlp.archive.eyebrow': 'Published issues',
     'nlp.archive.title': 'Themed issues on AI and the labor market.',
@@ -2751,6 +2885,14 @@ const I18N = {
     'conv.ph.h': 'Estamos fechando a agenda da primeira conversa.',
     'conv.ph.p': 'Avisamos por email assim que a data e o painel forem confirmados.',
     'conv.ph.cta': 'Assine a newsletter',
+    'conv.ev1.kicker': 'Pré-lançamento · Lima',
+    'conv.ev1.title': 'O futuro da educação na era da IA',
+    'conv.ev1.desc': 'Primeira conversa da EvidencIA, antes do lançamento formal da rede em Lima. Um painel de cinco vozes do ecossistema peruano — pesquisa, setor privado e política pública na mesma mesa.',
+    'conv.ev1.when.lbl': 'Quando',
+    'conv.ev1.when.val': 'Segunda, 31 de agosto de 2026 · 17h00',
+    'conv.ev1.where.lbl': 'Onde',
+    'conv.ev1.where.val': 'UPC · Campus Monterrico<br>Av. Primavera 2390, Surco (Lima)',
+    'conv.ev1.panel.lbl': 'Painel',
 
     'nlp.archive.eyebrow': 'Edições publicadas',
     'nlp.archive.title': 'Edições temáticas sobre IA e mercado de trabalho.',
