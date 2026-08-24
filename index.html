@@ -1404,21 +1404,26 @@
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* Willingham epigraph — recent post link */
+  /* Willingham epigraph — recent post link (sits on the dark epigraph bg) */
   .epi-recent {
     margin-top: 16px;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     text-align: center;
   }
-  .epi-recent a {
-    color: var(--gold-deep);
+  .epi-recent a,
+  .epi-recent a:visited {
+    color: var(--gold);
     text-decoration: none;
     border-bottom: 1px dotted var(--gold);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s;
   }
-  .epi-recent a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .epi-recent a:hover,
+  .epi-recent a:focus {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
 
   /* Publicaciones de la red */
   #publicaciones {
