@@ -354,6 +354,7 @@
     margin-bottom: 12px;
   }
   .ev-block[data-cat="wb-guides"] .ev-block-eyebrow { color: var(--gold-deep); }
+  .ev-block[data-cat="blogs"] .ev-block-eyebrow { color: var(--blogs, #5b6b7a); }
   .ev-block[data-cat="works"] .ev-block-eyebrow { color: var(--works); }
   .ev-block[data-cat="fails"] .ev-block-eyebrow { color: var(--fails); }
   .ev-block-title {
@@ -1331,6 +1332,37 @@
     line-height: 1.55;
   }
 
+  /* Why EvidencIA — mission essay */
+  .essay {
+    padding: 72px 0 48px;
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+  }
+  .essay .section-eyebrow { margin-bottom: 18px; }
+  .essay-pullquote {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0 0 40px;
+    padding-left: 22px;
+    border-left: 3px solid var(--gold-deep);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+  .essay-body p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 18px;
+    text-wrap: pretty;
+    hyphens: none;
+  }
+  .essay-body p:last-child { margin-bottom: 0; }
+
   /* Footer */
   footer.site {
     padding: 56px 0 40px;
@@ -1693,6 +1725,21 @@
       </blockquote>
       <p class="gloss" data-i18n="epi.gloss">Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.</p>
       <p class="epi-recent"><a href="https://substack.com/home/post/p-212058626" target="_blank" rel="noopener" data-i18n="epi.recent">→ Su reflexión más reciente sobre IA en aulas (agosto 2026)</a></p>
+    </div>
+  </section>
+
+  <!-- WHY EVIDENCIA — mission essay -->
+  <section class="essay" id="por-que">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="essay.eyebrow">Por qué EvidencIA</div>
+      <blockquote class="essay-pullquote" data-i18n="essay.pullquote">Reunimos, curamos y generamos evidencia sobre las condiciones bajo las cuales la IA puede mejorar el aprendizaje en América Latina.</blockquote>
+      <div class="essay-body">
+        <p data-i18n="essay.p1">La IA puede ser excelente para el aprendizaje. También puede vaciarlo. Todo depende de cómo se use.</p>
+        <p data-i18n="essay.p2">Cuando un tutor de IA está integrado a una secuencia pedagógica, entrenado para preguntar en vez de contestar y diseñado para llevar al estudiante a pensar, la evidencia muestra que puede mejorar el aprendizaje de forma significativa y a escala. Implementarlo bien es difícil, y la mayoría de los productos que hoy se ofrecen a ministerios y colegios no cumplen con esas condiciones.</p>
+        <p data-i18n="essay.p3">Del otro lado, el uso libre de LLMs sin propósito pedagógico, o los tutores mal diseñados, se convierten en un atajo que reemplaza el pensamiento del estudiante. La tarea se termina más rápido, pero no hay aprendizaje. Es la razón por la que muchos colegios están volviendo al lápiz y el papel.</p>
+        <p data-i18n="essay.p4">Y esta discusión ocurre mientras una porción grande de estudiantes latinoamericanos ni siquiera participa de ella, porque su escuela no tiene conexión o sus docentes carecen de habilidades digitales.</p>
+        <p data-i18n="essay.p5">EvidencIA existe para acompañar a esos tomadores de decisión en un terreno movedizo. Conectamos a investigadores, ministerios de educación, universidades y empresas de tecnología alrededor de esa pregunta.</p>
+      </div>
     </div>
   </section>
 
@@ -2442,17 +2489,28 @@ const I18N = {
     'res.cat.works': 'Tutoría IA — RCTs',
     'res.cat.fails': 'IA en libertad',
     'res.cat.digital': 'Habilidades digitales',
+    'res.cat.blogs': 'Blogs y ensayos',
     'res.ev.landscape.title': 'Marcos, guías y publicaciones de referencia.',
     'res.ev.landscape.lead': 'Marcos, guías y evidencia programática que <em>orientan las decisiones de ministerios, universidades y sistemas</em>. La serie AI Revolution del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — es el punto de partida. También se suman los estudios de habilidades digitales, porque el debate sobre IA en la educación no se puede leer sin el mapa del capital humano digital.',
     'res.ev.tutoring.title': 'Cuando el diseño instruccional guía la conversación, el aprendizaje se sostiene.',
     'res.ev.tutoring.lead': 'Siete ensayos aleatorizados en cuatro continentes apuntan al mismo mecanismo. <em>Nigeria +0.31 SD</em> en seis semanas (≈ 1,5–2 años de escolarización). <em>Sierra Leona +0.26 SD</em> en pruebas externamente validadas, con más del 90% de las conversaciones dedicadas a construir comprensión conceptual. <em>Harvard</em>: los estudiantes con el tutor IA aprendieron más del doble en menos tiempo que la clase activa. <em>Taipéi</em> aisla la variable más profunda — mismo tutor guardrailed, sola diferencia el ordenamiento adaptativo de problemas, +0.15 SD en el examen final sin IA. <em>Reino Unido (LearnLM + Eedi)</em>: los tutores expertos aprobaron el 76% de los mensajes del modelo con cero o mínima edición. Y en <em>Turquía</em>, el brazo guardrailed del propio Bastani elimina el negative transfer del brazo libre — mismo estudio, mismo tipo de estudiantes; el diseño cambió el resultado.',
     'res.ev.wild.title': 'Cuando la IA entra sin barandas, el rendimiento sube y el aprendizaje cae.',
     'res.ev.wild.lead': 'Tres estudios grandes describen el mismo patrón — lo que Demombynes llama <em>cognitive surrender</em>. <em>Turquía (Bastani, brazo libre)</em>: el acceso a ChatGPT boostea el desempeño en la tarea, pero cuando la IA se apaga el aprendizaje retrocede. <em>China (Strömberg, Lei & Wu, 26.811 estudiantes, panel de 30 meses)</em>: las tareas suben 18%, el tiempo de completado cae 30%, los exámenes mensuales bajan 20% en seis meses y los exámenes de ingreso a la universidad caen 18–24% en dos años. <em>Plataforma ALEKS (3,2M interacciones)</em>: en problemas susceptibles al AI el tiempo de estudio cae ~27%; bajo proctoring esas ganancias desaparecen y la probabilidad de responder bien cae 25%. En los tres casos, el problema no es la IA — es el diseño ausente.',
+    'res.ev.blogs.title': 'Ensayos y análisis del ecosistema.',
+    'res.ev.blogs.lead': 'Editorial y análisis de autores centrales de la red y sus interlocutores más cercanos, publicados en blogs del Banco Mundial y sitios propios. <em>Marco, framing, opinión</em>: piezas que ayudan a leer la evidencia, no a reemplazarla. Ordenadas por fecha, más recientes primero.',
 
     'epi.quote': 'La memoria es el residuo del pensamiento.',
     'epi.role': 'científico cognitivo',
     'epi.gloss': 'Si una herramienta hace el pensamiento por el estudiante, no queda residuo. No queda aprendizaje. EvidencIA existe para defender esa distinción, en escala regional, con evidencia.',
     'epi.recent': '→ Su reflexión más reciente sobre IA en aulas (agosto 2026)',
+
+    'essay.eyebrow': 'Por qué EvidencIA',
+    'essay.pullquote': 'Reunimos, curamos y generamos evidencia sobre las condiciones bajo las cuales la IA puede mejorar el aprendizaje en América Latina.',
+    'essay.p1': 'La IA puede ser excelente para el aprendizaje. También puede vaciarlo. Todo depende de cómo se use.',
+    'essay.p2': 'Cuando un tutor de IA está integrado a una secuencia pedagógica, entrenado para preguntar en vez de contestar y diseñado para llevar al estudiante a pensar, la evidencia muestra que puede mejorar el aprendizaje de forma significativa y a escala. Implementarlo bien es difícil, y la mayoría de los productos que hoy se ofrecen a ministerios y colegios no cumplen con esas condiciones.',
+    'essay.p3': 'Del otro lado, el uso libre de LLMs sin propósito pedagógico, o los tutores mal diseñados, se convierten en un atajo que reemplaza el pensamiento del estudiante. La tarea se termina más rápido, pero no hay aprendizaje. Es la razón por la que muchos colegios están volviendo al lápiz y el papel.',
+    'essay.p4': 'Y esta discusión ocurre mientras una porción grande de estudiantes latinoamericanos ni siquiera participa de ella, porque su escuela no tiene conexión o sus docentes carecen de habilidades digitales.',
+    'essay.p5': 'EvidencIA existe para acompañar a esos tomadores de decisión en un terreno movedizo. Conectamos a investigadores, ministerios de educación, universidades y empresas de tecnología alrededor de esa pregunta.',
 
     'nlp.eyebrow': 'Cómo se ve el newsletter',
     'nlp.title': 'Evidencia, no ruido.',
@@ -2701,17 +2759,28 @@ const I18N = {
     'res.cat.works': 'AI tutoring — RCTs',
     'res.cat.fails': 'AI in the wild',
     'res.cat.digital': 'Digital skills',
+    'res.cat.blogs': 'Blogs and essays',
     'res.ev.landscape.title': 'Frameworks, guides and reference publications.',
     'res.ev.landscape.lead': 'Frameworks, guides, and programmatic evidence that <em>orient decisions across ministries, universities, and systems</em>. The World Bank AI Revolution series — read in 213 countries in Spanish, English, Portuguese, and Bulgarian — is the point of departure. Digital-skills studies are folded in because the AI-in-education debate can\'t be read without the human-capital map.',
     'res.ev.tutoring.title': 'When instructional design guides the conversation, learning sticks.',
     'res.ev.tutoring.lead': 'Seven randomized trials across four continents point to the same mechanism. <em>Nigeria +0.31 SD</em> in six weeks (≈ 1.5–2 years of schooling). <em>Sierra Leone +0.26 SD</em> on externally validated tests, with over 90% of conversations spent building conceptual understanding. <em>Harvard</em>: students with the AI tutor learned more than twice as much in less time than active learning. <em>Taipei</em> isolates the sharpest variable — same guardrailed tutor, only adaptive problem sequencing differs, +0.15 SD on the no-AI final exam. <em>UK (LearnLM + Eedi)</em>: expert tutors approved 76% of the model\'s messages with zero or minimal edits. <em>Chile (Gallegos)</em>: guidance on learning-oriented use raised final-exam scores by 0.21 SD; encouraging adoption alone did nothing. And in <em>Turkey</em>, the guardrailed arm of Bastani\'s own study erases the negative transfer of the free-access arm — same study, same students; design changed the outcome.',
     'res.ev.wild.title': 'When AI enters without guardrails, performance goes up and learning goes down.',
     'res.ev.wild.lead': 'Three large studies describe the same pattern — what Demombynes calls <em>cognitive surrender</em>. <em>Turkey (Bastani, free-access arm)</em>: ChatGPT boosts on-task performance, but when the tool is turned off, learning slides back. <em>China (Strömberg, Lei & Wu, 26,811 students, 30-month panel)</em>: homework scores +18%, completion time -30%, monthly exams -20% within six months, high-stakes entrance exams -18–24% at two years. <em>ALEKS platform (3.2M interactions)</em>: on AI-susceptible items study time falls ~27%; under proctoring the efficiency gains vanish and the odds of a correct response fall 25%. In all three, the problem isn\'t AI — it\'s absent design.',
+    'res.ev.blogs.title': 'Essays and analysis from the ecosystem.',
+    'res.ev.blogs.lead': 'Editorial and analysis by central network authors and their closest interlocutors, published on World Bank blogs and personal sites. <em>Framing, opinion, argument</em>: pieces that help read the evidence, not replace it. Sorted by date, most recent first.',
 
     'epi.quote': 'Memory is the residue of thought.',
     'epi.role': 'cognitive scientist',
     'epi.gloss': 'If a tool does the thinking for the student, no residue remains. No learning remains. EvidencIA exists to defend that distinction — at regional scale, with evidence.',
     'epi.recent': '→ His most recent reflection on AI in classrooms (August 2026)',
+
+    'essay.eyebrow': 'Why EvidencIA',
+    'essay.pullquote': 'We gather, curate and generate evidence on the conditions under which AI can improve learning in Latin America.',
+    'essay.p1': 'AI can be excellent for learning. It can also hollow it out. Everything depends on how it is used.',
+    'essay.p2': 'When an AI tutor is integrated into a pedagogical sequence, trained to ask rather than answer, and designed to push the student to think, the evidence shows it can improve learning significantly and at scale. Getting the implementation right is hard, and most of the products sold today to ministries and schools do not meet those conditions.',
+    'essay.p3': 'On the other side, unguided use of LLMs, or poorly designed tutors, become a shortcut that replaces the student\'s thinking. The task gets done faster, but no learning takes place. It is the reason many schools are returning to pencil and paper.',
+    'essay.p4': 'And this debate is happening while a large share of Latin American students do not even take part in it, because their schools have no connectivity or their teachers lack digital skills.',
+    'essay.p5': 'EvidencIA exists to accompany decision-makers on that shifting ground. We connect researchers, ministries of education, universities and technology companies around that question.',
 
     'nlp.eyebrow': 'What the newsletter looks like',
     'nlp.title': 'Evidence, not noise.',
@@ -2960,17 +3029,28 @@ const I18N = {
     'res.cat.works': 'Tutoria com IA — RCTs',
     'res.cat.fails': 'IA à solta',
     'res.cat.digital': 'Habilidades digitais',
+    'res.cat.blogs': 'Blogs e ensaios',
     'res.ev.landscape.title': 'Marcos, guias e publicações de referência.',
     'res.ev.landscape.lead': 'Marcos, guias e evidência programática que <em>orientam decisões de ministérios, universidades e sistemas</em>. A série AI Revolution do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — é o ponto de partida. Também entram os estudos de habilidades digitais, porque o debate sobre IA na educação não se lê sem o mapa do capital humano digital.',
     'res.ev.tutoring.title': 'Quando o desenho instrucional guia a conversa, a aprendizagem se sustenta.',
     'res.ev.tutoring.lead': 'Sete ensaios aleatorizados em quatro continentes apontam ao mesmo mecanismo. <em>Nigéria +0,31 DP</em> em seis semanas (≈ 1,5–2 anos de escolaridade). <em>Serra Leoa +0,26 DP</em> em provas externamente validadas, com mais de 90% das conversas dedicadas à construção de compreensão conceitual. <em>Harvard</em>: os estudantes com o tutor de IA aprenderam mais do dobro em menos tempo do que a aula ativa. <em>Taipé</em> isola a variável mais fina — mesmo tutor guardrailed, só difere o sequenciamento adaptativo de problemas, +0,15 DP no exame sem IA. <em>Reino Unido (LearnLM + Eedi)</em>: os tutores especialistas aprovaram 76% das mensagens do modelo com zero ou mínima edição. <em>Chile (Gallegos)</em>: a orientação sobre uso voltado à aprendizagem elevou o exame final em 0,21 DP; incentivar a adoção sozinha não fez nada. E na <em>Turquia</em>, o braço guardrailed do próprio Bastani apaga o negative transfer do braço livre — mesmo estudo, mesmos alunos; o desenho mudou o resultado.',
     'res.ev.wild.title': 'Quando a IA entra sem grades, o desempenho sobe e a aprendizagem cai.',
     'res.ev.wild.lead': 'Três estudos grandes descrevem o mesmo padrão — o que Demombynes chama de <em>cognitive surrender</em>. <em>Turquia (Bastani, braço livre)</em>: o ChatGPT eleva o desempenho na tarefa, mas quando a ferramenta se desliga a aprendizagem retrocede. <em>China (Strömberg, Lei & Wu, 26.811 estudantes, painel de 30 meses)</em>: tarefas +18%, tempo de conclusão -30%, exames mensais -20% em seis meses e exames de ingresso caem 18–24% em dois anos. <em>Plataforma ALEKS (3,2M interações)</em>: em itens susceptíveis à IA o tempo de estudo cai ~27%; sob proctoring os ganhos de eficiência desaparecem e a probabilidade de acerto cai 25%. Nos três casos o problema não é a IA — é o desenho ausente.',
+    'res.ev.blogs.title': 'Ensaios e análises do ecossistema.',
+    'res.ev.blogs.lead': 'Editorial e análise de autores centrais da rede e seus interlocutores mais próximos, publicados em blogs do Banco Mundial e sites próprios. <em>Enquadramento, opinião, argumento</em>: peças que ajudam a ler a evidência, não a substituí-la. Ordenados por data, mais recentes primeiro.',
 
     'epi.quote': 'A memória é o resíduo do pensamento.',
     'epi.role': 'cientista cognitivo',
     'epi.gloss': 'Se uma ferramenta pensa pelo estudante, não resta resíduo. Não resta aprendizagem. A EvidencIA existe para defender essa distinção — em escala regional, com evidências.',
     'epi.recent': '→ Sua reflexão mais recente sobre IA em salas de aula (agosto 2026)',
+
+    'essay.eyebrow': 'Por que EvidencIA',
+    'essay.pullquote': 'Reunimos, curamos e geramos evidência sobre as condições sob as quais a IA pode melhorar a aprendizagem na América Latina.',
+    'essay.p1': 'A IA pode ser excelente para a aprendizagem. Também pode esvaziá-la. Tudo depende de como é usada.',
+    'essay.p2': 'Quando um tutor de IA está integrado a uma sequência pedagógica, treinado para perguntar em vez de responder e desenhado para levar o estudante a pensar, a evidência mostra que pode melhorar a aprendizagem de forma significativa e em escala. Implementar bem é difícil, e a maioria dos produtos oferecidos hoje a ministérios e escolas não cumpre essas condições.',
+    'essay.p3': 'Do outro lado, o uso livre de LLMs sem propósito pedagógico, ou tutores mal desenhados, tornam-se um atalho que substitui o pensamento do estudante. A tarefa termina mais rápido, mas não há aprendizagem. É a razão pela qual muitas escolas estão voltando ao lápis e papel.',
+    'essay.p4': 'E esse debate acontece enquanto uma parcela grande de estudantes latino-americanos sequer participa dele, porque suas escolas não têm conectividade ou seus professores carecem de habilidades digitais.',
+    'essay.p5': 'A EvidencIA existe para acompanhar esses tomadores de decisão em um terreno movediço. Conectamos pesquisadores, ministérios da educação, universidades e empresas de tecnologia em torno dessa pergunta.',
 
     'nlp.eyebrow': 'Como é a newsletter',
     'nlp.title': 'Evidência, não ruído.',
@@ -3274,6 +3354,148 @@ const PAPERS = [
     ],
   },
 
+  // ============ BLOGS & ESSAYS ============
+  {
+    year: 2026, category: 'blogs',
+    title: {
+      es: 'La restricción para la IA en educación no es la tecnología, es la cultura organizacional',
+      en: "The Binding Constraint on AI in Education Is Not Technology. It's Organizational Culture",
+      pt: 'A restrição para a IA na educação não é a tecnologia, é a cultura organizacional',
+    },
+    source: 'World Bank Blogs · Jaime Saavedra & Ezequiel Molina · 13 de marzo de 2026',
+    summary: {
+      es: 'El verdadero cuello de botella para la IA en educación no es la infraestructura sino la cultura organizacional de los ministerios. Herramientas de "IA pequeña" (tipo Claude Code) pueden transformar la gestión pública antes de llegar a las aulas.',
+      en: 'The real bottleneck for AI in education is not infrastructure but the organizational culture of ministries. "Small AI" tools (like Claude Code) can transform public administration before they reach classrooms.',
+      pt: 'O verdadeiro gargalo para a IA na educação não é a infraestrutura, mas a cultura organizacional dos ministérios. Ferramentas de "IA pequena" (tipo Claude Code) podem transformar a gestão pública antes de chegar às salas de aula.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/latinamerica/binding-constraint-on-ai-in-education-latin-america' },
+    ],
+  },
+  {
+    year: 2025, category: 'blogs',
+    title: {
+      es: '¿La IA nos hace más inteligentes o solo nos hace parecerlo?',
+      en: 'Is AI making us smarter or just making us look smart?',
+      pt: 'A IA nos torna mais inteligentes ou apenas parece que sim?',
+    },
+    source: 'World Bank Blogs · Saavedra, Molina, Alvarez Marinelli & Cobo · 20 de noviembre de 2025',
+    summary: {
+      es: 'Distingue desempeño (buenas notas con IA) de aprendizaje real (esfuerzo cognitivo). Llama a diseñar tareas y guiar a docentes para que la IA no atrofie el pensamiento. La pieza más cercana al debate de Willingham que ancla la página.',
+      en: 'Distinguishes performance (good grades with AI) from real learning (cognitive effort). Calls for task design and teacher guidance so AI does not atrophy thinking. The closest piece to the Willingham debate that anchors the site.',
+      pt: 'Distingue desempenho (boas notas com IA) da aprendizagem real (esforço cognitivo). Chama por desenho de tarefas e orientação docente para que a IA não atrofie o pensamento. É a peça mais próxima do debate de Willingham que ancora o site.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/education/is-ai-making-us-smarter-or-just-making-us-look-smart-' },
+      { code: 'ES', url: 'https://blogs.worldbank.org/es/education/is-ai-making-us-smarter-or-just-making-us-look-smart-' },
+    ],
+  },
+  {
+    year: 2024, category: 'blogs',
+    title: {
+      es: 'Del miedo a la oportunidad: hacer que la IA funcione para la educación',
+      en: 'From fear to opportunity: Making AI work for education',
+      pt: 'Do medo à oportunidade: fazer a IA funcionar para a educação',
+    },
+    source: 'World Bank Blogs · Jaime Saavedra & Ezequiel Molina · 17 de diciembre de 2024',
+    summary: {
+      es: 'Marco de política para integrar IA en educación con equidad y calidad: regulación, formación docente y participación de comunidades educativas. La agenda que precede a la ola actual de trabajos regionales del Banco Mundial.',
+      en: 'A policy framework for integrating AI into education with equity and quality: regulation, teacher training and community participation. The agenda that precedes the current wave of World Bank regional work.',
+      pt: 'Um marco de política para integrar IA na educação com equidade e qualidade: regulação, formação docente e participação das comunidades educativas. A agenda que antecede a onda atual de trabalhos regionais do Banco Mundial.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/education/from-fear-to-opportunity--making-ai-work-for-education' },
+    ],
+  },
+  {
+    year: 2024, category: 'blogs',
+    title: {
+      es: '100 voces jóvenes sobre IA y educación',
+      en: '100 student voices on AI and education',
+      pt: '100 vozes jovens sobre IA e educação',
+    },
+    source: 'World Bank Blogs · Munoz-Najar, Bertrand, Molina & Cobo · 7 de noviembre de 2024',
+    summary: {
+      es: 'Grupos focales con más de 100 estudiantes de educación superior en 10 países. Valoran la personalización, pero temen la inequidad y la pérdida de pensamiento crítico. Uno de los pocos insumos cualitativos de estudiantes en el debate.',
+      en: 'Focus groups with more than 100 higher-education students across 10 countries. They value personalization but fear inequity and the loss of critical thinking. One of the few qualitative student inputs in the debate.',
+      pt: 'Grupos focais com mais de 100 estudantes do ensino superior em 10 países. Valorizam a personalização, mas temem a iniquidade e a perda do pensamento crítico. Um dos poucos insumos qualitativos de estudantes no debate.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/education/100-student-voices-on-ai-and-education' },
+      { code: 'ES', url: 'https://blogs.worldbank.org/es/education/100-student-voices-on-ai-and-education' },
+    ],
+  },
+  {
+    year: 2024, category: 'blogs',
+    title: {
+      es: 'La IA en educación, ¿un privilegio para pocos o una oportunidad para todos?',
+      en: 'AI in education: A privilege for the few or an opportunity for all?',
+      pt: 'A IA na educação: um privilégio para poucos ou uma oportunidade para todos?',
+    },
+    source: 'World Bank Blogs · Jaime Saavedra, Maria Barron & Ezequiel Molina · 8 de octubre de 2024',
+    summary: {
+      es: 'Propone tres grupos emergentes de estudiantes según su relación con la IA (potenciados, dependientes, excluidos) y una agenda de alfabetización docente, conectividad y currículo para evitar que el acceso desigual profundice las brechas.',
+      en: 'Proposes three emerging student groups by their relationship with AI (empowered, dependent, excluded) and an agenda of teacher literacy, connectivity and curriculum reform so unequal access does not widen gaps.',
+      pt: 'Propõe três grupos emergentes de estudantes segundo sua relação com a IA (potencializados, dependentes, excluídos) e uma agenda de alfabetização docente, conectividade e currículo para que o acesso desigual não amplie as brechas.',
+    },
+    langs: [
+      { code: 'ES', url: 'https://blogs.worldbank.org/es/latinamerica/inteligencia-artificial-ia-privilegio-para-pocos-oportunidad-para-todos' },
+    ],
+  },
+  {
+    year: 2024, category: 'blogs',
+    title: {
+      es: 'Educar para el (presente y) futuro: usar la IA para la crisis de aprendizajes',
+      en: 'Educating for the (present and) future: using AI to address the learning crisis',
+      pt: 'Educar para o (presente e) futuro: usar a IA para a crise da aprendizagem',
+    },
+    source: 'World Bank Blogs · Saavedra, Cobo, Di Gropello, Molina, Rovner & Twinomugisha · 22 de julio de 2024',
+    summary: {
+      es: 'Pieza fundacional del programa del Banco Mundial: "sí, con cautela". La IA puede aliviar la crisis de aprendizajes solo si docentes, conectividad y competencias digitales avanzan en paralelo. Punto de partida del recorrido de la red.',
+      en: 'Foundational piece of the World Bank program: "yes, with caution." AI can help ease the learning crisis only if teachers, connectivity and digital skills advance in parallel. The starting point of the network\'s journey.',
+      pt: 'Peça fundacional do programa do Banco Mundial: "sim, com cautela". A IA pode ajudar a aliviar a crise da aprendizagem apenas se professores, conectividade e competências digitais avançarem em paralelo. Ponto de partida do percurso da rede.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/latinamerica/artificial-intelligence-to-address-the-learning-crisis' },
+      { code: 'ES', url: 'https://blogs.worldbank.org/es/latinamerica/artificial-intelligence-to-address-the-learning-crisis' },
+      { code: 'PT', url: 'https://blogs.worldbank.org/pt/latinamerica/artificial-intelligence-to-address-the-learning-crisis' },
+    ],
+  },
+  {
+    year: 2025, category: 'blogs',
+    title: {
+      es: 'Empoderar a los adultos: habilidades digitales en la era de la IA',
+      en: 'Empowering adult learners: Navigating digital skills in the AI era',
+      pt: 'Empoderar adultos: habilidades digitais na era da IA',
+    },
+    source: 'World Bank Blogs · Cristóbal Cobo, Rita Almeida & Lorena Chiran · 8 de octubre de 2025',
+    summary: {
+      es: 'Presenta el marco ACTS para formación digital de adultos y desmiente el mito de que la edad sea el principal obstáculo. Aporta al debate lo que rara vez aparece: la IA fuera de la escuela, en el mundo del trabajo y la formación continua.',
+      en: 'Introduces the ACTS framework for adult digital training and debunks the myth that age is the main barrier. Brings to the debate what rarely appears: AI outside school, in the world of work and continuous learning.',
+      pt: 'Apresenta o marco ACTS para formação digital de adultos e desmente o mito de que a idade seja o principal obstáculo. Traz ao debate o que raramente aparece: a IA fora da escola, no mundo do trabalho e da formação contínua.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/education/empowering-adult-learners--navigating-digital-skills-in-the-ai-e' },
+    ],
+  },
+  {
+    year: 2024, category: 'blogs',
+    title: {
+      es: 'Dos visiones para la EdTech: lecciones de ayer para la tecnología de mañana',
+      en: 'Two visions for EdTech: Lessons from yesterday for the technology of tomorrow',
+      pt: 'Duas visões para a EdTech: lições de ontem para a tecnologia de amanhã',
+    },
+    source: 'World Bank Blogs · Frank Van Cappelle & Cristóbal Cobo · 10 de septiembre de 2024',
+    summary: {
+      es: 'Compara One Laptop per Child con Hole-in-the-Wall para extraer lecciones sobre supervisión, formación docente y comunidad, aplicables a la ola actual de IA en educación. Historia útil, no nostalgia.',
+      en: 'Compares One Laptop per Child with Hole-in-the-Wall to extract lessons on supervision, teacher training and community that apply to the current wave of AI in education. Useful history, not nostalgia.',
+      pt: 'Compara One Laptop per Child com Hole-in-the-Wall para extrair lições sobre supervisão, formação docente e comunidade aplicáveis à onda atual de IA na educação. História útil, não nostalgia.',
+    },
+    langs: [
+      { code: 'EN', url: 'https://blogs.worldbank.org/en/education/Two-visions-for-EdTech' },
+    ],
+  },
+
   // ============ AI TUTORING — RCT EVIDENCE ============
   {
     year: 2026, category: 'works',
@@ -3484,11 +3706,13 @@ function renderEvidenceBlocks(lang) {
     : obj;
   const blocks = [
     { cat: 'wb-guides', title: t['res.ev.landscape.title'], lead: t['res.ev.landscape.lead'] },
+    { cat: 'blogs', title: t['res.ev.blogs.title'], lead: t['res.ev.blogs.lead'] },
     { cat: 'works', title: t['res.ev.tutoring.title'], lead: t['res.ev.tutoring.lead'] },
     { cat: 'fails', title: t['res.ev.wild.title'], lead: t['res.ev.wild.lead'] },
   ];
   const labelByCat = {
     'wb-guides': t['res.cat.guides'],
+    'blogs': t['res.cat.blogs'],
     'works': t['res.cat.works'],
     'fails': t['res.cat.fails'],
   };
