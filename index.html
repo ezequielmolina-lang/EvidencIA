@@ -1346,18 +1346,17 @@
     line-height: 1.3;
     letter-spacing: -0.015em;
     color: var(--ink);
-    margin: 0 0 40px;
+    margin: 0 0 44px;
     padding-left: 22px;
     border-left: 3px solid var(--gold-deep);
-    max-width: 62ch;
-    text-wrap: pretty;
+    max-width: none;
+    text-wrap: balance;
   }
   .essay-body p {
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: 18px;
+    line-height: 1.7;
     color: var(--ink-soft);
-    max-width: 62ch;
-    margin: 0 0 18px;
+    margin: 0 0 22px;
     text-wrap: pretty;
     hyphens: none;
   }
@@ -2484,6 +2483,8 @@ const I18N = {
     'res.wp.note': 'Working paper',
     'res.papers.show': 'Ver los papers',
     'res.papers.hide': 'Ocultar los papers',
+    'res.blogs.show': 'Ver los blogs',
+    'res.blogs.hide': 'Ocultar los blogs',
     'res.cat.all': 'Todo',
     'res.cat.guides': 'El terreno',
     'res.cat.works': 'Tutoría IA — RCTs',
@@ -2754,6 +2755,8 @@ const I18N = {
     'res.wp.note': 'Working paper',
     'res.papers.show': 'See the papers',
     'res.papers.hide': 'Hide the papers',
+    'res.blogs.show': 'See the blogs',
+    'res.blogs.hide': 'Hide the blogs',
     'res.cat.all': 'All',
     'res.cat.guides': 'The landscape',
     'res.cat.works': 'AI tutoring — RCTs',
@@ -3024,6 +3027,8 @@ const I18N = {
     'res.wp.note': 'Working paper',
     'res.papers.show': 'Ver os papers',
     'res.papers.hide': 'Ocultar os papers',
+    'res.blogs.show': 'Ver os blogs',
+    'res.blogs.hide': 'Ocultar os blogs',
     'res.cat.all': 'Tudo',
     'res.cat.guides': 'O cenário',
     'res.cat.works': 'Tutoria com IA — RCTs',
@@ -3369,6 +3374,7 @@ const PAPERS = [
       pt: 'O verdadeiro gargalo para a IA na educação não é a infraestrutura, mas a cultura organizacional dos ministérios. Ferramentas de "IA pequena" (tipo Claude Code) podem transformar a gestão pública antes de chegar às salas de aula.',
     },
     langs: [
+      { code: 'ES', url: 'https://blogs.worldbank.org/es/latinamerica/binding-constraint-on-ai-in-education-latin-america' },
       { code: 'EN', url: 'https://blogs.worldbank.org/en/latinamerica/binding-constraint-on-ai-in-education-latin-america' },
     ],
   },
@@ -3744,8 +3750,13 @@ function renderEvidenceBlocks(lang) {
       `;
     }).join('');
     const openAttr = i === 0 ? ' open' : '';
-    const showLabel = t['res.papers.show'] || 'Ver los papers';
-    const hideLabel = t['res.papers.hide'] || 'Ocultar los papers';
+    const isBlogs = b.cat === 'blogs';
+    const showLabel = isBlogs
+      ? (t['res.blogs.show'] || 'Ver los blogs')
+      : (t['res.papers.show'] || 'Ver los papers');
+    const hideLabel = isBlogs
+      ? (t['res.blogs.hide'] || 'Ocultar los blogs')
+      : (t['res.papers.hide'] || 'Ocultar los papers');
     return `
       <article class="ev-block" data-cat="${b.cat}">
         <div class="ev-block-eyebrow">${labelByCat[b.cat]} · ${papersHere.length}</div>
