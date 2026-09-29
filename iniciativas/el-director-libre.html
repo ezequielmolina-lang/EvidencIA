@@ -140,6 +140,28 @@
   }
   section.block.dark .section-lede { color: rgba(250,247,240,0.75); }
 
+  /* Testimonios */
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testi { margin: 0; }
+  .testi video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    background: #000;
+  }
+  .testi figcaption { margin-top: 14px; }
+  .testi-name {
+    display: block;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .testi-role { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+
   /* LIBRE method steps */
   .libre-steps {
     margin-top: 48px;
@@ -354,6 +376,7 @@
     .book-block { grid-template-columns: 1fr; gap: 32px; }
     .book-cover { aspect-ratio: 4 / 3; max-width: 320px; margin: 0 auto; }
     .res-row { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; gap: 36px; }
     .foot { flex-direction: column; align-items: flex-start; }
     .libre-step { grid-template-columns: 60px 1fr; gap: 18px; padding: 18px 20px; }
     .libre-badge { width: 56px; height: 56px; font-size: 26px; }
@@ -443,6 +466,45 @@
       </div>
 
       <div class="libre-note" data-i18n="method.note">Cada paso incluye herramientas específicas, prompts probados y casos reales.</div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="block">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="testi.eyebrow">Testimonios</div>
+      <h2 class="section-title" data-i18n="testi.title">Directores que ya lo usan.</h2>
+      <p class="section-lede" data-i18n="testi.lede">Tres directores de Chile cuentan cómo usan el método en su trabajo diario y qué cambió en su gestión. Videos del Banco Mundial, con subtítulos en español.</p>
+
+      <div class="testi-grid">
+        <figure class="testi">
+          <video controls playsinline preload="none" poster="../img/director-libre-antonia-raby.jpg" aria-label="Antonia Raby">
+            <source src="../img/director-libre-antonia-raby.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            <span class="testi-name">Antonia Raby</span>
+            <span class="testi-role"><span data-i18n="testi.directora">Directora</span> · Chilean Eagles College, Las Vizcachas, Chile</span>
+          </figcaption>
+        </figure>
+        <figure class="testi">
+          <video controls playsinline preload="none" poster="../img/director-libre-victor-arroz.jpg" aria-label="Víctor Arroz">
+            <source src="../img/director-libre-victor-arroz.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            <span class="testi-name">Víctor Arroz</span>
+            <span class="testi-role"><span data-i18n="testi.director">Director</span> · Colegio El Niño Jesús, Talagante, Chile</span>
+          </figcaption>
+        </figure>
+        <figure class="testi">
+          <video controls playsinline preload="none" poster="../img/director-libre-patricia-alvarez.jpg" aria-label="Patricia Álvarez">
+            <source src="../img/director-libre-patricia-alvarez.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            <span class="testi-name">Patricia Álvarez</span>
+            <span class="testi-role"><span data-i18n="testi.directora">Directora</span> · Instituto Agrícola Pascual Baburizza, Calle Larga, Chile</span>
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -561,6 +623,11 @@ const I18N = {
     'method.r.k': 'REFUERZA', 'method.r.h': 'éxitos y aprende de fracasos', 'method.r.p': 'Convierte rutinas en sistemas automáticos.',
     'method.e.k': 'EXPANDE', 'method.e.h': 'de forma inteligente', 'method.e.p': 'Muestra, no prediques.',
     'method.note': 'Cada paso incluye herramientas específicas, prompts probados y casos reales.',
+    'testi.eyebrow': 'Testimonios',
+    'testi.title': 'Directores que ya lo usan.',
+    'testi.lede': 'Tres directores de Chile cuentan cómo usan el método en su trabajo diario y qué cambió en su gestión. Videos del Banco Mundial, con subtítulos en español.',
+    'testi.directora': 'Directora',
+    'testi.director': 'Director',
     'com.eyebrow': 'Comunidad Director LIBRE',
     'com.title': 'Compartimos lo que estamos aprendiendo.',
     'com.lede': 'El Director LIBRE es un libro y también una comunidad regional. Directores, subdirectores, formadores y equipos ministeriales de toda América Latina prueban el método, comparten los prompts que funcionan, y refinan los casos entre todos. Lo que aparece en el libro es lo que se validó primero en el terreno — no al revés.',
@@ -611,6 +678,11 @@ const I18N = {
     'method.r.k': 'REINFORCE', 'method.r.h': 'wins and learn from failures', 'method.r.p': 'Turn routines into automatic systems.',
     'method.e.k': 'EXPAND', 'method.e.h': 'wisely', 'method.e.p': 'Show, don\'t preach.',
     'method.note': 'Each step comes with specific tools, tested prompts and real cases.',
+    'testi.eyebrow': 'Testimonials',
+    'testi.title': 'Principals who already use it.',
+    'testi.lede': 'Three school principals in Chile describe how they use the method in their daily work and what changed in how they lead. World Bank videos, in Spanish with Spanish subtitles.',
+    'testi.directora': 'Principal',
+    'testi.director': 'Principal',
     'com.eyebrow': 'Director LIBRE community',
     'com.title': 'We share what we\'re learning.',
     'com.lede': 'El Director LIBRE is a book and also a regional community. Principals, vice-principals, trainers and ministry teams across Latin America test the method, share the prompts that work, and refine the cases together. What ends up in the book is what was first validated in the field — not the other way around.',
@@ -661,6 +733,11 @@ const I18N = {
     'method.r.k': 'REFORÇA', 'method.r.h': 'sucessos e aprende dos fracassos', 'method.r.p': 'Converta rotinas em sistemas automáticos.',
     'method.e.k': 'EXPANDE', 'method.e.h': 'de forma inteligente', 'method.e.p': 'Mostre, não pregue.',
     'method.note': 'Cada passo inclui ferramentas específicas, prompts testados e casos reais.',
+    'testi.eyebrow': 'Depoimentos',
+    'testi.title': 'Diretores que já o usam.',
+    'testi.lede': 'Três diretores escolares do Chile contam como usam o método no dia a dia e o que mudou na sua gestão. Vídeos do Banco Mundial, em espanhol com legendas em espanhol.',
+    'testi.directora': 'Diretora',
+    'testi.director': 'Diretor',
     'com.eyebrow': 'Comunidade Director LIBRE',
     'com.title': 'Compartilhamos o que estamos aprendendo.',
     'com.lede': 'El Director LIBRE é um livro e também uma comunidade regional. Diretores, vice-diretores, formadores e equipes ministeriais de toda a América Latina testam o método, compartilham os prompts que funcionam e refinam os casos juntos. O que aparece no livro é o que foi validado primeiro em campo — não o contrário.',
