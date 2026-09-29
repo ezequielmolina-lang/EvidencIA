@@ -162,6 +162,15 @@
   }
   .testi-role { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
 
+  /* Lanzamiento */
+  .launch-video {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: #000;
+  }
+  .launch-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
   /* LIBRE method steps */
   .libre-steps {
     margin-top: 48px;
@@ -508,6 +517,24 @@
     </div>
   </section>
 
+  <!-- LANZAMIENTO -->
+  <section class="block soft">
+    <div class="container">
+      <div class="section-eyebrow" data-i18n="launch.eyebrow">El lanzamiento</div>
+      <h2 class="section-title" data-i18n="launch.title">Mirá el lanzamiento completo.</h2>
+      <p class="section-lede" data-i18n="launch.lede">Grabación del evento con el que el Banco Mundial lanzó El Director LIBRE, titulado “La educación en la era de la IA”. Con Jaime Saavedra y Deon Filmer (Banco Mundial), Paola Amar Sepúlveda (Secretaría de Educación de Barranquilla), José Manuel Thomas (Consejo Federal de Educación, Argentina), Gonzalo Romero (Google) y Paul Bambrick-Santoyo, coautor del libro. Dura una hora y está en español.</p>
+      <div class="launch-video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/JGePrJEfCAA?rel=0"
+          title="La educación en la era de la IA: lanzamiento de El Director LIBRE"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- COMUNIDAD -->
   <section class="block dark">
     <div class="container">
@@ -628,6 +655,9 @@ const I18N = {
     'testi.lede': 'Tres directores de Chile cuentan cómo usan el método en su trabajo diario y qué cambió en su gestión. Videos del Banco Mundial, con subtítulos en español.',
     'testi.directora': 'Directora',
     'testi.director': 'Director',
+    'launch.eyebrow': 'El lanzamiento',
+    'launch.title': 'Mirá el lanzamiento completo.',
+    'launch.lede': 'Grabación del evento con el que el Banco Mundial lanzó El Director LIBRE, titulado “La educación en la era de la IA”. Con Jaime Saavedra y Deon Filmer (Banco Mundial), Paola Amar Sepúlveda (Secretaría de Educación de Barranquilla), José Manuel Thomas (Consejo Federal de Educación, Argentina), Gonzalo Romero (Google) y Paul Bambrick-Santoyo, coautor del libro. Dura una hora y está en español.',
     'com.eyebrow': 'Comunidad Director LIBRE',
     'com.title': 'Compartimos lo que estamos aprendiendo.',
     'com.lede': 'El Director LIBRE es un libro y también una comunidad regional. Directores, subdirectores, formadores y equipos ministeriales de toda América Latina prueban el método, comparten los prompts que funcionan, y refinan los casos entre todos. Lo que aparece en el libro es lo que se validó primero en el terreno — no al revés.',
@@ -683,6 +713,9 @@ const I18N = {
     'testi.lede': 'Three school principals in Chile describe how they use the method in their daily work and what changed in how they lead. World Bank videos, in Spanish with Spanish subtitles.',
     'testi.directora': 'Principal',
     'testi.director': 'Principal',
+    'launch.eyebrow': 'The launch',
+    'launch.title': 'Watch the full launch.',
+    'launch.lede': 'Recording of the event where the World Bank launched El Director LIBRE, titled “Education in the age of AI”. With Jaime Saavedra and Deon Filmer (World Bank), Paola Amar Sepúlveda (Barranquilla Education Secretariat), José Manuel Thomas (Federal Education Council, Argentina), Gonzalo Romero (Google) and Paul Bambrick-Santoyo, co-author of the book. One hour long, in Spanish.',
     'com.eyebrow': 'Director LIBRE community',
     'com.title': 'We share what we\'re learning.',
     'com.lede': 'El Director LIBRE is a book and also a regional community. Principals, vice-principals, trainers and ministry teams across Latin America test the method, share the prompts that work, and refine the cases together. What ends up in the book is what was first validated in the field — not the other way around.',
@@ -738,6 +771,9 @@ const I18N = {
     'testi.lede': 'Três diretores escolares do Chile contam como usam o método no dia a dia e o que mudou na sua gestão. Vídeos do Banco Mundial, em espanhol com legendas em espanhol.',
     'testi.directora': 'Diretora',
     'testi.director': 'Diretor',
+    'launch.eyebrow': 'O lançamento',
+    'launch.title': 'Assista ao lançamento completo.',
+    'launch.lede': 'Gravação do evento em que o Banco Mundial lançou El Director LIBRE, com o título “A educação na era da IA”. Com Jaime Saavedra e Deon Filmer (Banco Mundial), Paola Amar Sepúlveda (Secretaria de Educação de Barranquilla), José Manuel Thomas (Conselho Federal de Educação, Argentina), Gonzalo Romero (Google) e Paul Bambrick-Santoyo, coautor do livro. Dura uma hora e está em espanhol.',
     'com.eyebrow': 'Comunidade Director LIBRE',
     'com.title': 'Compartilhamos o que estamos aprendendo.',
     'com.lede': 'El Director LIBRE é um livro e também uma comunidade regional. Diretores, vice-diretores, formadores e equipes ministeriais de toda a América Latina testam o método, compartilham os prompts que funcionam e refinam os casos juntos. O que aparece no livro é o que foi validado primeiro em campo — não o contrário.',
