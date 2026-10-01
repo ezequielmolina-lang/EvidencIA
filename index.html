@@ -1637,6 +1637,8 @@
     border: 1px solid var(--ink);
   }
   .pub-cta-secondary:hover { background: var(--ink); color: var(--bg); }
+  /* El conector abre la Base de evidencia: misma tarjeta que las publicaciones, separada del acordeón */
+  .connector-card { margin-bottom: 48px; scroll-margin-top: 96px; }
   .pub-fineprint {
     font-family: 'Inter', sans-serif;
     font-size: 13px;
@@ -2110,6 +2112,25 @@
       <h2 class="section-title" data-i18n="res.title">Investigación curada sobre IA y aprendizaje.</h2>
       <p class="section-lede" data-i18n="res.lede">Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.</p>
 
+      <article class="publication-card connector-card" id="conector">
+        <div class="pub-kicker" data-i18n="res.mcp.kicker">Nuevo · Conector para asistentes de IA</div>
+        <h3 class="pub-title" data-i18n="res.mcp.title">Preguntale a la evidencia desde Claude o ChatGPT.</h3>
+        <p class="pub-hook" data-i18n="res.mcp.hook">El conector de EvidencIA lleva nuestra base a tu asistente de IA. Preguntás con tus palabras, por ejemplo <em>¿sirven los tutores de IA en secundaria?</em>, y la respuesta cita cada estudio con su enlace, dice qué tan sólida es la evidencia y avisa cuando no la hay para tu contexto.</p>
+
+        <ul class="pub-findings">
+          <li data-i18n="res.mcp.f1"><strong>Más de 1.300 documentos</strong> en cuatro niveles de evidencia, y <strong>41 estudios</strong> con cada cifra verificada contra el paper.</li>
+          <li data-i18n="res.mcp.f2"><strong>Respuestas mejor sustentadas.</strong> En una evaluación ciega, las afirmaciones respaldadas por la evidencia pasaron de 45 a 87 de cada 100 en Claude, y de 56 a 85 en ChatGPT con búsqueda web.</li>
+          <li data-i18n="res.mcp.f3"><strong>Gratis, sin cuenta y de sólo lectura.</strong> No recibe ni guarda datos personales.</li>
+        </ul>
+
+        <div class="pub-cta-row">
+          <a class="pub-cta pub-cta-primary" href="https://evidencia-mcp.vercel.app/#conectar" target="_blank" rel="noopener"><span data-i18n="res.mcp.cta1">Cómo conectarlo</span> <span aria-hidden="true">→</span></a>
+          <a class="pub-cta pub-cta-secondary" href="https://evidencia-mcp.vercel.app/#ejemplo" target="_blank" rel="noopener" data-i18n="res.mcp.cta2">Ver una respuesta de ejemplo</a>
+        </div>
+
+        <p class="pub-fineprint" data-i18n="res.mcp.fine">Funciona en Claude, ChatGPT y editores como VS Code o Cursor; en Gemini, por ahora sólo en Estados Unidos. Si tu institución no permite conectores, hay un paquete descargable con la misma evidencia.</p>
+      </article>
+
       <div id="papers-blocks"></div>
 
       <div class="papers-companions">
@@ -2460,6 +2481,15 @@ const I18N = {
     'res.eyebrow': 'Base de evidencia',
     'res.title': 'Investigación curada sobre IA y aprendizaje.',
     'res.lede': 'Landscape de la evidencia programática y académica sobre IA y aprendizaje: incluye la serie del Banco Mundial — leída en 213 países en español, inglés, portugués y búlgaro — junto a los RCTs recientes y estudios de habilidades digitales. Se actualiza con cada edición.',
+    'res.mcp.kicker': 'Nuevo · Conector para asistentes de IA',
+    'res.mcp.title': 'Preguntale a la evidencia desde Claude o ChatGPT.',
+    'res.mcp.hook': 'El conector de EvidencIA lleva nuestra base a tu asistente de IA. Preguntás con tus palabras, por ejemplo <em>¿sirven los tutores de IA en secundaria?</em>, y la respuesta cita cada estudio con su enlace, dice qué tan sólida es la evidencia y avisa cuando no la hay para tu contexto.',
+    'res.mcp.f1': '<strong>Más de 1.300 documentos</strong> en cuatro niveles de evidencia, y <strong>41 estudios</strong> con cada cifra verificada contra el paper.',
+    'res.mcp.f2': '<strong>Respuestas mejor sustentadas.</strong> En una evaluación ciega, las afirmaciones respaldadas por la evidencia pasaron de 45 a 87 de cada 100 en Claude, y de 56 a 85 en ChatGPT con búsqueda web.',
+    'res.mcp.f3': '<strong>Gratis, sin cuenta y de sólo lectura.</strong> No recibe ni guarda datos personales.',
+    'res.mcp.cta1': 'Cómo conectarlo',
+    'res.mcp.cta2': 'Ver una respuesta de ejemplo',
+    'res.mcp.fine': 'Funciona en Claude, ChatGPT y editores como VS Code o Cursor; en Gemini, por ahora sólo en Estados Unidos. Si tu institución no permite conectores, hay un paquete descargable con la misma evidencia.',
     'res.cta.text': 'Las publicaciones del Banco Mundial sobre IA en educación tienen dashboard propio con descargas por país e idioma, que se actualiza cada dos meses.',
     'res.cta.btn': 'Ver dashboard del Banco Mundial →',
     'res.dashlink': 'Dashboard con descargas por país e idioma →',
@@ -2732,6 +2762,15 @@ const I18N = {
     'res.eyebrow': 'Evidence base',
     'res.title': 'Curated research on AI and learning.',
     'res.lede': 'A landscape of the programmatic and academic evidence on AI and learning: the World Bank series — read across 213 countries in Spanish, English, Portuguese and Bulgarian — alongside recent RCTs and digital-skills studies. Updated with every edition.',
+    'res.mcp.kicker': 'New · Connector for AI assistants',
+    'res.mcp.title': 'Ask the evidence from Claude or ChatGPT.',
+    'res.mcp.hook': 'The EvidencIA connector brings our evidence base into your AI assistant. Ask in your own words, for example <em>do AI tutors work in secondary school?</em>, and the answer cites every study with its link, says how solid the evidence is, and tells you when there is none for your context.',
+    'res.mcp.f1': '<strong>Over 1,300 documents</strong> across four levels of evidence, and <strong>41 studies</strong> with every figure checked against the paper.',
+    'res.mcp.f2': '<strong>Better-supported answers.</strong> In a blind evaluation, claims supported by the evidence rose from 45 to 87 out of 100 for Claude, and from 56 to 85 for ChatGPT with web search.',
+    'res.mcp.f3': '<strong>Free, no account, read-only.</strong> It neither receives nor stores personal data.',
+    'res.mcp.cta1': 'How to connect it',
+    'res.mcp.cta2': 'See a sample answer',
+    'res.mcp.fine': 'Works in Claude, ChatGPT and editors such as VS Code or Cursor; in Gemini, for now only in the United States. If your institution does not allow connectors, a downloadable pack carries the same evidence.',
     'res.cta.text': 'The World Bank AI-in-education publications have their own dashboard with downloads by country and language, refreshed every two months.',
     'res.cta.btn': 'Open the World Bank dashboard →',
     'res.dashlink': 'Dashboard with downloads by country and language →',
@@ -3004,6 +3043,15 @@ const I18N = {
     'res.eyebrow': 'Base de evidência',
     'res.title': 'Pesquisa curada sobre IA e aprendizagem.',
     'res.lede': 'Landscape da evidência programática e acadêmica sobre IA e aprendizagem: a série do Banco Mundial — lida em 213 países em espanhol, inglês, português e búlgaro — junto a RCTs recentes e estudos de habilidades digitais. Atualiza-se a cada edição.',
+    'res.mcp.kicker': 'Novo · Conector para assistentes de IA',
+    'res.mcp.title': 'Pergunte à evidência pelo Claude ou pelo ChatGPT.',
+    'res.mcp.hook': 'O conector da EvidencIA leva a nossa base ao seu assistente de IA. Você pergunta com suas palavras, por exemplo <em>tutores de IA funcionam no ensino médio?</em>, e a resposta cita cada estudo com seu link, diz quão sólida é a evidência e avisa quando não há evidência para o seu contexto.',
+    'res.mcp.f1': '<strong>Mais de 1.300 documentos</strong> em quatro níveis de evidência, e <strong>41 estudos</strong> com cada número verificado no artigo.',
+    'res.mcp.f2': '<strong>Respostas mais bem fundamentadas.</strong> Em uma avaliação cega, as afirmações sustentadas pela evidência passaram de 45 para 87 em cada 100 no Claude, e de 56 para 85 no ChatGPT com busca na web.',
+    'res.mcp.f3': '<strong>Gratuito, sem conta e somente leitura.</strong> Não recebe nem guarda dados pessoais.',
+    'res.mcp.cta1': 'Como conectar',
+    'res.mcp.cta2': 'Ver uma resposta de exemplo',
+    'res.mcp.fine': 'Funciona no Claude, no ChatGPT e em editores como VS Code ou Cursor; no Gemini, por enquanto só nos Estados Unidos. Se a sua instituição não permite conectores, há um pacote para baixar com a mesma evidência.',
     'res.cta.text': 'As publicações do Banco Mundial sobre IA na educação têm um dashboard próprio com downloads por país e idioma, atualizado a cada dois meses.',
     'res.cta.btn': 'Abrir dashboard do Banco Mundial →',
     'res.dashlink': 'Dashboard com downloads por país e idioma →',
