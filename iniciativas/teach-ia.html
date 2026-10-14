@@ -286,6 +286,7 @@
         <button data-lang="es" class="active">ES</button>
         <button data-lang="en">EN</button>
         <button data-lang="pt">PT</button>
+        <button data-lang="fr">FR</button>
       </div>
     </div>
   </div>
@@ -702,6 +703,73 @@ const I18N = {
     'res.r3.cta': 'Preprint em breve',
     'foot.back': 'Voltar ao EvidencIA',
     'foot.copy': '© 2026 EvidencIA. Uma rede em construção.',
+  },
+  fr: {
+    'nav.back': 'Initiatives',
+    'hero.eyebrow': 'Initiative · Monde · Observation de classe',
+    'hero.title': 'Teach <em>+ IA</em>',
+    'hero.lede': 'Le passage à l’échelle de l’observation de classe de la Banque mondiale grâce aux LLM. Sur 230 séances de classe du primaire au Pérou, un modèle soigneusement calibré atteint les normes de fiabilité des observateurs humains certifiés : il réussit l’examen de certification dans 92,2 % des simulations, avec un accord de 81 à 99 % au niveau des éléments.',
+    'teach.eyebrow': 'Qu’est-ce que Teach',
+    'teach.title': 'Le cadre d’observation de classe de la Banque mondiale.',
+    'teach.lede': 'Teach est un outil gratuit et validé, utilisé par des ministères de l’éducation du monde entier pour mesurer la qualité des pratiques pédagogiques dans les classes du primaire. Il nécessite des observateurs humains formés et certifiés. C’est la norme opérationnelle du dispositif de soutien aux enseignants de la Banque mondiale dans les pays à revenu faible et intermédiaire.',
+    'teach.check1': '<b>Grille publiée.</b> Manuel de l’observateur disponible en anglais, espagnol, français, portugais et swahili.',
+    'teach.check2': '<b>Petite enfance, primaire et secondaire.</b> Conçu pour tous les niveaux de l’éducation de base.',
+    'teach.check3': '<b>Certification obligatoire des observateurs.</b> Norme opérationnelle du programme : l’observateur doit réussir un test de fiabilité.',
+    'teach.check4': '<b>Base de données internationale</b> de référence pour l’évaluation et la comparaison entre pays.',
+    'prob.eyebrow': 'Le problème',
+    'prob.title': 'Étendre l’observation de classe coûte cher.',
+    'prob.lede': 'Mettre en place un système d’observation rigoureux à l’échelle nationale coûterait <b>environ 3 milliards de dollars par an</b> rien qu’aux États-Unis, soit près de 0,3 % des dépenses totales de l’enseignement primaire et secondaire. C’est une part prohibitive pour la plupart des budgets de l’éducation des pays à revenu faible et intermédiaire. Résultat : la plupart des systèmes éducatifs ne disposent d’aucune information systématique sur ce qui se passe dans leurs classes.',
+    'prob.quote': 'Les données sont claires : un retour régulier et bien informé améliore la performance des enseignants. Mais le coût de l’observateur humain limite la fréquence de ces retours. Les enseignants qui ont le plus besoin de retours sont ceux qui en reçoivent le moins.',
+    'approach.eyebrow': 'L’approche',
+    'approach.title': 'La grille humaine comme source d’expertise. Le LLM comme évaluateur à forte capacité et à faible coût marginal.',
+    'approach.lede': 'Un LLM (Gemini 2.0 / 2.5 Flash) applique la grille complète de Teach Primary à des transcriptions de classes péruviennes. La grille humaine ne change pas : elle reste la norme. Le cadrage juste est celui du <em>technology-facilitated expert scoring</em>, c’est-à-dire un passage à l’échelle du jugement expert, et non un remplacement. L’IA ne découvre pas une nouvelle manière d’évaluer. Elle applique celle que nous connaissons déjà, de façon cohérente et à grande échelle.',
+    'approach.c1.h': 'Ce qui ne change pas',
+    'approach.c1.p': 'Le manuel de l’observateur. La grille. Les normes de certification. Le cadre pédagogique. Tout ce qui fait de Teach un instrument validé.',
+    'approach.c2.h': 'Ce qui change',
+    'approach.c2.p': 'Qui applique la grille à chaque classe. Au lieu d’un évaluateur humain par classe, le LLM applique le même critère à des dizaines de milliers de transcriptions, pour un coût marginal proche de zéro par classe supplémentaire.',
+    'find.eyebrow': 'Les résultats',
+    'find.title': '230 séances de classe du primaire au Pérou. Le critère de certification de Teach est atteint.',
+    'find.lede': 'La meilleure configuration satisfait le <b>critère de certification de Teach à un point près</b> dans 92,2 % des examens simulés (Monte Carlo), et atteint un accord au niveau des éléments comparable à celui d’évaluateurs humains formés. La référence est un seul observateur de terrain certifié, et non un codeur de référence (master coder) du programme.',
+    'find.s1.lbl': 'Examens de certification Teach réussis',
+    'find.s1.sub': 'Simulations Monte Carlo, critère à un point près',
+    'find.s2.lbl': 'Classes du primaire au Pérou',
+    'find.s2.sub': 'Transcriptions évaluées par des LLM et par des humains',
+    'find.s3.lbl': 'Accord au niveau des éléments',
+    'find.s3.sub': 'Comparable à celui d’évaluateurs humains formés',
+    'find.s4.lbl': 'Configurations de LLM évaluées',
+    'find.s4.sub': 'Gemini 2.0 et 2.5 Flash',
+    'find.s5.lbl': 'Certification avec une grille minimale',
+    'find.s5.sub': 'La grille compte. Beaucoup.',
+    'find.s6.lbl': 'Certification avec une grille bien conçue',
+    'find.s6.sub': 'De zéro à la certification par la seule refonte du prompt',
+    'matters.eyebrow': 'Ce qui compte',
+    'matters.title': 'La qualité de la grille l’emporte. La verbosité, non.',
+    'matters.lede': 'Une régression qui isole chaque levier de conception montre que <b>la qualité de la grille</b> et <b>les priors distributionnels</b> sont les deux principaux moteurs de l’accord, alors que le raisonnement chain-of-thought et le snapshot tagging <b>n’y contribuent pas</b>. La leçon pour les équipes techniques : investir dans l’ingénierie des grilles, pas dans des astuces de prompting.',
+    'matters.c1.h': 'Ce qui fait la différence',
+    'matters.c1.p': '<b>Le contenu de la grille</b> : niveau de détail, exemples d’ancrage, absence d’échappatoires. Et <b>les priors distributionnels</b> : donner au LLM le taux de base attendu pour calibrer ses réponses.',
+    'matters.c2.h': 'Ce qui ne fait PAS la différence',
+    'matters.c2.p': '<b>Le chain-of-thought</b> : demander au LLM de raisonner étape par étape. Et <b>le snapshot tagging</b> : marquer des segments avec des horodatages structurés. C’est contre-intuitif, mais les données sont claires.',
+    'why.eyebrow': 'Pourquoi c’est important',
+    'why.title': 'Un retour formatif plus fréquent, à la portée des ministères.',
+    'why.lede': 'Un LLM fiable en tant qu’évaluateur permet aux ministères et aux programmes de soutien aux enseignants de fournir des retours formatifs plus souvent et à un coût marginal plus faible. Il ne remplace pas l’observateur certifié. Il lui offre un partenaire peu coûteux pour étendre le même critère à davantage de classes.',
+    'team.eyebrow': 'L’équipe',
+    'team.title': 'Les autrices et auteurs de l’étude.',
+    'res.eyebrow': 'Ressources',
+    'res.title': 'Découvrez Teach et téléchargez le manuel.',
+    'res.r1.tag': 'Site · Banque mondiale',
+    'res.r1.h': 'Teach — Helping countries track and improve teaching quality',
+    'res.r1.p': 'La page officielle de Teach à la Banque mondiale. Manuels, vidéos, guides de mise en œuvre et études de cas par pays.',
+    'res.r1.cta': 'Découvrir Teach sur le site de la Banque mondiale',
+    'res.r2.tag': 'Manuel · WB Documents',
+    'res.r2.h': 'Teach Primary — Observer Manual',
+    'res.r2.p': 'Manuel de l’observateur, disponible en anglais, espagnol, français, portugais et swahili dans le dépôt de la Banque mondiale.',
+    'res.r2.cta': 'Télécharger le manuel',
+    'res.r3.tag': 'Document de travail',
+    'res.r3.h': 'Scaling up classroom observation with large language models: A reliability study of the World Bank’s Teach framework in Peru',
+    'res.r3.p': 'Kitmang, Krasnow, Krasnow, Lopez, Molina, Moreira Vasquez. Méthodologie complète, analyse des configurations et régression des leviers.',
+    'res.r3.cta': 'Prépublication bientôt disponible',
+    'foot.back': 'Retour à EvidencIA',
+    'foot.copy': '© 2026 EvidencIA. Un réseau en construction.',
   }
 };
 
@@ -728,7 +796,7 @@ document.querySelectorAll('.lang button').forEach(b => {
   try { stored = localStorage.getItem('evidencia-lang'); } catch (_) {}
   if (stored && I18N[stored]) return applyLang(stored);
   const nav = (navigator.language || 'es').slice(0,2).toLowerCase();
-  if (nav === 'en' || nav === 'pt') applyLang(nav);
+  if (nav === 'en' || nav === 'pt' || nav === 'fr') applyLang(nav);
   else applyLang('es');
 })();
 </script>

@@ -437,6 +437,7 @@
         <button data-lang="es" class="active">ES</button>
         <button data-lang="en">EN</button>
         <button data-lang="pt">PT</button>
+        <button data-lang="fr">FR</button>
       </div>
     </div>
   </div>
@@ -814,6 +815,67 @@ const I18N = {
     'res.r2.cta': 'Ler o paper',
     'foot.back': 'Voltar ao EvidencIA',
     'foot.copy': '© 2026 EvidencIA. Uma rede em construção.',
+  },
+  fr: {
+    'nav.back': 'Initiatives',
+    'hero.eyebrow': 'Initiative · Pérou · Enseignants du primaire',
+    'hero.title': 'La IA en el Aula : <em>votre alliée pédagogique</em>',
+    'hero.lede': 'Guide et formation à l’IA générative pour les enseignants de 6e année du primaire à Lima. Le programme a été évalué par un essai randomisé auprès de 1 269 enseignants dans 390 écoles publiques. Résultat central : la formation n’a pas fait gagner de temps, mais elle a développé la capacité à produire et à évaluer des contenus d’IA de haute qualité.',
+    'what.eyebrow': 'Le programme',
+    'what.title': 'Guide, formation et accompagnement dans la durée.',
+    'what.lede': 'Un programme léger, avec une journée de formation, une licence gratuite de Microsoft Copilot et un accompagnement continu par WhatsApp tout au long de l’année scolaire, conçu pour que les enseignants de 6e année intègrent l’IA générative à la préparation de leurs cours sans remplacer la pédagogie. Le programme a été mis en œuvre par la Banque mondiale en partenariat avec la DRELM à Lima Métropolitaine.',
+    'what.check1': '<b>Une journée de formation en présentiel</b> avec un cadre général pour l’usage des LLM dans l’enseignement.',
+    'what.check2': '<b>Licence Microsoft Copilot</b> disponible pendant toute la durée de l’intervention.',
+    'what.check3': '<b>Accompagnement continu par WhatsApp</b> tout au long de l’année scolaire : un soutien peu coûteux et très régulier.',
+    'what.check4': '<b>Aucun matériel prescriptif.</b> Le programme développe une compétence transférable, et non la maîtrise de prompts figés.',
+    'media.eyebrow': 'Dans les médias · Microsoft Build 2025',
+    'media.title': 'Satya Nadella l’a présenté sur scène.',
+    'media.lede': 'Microsoft a mis en avant « La IA en el Aula » lors de la conférence d’ouverture (keynote) de Microsoft Build 2025 et dans un reportage de Microsoft Source LATAM sur des enseignants péruviens qui utilisent Copilot en classe.',
+    'media.article.url': 'https://news.microsoft.com/source/latam/features/ai/world-bank-peru-teachers-copilot/?lang=en',
+    'media.article.tag': 'Microsoft Source LATAM · Reportage',
+    'media.article.title': 'From skepticism to success: How AI is helping teachers transform classrooms in Peru',
+    'media.article.cta': 'Lire le reportage',
+    'eval.eyebrow': 'L’évaluation',
+    'eval.title': 'Un essai randomisé auprès de 1 269 enseignants dans 390 écoles de Lima.',
+    'eval.lede': 'Randomisation au niveau de l’école, stratifiée par district administratif et par niveau initial en mathématiques. Aucune attrition différentielle entre groupe de traitement et groupe témoin. Huit mois de suivi à partir des données administratives de la plateforme et d’une enquête finale notée à l’aveugle.',
+    'eval.s1.lbl': 'Hausse de l’activation de la licence Copilot',
+    'eval.s1.sub': 'Par rapport à une moyenne de 2,8 % dans le groupe témoin',
+    'eval.s2.lbl': 'Enseignants qui citent Copilot comme l’IA qu’ils utilisent le plus',
+    'eval.s2.sub': 'Par rapport à une moyenne de 9,6 % dans le groupe témoin',
+    'eval.s3.lbl': 'Points d’amélioration de la qualité des prompts',
+    'eval.s3.sub': 'Grille en 5 points, notation à l’aveugle',
+    'eval.s4.lbl': 'Points sur une grille INDÉPENDANTE de la formation',
+    'eval.s4.sub': 'La compétence se transfère hors du programme',
+    'eval.s5.lbl': 'Moins de risque de mal juger un prompt faible',
+    'eval.s5.sub': 'Un meilleur jugement sur les productions de l’IA',
+    'eval.s6.lbl': 'Moins de risque d’accepter une réponse inadéquate',
+    'eval.s6.sub': 'Une meilleure évaluation critique de l’IA',
+    'eval.quote': 'Le temps, l’indicateur qui domine la littérature sur l’IA et la productivité, n’a pas bougé. Les enseignants du groupe de traitement et ceux du groupe témoin ont gagné autant de temps sur sept tâches centrales. Le programme a changé autre chose : la qualité de l’interaction de l’enseignant avec l’IA.',
+    'eval.paper.tag': 'L’article · Policy Research Working Paper 11476 · Banque mondiale, octobre 2026',
+    'eval.paper.title': 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
+    'eval.paper.cta': 'Lire l’article',
+    'why.eyebrow': 'Pourquoi c’est important',
+    'why.title': 'Le programme réduit les écarts de compétence au lieu de les creuser.',
+    'why.lede': 'Les effets sont <b>plus importants</b> chez les enseignants plus âgés : ceux dont le niveau initial était le plus faible sont ceux qui ont le plus progressé. Le programme réduit les écarts de compétence au lieu de les creuser, l’un des résultats les plus importants pour les politiques publiques.',
+    'why.c1.h': 'La compétence, pas la vitesse',
+    'why.c1.p': 'La littérature sur l’IA et la productivité provient du secteur privé des pays à revenu élevé et mesure des tâches simples et bien définies. Dans le travail enseignant, qui est complexe, autonome et se déroule dans les systèmes publics de pays en développement, l’indicateur décisif n’est pas le temps. C’est la qualité du résultat.',
+    'why.c2.h': 'Un usage professionnel, pas personnel',
+    'why.c2.p': 'La part des enseignants du groupe de traitement qui déclarent utiliser l’IA davantage à des fins personnelles que professionnelles est inférieure de 17 points de pourcentage à celle du groupe témoin. Le programme développe un capital humain spécifiquement professionnel, et non une familiarité générale avec la technologie.',
+    'team.eyebrow': 'L’équipe',
+    'team.title': 'Les autrices et auteurs de l’étude.',
+    'team.credits': 'L’étude a été financée par le <b>Human Capital Project de la Banque mondiale</b> et par le <b>Microsoft AI Economy Institute</b>, avec l’approbation IRB de l’Université de Toronto (protocole 48010), et enregistrée dans l’AEA RCT Registry.',
+    'res.eyebrow': 'Ressources',
+    'res.title': 'Téléchargez le guide et lisez l’article.',
+    'res.r1.tag': 'Guide · En espagnol',
+    'res.r1.h': 'La IA en el Aula: Tu Aliada Pedagógica',
+    'res.r1.p': 'Publication de la Banque mondiale. Guide pratique pour un usage intelligent et responsable de l’IA dans l’enseignement.',
+    'res.r1.cta': 'Télécharger sur le site de la Banque mondiale',
+    'res.r2.tag': 'Article · Banque mondiale',
+    'res.r2.h': 'Not Faster, but Better: Generative AI and Teacher Skill in Peru',
+    'res.r2.p': 'Glave, Lopez, Molina et Zárate (octobre 2026). Policy Research Working Paper 11476. L’étude complète de l’essai randomisé, avec la méthodologie, les résultats et l’analyse d’hétérogénéité.',
+    'res.r2.cta': 'Lire l’article',
+    'foot.back': 'Retour à EvidencIA',
+    'foot.copy': '© 2026 EvidencIA. Un réseau en construction.',
   }
 };
 
@@ -845,7 +907,7 @@ document.querySelectorAll('.lang button').forEach(b => {
   try { stored = localStorage.getItem('evidencia-lang'); } catch (_) {}
   if (stored && I18N[stored]) return applyLang(stored);
   const nav = (navigator.language || 'es').slice(0,2).toLowerCase();
-  if (nav === 'en' || nav === 'pt') applyLang(nav);
+  if (nav === 'en' || nav === 'pt' || nav === 'fr') applyLang(nav);
   else applyLang('es');
 })();
 </script>

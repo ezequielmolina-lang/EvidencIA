@@ -1426,11 +1426,18 @@
   }
   @media (max-width: 560px) {
     .container { padding: 0 20px; }
+    .nav { gap: 10px; }
+    .nav-links { gap: 8px; }
+    .lang button { padding: 5px 6px; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .smackdowns { grid-template-columns: 1fr; }
     .partners-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+  /* Four language buttons plus the CTA do not fit beside the brand on small phones */
+  @media (max-width: 370px) {
+    .nav-links a.nav-cta { display: none; }
   }
 
   /* Fade-in on scroll */
@@ -1683,6 +1690,7 @@
         <button data-lang="es" class="active" aria-label="Español">ES</button>
         <button data-lang="en" aria-label="English">EN</button>
         <button data-lang="pt" aria-label="Português">PT</button>
+        <button data-lang="fr" aria-label="Français">FR</button>
       </div>
     </nav>
   </div>
@@ -1714,8 +1722,8 @@
           <div class="lbl" data-i18n="hero.stat2">países en América Latina</div>
         </div>
         <div class="stat">
-          <div class="num">3</div>
-          <div class="lbl" data-i18n="hero.stat4">idiomas: ES · EN · PT</div>
+          <div class="num">4</div>
+          <div class="lbl" data-i18n="hero.stat4">idiomas: ES · EN · PT · FR</div>
         </div>
       </div>
     </div>
@@ -2073,11 +2081,21 @@
         </article>
 
         <article class="initiative">
+          <div class="init-media"><img src="img/el-salvador-blog.jpg" alt="Aula de una escuela del programa de modernización educativa de El Salvador" loading="lazy" style="object-fit: cover; padding: 0" /></div>
+          <div class="init-body">
+            <div class="init-tag" data-i18n="init.sv.tag">El Salvador · Educación básica</div>
+            <h3 class="init-name">El Salvador</h3>
+            <p class="init-desc" data-i18n="init.sv.desc">Una modernización de todo el sistema educativo, con la IA como acelerador. En escuelas del programa, estudiantes voluntarios superaron con amplitud el promedio nacional en PISA for Schools: 492 frente a 366 en lectura.</p>
+            <a class="init-link" href="iniciativas/el-salvador.html" data-i18n="init.sv.link">Conoce la iniciativa</a>
+          </div>
+        </article>
+
+        <article class="initiative">
           <div class="init-media"><img src="img/ape-paper-sample.png" alt="APEP Autonomous Research — paper generado por APE (enero 2026)" loading="lazy" /></div>
           <div class="init-body">
-            <div class="init-tag" data-i18n="init.ape.tag">Global · Investigación económica</div>
+            <div class="init-tag" data-i18n="init.ape.tag">Iniciativa externa · Global · Investigación económica</div>
             <h3 class="init-name">APE</h3>
-            <p class="init-desc" data-i18n="init.ape.desc">Un sistema experimental que testea si la IA puede generar, replicar y revisar investigación de política pública a escala usando datos abiertos. Del Social Catalyst Lab y la Universidad de Zúrich: 1.000 papers generados, 18.000+ enfrentamientos head-to-head, todo público — incluidos los fracasos.</p>
+            <p class="init-desc" data-i18n="init.ape.desc">Iniciativa externa del Social Catalyst Lab y la Universidad de Zúrich, que seguimos por lo que enseña. Prueba si la IA puede generar, replicar y verificar investigación de política pública con datos abiertos. Tras sus primeros 1.000 papers pausó la producción para medir sus errores, y publica todo, incluidos los fracasos.</p>
             <a class="init-link" href="iniciativas/ape.html" data-i18n="init.ape.link">Conoce la iniciativa</a>
           </div>
         </article>
@@ -2353,7 +2371,7 @@
         <ul>
           <li><a href="mailto:contacto@redevidencia.org">contacto@redevidencia.org</a></li>
           <li><a href="https://www.linkedin.com/company/redevidencia/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><span data-i18n="foot.lang">Idiomas: ES · EN · PT</span></li>
+          <li><span data-i18n="foot.lang">Idiomas: ES · EN · PT · FR</span></li>
         </ul>
       </div>
     </div>
@@ -2380,7 +2398,7 @@ const CONTACT_EMAIL  = 'contacto@redevidencia.org';
 const DATA_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbxv_us7aRY8bJSPCgBOXPh9Pga85QmOa3z7D1xnCIEtBkICuj1YCOIQDwVgbuEHkSzQ/exec';
 
 // ============================================================
-// I18N — full content in ES / EN / PT
+// I18N — full content in ES / EN / PT / FR
 // ============================================================
 const I18N = {
   es: {
@@ -2402,7 +2420,7 @@ const I18N = {
     'hero.stat1': 'universidades en la red MetaRed',
     'hero.stat2': 'países en América Latina',
     'hero.stat3': 'socios fundadores',
-    'hero.stat4': 'idiomas: ES · EN · PT',
+    'hero.stat4': 'idiomas: ES · EN · PT · FR',
 
     'prob.eyebrow': 'El problema',
     'prob.title': 'La misma tecnología, resultados opuestos.',
@@ -2456,9 +2474,12 @@ const I18N = {
     'init.teach.tag': 'Global · Observación de aula',
     'init.teach.desc': 'Automatización de la observación de aula del marco Teach del Banco Mundial con LLMs. En un estudio en Perú con 230 transcripciones de aula de primaria, el sistema aprueba el examen de certificación Teach en el 92,2% de las simulaciones.',
     'init.teach.link': 'Conoce la iniciativa',
-    'init.ape.tag': 'Global · Investigación económica',
-    'init.ape.desc': 'Un sistema experimental que testea si la IA puede generar, replicar y revisar investigación de política pública a escala usando datos abiertos. Del Social Catalyst Lab y la Universidad de Zúrich: 1.000 papers generados, 18.000+ enfrentamientos head-to-head, todo público — incluidos los fracasos.',
+    'init.ape.tag': 'Iniciativa externa · Global · Investigación económica',
+    'init.ape.desc': 'Iniciativa externa del Social Catalyst Lab y la Universidad de Zúrich, que seguimos por lo que enseña. Prueba si la IA puede generar, replicar y verificar investigación de política pública con datos abiertos. Tras sus primeros 1.000 papers pausó la producción para medir sus errores, y publica todo, incluidos los fracasos.',
     'init.ape.link': 'Conoce la iniciativa',
+    'init.sv.tag': 'El Salvador · Educación básica',
+    'init.sv.desc': 'Una modernización de todo el sistema educativo, con la IA como acelerador. En escuelas del programa, estudiantes voluntarios superaron con amplitud el promedio nacional en PISA for Schools: 492 frente a 366 en lectura.',
+    'init.sv.link': 'Conoce la iniciativa',
 
     'conv.eyebrow': 'Próximas conversaciones',
     'conv.title': 'Donde la evidencia entra en debate.',
@@ -2660,7 +2681,7 @@ const I18N = {
     'foot.join': 'Súmate',
     'foot.j1': 'Newsletter', 'foot.j2': 'Ser socio', 'foot.j3': 'Proponer un seminario',
     'foot.contact': 'Contacto',
-    'foot.lang': 'Idiomas: ES · EN · PT',
+    'foot.lang': 'Idiomas: ES · EN · PT · FR',
     'foot.copy': '© 2026 EvidencIA. Una red en construcción.',
     'foot.tagline': 'Evidencia, no ruido.',
 
@@ -2692,7 +2713,7 @@ const I18N = {
     'hero.stat1': 'universities in the MetaRed network',
     'hero.stat2': 'countries across Latin America',
     'hero.stat3': 'founding partners',
-    'hero.stat4': 'languages: ES · EN · PT',
+    'hero.stat4': 'languages: ES · EN · PT · FR',
 
     'prob.eyebrow': 'The problem',
     'prob.title': 'Same technology. Opposite results.',
@@ -2746,9 +2767,12 @@ const I18N = {
     'init.teach.tag': 'Global · Classroom observation',
     'init.teach.desc': 'Automating classroom observation under the World Bank\'s Teach framework with LLMs. In a Peru study across 230 primary-classroom transcripts, the system passes the Teach certification exam in 92.2% of simulations.',
     'init.teach.link': 'Learn about the initiative',
-    'init.ape.tag': 'Global · Economic policy research',
-    'init.ape.desc': 'An experimental system testing whether AI can generate, replicate and revise public-policy research at scale using open data. From the Social Catalyst Lab and the University of Zurich: 1,000 papers generated, 18,000+ head-to-head matches, everything public — including the failures.',
+    'init.ape.tag': 'External initiative · Global · Economic policy research',
+    'init.ape.desc': 'An external initiative from the Social Catalyst Lab and the University of Zurich, which we follow for what it teaches. It tests whether AI can generate, replicate and verify public-policy research with open data. After its first 1,000 papers it paused production to measure their errors, and it publishes everything, failures included.',
     'init.ape.link': 'Explore APE',
+    'init.sv.tag': 'El Salvador · Basic education',
+    'init.sv.desc': 'A whole-system modernization of education, with AI as an accelerator. In program schools, volunteer students far outscored the national average on PISA for Schools: 492 versus 366 in reading.',
+    'init.sv.link': 'Explore the initiative',
 
     'conv.eyebrow': 'Upcoming conversations',
     'conv.title': 'Where evidence enters the debate.',
@@ -2950,7 +2974,7 @@ const I18N = {
     'foot.join': 'Join',
     'foot.j1': 'Newsletter', 'foot.j2': 'Become a partner', 'foot.j3': 'Propose a seminar',
     'foot.contact': 'Contact',
-    'foot.lang': 'Languages: ES · EN · PT',
+    'foot.lang': 'Languages: ES · EN · PT · FR',
     'foot.copy': '© 2026 EvidencIA. A network in the making.',
     'foot.tagline': 'Evidence, not noise.',
 
@@ -2982,7 +3006,7 @@ const I18N = {
     'hero.stat1': 'universidades na rede MetaRed',
     'hero.stat2': 'países na América Latina',
     'hero.stat3': 'parceiros fundadores',
-    'hero.stat4': 'idiomas: ES · EN · PT',
+    'hero.stat4': 'idiomas: ES · EN · PT · FR',
 
     'prob.eyebrow': 'O problema',
     'prob.title': 'A mesma tecnologia. Resultados opostos.',
@@ -3036,9 +3060,12 @@ const I18N = {
     'init.teach.tag': 'Global · Observação de aula',
     'init.teach.desc': 'Automação da observação de aula sob o framework Teach do Banco Mundial com LLMs. Em um estudo no Peru com 230 transcrições de sala de aula primária, o sistema aprova o exame de certificação Teach em 92,2% das simulações.',
     'init.teach.link': 'Conheça a iniciativa',
-    'init.ape.tag': 'Global · Pesquisa de política econômica',
-    'init.ape.desc': 'Um sistema experimental que testa se a IA pode gerar, replicar e revisar pesquisa de política pública em escala usando dados abertos. Do Social Catalyst Lab e da Universidade de Zurique: 1.000 papers gerados, 18.000+ confrontos diretos, tudo público — incluindo os fracassos.',
+    'init.ape.tag': 'Iniciativa externa · Global · Pesquisa de política econômica',
+    'init.ape.desc': 'Iniciativa externa do Social Catalyst Lab e da Universidade de Zurique, que acompanhamos pelo que ensina. Testa se a IA pode gerar, replicar e verificar pesquisa de política pública com dados abertos. Depois dos primeiros 1.000 papers, pausou a produção para medir seus erros, e publica tudo, inclusive os fracassos.',
     'init.ape.link': 'Conheça a iniciativa',
+    'init.sv.tag': 'El Salvador · Educação básica',
+    'init.sv.desc': 'Uma modernização de todo o sistema educacional, com a IA como aceleradora. Em escolas do programa, estudantes voluntários superaram com folga a média nacional no PISA for Schools: 492 contra 366 em leitura.',
+    'init.sv.link': 'Conheça a iniciativa',
 
     'conv.eyebrow': 'Próximas conversas',
     'conv.title': 'Onde a evidência entra em debate.',
@@ -3240,7 +3267,7 @@ const I18N = {
     'foot.join': 'Junte-se',
     'foot.j1': 'Newsletter', 'foot.j2': 'Ser parceiro', 'foot.j3': 'Propor um seminário',
     'foot.contact': 'Contato',
-    'foot.lang': 'Idiomas: ES · EN · PT',
+    'foot.lang': 'Idiomas: ES · EN · PT · FR',
     'foot.copy': '© 2026 EvidencIA. Uma rede em construção.',
     'foot.tagline': 'Evidência, não ruído.',
 
@@ -3251,6 +3278,299 @@ const I18N = {
     'status.sp.success': 'Obrigado! Vamos revisar o estudo e adicioná-lo se entrar na curadoria.',
     'status.sp.error': 'Não foi possível enviar a proposta. Tente novamente ou escreva para ' + CONTACT_EMAIL,
     'status.validation': 'Por favor, preencha os campos obrigatórios.',
+  },
+
+  fr: {
+    'nav.problem': 'Le problème',
+    'nav.building': 'Ce que nous construisons',
+    'nav.events': 'Conversations',
+    'nav.newsletter': 'Newsletter',
+    'nav.research': 'Données probantes',
+    'nav.initiatives': 'Initiatives',
+    'nav.partners': 'Partenaires',
+    'nav.join': 'Rejoindre',
+
+    'hero.eyebrow': 'Réseau latino-américain sur l’IA et l’apprentissage',
+    'hero.h1a': 'Le savoir existe.',
+    'hero.h1b': 'L’espace où il se rencontre, pas encore.',
+    'hero.lede': 'EvidencIA est le réseau qui relie chercheurs, ministères, universités et entreprises edtech autour de la question qui compte le plus : qu’est-ce qui aide vraiment à apprendre, et qu’est-ce qui donne seulement l’impression que tout est plus facile ?',
+    'hero.cta1': 'Abonnez-vous à la newsletter',
+    'hero.cta2': 'Devenez partenaire',
+    'hero.stat1': 'universités du réseau MetaRed',
+    'hero.stat2': 'pays d’Amérique latine',
+    'hero.stat3': 'partenaires fondateurs',
+    'hero.stat4': 'langues : ES · EN · PT · FR',
+
+    'prob.eyebrow': 'Le problème',
+    'prob.title': 'La même technologie, des résultats opposés.',
+    'prob.lede': 'Les données récentes pointent dans deux directions opposées : la même IA peut doubler l’apprentissage ou le détruire. La différence ne tient pas à la technologie. Elle tient à la conception, à la mise en œuvre, et à la capacité du système à préserver l’effort cognitif qui produit un véritable apprentissage.',
+    'prob.works.tag': 'Quand cela fonctionne',
+    'prob.works.h': 'Une IA bien conçue, des enseignants préparés, la science de l’apprentissage au centre.',
+    'prob.works.c1': 'Quand le système exige le travail cognitif de l’élève et que l’IA apporte un étayage, pas des raccourcis.',
+    'prob.works.c2': 'Quand les enseignants sont préparés à intégrer l’IA comme un outil de plus, sans qu’elle remplace l’enseignement.',
+    'prob.works.c3': 'Quand l’indicateur de réussite est l’apprentissage durable, pas la sensation du moment.',
+    'prob.fails.tag': 'Quand cela échoue',
+    'prob.fails.h': 'Une IA qui remplace la réflexion au lieu de l’amplifier.',
+    'prob.fails.c1': 'Quand l’IA répond à la place de l’élève, il ne reste aucun résidu cognitif. Avoir l’impression d’apprendre, ce n’est pas apprendre.',
+    'prob.fails.c2': 'Quand les élèves préfèrent l’outil qui exige le moins d’effort, ils finissent par choisir précisément celui qui sape l’apprentissage.',
+    'prob.fails.c3': 'Quand l’aisance du moment est confondue avec la maîtrise, l’apprentissage s’efface dès que l’accès est retiré.',
+    'prob.pull': 'La question n’est pas de savoir <em>si</em> l’IA changera l’éducation. Elle est de savoir si les responsables qui prennent les décisions disposeront des données probantes nécessaires pour que ce changement serve l’apprentissage, et pas seulement la performance.',
+
+    'build.eyebrow': 'Ce que nous construisons',
+    'build.title': 'Trois formats. Une seule question de fond.',
+    'build.lede': 'Tout ce que nous produisons passe par le même filtre : cela aide-t-il les élèves à construire un véritable apprentissage, ou cela donne-t-il seulement l’impression que les choses sont plus faciles ?',
+    'build.p1.h': 'Newsletter',
+    'build.p1.p': 'Ce qui fonctionne : des données issues d’expérimentations rigoureuses. Ce que nous savons : la science de l’apprentissage appliquée. Ce que font les pays : des politiques réelles en cours. Sélection assurée par les partenaires du réseau.',
+    'build.p1.tag': 'Lecture courte',
+    'build.p2.h': 'Séminaires',
+    'build.p2.p': 'Des conversations qui en valent la peine. Des chercheurs de Harvard, Stanford et UCLA. Les équipes à l’origine des essais randomisés en Équateur, au Nigeria et au Ghana. Des ministères du Chili, du Brésil, d’El Salvador et de l’Uruguay.',
+    'build.p2.tag': 'En direct',
+    'build.p3.h': 'Communauté EvidencIA',
+    'build.p3.p': 'Un groupe WhatsApp où chercheurs, ministères et professionnels du secteur échangent en direct des données probantes sur l’IA et l’apprentissage, sans filtre. <a href="https://wa.me/51944571205?text=Bonjour%20Gabriela%2C%20je%20souhaite%20rejoindre%20le%20groupe%20WhatsApp%20d%E2%80%99EvidencIA" target="_blank" rel="noopener">Écrivez à Gabriela pour rejoindre le groupe →</a>',
+    'build.p3.tag': 'WhatsApp',
+
+    'sd.eyebrow': 'EvidencIA Smackdowns',
+    'sd.title': 'Les questions que le débat public évite.',
+    'sd.lede': 'Des débats fondés sur les données probantes, sans langue de bois. Quelques-unes des questions que nous pourrions ouvrir :',
+    'sd.q1': 'L’IA nous rend-elle plus bêtes ?',
+    'sd.q2': 'L’enseignant deviendra-t-il obsolète ?',
+    'sd.q3': 'L’IA creuse-t-elle les inégalités éducatives ?',
+    'sd.q4': 'Faut-il interdire l’IA à l’école ?',
+    'sd.meta': 'Débat fondé sur les données probantes',
+
+    'init.eyebrow': 'Initiatives',
+    'init.title': 'Des programmes en cours dans la région.',
+    'init.lede': 'Des cas que les partenaires du réseau construisent déjà, pour apprendre, adapter et partager.',
+    'init.emc.tag': 'Pérou · Enseignement secondaire',
+    'init.emc.desc': 'Orientation professionnelle et tutorat en mathématiques avec l’IA pour les élèves de 5e année, la dernière du secondaire, à Lima. Deux outils testés dans un projet pilote évalué dans 110 écoles publiques, avec la DRELM, uDocz, l’UPC et la Banque mondiale. Lancement : 16 mars 2026.',
+    'init.emc.link': 'Découvrir l’initiative',
+    'init.dl.tag': 'ALC · Chefs d’établissement',
+    'init.dl.desc': 'La méthode d’IA qui épargne aux chefs d’établissement des heures de paperasse pour qu’ils les consacrent au leadership pédagogique.',
+    'init.dl.link': 'Découvrir l’initiative',
+    'init.aula.tag': 'Pérou · Enseignants du primaire',
+    'init.aula.desc': 'Guide et formation pour les enseignants de 6e année du primaire. Un essai randomisé mené à Lima auprès de 1 269 enseignants a montré que le programme ne fait pas gagner de temps, mais qu’il améliore la qualité des prompts et la capacité à évaluer les réponses de l’IA, avec des effets plus marqués chez les enseignants plus âgés.',
+    'init.aula.link': 'Découvrir le programme',
+    'init.teach.tag': 'Monde · Observation de classe',
+    'init.teach.desc': 'Automatisation de l’observation de classe selon le cadre Teach de la Banque mondiale à l’aide de LLM. Dans une étude au Pérou portant sur 230 transcriptions de classes du primaire, le système réussit l’examen de certification Teach dans 92,2 % des simulations.',
+    'init.teach.link': 'Découvrir l’initiative',
+    'init.ape.tag': 'Initiative externe · Monde · Recherche économique',
+    'init.ape.desc': 'Une initiative externe du Social Catalyst Lab et de l’Université de Zurich, que nous suivons pour ce qu’elle enseigne. Elle teste si l’IA peut produire, répliquer et vérifier des travaux de recherche sur les politiques publiques à partir de données ouvertes. Après ses 1 000 premiers articles, elle a suspendu la production pour mesurer leurs erreurs, et elle publie tout, échecs compris.',
+    'init.ape.link': 'Découvrir l’initiative',
+    'init.sv.tag': 'El Salvador · Éducation de base',
+    'init.sv.desc': 'Une modernisation de l’ensemble du système éducatif, avec l’IA comme accélérateur. Dans les écoles du programme, des élèves volontaires ont largement dépassé la moyenne nationale à l’évaluation PISA for Schools : 492 contre 366 en lecture.',
+    'init.sv.link': 'Découvrir l’initiative',
+
+    'conv.eyebrow': 'Prochaines conversations',
+    'conv.title': 'Là où les données probantes entrent dans le débat.',
+    'conv.lede': 'Chercheurs, ministères et professionnels du secteur en dialogue public.',
+    'conv.ph.eyebrow': 'Bientôt',
+    'conv.ph.h': 'Nous finalisons le programme de la première conversation.',
+    'conv.ph.p': 'Nous vous préviendrons par courriel dès que la date et le panel seront confirmés.',
+    'conv.ph.cta': 'Abonnez-vous à la newsletter',
+    'conv.ev1.kicker': 'Prélancement · Lima',
+    'conv.ev1.title': 'L’avenir de l’éducation à l’ère de l’IA',
+    'conv.ev1.desc': 'Première conversation d’EvidencIA à Lima, avant le lancement officiel du réseau. Un panel de six voix de l’écosystème péruvien, qui réunit recherche, secteur privé et politiques publiques autour de la même table.',
+    'conv.ev1.when.lbl': 'Quand',
+    'conv.ev1.when.val': 'Lundi 31 août 2026 · 17 h 00',
+    'conv.ev1.where.lbl': 'Où',
+    'conv.ev1.where.val': 'UPC · Campus Monterrico<br>Av. Primavera 2390, Surco (Lima)',
+    'conv.ev1.panel.lbl': 'Panel',
+
+    'nlp.archive.eyebrow': 'En préparation',
+    'nlp.archive.title': 'Les deux premiers numéros.',
+    'nlp.archive.lede': 'Chaque numéro aborde une question à partir des données probantes. Ces deux numéros sont en bouclage éditorial.',
+    'nlp.ed1.num': 'Numéro 01',
+    'nlp.ed1.tag': 'Marché du travail',
+    'nlp.ed1.title': 'Jeunes diplômés universitaires : signe avant-coureur de la crise de l’emploi',
+    'nlp.ed1.dek': 'Les jeunes diplômés sont le patient zéro de la transformation du travail par l’IA. Un changement de garde structurel, pas une mauvaise passe.',
+    'nlp.ed1.stat.eyebrow': 'Le chiffre',
+    'nlp.ed1.stat.lbl': 'Employabilité des 22 à 25 ans dans les secteurs exposés',
+    'nlp.ed2.num': 'Numéro 02',
+    'nlp.ed2.tag': 'Professions',
+    'nlp.ed2.title': 'Les professions à la croisée des chemins algorithmiques',
+    'nlp.ed2.dek': 'L’IA cible le travail intellectuel. Deux marchés qui s’ouvrent dans des directions opposées : substitution contre augmentation.',
+    'nlp.ed2.stat.a': 'Substitution',
+    'nlp.ed2.stat.b': 'Augmentation',
+    'nlp.ed.read': 'Lire le numéro',
+
+    'nav.publications': 'Publications',
+    'pub.eyebrow': 'Publications du réseau',
+    'pub.title': 'Des recherches originales aux exigences de rigueur élevées.',
+    'pub.lede': 'Articles, synthèses et méta-analyses produits par les partenaires du réseau. Une contribution originale au débat régional, d’une autre nature que la sélection de travaux de tiers réunie dans la <a href="#evidencia">base de données probantes</a>.',
+    'pub.p1.kicker': 'Document de référence · Rapport sur le développement dans le monde 2026',
+    'pub.p1.title': 'Can EdTech Close Learning Gaps?',
+    'pub.p1.byline': 'Alegría Burneo Terán · Lelys Dinarte-Diaz · Carolina Lopez · Ezequiel Molina',
+    'pub.p1.hook': 'Méta-analyse de <strong>191 tailles d’effet issues de 14 études dans dix économies</strong> qui passent un filtre strict : groupe témoin pur, attrition inférieure à 30 %, instruments validés. Sur 4 117 références examinées, seules ces 14 études atteignent ce niveau, et <strong>aucune ne porte sur un pays à faible revenu</strong>.',
+    'pub.p1.f1': '<strong>+0,125 ET</strong> : l’effet agrégé des outils adaptatifs et d’IA, supérieur à la médiane de 0,10 ET des interventions éducatives évaluées par essai randomisé.',
+    'pub.p1.f2': '<strong>L’IA générative ne fait pas mieux</strong> que le logiciel adaptatif qu’elle remplace : +0,022 ET (erreur type 0,075). Seules 3 études évaluent des outils génératifs.',
+    'pub.p1.f3': '<strong>0 étude sur 14 dans les pays à faible revenu</strong> ; seules 2 rapportent des coûts comparables : la promesse d’une « personnalisation pour une fraction du coût du tutorat » n’a presque jamais été mesurée en même temps que l’effet qu’elle prétend justifier.',
+    'pub.p1.cta.paper': 'Lire l’article',
+    'pub.p1.cta.nb': 'Interroger les données avec NotebookLM',
+    'pub.p1.fine': 'La recherche bibliographique s’est arrêtée en mai 2026 ; les travaux ultérieurs ne sont pas inclus. Contexte : l’article a été préparé comme document de référence pour le <em>Rapport sur le développement dans le monde 2026 : la promesse de l’intelligence artificielle</em>.',
+    'pub.p2.kicker': 'Policy Research Working Paper 11476 · Banque mondiale, octobre 2026',
+    'pub.p2.hook': 'Essai randomisé auprès de <strong>1 269 enseignants de 6e année dans 390 écoles publiques de Lima</strong>. Une journée de formation, une licence Copilot et huit mois de suivi par WhatsApp augmentent fortement l’usage de l’IA, mais <strong>ne font gagner du temps sur aucune des sept tâches principales</strong>.',
+    'pub.p2.f1': '<strong>De meilleurs prompts :</strong> +0,29 point sur une grille en 5 points fondée sur la formation et +0,38 sur une autre grille conçue de manière indépendante, toutes deux notées à l’aveugle. La compétence va au-delà de ce qui a été enseigné.',
+    'pub.p2.f2': '<strong>Un meilleur jugement sur l’IA :</strong> une probabilité inférieure de 9,9 points de pourcentage de mal évaluer un prompt faible, et de 6,7 points d’accepter comme bonne une réponse inadéquate.',
+    'pub.p2.f3': '<strong>Les écarts se resserrent :</strong> les gains les plus importants sont allés aux enseignants au-dessus de l’âge médian, 54 ans, qui partaient de plus loin.',
+    'pub.p2.cta.paper': 'Lire l’article',
+    'pub.p2.cta.prog': 'Découvrir le programme',
+    'pub.p2.fine': 'Financé par le Human Capital Project de la Banque mondiale et le Microsoft AI Economy Institute. Enregistré dans l’AEA RCT Registry, avec un dossier de reproductibilité vérifié.',
+    'res.eyebrow': 'Base de données probantes',
+    'res.title': 'Une sélection de recherches sur l’IA et l’apprentissage.',
+    'res.lede': 'Un panorama des données probantes sur l’IA et l’apprentissage, issues des programmes comme de la recherche universitaire : il comprend la série de la Banque mondiale, lue dans 213 pays en espagnol, anglais, portugais et bulgare, ainsi que les essais randomisés récents et les études sur les compétences numériques. Mis à jour à chaque numéro.',
+    'res.mcp.kicker': 'Nouveau · Connecteur pour assistants d’IA',
+    'res.mcp.title': 'Interrogez les données probantes depuis Claude ou ChatGPT.',
+    'res.mcp.hook': 'Le connecteur d’EvidencIA apporte notre base à votre assistant d’IA. Vous posez vos questions avec vos propres mots, par exemple <em>les tuteurs IA sont-ils efficaces au secondaire ?</em>, et la réponse cite chaque étude avec son lien, indique la solidité des données et vous prévient lorsqu’il n’en existe pas pour votre contexte.',
+    'res.mcp.f1': '<strong>Plus de 1 300 documents</strong> répartis sur quatre niveaux de preuve, et <strong>42 études</strong> dont chaque chiffre a été vérifié à partir de l’article.',
+    'res.mcp.f2': '<strong>Des réponses mieux étayées.</strong> Lors d’une évaluation à l’aveugle, les affirmations appuyées par les données sont passées de 45 à 87 sur 100 avec Claude, et de 56 à 85 avec ChatGPT doté de la recherche web.',
+    'res.mcp.f3': '<strong>Gratuit, sans compte et en lecture seule.</strong> Il ne reçoit ni ne conserve aucune donnée personnelle.',
+    'res.mcp.cta1': 'Comment le connecter',
+    'res.mcp.cta2': 'Voir un exemple de réponse',
+    'res.mcp.fine': 'Fonctionne dans Claude, ChatGPT et des éditeurs comme VS Code ou Cursor ; dans Gemini, pour l’instant uniquement aux États-Unis. Si votre institution n’autorise pas les connecteurs, un dossier téléchargeable contient les mêmes données.',
+    'res.cta.text': 'Les publications de la Banque mondiale sur l’IA en éducation disposent de leur propre tableau de bord, avec les téléchargements par pays et par langue, mis à jour tous les deux mois.',
+    'res.cta.btn': 'Voir le tableau de bord de la Banque mondiale →',
+    'res.dashlink': 'Tableau de bord des téléchargements par pays et par langue →',
+    'res.comp.lib.numlabel': 'ressources',
+    'res.comp.lib.title': 'Empirical · Bibliothèque de Cristóbal Cobo',
+    'res.comp.lib.desc': 'Répertoire indépendant constitué par Cristóbal Cobo (Banque mondiale). Cadres, guides, évaluations et études de cas par pays sur l’EdTech et l’IA, organisés par décision de politique publique.',
+    'res.comp.lib.cta': 'Explorer la bibliothèque →',
+    'res.add.eyebrow': 'Vous souhaitez proposer une étude ?',
+    'res.add.h': 'Nous ajoutons des essais randomisés, des travaux de sciences cognitives et des évaluations de politiques publiques.',
+    'res.add.p': 'Si vous connaissez une étude rigoureuse et empirique, centrée sur l’IA et l’apprentissage, qui devrait figurer ici, envoyez-nous le lien. La base est constituée par les partenaires du réseau.',
+    'res.add.cta': 'Proposer une étude',
+    'res.add.name': 'Votre nom',
+    'res.add.email': 'Courriel',
+    'res.add.url': 'Lien vers l’article (ou DOI)',
+    'res.add.title': 'Titre de l’article',
+    'res.add.authors': 'Auteurs · institution · pays',
+    'res.add.reason': 'Pourquoi elle devrait figurer ici (1 ligne)',
+    'res.add.submit': 'Envoyer la proposition',
+    'res.forthcoming.badge': 'À paraître',
+    'res.forthcoming.note': 'Prépublication bientôt disponible',
+    'res.wp.note': 'Document de travail',
+    'res.papers.show': 'Voir les articles',
+    'res.papers.hide': 'Masquer les articles',
+    'res.blogs.show': 'Voir les billets',
+    'res.blogs.hide': 'Masquer les billets',
+    'res.cat.all': 'Tout',
+    'res.cat.guides': 'Le terrain',
+    'res.cat.works': 'Tutorat IA : essais randomisés',
+    'res.cat.fails': 'L’IA en liberté',
+    'res.cat.digital': 'Compétences numériques',
+    'res.cat.blogs': 'Blogs et essais',
+    'res.ev.landscape.title': 'Cadres, guides et publications de référence.',
+    'res.ev.landscape.lead': 'Cadres, guides et données probantes issues des programmes, qui <em>orientent les décisions des ministères, des universités et des systèmes</em>. La série AI Revolution de la Banque mondiale, lue dans 213 pays en espagnol, anglais, portugais et bulgare, en est le point de départ. S’y ajoutent les études sur les compétences numériques, car le débat sur l’IA en éducation ne peut pas se lire sans la carte du capital humain numérique.',
+    'res.ev.tutoring.title': 'Quand la conception pédagogique guide la conversation, l’apprentissage tient.',
+    'res.ev.tutoring.lead': 'Sept essais randomisés sur quatre continents désignent le même mécanisme. <em>Nigeria +0,238 ET</em> en anglais en six semaines. <em>Sierra Leone +0,258 ET</em> en mathématiques après ajustement sur le niveau initial, dans un rapport rédigé par le développeur lui-même. <em>Harvard</em> : dans un plan croisé randomisé, les étudiants ont appris davantage avec le tuteur IA, et en moins de temps, qu’avec le cours en pédagogie active : 0,63 ET au test immédiat. <em>Taipei</em> isole la variable la plus fine : même tuteur encadré par des garde-fous, seul l’ordonnancement adaptatif des problèmes diffère, +0,15 ET à l’examen final sans IA. <em>Royaume-Uni (LearnLM + Eedi)</em> : les tuteurs experts ont approuvé 76 % des messages du modèle sans modification ou avec des modifications minimes. <em>Chili (Gallegos)</em> : orienter l’usage vers l’apprentissage a relevé l’examen final de 0,22 ET ; se contenter d’encourager l’adoption de l’IA n’a pas amélioré les notes. Et en <em>Turquie</em>, le bras avec garde-fous de cette même étude de Bastani élimine le transfert négatif du bras en accès libre, sans toutefois améliorer l’examen : même étude, mêmes élèves ; c’est la conception qui a changé le résultat.',
+    'res.ev.wild.title': 'Quand l’IA entre sans garde-fous, la performance monte et l’apprentissage recule.',
+    'res.ev.wild.lead': 'Trois grandes études décrivent le même schéma, ce que Demombynes appelle <em>cognitive surrender</em>. <em>Turquie (Bastani, bras en accès libre)</em> : l’accès à ChatGPT dope la performance pendant les exercices, mais lorsque l’IA est coupée, lors de l’examen à la fin de cette même séance, l’apprentissage recule. <em>Chine (Strömberg, Lei & Wu, 26 811 élèves, panel de 30 mois)</em> : les notes des devoirs augmentent de 18 %, mais les examens mensuels baissent de 20 % en six mois et les examens d’entrée au lycée et à l’université reculent de 18 % à 24 % en deux ans, toujours en pourcentage de la moyenne antérieure. <em>Plateforme ALEKS (3,2 millions d’interactions)</em> : le temps consacré aux problèmes faciles à résoudre avec l’IA baisse d’environ 30 % par rapport aux problèmes résistants à l’IA (temps relatif, et non temps total d’étude), et lors des évaluations surveillées, la cote (odds) de bonne réponse aux items de rétention baisse de 25 %. Dans les trois cas, le problème n’est pas l’IA : c’est l’absence de conception.',
+    'res.ev.blogs.title': 'Essais et analyses de l’écosystème.',
+    'res.ev.blogs.lead': 'Éditoriaux et analyses d’auteurs centraux du réseau et de leurs interlocuteurs les plus proches, publiés sur les blogs de la Banque mondiale et sur des sites personnels. <em>Cadrage, perspective, opinion</em> : des textes qui aident à lire les données probantes, sans les remplacer. Classés par date, du plus récent au plus ancien.',
+
+    'epi.quote': 'La mémoire est le résidu de la pensée.',
+    'epi.role': 'spécialiste des sciences cognitives',
+    'epi.gloss': 'Si un outil pense à la place de l’élève, il ne reste aucun résidu. Il ne reste aucun apprentissage. EvidencIA existe pour défendre cette distinction, à l’échelle régionale, avec des données probantes.',
+    'epi.recent': '→ Sa réflexion la plus récente sur l’IA en classe (août 2026)',
+
+    'essay.eyebrow': 'Pourquoi EvidencIA',
+    'essay.pullquote': 'Nous rassemblons, sélectionnons et produisons des données probantes sur les conditions dans lesquelles l’IA peut améliorer l’apprentissage en Amérique latine.',
+    'essay.p1': 'L’IA peut être excellente pour l’apprentissage. Elle peut aussi le vider de sa substance. Tout dépend de la façon dont on l’utilise.',
+    'essay.p2': 'Lorsqu’un tuteur IA est intégré à une séquence pédagogique, entraîné à poser des questions plutôt qu’à répondre et conçu pour amener l’élève à réfléchir, les données montrent qu’il peut améliorer l’apprentissage de manière significative et à grande échelle. Bien le mettre en œuvre est difficile, et la plupart des produits proposés aujourd’hui aux ministères et aux écoles ne remplissent pas ces conditions.',
+    'essay.p3': 'À l’inverse, l’usage libre des LLM sans visée pédagogique, tout comme les tuteurs mal conçus, devient un raccourci qui remplace la réflexion de l’élève. La tâche est terminée plus vite, mais il n’y a pas d’apprentissage. C’est la raison pour laquelle de nombreuses écoles reviennent au papier et au crayon.',
+    'essay.p4': 'Et ce débat a lieu alors qu’une grande partie des élèves latino-américains n’y participe même pas, parce que leur école n’a pas de connexion ou que leurs enseignants manquent de compétences numériques.',
+    'essay.p5': 'EvidencIA existe pour accompagner ces décideurs sur un terrain mouvant. Nous relions chercheurs, ministères de l’éducation, universités et entreprises technologiques autour de cette question.',
+
+    'nlp.eyebrow': 'À quoi ressemble la newsletter',
+    'nlp.title': 'Des données probantes, pas du bruit.',
+    'nlp.h': 'Le filtre : la science de l’apprentissage',
+    'nlp.p1': 'Ce n’est pas un catalogue d’outils. Nous ne recommandons pas de produits. Nous évaluons des principes de conception.',
+    'nlp.p2': 'Ni effet de mode ni peur. Des données probantes, avec leurs nuances et leurs limites.',
+    'nlp.p3': 'Conçue pour que tout enseignant, doyen ou décideur puisse la lire en deux minutes et en retirer des pistes d’action concrètes.',
+    'nlp.l1': '<b>Les données probantes.</b> Une étude rigoureuse aux implications claires.',
+    'nlp.l2': '<b>Principe d’apprentissage.</b> Un concept des sciences cognitives, et la façon dont l’IA le respecte ou l’enfreint.',
+    'nlp.l3': '<b>Outil à la loupe.</b> Un outil ou une approche confrontés aux critères de la science de l’apprentissage.',
+    'nlp.l4': '<b>Ce que font les pays.</b> Politiques, réglementations, initiatives réelles.',
+    'nlp.l5': '<b>La question difficile.</b> Une vraie tension, sans réponse facile.',
+    'nlp.issue': 'Numéro 1 · exemple',
+    'nlp.s1tag': 'Les données probantes',
+    'nlp.s1h': 'Sept études convergent vers un seul mécanisme',
+    'nlp.s1p1': 'Turquie, Nigeria, Harvard, Chili, Taipei, Royaume-Uni, Sierra Leone. Des géographies, des populations et des modèles différents, et le même constat : ce n’est pas <em>l’accès</em> à l’IA qui fait la différence entre un apprentissage durable et une performance creuse. Ce sont la <em>conception pédagogique</em> et les garde-fous.',
+    'nlp.s1p2': 'Taipei est le test le plus net : cinq mois, dix écoles, tous les élèves utilisant le même tuteur « approuvé ». La seule variable manipulée était la séquence adaptative, invisible sur toute liste de contrôle de conformité. Gain : <b>+0,15 ET</b> à l’examen final <em>sans IA</em>. La Sierra Leone (essai randomisé préenregistré, 1 763 élèves, 48 classes) va dans le même sens : des cours structurés avec un tuteur conçu pour guider plutôt que pour répondre, <b>+0,258 ET</b> en mathématiques après ajustement sur le niveau initial. Il s’agit d’un rapport du développeur lui-même, sans évaluation par les pairs.',
+    'nlp.s1cite': 'Bastani et al. · De Simone et al. · Kestin et al. · Gallegos · Chung, Zhang, Kung, Bastani &amp; Bastani · LearnLM Team &amp; Eedi · DeepMind &amp; Fab AI (2025 à 2026)',
+    'nlp.s2tag': 'Principe d’apprentissage',
+    'nlp.s2h': 'Les difficultés désirables',
+    'nlp.s2p': 'La pratique de récupération est plus difficile que la relecture. L’espacement, plus difficile que de tout étudier d’un coup. Et ce sont elles qui produisent un meilleur apprentissage. Pour évaluer un outil d’IA, la question est : rend-il <em>l’apprentissage plus facile en apparence</em>, ou fait-il <em>réellement apprendre</em> ?',
+    'nlp.quote': 'La mémoire est le résidu de la pensée.',
+
+    'part.eyebrow': 'Qui construit ce projet',
+    'part.title': 'Une alliance.',
+    'part.lede': 'EvidencIA est un réseau de partenaires fondateurs qui apportent des données probantes, une portée régionale et un lien avec les décideurs. Nous invitons d’autres universités de premier plan à en assurer la codirection dès le départ.',
+    'part.wb': 'Réseau mondial en éducation et technologie.',
+    'part.mr': 'Plus de 945 universités dans 10 pays de la région.',
+    'part.an': 'Équipe éducation.',
+    'part.go': 'Google for Education et LearnLM.',
+    'part.iae': 'Plus de 150 chercheurs titulaires d’un doctorat, partenariats avec le ministère de l’Éducation du Brésil (MEC).',
+    'part.upc': 'Universidad Peruana de Ciencias Aplicadas.',
+    'part.ucr': 'Centro de Evaluación Académica.',
+    'part.tec': 'Instituto para el Futuro de la Educación.',
+    'part.invite.h': 'Nous vous invitons à codiriger.',
+    'part.invite.p': 'Universités, ministères et entreprises du Mexique, du Chili, de Colombie, du Brésil et d’Argentine qui souhaitent façonner ce réseau dès le départ. Nous cherchons des partenaires, pas des participants passifs.',
+    'part.invite.cta': 'Parlons-en',
+
+    'join.eyebrow': 'Rejoignez EvidencIA',
+    'join.title': 'Deux façons de commencer.',
+    'join.lede': 'Abonnez-vous à la newsletter pour recevoir directement les données probantes. Ou écrivez-nous si votre institution souhaite devenir partenaire fondatrice du réseau.',
+    'join.nl.h': 'Newsletter',
+    'join.nl.p': 'Recevez les données probantes.',
+    'join.nl.name': 'Nom',
+    'join.nl.email': 'Courriel',
+    'join.nl.role': 'Fonction',
+    'join.nl.role.opt0': 'Sélectionnez votre fonction',
+    'join.nl.role.opt1': 'Enseignant (scolaire ou supérieur)',
+    'join.nl.role.opt2': 'Administrateur / doyen',
+    'join.nl.role.opt3': 'Ministère / politiques publiques',
+    'join.nl.role.opt4': 'Chercheur',
+    'join.nl.role.opt5': 'Entreprise edtech',
+    'join.nl.role.opt6': 'Autre',
+    'join.nl.country': 'Pays',
+    'join.nl.lang': 'Langue préférée',
+    'join.nl.lang.es': 'Español',
+    'join.nl.lang.pt': 'Português',
+    'join.nl.lang.en': 'English',
+    'join.nl.submit': 'M’abonner',
+    'join.partner.h': 'Devenez partenaire',
+    'join.partner.p': 'Pour les universités, ministères et entreprises qui souhaitent coconstruire EvidencIA. Nous vous répondons sous 5 jours ouvrables.',
+    'join.partner.name': 'Votre nom',
+    'join.partner.role': 'Poste / fonction',
+    'join.partner.email': 'Courriel institutionnel',
+    'join.partner.country': 'Pays',
+    'join.partner.institution': 'Institution',
+    'join.partner.interest': 'Qu’est-ce qui vous intéresse ?',
+    'join.partner.opt1': 'Codiriger le réseau en tant que partenaire fondateur',
+    'join.partner.opt2': 'Proposer un chercheur, un ministère ou un praticien pour un séminaire',
+    'join.partner.opt3': 'Partager des recherches ou des données à intégrer à la sélection',
+    'join.partner.opt4': 'Entrer en contact avec les ministères de l’éducation de la région',
+    'join.partner.opt5': 'Rester informé pendant notre phase d’évaluation',
+    'join.partner.message': 'Message (facultatif)',
+    'join.partner.submit': 'Engager la conversation',
+
+    'foot.about': 'Réseau latino-américain sur l’IA et la science de l’apprentissage. Une alliance entre la Banque mondiale, MetaRed Global, Anthropic, IA.Edu Brasil, l’UPC, l’Universidad de Costa Rica et le Tec de Monterrey.',
+    'foot.explore': 'Explorer',
+    'foot.l1': 'Le problème', 'foot.l2': 'Ce que nous construisons', 'foot.l3': 'Smackdowns', 'foot.l4': 'Partenaires',
+    'foot.join': 'Rejoignez-nous',
+    'foot.j1': 'Newsletter', 'foot.j2': 'Devenir partenaire', 'foot.j3': 'Proposer un séminaire',
+    'foot.contact': 'Contact',
+    'foot.lang': 'Langues : ES · EN · PT · FR',
+    'foot.copy': '© 2026 EvidencIA. Un réseau en construction.',
+    'foot.tagline': 'Des données probantes, pas du bruit.',
+
+    'status.nl.success': 'C’est fait ! Vous êtes abonné. Consultez votre boîte de réception pour confirmer.',
+    'status.nl.error': 'Nous n’avons pas pu envoyer le formulaire. Réessayez ou écrivez-nous à ' + CONTACT_EMAIL,
+    'status.pf.success': 'Message reçu ! Nous vous contacterons dans les 5 prochains jours ouvrables.',
+    'status.pf.error': 'Nous n’avons pas pu envoyer le formulaire. Réessayez ou écrivez-nous à ' + CONTACT_EMAIL,
+    'status.sp.success': 'Merci ! Nous allons examiner l’étude et, si elle est retenue, nous l’ajouterons à la base.',
+    'status.sp.error': 'Nous n’avons pas pu envoyer la proposition. Réessayez ou écrivez-nous à ' + CONTACT_EMAIL,
+    'status.validation': 'Veuillez remplir les champs obligatoires pour continuer.',
   }
 };
 
@@ -3927,7 +4247,7 @@ document.querySelectorAll('.lang button').forEach(b => {
   try { stored = localStorage.getItem('evidencia-lang'); } catch (_) {}
   if (stored && I18N[stored]) return applyLang(stored);
   const nav = (navigator.language || 'es').slice(0,2).toLowerCase();
-  if (nav === 'en' || nav === 'pt') applyLang(nav);
+  if (nav === 'en' || nav === 'pt' || nav === 'fr') applyLang(nav);
   else applyLang('es');
 })();
 
