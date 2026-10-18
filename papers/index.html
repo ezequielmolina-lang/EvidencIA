@@ -162,7 +162,6 @@ svg text { font-family: var(--f-body); }
         <span class="iconos">
           <button class="icono" id="b-repaso" type="button" hidden><span id="t-repaso">Review</span></button>
           <button class="icono" id="b-instalar" type="button" hidden><span>Install</span></button>
-          <button class="icono" id="b-sonido" type="button" aria-pressed="false"><span>Music</span></button>
           <button class="icono" id="b-biblio" type="button"><span>All</span></button>
         </span>
       </div>
@@ -466,44 +465,6 @@ svg text { font-family: var(--f-body); }
   });
   $("b-cerrar-instalar").addEventListener("click", () => { $("hoja-instalar").hidden = true; });
 
-  // Soft ambient pad made in the browser (no audio file); starts on a tap.
-  let audio = null;
-  // Música de fondo hecha en el navegador: un acorde suave y un arpegio lento
-  // encima. La primera versión usaba notas de 175 a 330 Hz, que el parlante de un
-  // teléfono casi no reproduce, y el usuario tocó «Sound» sin oír nada
-  // (2026-10-17). Ahora va una octava más arriba, con un arpegio que se oye, y en
-  // Safari se declara como reproducción para que suene con el iPhone en silencio.
-  function sonido() {
-    const on = $("b-sonido").getAttribute("aria-pressed") !== "true";
-    $("b-sonido").setAttribute("aria-pressed", String(on));
-    if (!on) { if (audio) audio.master.gain.setTargetAtTime(0, audio.ctx.currentTime, 0.3); return; }
-    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch {}
-    if (!audio) {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
-      const tono = ctx.createBiquadFilter(); tono.type = "lowpass"; tono.frequency.value = 2400; tono.connect(master);
-      // Am, F, C, G, una octava arriba de la versión anterior.
-      const acordes = [[440, 523.25, 659.25], [349.23, 440, 523.25], [392, 523.25, 659.25], [392, 493.88, 587.33]];
-      const pad = acordes[0].map(() => { const o = ctx.createOscillator(); o.type = "triangle"; const g = ctx.createGain(); g.gain.value = 0.035; o.connect(g); g.connect(tono); o.start(); return o; });
-      const nota = (f, t) => {
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = "sine"; o.frequency.value = f;
-        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.16, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + 1.4);
-        o.connect(g); g.connect(tono); o.start(t); o.stop(t + 1.5);
-      };
-      let compas = 0;
-      const tocar = () => {
-        const a = acordes[compas++ % acordes.length], t0 = ctx.currentTime + 0.05;
-        pad.forEach((o, k) => o.frequency.setTargetAtTime(a[k], t0, 0.6));
-        [a[0], a[1], a[2], a[1] * 2, a[2], a[1]].forEach((f, k) => nota(f, t0 + k * 0.5));
-      };
-      tocar(); setInterval(tocar, 3000);
-      audio = { ctx, master };
-    }
-    audio.ctx.resume();
-    audio.master.gain.setTargetAtTime(0.7, audio.ctx.currentTime, 0.4);
-  }
-  $("b-sonido").addEventListener("click", sonido);
 
   // Opening the app with reviews due starts with them; skipping is one tap.
   if (!leer("pod-bienvenida", false) && !vistas.size) { modo = "bienvenida"; pintar(); }
