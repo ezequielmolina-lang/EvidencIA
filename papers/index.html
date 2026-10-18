@@ -128,6 +128,9 @@ svg text { font-family: var(--f-body); }
 .red a:focus-visible { outline: 3px solid var(--tema); outline-offset: 2px; }
 .reel.bienvenida { background: #0d0d12; color: #fff; }
 .reel.bienvenida .boton.principal { background: #fff; color: #0d0d12; border-color: #fff; }
+.fin-caminos { display: grid; gap: 8px; }
+.fin-caminos a { font-family: var(--f-mono); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; color: #fff; border: 1.5px solid rgba(255,255,255,.7); border-radius: 999px; padding: 10px 14px; text-decoration: none; }
+.fin-caminos a:focus-visible { outline: 3px solid #ffbd14; outline-offset: 2px; }
 .pasos { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .pasos li { font-size: 1.02rem; line-height: 1.4; display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
 .pasos b { font-family: var(--f-display); font-weight: 800; font-size: 1.4rem; line-height: 1; color: #ffbd14; }
@@ -365,8 +368,25 @@ svg text { font-family: var(--f-body); }
       <ul class="pasos"><li><b>1</b><span>Read the question and make a guess.</span></li><li><b>2</b><span>See the answer, the number and the catch.</span></li><li><b>3</b><span>A few days later, a quick question helps you remember.</span></li></ul>
       <p class="nota" style="color:#c9c9d2">One or two minutes each. Every number comes from the study, with a link to the paper.</p>`;
   }
+  function laminaFin() {
+    const caminos = [["https://redevidencia.org/#evidencia", "See all the evidence"], ["https://mcp.redevidencia.org/#conectar", "Connect EvidencIA to your AI"], ["https://redevidencia.org/#iniciativas", "EvidencIA initiatives"], ["https://redevidencia.org", "Visit EvidencIA"]];
+    return `${LOGO("grande")}<p class="etiqueta" style="color:#ffbd14">Congratulations</p><h1 class="pregunta" style="font-size:clamp(2rem,8.6vw,2.9rem)">You read ${vistas.size} of ${CARDS.length} studies.</h1>
+      <p class="historia" style="color:#e6e6ec">These are a small part of a base of ${BASE_N.documentos.toLocaleString("en-US")} documents on AI and learning. Keep going with EvidencIA:</p>
+      <div class="fin-caminos">${caminos.map(([u, t]) => `<a href="${u}" target="_blank" rel="noopener">${t} →</a>`).join("")}</div>
+      <p class="nota" style="color:#c9c9d2">The quick review questions keep coming over the next weeks, so what you read sticks.</p>`;
+  }
   function pintar() {
-    $("reel").classList.toggle("bienvenida", modo === "bienvenida");
+    $("reel").classList.toggle("bienvenida", modo === "bienvenida" || modo === "fin");
+    if (modo === "fin") {
+      $("reel").classList.remove("portada", "repaso");
+      $("lamina").innerHTML = laminaFin();
+      $("segmentos").hidden = true;
+      $("num").textContent = "";
+      $("b-atras").hidden = false;
+      $("b-atras").textContent = "Start again";
+      $("b-adelante").textContent = vencidos().length ? "Review what you read" : "All papers";
+      pintarRacha(); return;
+    }
     if (modo === "bienvenida") {
       $("reel").classList.remove("portada", "repaso");
       $("lamina").innerHTML = laminaBienvenida();
@@ -395,7 +415,7 @@ svg text { font-family: var(--f-body); }
       $("num").textContent = `${i + 1} of ${CARDS.length}`;
       $("b-atras").textContent = paso === 0 ? "‹ Previous" : "Back";
       $("b-atras").disabled = paso === 0 && i === 0;
-      $("b-adelante").textContent = paso === 0 ? (c.guess ? "Skip guess" : "Show me") : paso < 3 ? "Next" : (i < CARDS.length - 1 ? "Next paper ›" : "Start again");
+      $("b-adelante").textContent = paso === 0 ? (c.guess ? "Skip guess" : "Show me") : paso < 3 ? "Next" : (i < CARDS.length - 1 ? "Next paper ›" : "Finish");
       guardar("pod-pos", { id: c.id, paso });
       if (paso === 3) terminar(c);
     }
@@ -413,6 +433,7 @@ svg text { font-family: var(--f-body); }
   }
   function adelante() {
     if (modo === "bienvenida") { guardar("pod-bienvenida", true); modo = "papers"; paso = 0; pintar(); return; }
+    if (modo === "fin") { if (vencidos().length) empezarRepaso(); else { pintarBiblio(); $("biblio").hidden = false; } return; }
     if (modo === "repaso") {
       if (qi === -1) { qi = 0; respondida = null; pintar(); return; }
       if (respondida == null) { responderRepaso(-1); return; }
@@ -420,9 +441,12 @@ svg text { font-family: var(--f-body); }
       modo = "papers"; paso = 0; adivino = null; pintar(); return;
     }
     if (paso < 3) { paso++; pintar(); return; }
-    i = (i + 1) % CARDS.length; paso = 0; adivino = null; pintar();
+    // Al terminar el último, o al completar los 50, la pantalla final.
+    if (i === CARDS.length - 1 || (vistas.size === CARDS.length && !leer("pod-fin", false))) { guardar("pod-fin", true); modo = "fin"; pintar(); return; }
+    i = i + 1; paso = 0; adivino = null; pintar();
   }
   function atras() {
+    if (modo === "fin") { i = 0; paso = 0; adivino = null; modo = "papers"; pintar(); return; }
     if (modo === "repaso") { modo = "papers"; paso = 0; adivino = null; pintar(); return; }
     if (paso > 0) { paso--; pintar(); return; }
     if (i > 0) { i--; paso = 0; adivino = null; pintar(); }
