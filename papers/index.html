@@ -332,7 +332,7 @@ svg text { font-family: var(--f-body); }
     return `<p class="etiqueta">The catch</p><p class="trampa">${esc(c.catch)}</p><p class="recuerda"><small>Remember</small>${esc(c.takeaway)}</p>
       <div class="acciones"><button class="chico" id="b-guardar" type="button" aria-pressed="${guardados.has(c.id)}">${guardados.has(c.id) ? "Saved" : "Save"}</button><button class="chico" id="b-copiar" type="button">Copy to share</button><span class="aviso" id="aviso"></span></div>
       ${promo()}
-      <p class="fuente"><span class="tipo">${esc(c.kind || "")}</span><br><a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.citation)}${c.source.page ? ", " + esc(c.source.page) : ""}</a> · ${esc(c.country)}${c.year ? ", " + esc(c.year) : ""}</p>`;
+      <p class="fuente"><span class="tipo">${esc(c.kind || "")}</span><br><a href="${esc(String(c.source.url).split("#")[0])}" target="_blank" rel="noopener">${esc(c.source.citation)}</a> · ${esc(c.country)}${c.year ? ", " + esc(c.year) : ""}</p>`;
   }
 
   // Review: the recall question of a paper read days ago.
@@ -363,7 +363,7 @@ svg text { font-family: var(--f-body); }
   function laminaBienvenida() {
     return `${LOGO("grande")}<p class="etiqueta" style="color:#ffbd14">From EvidencIA's evidence base</p><h1 class="pregunta" style="font-size:clamp(2rem,8.6vw,2.9rem)">${CARDS.length} studies behind what we know about AI, technology and learning.</h1>
       <ul class="pasos"><li><b>1</b><span>Read the question and make a guess.</span></li><li><b>2</b><span>See the answer, the number and the catch.</span></li><li><b>3</b><span>A few days later, a quick question helps you remember.</span></li></ul>
-      <p class="nota" style="color:#c9c9d2">One or two minutes each. Every number comes from the study, with a link to the page.</p>`;
+      <p class="nota" style="color:#c9c9d2">One or two minutes each. Every number comes from the study, with a link to the paper.</p>`;
   }
   function pintar() {
     $("reel").classList.toggle("bienvenida", modo === "bienvenida");
@@ -444,7 +444,7 @@ svg text { font-family: var(--f-body); }
     }
     if (e.target.id === "b-copiar") {
       const c = CARDS[i];
-      const texto = `${c.hook}\n${c.answer}\nThe catch: ${c.catch}\n${c.source.citation}: ${c.source.url}`;
+      const texto = `${c.hook}\n${c.answer}\nThe catch: ${c.catch}\n${c.source.citation}: ${String(c.source.url).split("#")[0]}`;
       try { await navigator.clipboard.writeText(texto); $("aviso").textContent = "Copied"; }
       catch { $("aviso").textContent = "Copy did not work here; select the text instead"; }
       return;
