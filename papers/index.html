@@ -36,7 +36,7 @@
 html, body { height: 100%; }
 body { background: #e9e9ee; color: var(--ink); font-family: var(--f-body); margin: 0; -webkit-tap-highlight-color: transparent; }
 .escena { height: 100%; display: grid; place-items: center; }
-.reel { position: relative; width: min(100vw, calc(100dvh * 9 / 16)); height: 100%; max-height: 100dvh; background: var(--paper); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; box-shadow: 0 10px 50px rgba(13,13,18,.18); transition: background .35s; }
+.reel { grid-template-columns: minmax(0, 1fr); position: relative; width: min(100vw, calc(100dvh * 9 / 16)); height: 100%; max-height: 100dvh; background: var(--paper); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; box-shadow: 0 10px 50px rgba(13,13,18,.18); transition: background .35s; }
 .reel.portada { background: var(--tema); color: var(--tema-tinta); }
 .arriba { padding: 14px 18px 0; display: grid; gap: 10px; z-index: 2; }
 /* Arriba, el avance en los 50; abajo, en qué pantalla del paper estás. Con las
@@ -46,10 +46,11 @@ body { background: #e9e9ee; color: var(--ink); font-family: var(--f-body); margi
 .segmentos { display: flex; flex: 1; gap: 6px; align-items: center; justify-content: center; }
 .segmentos i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .22; }
 .segmentos i.hecho { opacity: 1; }
-.meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-width: 0; }
+.meta .marca { min-width: 0; flex-shrink: 1; }
 .num { font-family: var(--f-mono); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; }
-.iconos { display: flex; gap: 6px; }
-.icono { font: inherit; font-family: var(--f-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: inherit; background: transparent; border: 1.5px solid currentColor; border-radius: 999px; padding: 4px 10px; cursor: pointer; opacity: .8; }
+.iconos { display: flex; gap: 6px; flex-shrink: 0; }
+.icono { font: inherit; font-family: var(--f-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: inherit; background: transparent; border: 1.5px solid currentColor; border-radius: 999px; padding: 4px 10px; cursor: pointer; opacity: .8; white-space: nowrap; }
 .icono[aria-pressed="true"] { opacity: 1; background: currentColor; }
 .icono[aria-pressed="true"] span { color: var(--paper); }
 .reel.portada .icono[aria-pressed="true"] span { color: var(--tema); }
@@ -170,14 +171,14 @@ svg text { font-family: var(--f-body); }
     <div class="arriba">
       <div class="avance" id="avance" role="progressbar" aria-label="Papers read" aria-valuemin="0" aria-valuemax="50"><i id="avance-barra"></i></div>
       <div class="meta">
-        <a class="logo marca" href="https://redevidencia.org" target="_blank" rel="noopener" aria-label="EvidencIA"><svg viewBox="0 0 130 60" aria-hidden="true"><path d="M4 30 L16 8 L28 52 L40 14 L50 44 L58 30 L126 30" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><line class="oro" x1="58" y1="30" x2="126" y2="30" stroke-width="7" stroke-linecap="round"/></svg><span>Evidenc<b>IA</b></span><span class="num" id="num"></span></a>
+        <a class="logo marca" href="https://redevidencia.org" target="_blank" rel="noopener" aria-label="EvidencIA"><svg viewBox="0 0 130 60" aria-hidden="true"><path d="M4 30 L16 8 L28 52 L40 14 L50 44 L58 30 L126 30" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><line class="oro" x1="58" y1="30" x2="126" y2="30" stroke-width="7" stroke-linecap="round"/></svg><span>Evidenc<b>IA</b></span></a>
         <span class="iconos">
-          <button class="icono" id="b-repaso" type="button" hidden><span id="t-repaso">Review</span></button>
+          <button class="icono" id="b-repaso" type="button" hidden><span id="t-repaso">Quiz me</span></button>
           <button class="icono" id="b-instalar" type="button" hidden><span>Install</span></button>
           <button class="icono" id="b-biblio" type="button"><span>All</span></button>
         </span>
       </div>
-      <span class="racha" id="racha"></span>
+      <span class="racha"><span id="num"></span><span id="racha"></span></span>
     </div>
     <div class="lamina" id="lamina"></div>
     <div class="abajo">
@@ -258,10 +259,11 @@ svg text { font-family: var(--f-body); }
     $("avance").setAttribute("aria-valuemax", String(CARDS.length));
     const r = racha(), hoy = dias[hoyStr()] || 0;
     // «11/3 today» se leía raro pasada la meta (captura del usuario, 2026-10-17).
-    $("racha").textContent = `${hoy >= META_DIA ? `${hoy} today · goal of ${META_DIA} done` : `${hoy}/${META_DIA} today`}${r ? ` · ${r}-day streak` : ""}`;
+    $("racha").textContent = `${$("num").textContent ? " · " : ""}${hoy >= META_DIA ? `${hoy} today · goal of ${META_DIA} done` : `${hoy}/${META_DIA} today`}${r ? ` · ${r}-day streak` : ""}`;
     const v = vencidos().length;
     $("b-repaso").hidden = !v || modo === "repaso";
-    $("t-repaso").textContent = `Review ${v}`;
+    $("b-repaso").title = `${v} quick question${v === 1 ? "" : "s"} on papers you read are waiting. A quiz takes 5.`;
+    $("b-repaso").setAttribute("aria-label", `Quiz me: 5 quick questions on papers you read`);
   }
   function terminar(c) {
     if (vistas.has(c.id)) return;
