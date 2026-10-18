@@ -88,10 +88,16 @@ svg text { font-family: var(--f-body); }
 @media (prefers-reduced-motion: reduce) { .lamina { animation: none; } .reel { transition: none; } }
 .marca { font-family: var(--f-display); font-weight: 800; font-size: .95rem; letter-spacing: -.01em; color: inherit; text-decoration: none; }
 .marca span { opacity: .6; font-weight: 500; }
+.logo { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; font-family: var(--f-display); font-weight: 700; letter-spacing: -.01em; }
+.logo svg { height: 1em; width: auto; }
+.logo b { font-weight: 800; color: #b8842b; }
+.logo.grande { font-size: 1.7rem; }
+.logo.chico { font-size: 1.05rem; }
 .red { display: grid; gap: 6px; border-top: 1px solid var(--rule); padding-top: 10px; }
 .red p { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 0; }
 .red div { display: flex; gap: 6px; flex-wrap: wrap; }
 .red a { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); background: var(--wash); border-radius: 999px; padding: 7px 11px; text-decoration: none; }
+.red a.logo { font-family: var(--f-display); font-size: 1.1rem; letter-spacing: -.01em; text-transform: none; background: none; padding: 0; justify-self: start; }
 .red a:focus-visible { outline: 3px solid var(--tema); outline-offset: 2px; }
 .reel.bienvenida { background: #0d0d12; color: #fff; }
 .reel.bienvenida .boton.principal { background: #fff; color: #0d0d12; border-color: #fff; }
@@ -273,7 +279,7 @@ svg text { font-family: var(--f-body); }
     }
     return `<p class="etiqueta">The catch</p><p class="trampa">${esc(c.catch)}</p><p class="recuerda"><small>Remember</small>${esc(c.takeaway)}</p>
       <div class="acciones"><button class="chico" id="b-guardar" type="button" aria-pressed="${guardados.has(c.id)}">${guardados.has(c.id) ? "Saved" : "Save"}</button><button class="chico" id="b-copiar" type="button">Copy to share</button><span class="aviso" id="aviso"></span></div>
-      <div class="red"><p>Keep going with EvidencIA</p><div><a href="https://redevidencia.org" target="_blank" rel="noopener">Visit EvidencIA</a><a href="https://mcp.redevidencia.org/#conectar" target="_blank" rel="noopener">Connect EvidencIA to your AI</a></div></div>
+      <div class="red">${LOGO("chico")}<p>Keep going with EvidencIA</p><div><a href="https://redevidencia.org" target="_blank" rel="noopener">Visit EvidencIA</a><a href="https://mcp.redevidencia.org/#conectar" target="_blank" rel="noopener">Connect EvidencIA to your AI</a></div></div>
       <p class="fuente"><span class="nivel">EvidencIA level ${esc(c.level)}</span>${esc(c.level_note)}<br><a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.citation)}${c.source.page ? ", " + esc(c.source.page) : ""}</a> · ${esc(c.country)}${c.year ? ", " + esc(c.year) : ""}</p>`;
   }
 
@@ -285,9 +291,12 @@ svg text { font-family: var(--f-body); }
     return `<p class="etiqueta">Review ${qi + 1} of ${cola.length} · ${esc(c.topic)}</p><h1 class="pregunta" style="font-size:clamp(1.5rem,6.4vw,2.05rem);line-height:1.08">${esc(r.prompt)}</h1><div class="opciones">${ops}</div>${respondida != null ? `<p class="explica">${esc(r.explain)}</p>` : ""}`;
   }
 
+  // El logo de redevidencia.org: la traza que se asienta en la línea dorada. Va
+  // en la bienvenida y al pie de cada paper, no en todas partes (usuario, 2026-10-17).
+  const LOGO = (clase) => `<a class="logo ${clase}" href="https://redevidencia.org" target="_blank" rel="noopener" aria-label="EvidencIA"><svg viewBox="0 0 130 60" aria-hidden="true"><path d="M4 30 L16 8 L28 52 L40 14 L50 44 L58 30 L126 30" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><line x1="58" y1="30" x2="126" y2="30" stroke="#B8842B" stroke-width="7" stroke-linecap="round"/></svg><span>Evidenc<b>IA</b></span></a>`;
   // Quien llega por el QR de una charla no sabe qué es esto: una pantalla, una vez.
   function laminaBienvenida() {
-    return `<p class="etiqueta" style="color:#ffbd14">From EvidencIA's verified evidence base</p><h1 class="pregunta" style="font-size:clamp(2rem,8.6vw,2.9rem)">${CARDS.length} studies behind what we know about AI and learning.</h1>
+    return `${LOGO("grande")}<p class="etiqueta" style="color:#ffbd14">From EvidencIA's verified evidence base</p><h1 class="pregunta" style="font-size:clamp(2rem,8.6vw,2.9rem)">${CARDS.length} studies behind what we know about AI and learning.</h1>
       <ul class="pasos"><li><b>1</b><span>Read the question and make a guess.</span></li><li><b>2</b><span>See the answer, the number and the catch.</span></li><li><b>3</b><span>A few days later, a quick question helps you remember.</span></li></ul>
       <p class="nota" style="color:#c9c9d2">One or two minutes each. Every number comes from the study, with a link to the page.</p>`;
   }
