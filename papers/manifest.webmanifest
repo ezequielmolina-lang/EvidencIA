@@ -1,0 +1,24 @@
+{
+ "name": "EvidencIA Papers",
+ "short_name": "EvidencIA",
+ "description": "50 studies behind what we know about AI and learning, one at a time: guess, see the answer and the number, remember. From EvidencIA.",
+ "start_url": "/papers/",
+ "scope": "/papers/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0d0d12",
+ "icons": [
+  {
+   "src": "/img/icon/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any maskable"
+  },
+  {
+   "src": "/img/icon/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}
