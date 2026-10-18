@@ -1,5 +1,5 @@
 // Guarda la app para que abra sin conexión; primero la red, si no hay, la copia.
-const CACHE = "evidencia-papers-bf10885ba1";
+const CACHE = "evidencia-papers-21bc47d5f6";
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "manifest.webmanifest"]))); self.skipWaiting(); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k.startsWith("evidencia-papers-") && k !== CACHE).map((k) => caches.delete(k))))); self.clients.claim(); });
 self.addEventListener("fetch", (e) => {
