@@ -273,7 +273,7 @@ svg text { font-family: var(--f-body); }
     }
     return `<p class="etiqueta">The catch</p><p class="trampa">${esc(c.catch)}</p><p class="recuerda"><small>Remember</small>${esc(c.takeaway)}</p>
       <div class="acciones"><button class="chico" id="b-guardar" type="button" aria-pressed="${guardados.has(c.id)}">${guardados.has(c.id) ? "Saved" : "Save"}</button><button class="chico" id="b-copiar" type="button">Copy to share</button><span class="aviso" id="aviso"></span></div>
-      <div class="red"><p>Keep going with EvidencIA</p><div><a href="https://redevidencia.org/#evidencia" target="_blank" rel="noopener">The evidence base</a><a href="https://mcp.redevidencia.org/#conectar" target="_blank" rel="noopener">Ask it in Claude or ChatGPT</a><a href="https://redevidencia.org/#sumarte" target="_blank" rel="noopener">Weekly newsletter</a></div></div>
+      <div class="red"><p>Keep going with EvidencIA</p><div><a href="https://redevidencia.org" target="_blank" rel="noopener">Visit EvidencIA</a><a href="https://mcp.redevidencia.org/#conectar" target="_blank" rel="noopener">Connect EvidencIA to your AI</a></div></div>
       <p class="fuente"><span class="nivel">EvidencIA level ${esc(c.level)}</span>${esc(c.level_note)}<br><a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.citation)}${c.source.page ? ", " + esc(c.source.page) : ""}</a> · ${esc(c.country)}${c.year ? ", " + esc(c.year) : ""}</p>`;
   }
 
