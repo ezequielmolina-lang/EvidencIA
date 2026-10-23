@@ -217,6 +217,8 @@
   .video-more { margin-top: 56px; font-size: 20px; font-weight: 600; }
   .video-more-lede { margin-top: 10px; max-width: 760px; color: var(--ink-mute); font-size: 16px; line-height: 1.55; }
   .video-more-lede + .video-wrap { margin-top: 20px; }
+  .video-story { margin-top: 18px; max-width: 760px; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--bg-soft); color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+  .video-story a { font-weight: 600; color: var(--ink); text-decoration-color: var(--gold); text-underline-offset: 3px; }
   .video-wrap iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -436,6 +438,7 @@
           <source src="../img/emc-small-ai.mp4" type="video/mp4">
         </video>
       </div>
+      <p class="video-story" data-i18n="video.story">La historia detrás del video: <a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities" target="_blank" rel="noopener">Small AI, Big Learning Possibilities</a>, nota del Banco Mundial de octubre de 2026 (en inglés). Cuenta cómo la profesora Lariza Sedano y su estudiante Aljira usan Eligiendo Mi Camino en el colegio José Martí de La Victoria, qué muestran los primeros resultados y cómo se conecta con otras experiencias de IA pequeña en Etiopía y Ucrania.</p>
     </div>
   </section>
 
@@ -592,6 +595,7 @@ const I18N = {
     'video.lede': 'Testimonios del piloto en escuelas públicas de Lima Metropolitana: cómo el Gallito entró al aula, qué cambió en la conversación de los estudiantes sobre su futuro y qué aprendieron los docentes acompañando el proceso.',
     'video.more': 'Una IA pequeña para una decisión grande.',
     'video.more.lede': 'Una docente y sus estudiantes del colegio José Martí, en Lima, cuentan cómo usan el Gallito para elegir qué estudiar. Es un video de la serie <a href="https://www.worldbank.org/en/brief/2026/04/02/small-ai-big-impact" target="_blank" rel="noopener">Small AI | Big Impact</a> del Banco Mundial, producido con su equipo de Digital and AI. La serie muestra IA pequeña: práctica, barata, pensada para los dispositivos que la gente ya tiene y para resolver un problema concreto. En español, con subtítulos en inglés.',
+    'video.story': 'La historia detrás del video: <a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities" target="_blank" rel="noopener">Small AI, Big Learning Possibilities</a>, nota del Banco Mundial de octubre de 2026 (en inglés). Cuenta cómo la profesora Lariza Sedano y su estudiante Aljira usan Eligiendo Mi Camino en el colegio José Martí de La Victoria, qué muestran los primeros resultados y cómo se conecta con otras experiencias de IA pequeña en Etiopía y Ucrania.',
     'nums.eyebrow': 'Los números del piloto',
     'nums.title': 'Escala real, en escuelas públicas.',
     'nums.lede': 'Lanzamiento: 16 de marzo de 2026, en el arranque del año escolar peruano. El piloto llega a 6.600 estudiantes de 5to año en 110 escuelas públicas de Lima Metropolitana, integrado al plan curricular de la DRELM. Incluye un componente de evaluación para medir los impactos reales del programa.',
@@ -659,6 +663,7 @@ const I18N = {
     'video.lede': 'Testimonies from the pilot in Metropolitan Lima public schools: how the Gallito entered the classroom, what changed in how students talk about their future, and what teachers learned along the way.',
     'video.more': 'A small AI for a big decision.',
     'video.more.lede': 'A teacher and her students at José Martí School in Lima show how they use the Gallito to choose what to study next. The video is part of the World Bank’s <a href="https://www.worldbank.org/en/brief/2026/04/02/small-ai-big-impact" target="_blank" rel="noopener">Small AI | Big Impact</a> series, produced with its Digital and AI team. The series shows small AI: practical, affordable, built for the devices people already have, and aimed at one concrete problem. In Spanish, with English subtitles.',
+    'video.story': 'The story behind the video: <a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities" target="_blank" rel="noopener">Small AI, Big Learning Possibilities</a>, a World Bank feature from October 2026. It follows teacher Lariza Sedano and her student Aljira as they use Eligiendo Mi Camino at José Martí School in La Victoria, covers what the early results show, and places it next to other small AI efforts in Ethiopia and Ukraine.',
     'nums.eyebrow': 'Pilot numbers',
     'nums.title': 'Real scale, in public schools.',
     'nums.lede': 'Launch: March 16, 2026, at the start of the Peruvian school year. The pilot reaches 6,600 5th-year students in 110 public schools in Metropolitan Lima, embedded in DRELM\'s curriculum, and includes an evaluation component to measure the program\'s real impact.',
@@ -726,6 +731,7 @@ const I18N = {
     'video.lede': 'Depoimentos do piloto em escolas públicas da Grande Lima: como o Gallito entrou na sala de aula, o que mudou na conversa dos estudantes sobre seu futuro e o que os professores aprenderam acompanhando o processo.',
     'video.more': 'Uma IA pequena para uma decisão grande.',
     'video.more.lede': 'Uma professora e seus estudantes da escola José Martí, em Lima, contam como usam o Gallito para escolher o que estudar. O vídeo faz parte da série <a href="https://www.worldbank.org/en/brief/2026/04/02/small-ai-big-impact" target="_blank" rel="noopener">Small AI | Big Impact</a> do Banco Mundial, produzida com sua equipe de Digital and AI. A série mostra IA pequena: prática, barata, pensada para os dispositivos que as pessoas já têm e para resolver um problema concreto. Em espanhol, com legendas em inglês.',
+    'video.story': 'A história por trás do vídeo: <a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities" target="_blank" rel="noopener">Small AI, Big Learning Possibilities</a>, matéria do Banco Mundial de outubro de 2026 (em inglês). Conta como a professora Lariza Sedano e sua estudante Aljira usam o Eligiendo Mi Camino na escola José Martí, em La Victoria, o que mostram os primeiros resultados e como isso se conecta a outras experiências de IA pequena na Etiópia e na Ucrânia.',
     'nums.eyebrow': 'Os números do piloto',
     'nums.title': 'Escala real, em escolas públicas.',
     'nums.lede': 'Lançamento: 16 de março de 2026, no início do ano escolar peruano. O piloto alcança 6.600 estudantes do 5º ano em 110 escolas públicas da Grande Lima, integrado ao plano curricular da DRELM. Inclui um componente de avaliação para medir os impactos reais do programa.',
@@ -793,6 +799,7 @@ const I18N = {
     'video.lede': 'Des témoignages du pilote dans des écoles publiques de Lima métropolitaine : comment le Gallito est entré en classe, ce qui a changé dans la façon dont les élèves parlent de leur avenir et ce que les enseignants ont appris en les accompagnant.',
     'video.more': 'Une petite IA pour une grande décision.',
     'video.more.lede': 'Une enseignante et ses élèves de l’établissement José Martí, à Lima, racontent comment ils utilisent le Gallito pour choisir leurs études. Cette vidéo fait partie de la série <a href="https://www.worldbank.org/en/brief/2026/04/02/small-ai-big-impact" target="_blank" rel="noopener">Small AI | Big Impact</a> de la Banque mondiale, produite avec son équipe Digital and AI. La série montre une IA à petite échelle : pratique, peu coûteuse, conçue pour les appareils que les gens possèdent déjà et pour résoudre un problème concret. En espagnol, sous-titrée en anglais.',
+    'video.story': 'L’histoire derrière la vidéo : <a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities" target="_blank" rel="noopener">Small AI, Big Learning Possibilities</a>, un reportage de la Banque mondiale d’octobre 2026 (en anglais). Il suit l’enseignante Lariza Sedano et son élève Aljira, qui utilisent Eligiendo Mi Camino à l’école José Martí de La Victoria, présente ce que montrent les premiers résultats et le relie à d’autres expériences d’IA de petite taille en Éthiopie et en Ukraine.',
     'nums.eyebrow': 'Le projet pilote en chiffres',
     'nums.title': 'Une échelle réelle, dans des écoles publiques.',
     'nums.lede': 'Lancement : le 16 mars 2026, au début de l’année scolaire péruvienne. Le projet pilote touche 6 600 élèves de 5e année dans 110 écoles publiques de Lima Métropolitaine et est intégré au plan d’études de la DRELM. Il comprend un volet d’évaluation pour mesurer les effets réels du programme.',
