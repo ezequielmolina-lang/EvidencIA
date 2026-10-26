@@ -1167,36 +1167,32 @@
   }
 
   /* Partners */
-  .partners-grid {
-    margin-top: 48px;
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--rule);
-    border-left: 1px solid var(--rule);
-  }
-  .partner {
-    border-right: 1px solid var(--rule);
+  .alliance { margin-top: 48px; border-top: 1px solid var(--rule); }
+  .al-row {
+    display: grid; grid-template-columns: 220px 1fr; gap: 32px;
+    align-items: center; padding: 26px 0;
     border-bottom: 1px solid var(--rule);
-    padding: 36px 30px;
-    display: flex; flex-direction: column; gap: 8px;
-    min-height: 150px;
-    justify-content: center;
   }
-  .partner .p-name {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 500; font-size: 22px;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+  .al-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold); line-height: 1.5;
   }
-  .partner .p-logo { display: flex; align-items: center; min-height: 38px; }
-  .partner .p-logo img { display: block; width: auto; max-width: 100%; }
-  .partner .p-logo .logo-an { height: 17px; }
-  .partner .p-logo .logo-go { height: 22px; }
-  .partner .p-logo .logo-ms { height: 36px; }
-  .partner .p-desc {
-    font-size: 13px; color: var(--ink-mute);
-    line-height: 1.4;
-  }
+  .al-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 22px 40px; }
+  .al-logos img { display: block; width: auto; max-width: 100%; }
+  .al-text { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.5; max-width: 640px; }
+  .lg-wbg { height: 40px; }
+  .wbg-en { display: none !important; }
+  html[lang="en"] .wbg-es, html[lang="fr"] .wbg-es { display: none !important; }
+  html[lang="en"] .wbg-en, html[lang="fr"] .wbg-en { display: block !important; }
+  .lg-an { height: 17px; }
+  .lg-go { height: 24px; }
+  .lg-ms { height: 30px; }
+  .lg-iae { height: 44px; }
+  .lg-tec { height: 36px; }
+  .lg-upc { height: 40px; }
+  .lg-ulima { height: 44px; }
+  .lg-ucr { height: 30px; }
+  .lg-mr { height: 32px; }
   .partners-invite {
     margin-top: 56px;
     padding: 36px;
@@ -1421,7 +1417,7 @@
     .initiatives { grid-template-columns: 1fr; }
     .editions-grid { grid-template-columns: 1fr; }
     .newsletter-block { grid-template-columns: 1fr; gap: 32px; }
-    .partners-grid { grid-template-columns: 1fr 1fr; }
+    .al-row { grid-template-columns: 1fr; gap: 16px; }
     .partners-invite { grid-template-columns: 1fr; gap: 20px; }
     .partners-invite .btn-primary { justify-self: start; }
     .join-grid { grid-template-columns: 1fr; }
@@ -1436,7 +1432,7 @@
     .lang button { padding: 5px 6px; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .smackdowns { grid-template-columns: 1fr; }
-    .partners-grid { grid-template-columns: 1fr; }
+    .al-logos { gap: 18px 28px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
   }
@@ -1800,43 +1796,38 @@
     <div class="container">
       <div class="section-eyebrow" data-i18n="part.eyebrow">Quiénes están construyendo esto</div>
       <h2 class="section-title" data-i18n="part.title">Una alianza.</h2>
-      <p class="section-lede" data-i18n="part.lede">EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.</p>
+      <p class="section-lede" data-i18n="part.lede">EvidencIA es una red de socios que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.</p>
 
-      <div class="partners-grid">
-        <div class="partner">
-          <div class="p-name">Banco Mundial</div>
-          <div class="p-desc" data-i18n="part.wb">Red global en educación y tecnología.</div>
+      <div class="alliance">
+        <div class="al-row">
+          <div class="al-label" data-i18n="part.g.wb">Convoca</div>
+          <div class="al-logos">
+            <img src="img/partners/grupo-banco-mundial-es.png" alt="Grupo Banco Mundial" class="lg-wbg wbg-es" width="832" height="140" loading="lazy">
+            <img src="img/partners/world-bank-group-en.png" alt="World Bank Group" class="lg-wbg wbg-en" width="713" height="140" loading="lazy">
+          </div>
         </div>
-        <div class="partner">
-          <div class="p-name">MetaRed Global</div>
-          <div class="p-desc" data-i18n="part.mr">945+ universidades en 10 países de la región.</div>
+        <div class="al-row">
+          <div class="al-label" data-i18n="part.g.labs">Laboratorios de IA y tecnología</div>
+          <div class="al-logos">
+            <img src="img/partners/anthropic.svg" alt="Anthropic" class="lg-an" width="1024" height="115" loading="lazy">
+            <img src="img/partners/google-for-education.png" alt="Google for Education" class="lg-go" width="720" height="76" loading="lazy">
+            <img src="img/partners/microsoft.svg" alt="Microsoft" class="lg-ms" width="338" height="72" loading="lazy">
+          </div>
         </div>
-        <div class="partner">
-          <div class="p-name p-logo"><img src="img/partners/anthropic.svg" alt="Anthropic" class="logo-an" width="1024" height="115"></div>
-          <div class="p-desc" data-i18n="part.an">Equipo de educación.</div>
+        <div class="al-row">
+          <div class="al-label" data-i18n="part.g.uni">Universidades y redes</div>
+          <div class="al-logos">
+            <img src="img/partners/ia-edu-brasil.svg" alt="IA.Edu Brasil" class="lg-iae" width="544" height="278" loading="lazy">
+            <img src="img/partners/tec-de-monterrey.png" alt="Tecnológico de Monterrey" class="lg-tec" width="472" height="126" loading="lazy">
+            <img src="img/partners/upc.png" alt="Universidad Peruana de Ciencias Aplicadas (UPC)" class="lg-upc" width="136" height="140" loading="lazy">
+            <img src="img/partners/universidad-de-lima.png" alt="Universidad de Lima" class="lg-ulima" width="146" height="140" loading="lazy">
+            <img src="img/partners/universidad-de-costa-rica.png" alt="Universidad de Costa Rica" class="lg-ucr" width="947" height="117" loading="lazy">
+            <img src="img/partners/metared-tic.png" alt="MetaRed TIC" class="lg-mr" width="543" height="117" loading="lazy">
+          </div>
         </div>
-        <div class="partner">
-          <div class="p-name p-logo"><img src="img/partners/google-for-education.png" alt="Google for Education" class="logo-go" width="720" height="76"></div>
-        </div>
-        <div class="partner">
-          <div class="p-name p-logo"><img src="img/partners/microsoft.svg" alt="Microsoft" class="logo-ms" width="338" height="72"></div>
-          <div class="p-desc" data-i18n="part.ms">Microsoft Education.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">IA.Edu Brasil</div>
-          <div class="p-desc" data-i18n="part.iae">150+ investigadores PhD, alianzas con el MEC.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">UPC</div>
-          <div class="p-desc" data-i18n="part.upc">Universidad Peruana de Ciencias Aplicadas.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">Universidad de Costa Rica</div>
-          <div class="p-desc" data-i18n="part.ucr">Centro de Evaluación Académica.</div>
-        </div>
-        <div class="partner">
-          <div class="p-name">Tec de Monterrey</div>
-          <div class="p-desc" data-i18n="part.tec">Instituto para el Futuro de la Educación.</div>
+        <div class="al-row">
+          <div class="al-label" data-i18n="part.g.gov">Gobiernos y escuelas</div>
+          <p class="al-text" data-i18n="part.g.gov.t">Ministerios de educación y autoridades regionales de América Latina, y las escuelas públicas donde ocurre el trabajo.</p>
         </div>
       </div>
 
@@ -2248,7 +2239,7 @@
     <div class="container">
       <div class="section-eyebrow" data-i18n="join.eyebrow">Súmate a EvidencIA</div>
       <h2 class="section-title" data-i18n="join.title">Dos formas de empezar.</h2>
-      <p class="section-lede" data-i18n="join.lede">Suscríbete al newsletter para recibir la evidencia directamente. O escríbenos si tu institución quiere ser socia fundadora de la red.</p>
+      <p class="section-lede" data-i18n="join.lede">Suscríbete al newsletter para recibir la evidencia directamente. O escríbenos si tu institución quiere ser socia de la red.</p>
 
       <div class="join-grid">
         <div class="form-card" id="newsletter">
@@ -2323,7 +2314,7 @@
             <div class="field">
               <label data-i18n="join.partner.interest">¿Qué te interesa?</label>
               <div class="checks">
-                <label class="check"><input type="checkbox" name="interest" value="co-lead" /> <span data-i18n="join.partner.opt1">Co-liderar la red como socio fundador</span></label>
+                <label class="check"><input type="checkbox" name="interest" value="co-lead" /> <span data-i18n="join.partner.opt1">Co-liderar la red como socio</span></label>
                 <label class="check"><input type="checkbox" name="interest" value="speaker" /> <span data-i18n="join.partner.opt2">Proponer un investigador, ministerio o practitioner para un seminario</span></label>
                 <label class="check"><input type="checkbox" name="interest" value="research" /> <span data-i18n="join.partner.opt3">Compartir investigación o evidencia para curar</span></label>
                 <label class="check"><input type="checkbox" name="interest" value="policy" /> <span data-i18n="join.partner.opt4">Conectar con ministerios de educación de la región</span></label>
@@ -2427,7 +2418,7 @@ const I18N = {
     'hero.cta2': 'Súmate como socio',
     'hero.stat1': 'universidades en la red MetaRed',
     'hero.stat2': 'países en América Latina',
-    'hero.stat3': 'socios fundadores',
+    'hero.stat3': 'socios',
     'hero.stat4': 'idiomas: ES · EN · PT · FR',
 
     'prob.eyebrow': 'El problema',
@@ -2633,7 +2624,12 @@ const I18N = {
 
     'part.eyebrow': 'Quiénes están construyendo esto',
     'part.title': 'Una alianza.',
-    'part.lede': 'EvidencIA es una red de socios fundadores que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.',
+    'part.lede': 'EvidencIA es una red de socios que aportan evidencia, alcance regional y conexión con los tomadores de decisión. Estamos invitando a más universidades líderes a co-liderar desde el inicio.',
+    'part.g.wb': 'Convoca',
+    'part.g.labs': 'Laboratorios de IA y tecnología',
+    'part.g.uni': 'Universidades y redes',
+    'part.g.gov': 'Gobiernos y escuelas',
+    'part.g.gov.t': 'Ministerios de educación y autoridades regionales de América Latina, y las escuelas públicas donde ocurre el trabajo.',
     'part.wb': 'Red global en educación y tecnología.',
     'part.mr': '945+ universidades en 10 países de la región.',
     'part.an': 'Equipo de educación.',
@@ -2649,7 +2645,7 @@ const I18N = {
 
     'join.eyebrow': 'Súmate a EvidencIA',
     'join.title': 'Dos formas de empezar.',
-    'join.lede': 'Suscríbete al newsletter para recibir la evidencia directamente. O escríbenos si tu institución quiere ser socia fundadora de la red.',
+    'join.lede': 'Suscríbete al newsletter para recibir la evidencia directamente. O escríbenos si tu institución quiere ser socia de la red.',
     'join.nl.h': 'Newsletter',
     'join.nl.p': 'Recibe la evidencia.',
     'join.nl.name': 'Nombre',
@@ -2676,7 +2672,7 @@ const I18N = {
     'join.partner.country': 'País',
     'join.partner.institution': 'Institución',
     'join.partner.interest': '¿Qué te interesa?',
-    'join.partner.opt1': 'Co-liderar la red como socio fundador',
+    'join.partner.opt1': 'Co-liderar la red como socio',
     'join.partner.opt2': 'Proponer un investigador, ministerio o practitioner para un seminario',
     'join.partner.opt3': 'Compartir investigación o evidencia para curar',
     'join.partner.opt4': 'Conectar con ministerios de educación de la región',
@@ -2721,7 +2717,7 @@ const I18N = {
     'hero.cta2': 'Become a partner',
     'hero.stat1': 'universities in the MetaRed network',
     'hero.stat2': 'countries across Latin America',
-    'hero.stat3': 'founding partners',
+    'hero.stat3': 'partners',
     'hero.stat4': 'languages: ES · EN · PT · FR',
 
     'prob.eyebrow': 'The problem',
@@ -2927,7 +2923,12 @@ const I18N = {
 
     'part.eyebrow': 'Who is building this',
     'part.title': 'An alliance.',
-    'part.lede': 'EvidencIA is a network of founding partners contributing evidence, regional reach, and a direct line to decision-makers. We are inviting more leading institutions to co-lead from the start.',
+    'part.lede': 'EvidencIA is a network of partners contributing evidence, regional reach, and a direct line to decision-makers. We are inviting more leading institutions to co-lead from the start.',
+    'part.g.wb': 'Convener',
+    'part.g.labs': 'AI labs and technology',
+    'part.g.uni': 'Universities and networks',
+    'part.g.gov': 'Governments and schools',
+    'part.g.gov.t': 'Ministries of education and regional authorities across Latin America, and the public schools where the work happens.',
     'part.wb': 'Global network in education and technology.',
     'part.mr': '945+ universities across 10 countries in the region.',
     'part.an': 'Education team.',
@@ -2943,7 +2944,7 @@ const I18N = {
 
     'join.eyebrow': 'Join EvidencIA',
     'join.title': 'Two ways to start.',
-    'join.lede': 'Subscribe to receive the evidence directly. Or write to us if your institution wants to be a founding partner.',
+    'join.lede': 'Subscribe to receive the evidence directly. Or write to us if your institution wants to become a partner.',
     'join.nl.h': 'Newsletter',
     'join.nl.p': 'Get the evidence in your inbox.',
     'join.nl.name': 'Name',
@@ -2970,7 +2971,7 @@ const I18N = {
     'join.partner.country': 'Country',
     'join.partner.institution': 'Institution',
     'join.partner.interest': 'What interests you?',
-    'join.partner.opt1': 'Co-leading the network as a founding partner',
+    'join.partner.opt1': 'Co-leading the network as a partner',
     'join.partner.opt2': 'Proposing a researcher, ministry, or practitioner for a seminar',
     'join.partner.opt3': 'Sharing research or evidence for curation',
     'join.partner.opt4': 'Connecting with education ministries across the region',
@@ -3015,7 +3016,7 @@ const I18N = {
     'hero.cta2': 'Torne-se parceiro',
     'hero.stat1': 'universidades na rede MetaRed',
     'hero.stat2': 'países na América Latina',
-    'hero.stat3': 'parceiros fundadores',
+    'hero.stat3': 'parceiros',
     'hero.stat4': 'idiomas: ES · EN · PT · FR',
 
     'prob.eyebrow': 'O problema',
@@ -3221,7 +3222,12 @@ const I18N = {
 
     'part.eyebrow': 'Quem está construindo isto',
     'part.title': 'Uma aliança.',
-    'part.lede': 'A EvidencIA é uma rede de parceiros fundadores que aportam evidência, alcance regional e conexão direta com tomadores de decisão. Estamos convidando mais instituições líderes a co-liderar desde o início.',
+    'part.lede': 'A EvidencIA é uma rede de parceiros que aportam evidência, alcance regional e conexão direta com tomadores de decisão. Estamos convidando mais instituições líderes a co-liderar desde o início.',
+    'part.g.wb': 'Convoca',
+    'part.g.labs': 'Laboratórios de IA e tecnologia',
+    'part.g.uni': 'Universidades e redes',
+    'part.g.gov': 'Governos e escolas',
+    'part.g.gov.t': 'Ministérios da educação e autoridades regionais da América Latina, e as escolas públicas onde o trabalho acontece.',
     'part.wb': 'Rede global em educação e tecnologia.',
     'part.mr': '945+ universidades em 10 países da região.',
     'part.an': 'Equipe de educação.',
@@ -3237,7 +3243,7 @@ const I18N = {
 
     'join.eyebrow': 'Junte-se à EvidencIA',
     'join.title': 'Duas formas de começar.',
-    'join.lede': 'Assine a newsletter para receber a evidência diretamente. Ou escreva-nos se sua instituição quiser ser parceira fundadora da rede.',
+    'join.lede': 'Assine a newsletter para receber a evidência diretamente. Ou escreva-nos se sua instituição quiser ser parceira da rede.',
     'join.nl.h': 'Newsletter',
     'join.nl.p': 'Receba a evidência.',
     'join.nl.name': 'Nome',
@@ -3264,7 +3270,7 @@ const I18N = {
     'join.partner.country': 'País',
     'join.partner.institution': 'Instituição',
     'join.partner.interest': 'O que lhe interessa?',
-    'join.partner.opt1': 'Co-liderar a rede como parceiro fundador',
+    'join.partner.opt1': 'Co-liderar a rede como parceiro',
     'join.partner.opt2': 'Indicar um pesquisador, ministério ou praticante para um seminário',
     'join.partner.opt3': 'Compartilhar pesquisa ou evidência para curadoria',
     'join.partner.opt4': 'Conectar-se com ministérios da educação da região',
@@ -3309,7 +3315,7 @@ const I18N = {
     'hero.cta2': 'Devenez partenaire',
     'hero.stat1': 'universités du réseau MetaRed',
     'hero.stat2': 'pays d’Amérique latine',
-    'hero.stat3': 'partenaires fondateurs',
+    'hero.stat3': 'partenaires',
     'hero.stat4': 'langues : ES · EN · PT · FR',
 
     'prob.eyebrow': 'Le problème',
@@ -3515,7 +3521,12 @@ const I18N = {
 
     'part.eyebrow': 'Qui construit ce projet',
     'part.title': 'Une alliance.',
-    'part.lede': 'EvidencIA est un réseau de partenaires fondateurs qui apportent des données probantes, une portée régionale et un lien avec les décideurs. Nous invitons d’autres universités de premier plan à en assurer la codirection dès le départ.',
+    'part.lede': 'EvidencIA est un réseau de partenaires qui apportent des données probantes, une portée régionale et un lien avec les décideurs. Nous invitons d’autres universités de premier plan à en assurer la codirection dès le départ.',
+    'part.g.wb': 'Convoque',
+    'part.g.labs': 'Laboratoires d’IA et technologie',
+    'part.g.uni': 'Universités et réseaux',
+    'part.g.gov': 'Gouvernements et écoles',
+    'part.g.gov.t': 'Ministères de l’éducation et autorités régionales d’Amérique latine, et les écoles publiques où le travail se fait.',
     'part.wb': 'Réseau mondial en éducation et technologie.',
     'part.mr': 'Plus de 945 universités dans 10 pays de la région.',
     'part.an': 'Équipe éducation.',
@@ -3531,7 +3542,7 @@ const I18N = {
 
     'join.eyebrow': 'Rejoignez EvidencIA',
     'join.title': 'Deux façons de commencer.',
-    'join.lede': 'Abonnez-vous à la newsletter pour recevoir directement les données probantes. Ou écrivez-nous si votre institution souhaite devenir partenaire fondatrice du réseau.',
+    'join.lede': 'Abonnez-vous à la newsletter pour recevoir directement les données probantes. Ou écrivez-nous si votre institution souhaite devenir partenaire du réseau.',
     'join.nl.h': 'Newsletter',
     'join.nl.p': 'Recevez les données probantes.',
     'join.nl.name': 'Nom',
@@ -3558,7 +3569,7 @@ const I18N = {
     'join.partner.country': 'Pays',
     'join.partner.institution': 'Institution',
     'join.partner.interest': 'Qu’est-ce qui vous intéresse ?',
-    'join.partner.opt1': 'Codiriger le réseau en tant que partenaire fondateur',
+    'join.partner.opt1': 'Codiriger le réseau en tant que partenaire',
     'join.partner.opt2': 'Proposer un chercheur, un ministère ou un praticien pour un séminaire',
     'join.partner.opt3': 'Partager des recherches ou des données à intégrer à la sélection',
     'join.partner.opt4': 'Entrer en contact avec les ministères de l’éducation de la région',
