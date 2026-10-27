@@ -72,9 +72,12 @@ section{padding:56px 0;border-bottom:1px solid var(--line)}
 .tool p{font-size:15px;color:var(--muted);margin:0}
 .waband{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;background:color-mix(in srgb,var(--wa) 9%,var(--card));border:1px solid color-mix(in srgb,var(--wa) 35%,var(--line));border-radius:16px;padding:22px 24px}
 .waband p{margin:0;max-width:70ch}
-.plat{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:40px;align-items:start}
-.phones{display:flex;gap:16px;justify-content:center}
-.phones img{width:230px;height:auto;border-radius:22px;border:6px solid #10232c;background:#fff}
+.plat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+/* Una en computador y otra en celular, superpuestas: el director la usa en los dos. */
+.devices{position:relative;padding:0 0 70px;margin-top:40px}
+.devices .compu{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(0,0,0,.35);background:#fff}
+.devices .celu{position:absolute;right:-6px;bottom:28px;width:30%;height:auto;border-radius:18px;border:5px solid #10232c;background:#fff;box-shadow:0 18px 34px -14px rgba(0,0,0,.4)}
+.devices figcaption{position:absolute;left:0;bottom:0}
 .reqs{display:grid;gap:10px;margin:16px 0}
 .req{background:var(--card);border:1px solid var(--line);border-left:4px solid #E8590C;border-radius:0 12px 12px 0;padding:12px 16px}
 .req strong{display:block}
@@ -102,7 +105,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
  .cover{position:static;max-width:180px}
  .res,.media,.stats{grid-template-columns:1fr}
  .waband{grid-template-columns:1fr}
- .phones img{width:46%;max-width:200px}
+ .devices{margin-top:8px}
 }
 @media (max-width:560px){
  .hero{padding:20px 0 32px}
@@ -200,10 +203,11 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 </div>
 <div class="btns"><a class="btn gold" href="https://forms.cloud.microsoft/r/uf4xFp2y8r">Postular al piloto</a></div>
 </div>
-<div class="phones">
-<img src="img/app_aparatos.jpg" alt="La plataforma respondiendo a un director cuyo proyector no funciona">
-<img src="img/app_comunicacion.jpg" alt="Un aviso a las familias redactado por la plataforma" style="margin-top:30px">
-</div>
+<figure class="devices">
+<img class="compu" src="img/pe_compu.jpg" alt="La portada de la plataforma en computador: Recupere las horas, devuélvalas al aula">
+<img class="celu" src="img/app_aparatos.jpg" alt="La plataforma en celular, respondiendo a un director cuyo proyector no funciona">
+<figcaption>En computador y en celular: la misma plataforma.</figcaption>
+</figure>
 </div>
 </section>
 
