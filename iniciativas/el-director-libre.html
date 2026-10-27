@@ -908,5 +908,6 @@ document.querySelectorAll('.lang button').forEach(b => {
   else applyLang('es');
 })();
 </script>
+<script>/* Contador de visitas sin cookies (evidencia-mcp src/visitas.js). ?no_contar=1 excluye este navegador. */(function(){try{if(/[?&]no_contar=1/.test(location.search))localStorage.setItem('evidencia_no_contar','1');if(localStorage.getItem('evidencia_no_contar'))return}catch(e){}if(navigator.sendBeacon)navigator.sendBeacon('https://mcp.redevidencia.org/api/visita',new Blob([JSON.stringify({p:location.pathname,r:document.referrer})],{type:'text/plain'}))})();</script>
 </body>
 </html>
