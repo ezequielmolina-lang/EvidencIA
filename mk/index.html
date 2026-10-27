@@ -38,7 +38,7 @@ p{margin:0 0 12px}
 .map{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
 .map a{display:flex;flex-direction:column;background:#1f1f27;border:1px solid #2e2e38;border-radius:14px;overflow:hidden;text-decoration:none;color:#f4f4f7;transition:transform .15s,border-color .15s}
 .map a:hover{transform:translateY(-3px);border-color:#f1c34a}
-.map .pic{aspect-ratio:4/3;background:#2a2a33 center/cover no-repeat}
+.map .pic{aspect-ratio:4/5;background:#2a2a33 center top/cover no-repeat}
 .map .txt{padding:12px 14px 14px}
 .map .who{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f1c34a}
 .map .name{font-weight:700;font-size:17px;line-height:1.25;margin-top:4px}
@@ -46,7 +46,7 @@ p{margin:0 0 12px}
 /* blocks */
 section{padding:56px 0;border-bottom:1px solid var(--line)}
 .kick{color:var(--gold)}
-.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
 .intro .text p{max-width:64ch}
 .figs{display:grid;gap:14px}
 figure{margin:0}
@@ -54,6 +54,7 @@ figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px so
 figcaption{font-size:14px;color:var(--muted);margin-top:6px}
 
 .init{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;align-items:start}
+.cover{position:sticky;top:20px}
 .cover img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);display:block;box-shadow:0 18px 40px -22px rgba(0,0,0,.35);background:#fff}
 .cover .tag{margin-top:10px;font-size:14px;color:var(--muted)}
 .did p{max-width:78ch}
@@ -71,6 +72,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px}
 .col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .col li{font-size:15.5px;line-height:1.4}
 .col li a{font-weight:700}
+.col.wide ul{grid-template-columns:repeat(4,1fr);gap:14px}
 .col li small{display:block;color:var(--muted);font-size:14px}
 .media{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:22px}
 .media video{width:100%;aspect-ratio:16/9;border-radius:12px;background:#000;display:block}
@@ -128,7 +130,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 .use span{display:block;color:var(--muted);font-size:14.5px;margin-top:8px}
 @media (max-width:860px){.flow,.uses,.keys{grid-template-columns:1fr}.row{grid-template-columns:120px 1fr 50px}}
 @media (max-width:1100px){.map{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:860px){.intro,.init{grid-template-columns:1fr}.cover{max-width:240px}.res,.arms{grid-template-columns:1fr}.media.vert{grid-template-columns:1fr}.media.vert video{max-width:340px}}
+@media (max-width:860px){.cover{position:static}.col.wide ul{grid-template-columns:1fr}.intro,.init{grid-template-columns:1fr}.cover{max-width:240px}.res,.arms{grid-template-columns:1fr}.media.vert{grid-template-columns:1fr}.media.vert video{max-width:340px}}
 @media (max-width:560px){.map{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -145,7 +147,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 <a href="#teachers"><div class="pic" style="background-image:url(img/cover-ia-en-el-aula.jpg)"></div><div class="txt"><div class="who">Teachers</div><div class="name">La IA en el Aula · Teach + IA</div></div></a>
 <a href="#students"><video class="pic" autoplay muted loop playsinline preload="metadata" poster="../img/gallito-v2.png" style="width:100%;object-fit:cover;background:#e9e2d2"><source src="../img/gallito-v2.mp4" type="video/mp4"></video><div class="txt"><div class="who">Students</div><div class="name">Eligiendo Mi Camino</div></div></a>
 <a href="#systems"><div class="pic" style="background-image:url(img/cover-el-salvador.jpg)"></div><div class="txt"><div class="who">Whole systems</div><div class="name">El Salvador · evalkit</div></div></a>
-<a href="#evidencia"><div class="pic" style="background-image:url(img/evidencia-explainer-en.jpg);background-position:center 30%"></div><div class="txt"><div class="who">The evidence</div><div class="name">EvidencIA</div></div></a>
+<a href="#evidencia"><div class="pic" style="background-image:url(img/cover-papers.jpg);background-position:center top"></div><div class="txt"><div class="who">The evidence</div><div class="name">EvidencIA</div></div></a>
 </nav>
 </div>
 </header>
@@ -158,12 +160,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 <h2>AI can help or harm learning. The design decides which.</h2>
 <p>In Turkey, high school students given free access to GPT-4 scored 17 percent lower on an exam taken without it; a version with guardrails removed the harm but produced no gain. When guidance is built in, results turn positive: university students in Chile told how to use AI as a tutor gained 0.22 SD on the final exam, and lower secondary students in Sierra Leone gained 0.26 SD in math with lessons on Gemini's guided mode.</p>
 <p>On average, our background paper for the WDR 2026 finds that adaptive and AI-enabled tools raise learning by 0.125 SD across 14 randomized trials, and that generative AI cannot yet be told apart from the adaptive software that came before it.</p>
-<div class="col" style="margin-top:18px"><div class="mono">Research</div><ul>
-<li><a href="https://thedocs.worldbank.org/en/doc/2fba81cd6cd60d2f54532fc7062395fb-0050062026/original/Can-EdTech-Close-Learning-Gaps.pdf">Can EdTech Close Learning Gaps?</a><small>Burneo Terán, Dinarte-Diaz, Lopez and Molina 2026, WDR 2026 background paper</small></li>
-<li><a href="https://doi.org/10.1073/pnas.2422633122">Generative AI without guardrails can harm learning</a><small>Bastani et al. 2025, PNAS (Turkey)</small></li>
-<li><a href="https://www.iza.org/publications/dp/18513">Gallegos 2026</a><small>IZA DP 18513 (Chile)</small></li>
-<li><a href="https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf">Teaching with Gemini</a><small>LearnLM Team and Fab AI 2026 (Sierra Leone)</small></li>
-</ul></div>
+
 </div>
 <div class="chart" role="img" aria-label="Average effect on learning by design of the AI use, in standard deviations">
 <div class="mono">Average effect on learning, by design (SD)</div>
@@ -199,6 +196,12 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 </div>
 </div>
 <p class="note" style="margin-top:10px">Same technology in all five results. Each carries its own outcome measure: the directions compare, the sizes do not. Bastani et al. (2025); Strömberg, Lei and Wu (2026); Gallegos (2026); LearnLM Team and Fab AI (2026).</p>
+<div class="col wide" style="margin-top:18px"><div class="mono">Research</div><ul>
+<li><a href="https://thedocs.worldbank.org/en/doc/2fba81cd6cd60d2f54532fc7062395fb-0050062026/original/Can-EdTech-Close-Learning-Gaps.pdf">Can EdTech Close Learning Gaps?</a><small>Burneo Terán, Dinarte-Diaz, Lopez and Molina 2026, WDR 2026 background paper</small></li>
+<li><a href="https://doi.org/10.1073/pnas.2422633122">Generative AI without guardrails can harm learning</a><small>Bastani et al. 2025, PNAS (Turkey)</small></li>
+<li><a href="https://www.iza.org/publications/dp/18513">Gallegos 2026</a><small>IZA DP 18513 (Chile)</small></li>
+<li><a href="https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf">Teaching with Gemini</a><small>LearnLM Team and Fab AI 2026 (Sierra Leone)</small></li>
+</ul></div>
 </div>
 </section>
 
