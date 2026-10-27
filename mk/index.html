@@ -132,6 +132,32 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 @media (max-width:1100px){.map{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){.cover{position:static}.col.wide ul{grid-template-columns:1fr}.intro,.init{grid-template-columns:1fr}.cover{max-width:240px}.res,.arms{grid-template-columns:1fr}.media.vert{grid-template-columns:1fr}.media.vert video{max-width:340px}}
 @media (max-width:560px){.map{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+/* phones and small tablets */
+@media (max-width:860px){
+ .wrap{padding:0 16px}
+ section{padding:40px 0}
+ .init{gap:18px}
+ .cover{max-width:200px}
+ .cover .tag{font-size:13px}
+ .flow{grid-template-columns:1fr 1fr}
+ .media{grid-template-columns:1fr}
+ .media.vert video{max-width:320px}
+ .lib .big b{font-size:40px}
+}
+@media (max-width:560px){
+ .hero{padding:20px 0 32px}
+ .hero .kick{margin-top:22px}
+ .map{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:24px -16px 0;padding:0 16px 6px;scrollbar-width:none}
+ .map::-webkit-scrollbar{display:none}
+ .map a{flex:0 0 62%;scroll-snap-align:start}
+ .cover{max-width:160px}
+ .stat b{font-size:26px}
+ .flow{grid-template-columns:1fr}
+ .row{grid-template-columns:104px 1fr 46px;font-size:13.5px}
+ .chart{padding:16px}
+ .r b{font-size:30px}
+ h3{font-size:18px}
+}
 </style>
 </head>
 <body>
