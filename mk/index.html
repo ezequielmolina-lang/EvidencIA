@@ -96,6 +96,37 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 @media (prefers-color-scheme: dark){.r.neg b{color:#ff7b6b}.r.pos b{color:#5fd08f}}
 @media (max-width:860px){.design{grid-template-columns:1fr}.cards{grid-auto-flow:row}}
 
+.chart{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.chart>.mono{color:var(--muted);font-size:12px;margin-bottom:6px}
+.grp{font-weight:700;font-size:15px;margin:14px 0 6px}
+.row{display:grid;grid-template-columns:170px 1fr 56px;align-items:center;gap:10px;margin:5px 0;font-size:14.5px}
+.row .lab{color:var(--muted)}
+.bar{position:relative;height:18px;background:linear-gradient(to right,transparent calc(33.3% - 1px),var(--fg) calc(33.3% - 1px),var(--fg) 33.3%,transparent 33.3%)}
+.bar i{position:absolute;top:2px;height:14px;border-radius:3px}
+.bar i.pos{left:33.3%;width:calc(var(--v) / 0.6 * 100%);background:#1e8a4c}
+.bar i.neg{right:66.7%;width:calc(var(--v) * -1 / 0.6 * 100%);background:#c0392b}
+.row .val{font-family:'JetBrains Mono',monospace;font-size:14px;text-align:right}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
+.step b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;margin-bottom:8px}
+.step strong{display:block;font-size:17px}
+.step span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
+.probe{margin-top:14px;border-left:4px solid #c0392b;background:var(--card);border-radius:0 12px 12px 0;padding:14px 18px}
+.probe .verdict{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#c0392b;margin-bottom:6px}
+.probe p{margin:0;font-size:15.5px}
+.lib{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:10px}
+.lib .big b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:48px;letter-spacing:-.02em;line-height:1;margin-right:10px}
+.lib .big span{color:var(--muted)}
+.stack{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:14px 0 12px;gap:2px}
+.keys{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;font-size:14.5px;color:var(--muted)}
+.keys i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+.keys b{color:var(--fg);font-size:16px}
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.use{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.use .mono{color:var(--gold);font-size:12px;margin-bottom:8px}
+.use q{display:block;font-weight:700;font-size:16.5px;line-height:1.35;quotes:'\201C' '\201D'}
+.use span{display:block;color:var(--muted);font-size:14.5px;margin-top:8px}
+@media (max-width:860px){.flow,.uses,.keys{grid-template-columns:1fr}.row{grid-template-columns:120px 1fr 50px}}
 @media (max-width:1100px){.map{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){.intro,.init{grid-template-columns:1fr}.cover{max-width:240px}.res,.arms{grid-template-columns:1fr}.media.vert{grid-template-columns:1fr}.media.vert video{max-width:340px}}
 @media (max-width:560px){.map{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
@@ -112,7 +143,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 <nav class="map" aria-label="Initiatives">
 <a href="#leaders"><div class="pic" style="background-image:url(img/cover-director-libre.jpg);background-position:center 20%"></div><div class="txt"><div class="who">School leaders</div><div class="name">El Director LIBRE</div></div></a>
 <a href="#teachers"><div class="pic" style="background-image:url(img/cover-ia-en-el-aula.jpg)"></div><div class="txt"><div class="who">Teachers</div><div class="name">La IA en el Aula · Teach + IA</div></div></a>
-<a href="#students"><div class="pic" style="background-image:url(img/cover-emc.jpg);background-color:#e9e2d2"></div><div class="txt"><div class="who">Students</div><div class="name">Eligiendo Mi Camino</div></div></a>
+<a href="#students"><video class="pic" autoplay muted loop playsinline preload="metadata" poster="../img/gallito-v2.png" style="width:100%;object-fit:cover;background:#e9e2d2"><source src="../img/gallito-v2.mp4" type="video/mp4"></video><div class="txt"><div class="who">Students</div><div class="name">Eligiendo Mi Camino</div></div></a>
 <a href="#systems"><div class="pic" style="background-image:url(img/cover-el-salvador.jpg)"></div><div class="txt"><div class="who">Whole systems</div><div class="name">El Salvador · evalkit</div></div></a>
 <a href="#evidencia"><div class="pic" style="background-image:url(img/evidencia-explainer-en.jpg);background-position:center 30%"></div><div class="txt"><div class="who">The evidence</div><div class="name">EvidencIA</div></div></a>
 </nav>
@@ -134,8 +165,19 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 <li><a href="https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf">Teaching with Gemini</a><small>LearnLM Team and Fab AI 2026 (Sierra Leone)</small></li>
 </ul></div>
 </div>
-<div class="figs">
-<figure><img src="img/slide-09.jpg" alt="Chart: free use of a chatbot shows no gain on average; a tutor that only withholds answers removes the harm; structure that teaches brings the gains" loading="lazy" width="1400" height="788"><figcaption>Every randomized trial of generative AI in the EvidencIA library, learning tested without AI. Guardrails stop the harm; structure brings the gains. A pattern from few trials per cell, still to be confirmed.</figcaption></figure>
+<div class="chart" role="img" aria-label="Average effect on learning by design of the AI use, in standard deviations">
+<div class="mono">Average effect on learning, by design (SD)</div>
+<div class="grp">Free use of a general chatbot</div>
+<div class="row"><span class="lab">Schools · 3 trials</span><span class="bar"><i class="neg" style="--v:-0.19"></i></span><span class="val">−0.19</span></div>
+<div class="row"><span class="lab">Universities · 14 trials</span><span class="bar"><i class="pos" style="--v:0.16"></i></span><span class="val">+0.16</span></div>
+<div class="grp">A chatbot that only withholds the answer</div>
+<div class="row"><span class="lab">Schools · 1 trial</span><span class="bar"><i class="neg" style="--v:-0.01"></i></span><span class="val">−0.01</span></div>
+<div class="row"><span class="lab">Universities · 1 trial</span><span class="bar"><i class="neg" style="--v:-0.07"></i></span><span class="val">−0.07</span></div>
+<div class="grp">Structure that teaches: a tutor, course tasks or a usage guide</div>
+<div class="row"><span class="lab">Schools · 10 trials</span><span class="bar"><i class="pos" style="--v:0.22"></i></span><span class="val">+0.22</span></div>
+<div class="row"><span class="lab">Universities · 12 trials</span><span class="bar"><i class="pos" style="--v:0.37"></i></span><span class="val">+0.37</span></div>
+<p class="note" style="margin-top:12px">Guardrails stop the harm; structure brings the gains. Randomized trials of generative AI in the EvidencIA library, learning tested without AI, random-effects averages by arm, 16 October 2026. A pattern from few trials per cell, still to be confirmed.</p>
+</div>
 </div>
 </div>
 <div class="wrap">
@@ -226,18 +268,18 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 
 <section id="students">
 <div class="wrap init">
-<div class="cover"><img src="img/cover-emc.jpg" alt="Gallito, the career coach" width="640" height="640" loading="lazy" style="background:#e9e2d2"><div class="tag">Gallito, the AI career coach students talk to.</div></div>
+<div class="cover"><video autoplay muted loop playsinline preload="metadata" poster="../img/gallito-v2.png" aria-label="Gallito, the career coach" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;background:#e9e2d2"><source src="../img/gallito-v2.mp4" type="video/mp4"></video><div class="tag">Gallito, the AI career coach students talk to.</div></div>
 <div class="did">
 <div class="mono kick">03 · Students</div>
 <h2>Eligiendo Mi Camino</h2>
-<p>In Peru's public secondary schools, 74 percent of students want to keep studying, but only 16 percent know what to study. Eligiendo Mi Camino gives every final-year student an AI career coach during the school day, in the school's computer lab: twelve sessions, with official wages for more than 130 occupations, ending in a personal plan.</p>
+<p>At the start of the Lima trial, 74 percent of final-year students wanted to keep studying, but only 16 percent knew what to study. Eligiendo Mi Camino gives every final-year student an AI career coach during the school day, in the school's computer lab: twelve sessions, with official wages for more than 130 occupations, ending in a personal plan.</p>
 <div class="stats">
 <div class="stat"><b>110</b><span>public schools in Lima, about 6,600 students, pre-registered randomized trial</span></div>
 <div class="stat"><b>9 in 10</b><span>treated students used the coach</span></div>
 <div class="stat"><b>+0.12 SD</b><span>in career readiness at midline</span></div>
 <div class="stat"><b>+14%</b><span>in intentions to enroll in a technical institute, about 3 points</span></div>
 </div>
-<p>Students' estimates of technical wages also moved about 21 percent closer to the official figure. These are plans and beliefs; enrollment comes later.</p>
+<p>The coach also raised students' estimates of what a technical career pays by about 21 percent, toward the official figure. These are plans and beliefs; enrollment comes later.</p>
 <h3 style="margin-top:24px">The math tutor: which design makes learning last</h3>
 <p>The same trial takes up the tutor debate. The 110 schools were randomly assigned to three groups:</p>
 <div class="arms">
@@ -275,11 +317,18 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 <div class="did">
 <div class="mono kick">04 · Whole systems</div>
 <h2>El Salvador, and how to check a platform before a trial exists</h2>
-<p>El Salvador is changing everything at once: connectivity and devices, AI learning platforms, support for teachers and principals, and measurement, aiming to go from 10 schools to 5,000 in three years. At the request of Bank management, we gave the government technical feedback on the AI platforms it is deploying, without picking a vendor. The ones we reviewed in depth shared the same gaps: wrong answers are not linked to the misconception behind them, nothing separates what a student solved alone from what the AI did, and there is no protected practice from memory.</p>
+<p>El Salvador is changing everything at once: connectivity and devices, AI learning platforms, support for teachers and principals, and measurement. It began with a pilot in 10 schools, now operates in nearly 1,000, and is moving toward almost 5,000 public schools. At the request of Bank management, we gave the government technical feedback on the AI platforms it is deploying, without picking a vendor. The ones we reviewed in depth shared the same gaps: wrong answers are not linked to the misconception behind them, nothing separates what a student solved alone from what the AI did, and there is no protected practice from memory.</p>
 <h3 style="margin-top:24px">evalkit: a team of AI agents that tests a platform</h3>
-<p>Most products a ministry buys will never have a trial. In evalkit, the ministry says what the platform is for; AI agents turn that into criteria and test cases, a person approves the plan, and the agents then drive a real browser through the real product, several times, because AI tutors answer differently each time. Every score cites the screenshot behind it, and anything sensitive, such as a student in distress, needs a human signature before it is tested. In one run, a demo math tutor was given three wrong sums and answered all three with the same generic sentence, without ever naming the error.</p>
+<p>Most products a ministry buys will never have a trial. In evalkit, the ministry says what the platform is for; AI agents turn that into criteria and test cases, a person approves the plan, and the agents then drive a real browser through the real product, several times, because AI tutors answer differently each time. Every score cites the screenshot behind it, and anything sensitive, such as a student in distress, needs a human signature before it is tested.</p>
 <p>evalkit checks behavior, not learning: knowing whether these platforms raise learning in El Salvador needs a randomized trial, which we do not have the resources to run today.</p>
-<div class="media"><figure><img src="img/slide-20.jpg" alt="Slide: how evalkit works, from framework to plan to agents to report" loading="lazy" width="1400" height="788"></figure></div>
+<div class="flow">
+<div class="step"><b>1</b><strong>A framework</strong><span>The ministry says what the platform is for; evalkit builds the criteria.</span></div>
+<div class="step"><b>2</b><strong>A plan</strong><span>It drafts the test cases and shows the plan before anything runs.</span></div>
+<div class="step"><b>3</b><strong>Agents</strong><span>They drive a real browser through the real product, more than once.</span></div>
+<div class="step"><b>4</b><strong>A report</strong><span>Every score cites the screenshot behind it, sealed with its hash.</span></div>
+</div>
+<p class="mono" style="color:var(--muted);font-size:12px;margin:10px 0 0">A person reviews and signs off at every step</p>
+<div class="probe"><div class="verdict">Does not meet · probed 3 times</div><p><strong>After a pupil's arithmetic error, the tutor names what the error is, not just that it is wrong.</strong> Three wrong sums were put to a demo math tutor: 27+45=62, 6×4=28, 52−27=35. All three times it replied with the same sentence: "tell me which part doesn't add up and we'll look at it together".</p></div>
 <div class="res">
 <div class="col"><div class="mono">Research</div><ul>
 <li><a href="https://blogs.worldbank.org/en/latinamerica/el-salvador-sistema-alineado-educacion-tecnologia-servicio-aprendizajes-pueden-acelerar-cambios">An encouraging sign from El Salvador</a><small>Cordeiro Guerra and Saavedra, World Bank blog, September 2026</small></li>
@@ -297,15 +346,28 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
 
 <section id="evidencia">
 <div class="wrap init">
-<div class="cover"><img src="img/slide-22.jpg" alt="The EvidencIA micro-lessons app on a phone" width="1400" height="788" loading="lazy"><div class="tag">Fifty studies as two-minute lessons.</div></div>
+<div class="cover"><video controls playsinline preload="metadata" poster="img/evidencia-explainer-en.jpg" style="width:100%;aspect-ratio:4/5;border-radius:12px;background:#000;display:block"><source src="img/evidencia-explainer-en.mp4" type="video/mp4"></video><div class="tag">What the connector does, in one minute.</div></div>
 <div class="did">
 <div class="mono kick">05 · The evidence in one place</div>
 <h2>EvidencIA</h2>
 <p>Knowledge about AI and learning is split across researchers, universities, governments, companies and schools. EvidencIA is the Latin American network on AI and the science of learning that the Bank convenes to bring them together, with partners including Anthropic, Google, Microsoft, Tec de Monterrey and MetaRed, a network of 945 universities.</p>
-<p>It keeps a living library of 1,847 documents, each labeled by what it can support; 94 are randomized trials or a meta-analysis that measure learning on a test taken without AI, each figure checked against the paper. A free connector puts that library inside Claude, ChatGPT and Gemini, so an official or a teacher who asks an AI assistant gets an answer built on studies, with the strength of the evidence and what is still unknown.</p>
-<div class="media vert">
-<figure><video controls playsinline preload="none" poster="img/evidencia-explainer-en.jpg"><source src="img/evidencia-explainer-en.mp4" type="video/mp4"></video><figcaption>What the connector does, in one minute.</figcaption></figure>
-<div class="figs"><figure><img src="img/slide-15.jpg" alt="Slide: a living evidence library" loading="lazy" width="1400" height="788"></figure><figure><img src="img/slide-16.jpg" alt="Slide: the EvidencIA connector, an answer with and without it" loading="lazy" width="1400" height="788"></figure></div>
+<h3 style="margin-top:22px">A living library, sorted by what each document can support</h3>
+<div class="lib" role="img" aria-label="1,848 documents: 94 at level 1, 242 at level 2, 933 at level 3, 579 at level 4">
+<div class="big"><b>1,848</b><span>documents, 16 October 2026</span></div>
+<div class="stack"><i style="flex:94;background:#1e8a4c"></i><i style="flex:242;background:#a87613"></i><i style="flex:933;background:#3046ff"></i><i style="flex:579;background:#9a9aa8"></i></div>
+<div class="keys">
+<span><i style="background:#1e8a4c"></i><b>94</b> causal on learning: randomized trials, or a meta-analysis of them, with learning tested without AI and each figure checked against the paper</span>
+<span><i style="background:#a87613"></i><b>242</b> causal, with limits</span>
+<span><i style="background:#3046ff"></i><b>933</b> descriptive</span>
+<span><i style="background:#9a9aa8"></i><b>579</b> policy and guidance</span>
+</div>
+</div>
+<h3 style="margin-top:26px">A free connector that puts the library inside Claude, ChatGPT and Gemini</h3>
+<p>An official or a teacher who asks an AI assistant gets an answer built on studies, with the strength of the evidence and what is still unknown. Three kinds of questions it answers:</p>
+<div class="uses">
+<div class="use"><div class="mono">The evidence</div><q>Do AI tutors work in secondary school?</q><span>The studies, how strong each one is, and what is missing.</span></div>
+<div class="use"><div class="mono">AI policy</div><q>What have other Latin American countries done on AI in schools?</q><span>What each official guide says, linked to the exact page.</span></div>
+<div class="use"><div class="mono">How people learn</div><q>How do I adapt my math lessons to my students' learning styles?</q><span>Corrects the premise, then says what to do instead.</span></div>
 </div>
 <div class="res">
 <div class="col"><div class="mono">Use it</div><ul>
