@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI in Education in Latin America · EvidencIA</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="What the World Bank's Latin America education team is doing with AI: each initiative, its research, its videos and its resources.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32.png">
+<link rel="apple-touch-icon" href="/img/icon/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f4f7;--card:#ffffff;--fg:#16161c;--muted:#5d5d6b;--line:#dcdce4;--accent:#3046ff;--gold:#a87613;--ink:#14141a;--ink-fg:#f4f4f7;color-scheme:light}
+@media (prefers-color-scheme: dark){:root{--bg:#101015;--card:#18181f;--fg:#f1f1f5;--muted:#a3a3b2;--line:#2a2a33;--accent:#8c98ff;--gold:#f1c34a;--ink:#05050a;--ink-fg:#f1f1f5;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
+a{color:var(--accent);text-underline-offset:3px}
+.mono{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+h1,h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;text-wrap:balance}
+h1{font-size:clamp(34px,5.4vw,72px);line-height:1.02;margin:14px 0 18px}
+h1 b{color:var(--gold)}
+h2{font-size:clamp(28px,3.4vw,46px);line-height:1.05;margin:8px 0 14px}
+h3{font-size:20px;margin:0 0 8px}
+p{margin:0 0 12px}
+
+/* hero */
+.hero{background:var(--ink);color:var(--ink-fg);padding:28px 0 48px}
+.hero a{color:var(--ink-fg)}
+.hero .top{font-family:'JetBrains Mono',monospace;font-size:13px;opacity:.7}
+.hero .top a{text-decoration:none}
+.hero .kick{color:#f1c34a;margin-top:36px}
+.hero h1 b{color:#f1c34a}
+.hero .lead{font-size:clamp(18px,1.6vw,21px);max-width:80ch;opacity:.85}
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+.map a{display:flex;flex-direction:column;background:#1f1f27;border:1px solid #2e2e38;border-radius:14px;overflow:hidden;text-decoration:none;color:#f4f4f7;transition:transform .15s,border-color .15s}
+.map a:hover{transform:translateY(-3px);border-color:#f1c34a}
+.map .pic{aspect-ratio:4/5;background:#2a2a33 center top/cover no-repeat}
+.map .txt{padding:12px 14px 14px}
+.map .who{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f1c34a}
+.map .name{font-weight:700;font-size:17px;line-height:1.25;margin-top:4px}
+
+/* blocks */
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.kick{color:var(--gold)}
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
+.intro .text p{max-width:64ch}
+.figs{display:grid;gap:14px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+
+.init{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;align-items:start}
+.cover{position:sticky;top:20px}
+.cover img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);display:block;box-shadow:0 18px 40px -22px rgba(0,0,0,.35);background:#fff}
+.cover .tag{margin-top:10px;font-size:14px;color:var(--muted)}
+.did p{max-width:78ch}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:32px;letter-spacing:-.02em;line-height:1.05}
+.stat span{color:var(--muted);font-size:15px}
+.arms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.arm{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.arm b{font-family:'JetBrains Mono',monospace;color:var(--accent);display:block;margin-bottom:4px}
+
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.col .mono{color:var(--muted);font-size:12px;margin-bottom:8px}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.col li{font-size:15.5px;line-height:1.4}
+.col li a{font-weight:700}
+.col.wide ul{grid-template-columns:repeat(5,1fr);gap:14px}
+.col li small{display:block;color:var(--muted);font-size:14px}
+.media{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:22px}
+.media video{width:100%;aspect-ratio:16/9;border-radius:12px;background:#000;display:block}
+.media.vert{grid-template-columns:minmax(0,320px) minmax(0,1fr);align-items:start}
+.media.vert video{aspect-ratio:4/5}
+.sub{margin-top:40px;padding-top:32px;border-top:1px dashed var(--line)}
+.note{color:var(--muted);font-size:15px}
+.dark{background:var(--ink);color:var(--ink-fg)}
+.dark .kick{color:#f1c34a}
+.dark p{max-width:90ch;opacity:.9}
+footer{padding:28px 0 48px;color:var(--muted);font-size:15px}
+.design{display:grid;grid-template-columns:2fr 3fr;gap:14px;margin-top:36px}
+.side{border-radius:14px;padding:18px;border:1px solid var(--line)}
+.side.bad{background:color-mix(in srgb,#c0392b 7%,var(--card))}
+.side.good{background:color-mix(in srgb,#1e8a4c 8%,var(--card))}
+.side .mono{color:var(--muted);margin-bottom:12px}
+.cards{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px}
+.r{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.r b{display:block;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(30px,3vw,44px);letter-spacing:-.02em;line-height:1}
+.r span{display:block;font-size:15px;margin-top:6px}
+.r em{display:block;font-style:normal;font-size:13.5px;color:var(--muted);margin-top:8px}
+.r.neg b{color:#c0392b}.r.pos b{color:#1e8a4c}.r.zero b{color:var(--muted)}
+@media (prefers-color-scheme: dark){.r.neg b{color:#ff7b6b}.r.pos b{color:#5fd08f}}
+@media (max-width:860px){.design{grid-template-columns:1fr}.cards{grid-auto-flow:row}}
+
+.chart{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.chart>.mono{color:var(--muted);font-size:12px;margin-bottom:6px}
+.grp{font-weight:700;font-size:15px;margin:14px 0 6px}
+.row{display:grid;grid-template-columns:170px 1fr 56px;align-items:center;gap:10px;margin:5px 0;font-size:14.5px}
+.row .lab{color:var(--muted)}
+.bar{position:relative;height:18px;background:linear-gradient(to right,transparent calc(33.3% - 1px),var(--fg) calc(33.3% - 1px),var(--fg) 33.3%,transparent 33.3%)}
+.bar i{position:absolute;top:2px;height:14px;border-radius:3px}
+.bar i.pos{left:33.3%;width:calc(var(--v) / 0.6 * 100%);background:#1e8a4c}
+.bar i.neg{right:66.7%;width:calc(var(--v) * -1 / 0.6 * 100%);background:#c0392b}
+.row .val{font-family:'JetBrains Mono',monospace;font-size:14px;text-align:right}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
+.step b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;margin-bottom:8px}
+.step strong{display:block;font-size:17px}
+.step span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
+.probe{margin-top:14px;border-left:4px solid #c0392b;background:var(--card);border-radius:0 12px 12px 0;padding:14px 18px}
+.probe .verdict{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#c0392b;margin-bottom:6px}
+.probe p{margin:0;font-size:15.5px}
+.lib{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:10px}
+.lib .big b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:48px;letter-spacing:-.02em;line-height:1;margin-right:10px}
+.lib .big span{color:var(--muted)}
+.stack{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:14px 0 12px;gap:2px}
+.keys{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;font-size:14.5px;color:var(--muted)}
+.keys i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+.keys b{color:var(--fg);font-size:16px}
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.use{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.use .mono{color:var(--gold);font-size:12px;margin-bottom:8px}
+.use q{display:block;font-weight:700;font-size:16.5px;line-height:1.35;quotes:'\201C' '\201D'}
+.use span{display:block;color:var(--muted);font-size:14.5px;margin-top:8px}
+@media (max-width:860px){.flow,.uses,.keys{grid-template-columns:1fr}.row{grid-template-columns:120px 1fr 50px}}
+@media (max-width:1100px){.map{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){.cover{position:static}.col.wide ul{grid-template-columns:1fr}.intro,.init{grid-template-columns:1fr}.cover{max-width:240px}.res,.arms{grid-template-columns:1fr}.media.vert{grid-template-columns:1fr}.media.vert video{max-width:340px}}
+@media (max-width:560px){.map{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+/* phones and small tablets */
+@media (max-width:860px){
+ .wrap{padding:0 16px}
+ section{padding:40px 0}
+ .init{gap:18px}
+ .cover{max-width:200px}
+ .cover .tag{font-size:13px}
+ .flow{grid-template-columns:1fr 1fr}
+ .media{grid-template-columns:1fr}
+ .media.vert video{max-width:320px}
+ .lib .big b{font-size:40px}
+}
+@media (max-width:560px){
+ .hero{padding:20px 0 32px}
+ .hero .kick{margin-top:22px}
+ .map{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:24px -16px 0;padding:0 16px 6px;scrollbar-width:none}
+ .map::-webkit-scrollbar{display:none}
+ .map a{flex:0 0 62%;scroll-snap-align:start}
+ .cover{max-width:160px}
+ .stat b{font-size:26px}
+ .flow{grid-template-columns:1fr}
+ .row{grid-template-columns:104px 1fr 46px;font-size:13.5px}
+ .chart{padding:16px}
+ .r b{font-size:30px}
+ h3{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="wrap">
+<div class="top"><a href="/">← redevidencia.org</a></div>
+<div class="mono kick">World Bank · Latin America education · October 2026</div>
+<h1>AI in education in Latin America: <b>what we are doing and what we have learned.</b></h1>
+<p class="lead">Five initiatives, one for each actor who decides whether AI improves learning, and an evidence network that ties them together. For each one: what we did, the research, the videos and the resources. All of it is done jointly with Carolina Lopez in DECRG, the knowledge agenda behind our operations.</p>
+<nav class="map" aria-label="Initiatives">
+<a href="#leaders"><div class="pic" style="background-image:url(img/cover-director-libre.jpg);background-position:center 20%"></div><div class="txt"><div class="who">School leaders</div><div class="name">El Director LIBRE</div></div></a>
+<a href="#teachers"><div class="pic" style="background-image:url(img/cover-ia-en-el-aula.jpg)"></div><div class="txt"><div class="who">Teachers</div><div class="name">La IA en el Aula · Teach + IA</div></div></a>
+<a href="#students"><video class="pic" autoplay muted loop playsinline preload="metadata" poster="../img/gallito-v2.png" style="width:100%;object-fit:cover;background:#e9e2d2"><source src="../img/gallito-v2.mp4" type="video/mp4"></video><div class="txt"><div class="who">Students</div><div class="name">Eligiendo Mi Camino</div></div></a>
+<a href="#systems"><div class="pic" style="background-image:url(img/cover-el-salvador.jpg)"></div><div class="txt"><div class="who">Whole systems</div><div class="name">El Salvador · evalkit</div></div></a>
+<a href="#evidencia"><div class="pic" style="background-image:url(img/cover-papers.jpg);background-position:center top"></div><div class="txt"><div class="who">The evidence</div><div class="name">EvidencIA</div></div></a>
+</nav>
+</div>
+</header>
+
+<main>
+<section>
+<div class="wrap intro">
+<div class="text">
+<div class="mono kick">What we know so far</div>
+<h2>AI can help or harm learning. The design decides which.</h2>
+<p>In Turkey, high school students given free access to GPT-4 scored 17 percent lower on an exam taken without it; a version with guardrails removed the harm but produced no gain. When guidance is built in, results turn positive: university students in Chile told how to use AI as a tutor gained 0.22 SD on the final exam, and lower secondary students in Sierra Leone gained 0.26 SD in math with lessons on Gemini's guided mode.</p>
+<p>On average, our background paper for the WDR 2026 finds that adaptive and AI-enabled tools raise learning by 0.125 SD across 14 randomized trials, and that, so far, the trials do not show generative AI doing better than the adaptive software that came before it.</p>
+
+</div>
+<div class="chart" role="img" aria-label="Average effect on learning by design of the AI use, in standard deviations">
+<div class="mono">Average effect on learning, by design (SD)</div>
+<div class="grp">Free use of a general chatbot</div>
+<div class="row"><span class="lab">Schools · 3 trials</span><span class="bar"><i class="neg" style="--v:-0.19"></i></span><span class="val">−0.19</span></div>
+<div class="row"><span class="lab">Universities · 14 trials</span><span class="bar"><i class="pos" style="--v:0.16"></i></span><span class="val">+0.16</span></div>
+<div class="grp">A chatbot that only withholds the answer</div>
+<div class="row"><span class="lab">Schools · 1 trial</span><span class="bar"><i class="neg" style="--v:-0.01"></i></span><span class="val">−0.01</span></div>
+<div class="row"><span class="lab">Universities · 1 trial</span><span class="bar"><i class="neg" style="--v:-0.07"></i></span><span class="val">−0.07</span></div>
+<div class="grp">Structure that teaches: a tutor, course tasks or a usage guide</div>
+<div class="row"><span class="lab">Schools · 10 trials</span><span class="bar"><i class="pos" style="--v:0.22"></i></span><span class="val">+0.22</span></div>
+<div class="row"><span class="lab">Universities · 12 trials</span><span class="bar"><i class="pos" style="--v:0.37"></i></span><span class="val">+0.37</span></div>
+<p class="note" style="margin-top:12px">Guardrails stop the harm; structure brings the gains. Randomized trials of generative AI in the EvidencIA library, learning tested without AI, random-effects averages by arm, 16 October 2026. A pattern from few trials per cell, still to be confirmed.</p>
+</div>
+</div>
+</div>
+<div class="wrap">
+<div class="design">
+<div class="side bad">
+<div class="mono">Left to itself</div>
+<div class="cards">
+<div class="r neg"><b>−17%</b><span>exam score without AI</span><em>Turkey · free access to GPT-4 in high school math</em></div>
+<div class="r neg"><b>−20%</b><span>monthly exams over six months</span><em>China · 26,811 students using general AI apps, not randomized</em></div>
+</div>
+</div>
+<div class="side good">
+<div class="mono">Guidance designed in</div>
+<div class="cards">
+<div class="r zero"><b>0</b><span>the harm is gone, but no gain</span><em>Turkey · the same trial, a tutor with guardrails</em></div>
+<div class="r pos"><b>+0.22 SD</b><span>on the final exam</span><em>Chile · 384 students told how to use it as a tutor</em></div>
+<div class="r pos"><b>+0.26 SD</b><span>in math</span><em>Sierra Leone · eight weeks of lessons on a guided mode</em></div>
+</div>
+</div>
+</div>
+<p class="note" style="margin-top:10px">Same technology in all five results. Each carries its own outcome measure: the directions compare, the sizes do not. Bastani et al. (2025); Strömberg, Lei and Wu (2026); Gallegos (2026); LearnLM Team and Fab AI (2026).</p>
+<div class="col wide" style="margin-top:18px"><div class="mono">Research</div><ul>
+<li><a href="https://thedocs.worldbank.org/en/doc/2fba81cd6cd60d2f54532fc7062395fb-0050062026/original/Can-EdTech-Close-Learning-Gaps.pdf">Can EdTech Close Learning Gaps?</a><small>Burneo Terán, Dinarte-Diaz, Lopez and Molina 2026, WDR 2026 background paper</small></li>
+<li><a href="https://doi.org/10.1073/pnas.2422633122">Generative AI without guardrails can harm learning</a><small>Bastani et al. 2025, PNAS (Turkey)</small></li>
+<li><a href="https://www.iza.org/publications/dp/18513">Gallegos 2026</a><small>IZA DP 18513 (Chile)</small></li>
+<li><a href="https://storage.googleapis.com/deepmind-media/LearnLM/learnLM_sierraleone_may26.pdf">Teaching with Gemini</a><small>LearnLM Team and Fab AI 2026 (Sierra Leone)</small></li>
+<li><a href="https://blogs.worldbank.org/en/education/is-ai-making-us-smarter-or-just-making-us-look-smart-">Is AI making us smarter or just making us look smart?</a><small>Saavedra and Molina, World Bank blog</small></li>
+</ul></div>
+</div>
+</section>
+
+<section id="leaders">
+<div class="wrap init">
+<div class="cover"><img src="img/cover-director-libre.jpg" alt="Cover of El Director LIBRE" width="637" height="957" loading="lazy"><div class="tag">A free World Bank book, now also software.</div></div>
+<div class="did">
+<div class="mono kick">01 · School leaders</div>
+<h2>El Director LIBRE</h2>
+<p>In the latest survey of school leaders, 75 percent of the 1,615 respondents in Latin America (Argentina, Brazil, Chile and Colombia) say they spend most of their time on administrative and management tasks. El Director LIBRE is a free World Bank book with a five-step method for using AI to cut that administrative time so principals can spend it on instructional leadership. Peru's Ministry of Education used it to train about 6,000 new principals.</p>
+<p>We have now built it as software, with tools for the paperwork principals actually do (school council minutes, circulars, letters to families), and a version for El Salvador that records how principals use their time. We are now testing the platform with principals so that we can then evaluate it with a randomized trial.</p>
+<div class="res">
+<div class="col"><div class="mono">Research</div><ul>
+<li><a href="https://da35299e-f911-4937-9a29-1c44cd58e04c.filesusr.com/ugd/127901_b635132a707043d48d78b3157724f04f.pdf">PULS 2025-26 survey report</a><small>Global School Leaders, 12,453 school leaders in 16 countries</small></li>
+</ul></div>
+<div class="col"><div class="mono">The book</div><ul>
+<li><a href="https://documents1.worldbank.org/curated/en/099731109172514920/pdf/IDU-86373363-2741-4f78-a1cb-be22662e4459.pdf">El Director LIBRE (PDF)</a><small>Molina, Lopez, Lizama and Bambrick-Santoyo 2025, in Spanish</small></li>
+</ul></div>
+<div class="col"><div class="mono">Resources</div><ul>
+<li><a href="https://redevidencia.org/iniciativas/el-director-libre.html">Initiative page</a><small>The method, the community and the tools</small></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="teachers">
+<div class="wrap init">
+<div class="cover"><img src="img/cover-ia-en-el-aula.jpg" alt="Cover of Tu aliada pedagógica, the teachers' guide" width="640" height="645" loading="lazy"><div class="tag">Tu aliada pedagógica, the guide every teacher received.</div></div>
+<div class="did">
+<div class="mono kick">02 · Teachers</div>
+<h2>La IA en el Aula: training teachers to use AI</h2>
+<p>We tested whether training teachers to use AI saves them time. In a randomized trial with 1,269 sixth-grade teachers in 390 public schools in Lima, one day of training, an AI license and weekly messages raised use of the license by 20 percentage points. It saved no detectable time on any of seven main tasks, but teachers wrote better prompts and rejected more weak AI answers, and older teachers gained the most.</p>
+<div class="media"><figure><iframe src="https://www.youtube-nocookie.com/embed/HF7HpClQXm4" title="Microsoft: World Bank and Peru teachers using Copilot" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px;display:block;background:#000"></iframe><figcaption>Empowering teachers in Peru with Microsoft 365 Copilot Chat. Satya Nadella at Microsoft Build 2025.</figcaption></figure></div>
+<div class="res">
+<div class="col"><div class="mono">Research</div><ul>
+<li><a href="https://documents1.worldbank.org/curated/en/099309210012625906/pdf/IDU-c261aadb-6c32-48af-a07c-9cff5e86c716.pdf">Not Faster, but Better: Generative AI and Teacher Skill in Peru</a><small>Glave, Lopez, Molina and Zárate 2026, PRWP 11476</small></li>
+<li><a href="https://www.socialscienceregistry.org/trials/16336">AI in the Classroom: Evaluating the Impact of Teacher Training on Practices and Student Outcomes</a><small>Pre-registration, AEA RCT Registry</small></li>
+</ul></div>
+<div class="col"><div class="mono">Coverage</div><ul>
+<li><a href="https://news.microsoft.com/source/latam/features/ai/world-bank-peru-teachers-copilot/?lang=en">Microsoft feature on the program</a><small>With the video above</small></li>
+</ul></div>
+<div class="col"><div class="mono">Resources</div><ul>
+<li><a href="https://redevidencia.org/iniciativas/la-ia-en-el-aula.html">Initiative page</a><small>The training and the guide</small></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="wrap init sub">
+<div class="cover"><img src="img/cover-teach.jpg" alt="Cover of the Teach Primary observer manual" width="220" height="285" loading="lazy" style="max-width:180px"><div class="tag">Teach, the Bank's classroom observation tool.</div></div>
+<div class="did">
+<h2>Teach + IA: feedback after every lesson</h2>
+<p>Teach is the World Bank's tool for observing a lesson and scoring how well the teacher teaches: nine practices, such as checking that students understand or giving them feedback, each scored from 1 to 5. Today it needs a trained, certified person sitting in the classroom, which is expensive, so most teachers are observed rarely, if ever. We asked whether AI could do the scoring from a recording of the lesson. Using 199 lessons recorded in Peru, we gave a language model the same exam human observers must pass to be certified. With the detailed guide used to train human observers, it passed 93 percent of simulated exams; with a short version of the rules, only 57 percent. The model was the same; what changed was the guide. The expertise is in the rubric. Next step: a tool that records a lesson and returns feedback to the teacher, tested with a randomized trial on teaching practice and student learning.</p>
+<div class="res">
+<div class="col"><div class="mono">Research</div><ul>
+<li>Scaling up classroom observation with large language models: A reliability study of the World Bank's Teach framework in Peru<small>Kitmang, Krasnow, Krasnow, Lopez, Molina and Moreira Vasquez, working paper, forthcoming</small></li>
+</ul></div>
+<div class="col"><div class="mono">The tool</div><ul>
+<li><a href="https://www.worldbank.org/en/topic/education/brief/teach-helping-countries-track-and-improve-teaching-quality">Teach</a><small>World Bank brief</small></li>
+<li><a href="https://documents.worldbank.org/en/publication/documents-reports/documentdetail/872291641201520569/Teach-Primary-Observer-Manual">Teach Primary observer manual</a></li>
+</ul></div>
+<div class="col"><div class="mono">Resources</div><ul>
+<li><a href="https://redevidencia.org/iniciativas/teach-ia.html">Initiative page</a></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="students">
+<div class="wrap init">
+<div class="cover"><video autoplay muted loop playsinline preload="metadata" poster="../img/gallito-v2.png" aria-label="Gallito, the career coach" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;background:#e9e2d2"><source src="../img/gallito-v2.mp4" type="video/mp4"></video><div class="tag">Gallito, the AI career coach students talk to.</div></div>
+<div class="did">
+<div class="mono kick">03 · Students</div>
+<h2>Eligiendo Mi Camino</h2>
+<p>At the start of the Lima trial, 74 percent of final-year students wanted to keep studying, but only 16 percent knew what to study. Eligiendo Mi Camino gives every final-year student an AI career coach during the school day, in the school's computer lab: twelve sessions, with official wages for more than 130 occupations, ending in a personal plan.</p>
+<div class="stats">
+<div class="stat"><b>110</b><span>public schools in Lima, about 6,600 students, pre-registered randomized trial</span></div>
+<div class="stat"><b>9 in 10</b><span>treated students used the coach</span></div>
+<div class="stat"><b>+0.12 SD</b><span>in career readiness at midline</span></div>
+<div class="stat"><b>+14%</b><span>in intentions to enroll in a technical institute, about 3 points</span></div>
+</div>
+<p>The coach also raised students' estimates of what a technical career pays by about 21 percent, toward the official figure. These are plans and beliefs; enrollment comes later.</p>
+<h3 style="margin-top:24px">The math tutor: which design makes learning last</h3>
+<p>The same trial takes up the tutor debate. Among the randomized impact evaluations of generative AI tutors in the EvidencIA library, it is the largest in a developing country, by number of students, and the one that has run the longest. By number of schools (110), it is the largest anywhere. The 110 schools were randomly assigned to three groups:</p>
+<p>Both treatment groups use the same tutor, and it is diagnostic-first: instead of waiting for students to ask, it asks them, from a bank of about 3,950 questions on the grade 5 curriculum in which every wrong option is mapped to a specific misconception. When a student gets one wrong, the tutor knows what she does not understand and guides her with a question, never giving the answer, while a dashboard lets the teacher follow each student.</p>
+<div class="arms">
+<div class="arm"><b>C</b>Control, 22 schools: regular math classes, no tutor.</div>
+<div class="arm"><b>T1</b>The standard tutor, 44 schools: the AI does the regulating for the student. It decides what she practices next, catches her errors and judges when she has mastered a topic.</div>
+<div class="arm"><b>T2</b>The same tutor with added friction, 44 schools. For the first four weeks it is identical to T1. From week 5, part of each session hands that metacognitive work back to the student: before seeing the solution, she predicts which errors she is likely to make, and she judges whether a worked solution is right. Practice feels harder, but we expect what she learns to last longer once the tutor is gone.</div>
+</div>
+<p>Both run during regular school hours, in half of the weekly math classes, as practice in the school's computer lab (the aula de innovación pedagógica). We trained the math teachers for two days, in a practical way, gave them ongoing support, and sent them reports on how each class and each student was doing.</p>
+<p>We expect T1 and T2 to beat C while students use them; the question is which gains remain once the tutor is removed, because that tells a ministry which design to buy. The main test is a math exam taken without AI four months after the tutor is removed, in November 2026 (<a href="https://www.socialscienceregistry.org/trials/17917">pre-registration: The Personalization Trap</a>). If the results hold, there is demand to scale: four Peruvian regions have asked for the program in all 1,662 of their public secondary schools in 2027, about 348,000 students. Ecuador is building its own version, and an offline version runs in schools without internet.</p>
+<div class="media">
+<figure><video controls playsinline preload="none" poster="../img/emc_testimonies_poster.jpg"><source src="../img/emc_testimonies.mp4" type="video/mp4"></video><figcaption>Students in Lima on what changed for them. 2:15, English subtitles.</figcaption></figure>
+<figure><video controls playsinline preload="none" poster="../img/emc-small-ai.jpg"><source src="../img/emc-small-ai.mp4" type="video/mp4"></video><figcaption>Small AI | Big Impact: Eligiendo Mi Camino. World Bank.</figcaption></figure>
+</div>
+<div class="res">
+<div class="col"><div class="mono">Research</div><ul>
+<li><a href="https://www.socialscienceregistry.org/trials/17917">The Personalization Trap: Does AI Tutoring Build Learners or Dependence?</a><small>Pre-registration of the math tutor trial, AEA RCT Registry</small></li>
+<li><a href="https://blogs.worldbank.org/en/latinamerica/from-learning-to-earning-an-ai-career-coach-for-students-choosing-what-comes-next">From Learning to Earning</a><small>First results, World Bank blog, July 2026</small></li>
+<li><a href="https://www.worldbank.org/en/news/feature/2026/10/02/small-ai-big-learning-possibilities">Small AI, Big Learning Possibilities</a><small>World Bank feature, October 2026</small></li>
+</ul></div>
+<div class="col"><div class="mono">Try it</div><ul>
+<li><a href="https://eligiendomicamino.org/chat/">Gallito, the public chat</a><small>Ask anything about the program</small></li>
+<li><a href="https://eligiendomicamino.org/offline/">The offline version</a><small>As it runs in a school without internet</small></li>
+<li><a href="https://drive.google.com/file/d/1cY-CvrgCDIBztI9OUuI8lHwJnV-okw-1/view">Career coach demo</a> · <a href="https://drive.google.com/file/d/1Je8uRcmj3mQZp_KzbHjMvPvC4SpkqdxL/view">Math tutor demo</a><small>Screen recordings, in Spanish</small></li>
+</ul></div>
+<div class="col"><div class="mono">Resources</div><ul>
+<li><a href="https://redevidencia.org/iniciativas/eligiendo-mi-camino.html">Initiative page</a></li>
+<li><a href="https://eligiendomicamino.org/escalamiento/">2027 scale-up plan</a><small>Four regions, 1,662 schools</small></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="systems">
+<div class="wrap init">
+<div class="cover"><img src="img/cover-el-salvador.jpg" alt="El Salvador classroom" width="640" height="283" loading="lazy"><div class="tag">El Salvador: the whole package at once.</div></div>
+<div class="did">
+<div class="mono kick">04 · Whole systems</div>
+<h2>El Salvador, and how to check a platform before a trial exists</h2>
+<p>El Salvador is modernizing its whole education system at once: connectivity and devices that reach the classroom, AI learning platforms with quality content, training and coaching for teachers and principals, and assessment that comes back in time to act on it. It was designed as a gradual process, with learning as the reference point: a pilot in 10 schools, about 200 by mid-2025, nearly 1,000 today, and on the way to almost 5,000 public schools.</p>
+<h3 style="margin-top:24px">evalkit: a team of AI agents that tests a platform</h3>
+<p>Most products a ministry buys will never have a trial. In evalkit, the ministry says what the platform is for; AI agents turn that into criteria and test cases, a person approves the plan, and the agents then drive a real browser through the real product, several times, because AI tutors answer differently each time. Every score cites the screenshot behind it, and anything sensitive, such as a student in distress, needs a human signature before it is tested.</p>
+<p>evalkit checks behavior, not learning: knowing whether El Salvador's program raises learning needs a randomized trial of the program.</p>
+<div class="flow">
+<div class="step"><b>1</b><strong>A framework</strong><span>The ministry says what the platform is for; evalkit builds the criteria.</span></div>
+<div class="step"><b>2</b><strong>A plan</strong><span>It drafts the test cases and shows the plan before anything runs.</span></div>
+<div class="step"><b>3</b><strong>Agents</strong><span>They drive a real browser through the real product, more than once.</span></div>
+<div class="step"><b>4</b><strong>A report</strong><span>Every score cites the screenshot behind it, sealed with its hash.</span></div>
+</div>
+<p class="mono" style="color:var(--muted);font-size:12px;margin:10px 0 0">A person reviews and signs off at every step</p>
+<div class="probe"><div class="verdict">Does not meet · probed 3 times</div><p><strong>After a pupil's arithmetic error, the tutor names what the error is, not just that it is wrong.</strong> Three wrong sums were put to a demo math tutor: 27+45=62, 6×4=28, 52−27=35. All three times it replied with the same sentence: "tell me which part doesn't add up and we'll look at it together".</p></div>
+<div class="res">
+<div class="col"><div class="mono">Research</div><ul>
+<li><a href="https://blogs.worldbank.org/en/latinamerica/el-salvador-sistema-alineado-educacion-tecnologia-servicio-aprendizajes-pueden-acelerar-cambios">An encouraging sign from El Salvador</a><small>Cordeiro Guerra and Saavedra, World Bank blog, September 2026</small></li>
+</ul></div>
+<div class="col"><div class="mono">evalkit</div><ul>
+<li>Open tool, in testing<small>Framework, plan, agents and report, with human sign-off at every step</small></li>
+</ul></div>
+<div class="col"><div class="mono">Resources</div><ul>
+<li><a href="https://redevidencia.org/iniciativas/el-salvador.html">Initiative page</a></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="evidencia">
+<div class="wrap init">
+<div class="cover"><a href="https://redevidencia.org/papers"><img src="img/cover-papers.jpg" alt="The EvidencIA micro-lessons on two phones" width="900" height="1125" loading="lazy"></a><div class="tag">Fifty studies as two-minute lessons on a phone. <a href="https://redevidencia.org/papers">Try them</a>.</div></div>
+<div class="did">
+<div class="mono kick">05 · The evidence in one place</div>
+<h2>EvidencIA</h2>
+<p>Knowledge about AI and learning is split across researchers, universities, governments, companies and schools. EvidencIA is the Latin American network on AI and the science of learning that the Bank convenes to bring them together, with partners including Anthropic, Google, Microsoft, Tec de Monterrey and MetaRed, the Ibero-American university network for digital transformation.</p>
+<h3 style="margin-top:22px">A living library, sorted by what each document can support</h3>
+<div class="lib" role="img" aria-label="1,848 documents: 94 at level 1, 242 at level 2, 933 at level 3, 579 at level 4">
+<div class="big"><b>1,848</b><span>documents, 16 October 2026</span></div>
+<div class="stack"><i style="flex:94;background:#1e8a4c"></i><i style="flex:242;background:#a87613"></i><i style="flex:933;background:#3046ff"></i><i style="flex:579;background:#9a9aa8"></i></div>
+<div class="keys">
+<span><i style="background:#1e8a4c"></i><b>94</b> causal on learning, each figure checked against the paper: <b>69</b> randomized trials of AI, <b>24</b> of teaching without AI (the science of learning) and one meta-analysis; learning always tested without AI</span>
+<span><i style="background:#a87613"></i><b>242</b> causal, with limits</span>
+<span><i style="background:#3046ff"></i><b>933</b> descriptive</span>
+<span><i style="background:#9a9aa8"></i><b>579</b> policy and guidance</span>
+</div>
+</div>
+<div class="media vert" style="margin-top:18px">
+<figure><video controls playsinline muted preload="metadata" poster="img/evidencia-studies-en.jpg"><source src="img/evidencia-studies-en.mp4" type="video/mp4"></video><figcaption>The pooled chart of generative AI experiments; tap one to see how its effect was computed. 18 seconds.</figcaption></figure>
+<div><h3>All the AI experiments in one chart, and every number can be opened</h3><p>The library pools every randomized experiment of generative AI on learning in one chart, from largest to smallest effect, on a common scale. One tap on a study shows how its effect was computed: the formula, the figures it uses, and the page and exact quote from the paper they come from. Anyone can check the evidence behind an answer instead of taking it on trust.</p></div>
+</div>
+<h3 style="margin-top:26px">A free connector that puts the library inside Claude, ChatGPT and Gemini</h3>
+<p>An official or a teacher who asks an AI assistant gets an answer built on studies, with the strength of the evidence and what is still unknown. Three kinds of questions it answers:</p>
+<div class="media vert" style="margin-top:12px">
+<figure><video controls playsinline preload="metadata" poster="img/evidencia-explainer-en.jpg"><source src="img/evidencia-explainer-en.mp4" type="video/mp4"></video><figcaption>What the connector does, in one minute.</figcaption></figure>
+<div class="uses" style="grid-template-columns:1fr;margin-top:0">
+<div class="use"><div class="mono">The evidence</div><q>Do AI tutors work in secondary school?</q><span>The studies, how strong each one is, and what is missing.</span></div>
+<div class="use"><div class="mono">AI policy</div><q>What have other Latin American countries done on AI in schools?</q><span>What each official guide says, linked to the exact page.</span></div>
+<div class="use"><div class="mono">How people learn</div><q>How do I adapt my math lessons to my students' learning styles?</q><span>Corrects the premise, then says what to do instead.</span></div>
+</div>
+</div>
+<div class="res">
+<div class="col"><div class="mono">Use it</div><ul>
+<li><a href="https://mcp.redevidencia.org/">The connector</a><small>Add it to Claude, ChatGPT or Gemini</small></li>
+<li><a href="https://redevidencia.org/papers">50 studies as micro-lessons</a><small>Two minutes each, on a phone</small></li>
+</ul></div>
+<div class="col"><div class="mono">The talk</div><ul>
+<li><a href="https://redevidencia.org/riseai/">RISE AI Summit slides</a><small>Santiago, 20 October 2026</small></li>
+</ul></div>
+<div class="col"><div class="mono">The network</div><ul>
+<li><a href="https://redevidencia.org/">redevidencia.org</a><small>Newsletter, seminars and community</small></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer><div class="wrap">World Bank, Latin America and the Caribbean Education, with DECRG. <a href="/">redevidencia.org</a></div></footer>
+<script>/* Contador de visitas sin cookies (evidencia-mcp src/visitas.js). ?no_contar=1 excluye este navegador. */(function(){try{if(/[?&]no_contar=1/.test(location.search))localStorage.setItem('evidencia_no_contar','1');if(localStorage.getItem('evidencia_no_contar'))return}catch(e){}if(navigator.sendBeacon)navigator.sendBeacon('https://mcp.redevidencia.org/api/visita',new Blob([JSON.stringify({p:location.pathname,r:document.referrer})],{type:'text/plain'}))})();</script>
+</body>
+</html>
